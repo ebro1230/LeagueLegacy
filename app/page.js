@@ -1,95 +1,82 @@
+"use client";
 import Image from "next/image";
 import styles from "./page.module.css";
-
+import { redirect } from "next/navigation";
+import { useSession } from "next-auth/react";
+import fantasyFootball from "@/assets/Fantasy-Football.png";
+import fantasyHockey from "@/assets/Fantasy-Hockey.png";
+import fantasyBasketball from "@/assets/Fantasy-Basketball.png";
+import fantasyBaseball from "@/assets/Fantasy-Baseball.png";
+import "bootstrap/dist/css/bootstrap.min.css";
+import Link from "next/link";
 export default function Home() {
-  return (
-    <main className={styles.main}>
-      <div className={styles.description}>
-        <p>
-          Get started by editing&nbsp;
-          <code className={styles.code}>app/page.js</code>
-        </p>
-        <div>
-          <a
-            href="https://vercel.com?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            By{" "}
-            <Image
-              src="/vercel.svg"
-              alt="Vercel Logo"
-              className={styles.vercelLogo}
-              width={100}
-              height={24}
-              priority
-            />
-          </a>
+  //redirect("/signin");
+  const logoStyle = {
+    borderRadius: "50%",
+    border: "1px solid #fff",
+    margin: "1.5rem",
+  };
+  const { data: session, status } = useSession(); // Access session data
+  console.log(session);
+  if (status === "loading") {
+    return (
+      <div className="welcome-div">
+        <h1>LOADING SESSION DATA...</h1>
+      </div>
+    );
+  } else if (status === "unauthenticated") {
+    return (
+      <div className="welcome-div">
+        <h1>USER IS NOT AUTHENTICATED, PLEASE LOG IN</h1>
+      </div>
+    );
+  } else {
+    return (
+      <>
+        <div className="welcome-div">
+          <h2>Welcome Back,</h2>
+
+          <h2>{session.user.name}</h2>
         </div>
-      </div>
-
-      <div className={styles.center}>
-        <Image
-          className={styles.logo}
-          src="/next.svg"
-          alt="Next.js Logo"
-          width={180}
-          height={37}
-          priority
-        />
-      </div>
-
-      <div className={styles.grid}>
-        <a
-          href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2>
-            Docs <span>-&gt;</span>
-          </h2>
-          <p>Find in-depth information about Next.js features and API.</p>
-        </a>
-
-        <a
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2>
-            Learn <span>-&gt;</span>
-          </h2>
-          <p>Learn about Next.js in an interactive course with&nbsp;quizzes!</p>
-        </a>
-
-        <a
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2>
-            Templates <span>-&gt;</span>
-          </h2>
-          <p>Explore starter templates for Next.js.</p>
-        </a>
-
-        <a
-          href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2>
-            Deploy <span>-&gt;</span>
-          </h2>
-          <p>
-            Instantly deploy your Next.js site to a shareable URL with Vercel.
-          </p>
-        </a>
-      </div>
-    </main>
-  );
+        <div className="league-logo-div">
+          <Link href={`/sport/football`}>
+            <Image
+              src={fantasyFootball}
+              height={120}
+              placeholder="blur"
+              style={logoStyle}
+              alt="Picture for Fantasy Football Leagues"
+            />
+          </Link>
+          <Link href={`/sport/hockey`}>
+            <Image
+              src={fantasyHockey}
+              placeholder="blur"
+              height={120}
+              style={logoStyle}
+              alt="Picture for Fantasy Hockey Leagues"
+            />
+          </Link>
+          <Link href={`/sport/basketball`}>
+            <Image
+              src={fantasyBasketball}
+              height={120}
+              placeholder="blur"
+              style={logoStyle}
+              alt="Picture for Fantasy Basketball Leagues"
+            />
+          </Link>
+          <Link href={`/sport/baseball`}>
+            <Image
+              src={fantasyBaseball}
+              height={120}
+              placeholder="blur"
+              style={logoStyle}
+              alt="Picture for Fantasy Baseball Leagues"
+            />
+          </Link>
+        </div>
+      </>
+    );
+  }
 }
