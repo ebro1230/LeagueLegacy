@@ -8,7 +8,7 @@ const yahooAuth = require("./router/yahooAuth");
 const errorHandler = require("./middleware/errorHandler");
 
 const app = express();
-const PORT = process.env.PORT || 8000;
+const PORT = process.env.NEXT_PUBLIC_BACKEND_URL || 8000;
 
 app.use(cors());
 app.use(bodyParser.urlencoded({ extended: false }));

@@ -42,20 +42,23 @@ export default function Roster({
         currentDate.setDate(currentDate.getDate() + 1); // Move to next day
       }
       setWeekDays(weekDay);
-      fetch(`http://localhost:8000/api/yahooAuth//weekly-lineups`, {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          accessToken: accessToken,
-          teamKeys: [week.key, week.opponentKey],
-          weekDays: weekDay,
-          week: week.week,
-          leagueKey: seasonKey,
-          leagueType: leagueType,
-        }),
-      })
+      fetch(
+        `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/yahooAuth//weekly-lineups`,
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            accessToken: accessToken,
+            teamKeys: [week.key, week.opponentKey],
+            weekDays: weekDay,
+            week: week.week,
+            leagueKey: seasonKey,
+            leagueType: leagueType,
+          }),
+        }
+      )
         .then(async (response) => {
           console.log("RESPONSE OK:", response.ok);
           if (!response.ok) {

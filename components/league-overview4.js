@@ -122,7 +122,7 @@ export default function LeagueOverview({ leagueType, leagueKeysString }) {
   useEffect(() => {
     const getLeagueInfo = (leagueKeys, accessToken) => {
       console.log("FETCH SENT");
-      fetch(`http://localhost:8000/api/yahooAuth/leagues`, {
+      fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/api/yahooAuth/leagues`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

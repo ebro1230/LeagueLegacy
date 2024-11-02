@@ -41,16 +41,19 @@ export default function SportPage({ params }) {
 
   useEffect(() => {
     const handleGetLeagues = (leagueType, accessToken) => {
-      fetch(`http://localhost:8000/api/yahooAuth/user-leagues`, {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          accessToken: accessToken,
-          leagueType: leagueType,
-        }),
-      })
+      fetch(
+        `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/yahooAuth/user-leagues`,
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            accessToken: accessToken,
+            leagueType: leagueType,
+          }),
+        }
+      )
         .then((response) => {
           if (!response.ok) {
             console.log("RESPONSE NOT OK");
