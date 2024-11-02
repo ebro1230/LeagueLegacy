@@ -5,19 +5,12 @@ import hockey from "@/assets/Fantasy-Hockey.png";
 import basketball from "@/assets/Fantasy-Basketball.png";
 import baseball from "@/assets/Fantasy-Baseball.png";
 import Image from "next/image";
-//import { getLeagues } from "@/lib/leagues";
 import LeaguesGrid from "@/components/leagues-grid";
 import { useSession } from "next-auth/react";
-//import { redirect } from "express/lib/response";
 import { useState, useEffect } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import Spinner from "react-bootstrap/Spinner";
 import { useRouter } from "next/navigation";
-
-// async function Leagues({ leagueType }) {
-//   const leagues = await getLeagues(leagueType);
-//   return <LeaguesGrid leagues={leagues} leagueType={leagueType} />;
-// }
 
 export default function SportPage({ params }) {
   const { data: session, status } = useSession();
