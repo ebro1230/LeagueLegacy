@@ -1,8 +1,8 @@
-import nextConnect from "next-connect";
+import { createEdgeRouter } from "next-connect";
 import bodyParser from "body-parser";
 import cors from "cors";
 
-const handler = nextConnect();
+const handler = createEdgeRouter();
 
 // Attach bodyParser middleware
 handler.use(cors());
