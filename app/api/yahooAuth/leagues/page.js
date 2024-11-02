@@ -1,6 +1,7 @@
 import { createEdgeRouter } from "next-connect";
 import bodyParser from "body-parser";
 import cors from "cors";
+import { parseString } from "xml2js";
 
 const handler = createEdgeRouter();
 
