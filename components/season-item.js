@@ -18,7 +18,7 @@ export default function SeasonItem({
     <Accordion>
       {season.matchups.map((week) => {
         return (
-          <Accordion.Item eventKey={`${season.season}+${week.week}`}>
+          <Accordion.Item key={week} eventKey={`${season.season}+${week.week}`}>
             <Accordion.Header>
               <Container fluid>
                 <Row>

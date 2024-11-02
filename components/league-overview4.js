@@ -11,7 +11,6 @@ import football from "@/assets/Fantasy-Football.png";
 import hockey from "@/assets/Fantasy-Hockey.png";
 import basketball from "@/assets/Fantasy-Basketball.png";
 import baseball from "@/assets/Fantasy-Baseball.png";
-import { getCookie } from "@/actions/cookies";
 
 import ManagerGrid from "./manager-grid3";
 import SeasonDropdown from "./season-dropdown";

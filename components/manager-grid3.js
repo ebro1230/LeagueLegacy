@@ -54,12 +54,13 @@ export default function ManagerGrid({
           {managers.length
             ? managers.map((manager) => {
                 return (
-                  <tr className="small-table-row">
+                  <tr key={JSON.stringify(manager)} className="small-table-row">
                     <ManagerItem
                       manager={manager}
                       currentYear={currentYear}
                       logoStyle={logoStyle}
                       chosenSeason={chosenSeason}
+                      key={manager.key}
                     />
                   </tr>
                 );

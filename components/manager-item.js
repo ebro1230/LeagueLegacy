@@ -31,7 +31,9 @@ export default function ManagerItem({
           <td className="small-table-data">
             {manager.championships.length > 0 ? (
               manager.championships.map((championship) => {
-                return <p>{championship.seasonYear}</p>;
+                return (
+                  <p key={championship.seasonYear}>{championship.seasonYear}</p>
+                );
               })
             ) : (
               <p>N/A</p>
@@ -40,13 +42,13 @@ export default function ManagerItem({
           <td className="small-table-data">{manager.bestFinish[0].rank}</td>
           <td className="small-table-data">
             {manager.bestFinish.map((finish) => {
-              return <p>{finish.seasonYear}</p>;
+              return <p key={finish.seasonYear}>{finish.seasonYear}</p>;
             })}
           </td>
           <td className="small-table-data">{manager.worstFinish[0].rank}</td>
           <td className="small-table-data">
             {manager.worstFinish.map((finish) => {
-              return <p>{finish.seasonYear}</p>;
+              return <p key={finish.seasonYear}>{finish.seasonYear}</p>;
             })}
           </td>
           <td className="small-table-data">
@@ -63,7 +65,7 @@ export default function ManagerItem({
               manager.overallCumulativeRecord[
                 manager.overallCumulativeRecord.length - 1
               ].playoffSeasonRecord.playoffAppearances.map((playoffSeason) => {
-                return <p>{playoffSeason}</p>;
+                return <p key={playoffSeason}>{playoffSeason}</p>;
               })
             ) : (
               <p>N/A</p>
@@ -84,7 +86,7 @@ export default function ManagerItem({
                 manager.overallCumulativeRecord.length - 1
               ].consolationSeasonRecord.consolationAppearances.map(
                 (consolationSeason) => {
-                  return <p>{consolationSeason}</p>;
+                  return <p key={consolationSeason}>{consolationSeason}</p>;
                 }
               )
             ) : (

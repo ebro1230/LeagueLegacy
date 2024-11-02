@@ -16,6 +16,7 @@ export default function SeasonGrid({
       ? seasons.map((season) => {
           return (
             <SeasonItem
+              key={season}
               season={season}
               logoStyle={logoStyle}
               onCompareManager={onCompareManager}
@@ -28,7 +29,7 @@ export default function SeasonGrid({
         })
       : seasons.map((season) => {
           return (
-            <Accordion>
+            <Accordion key={season}>
               <Accordion.Item eventKey={`${season.season}`}>
                 <Accordion.Header>Season: {season.season}</Accordion.Header>
                 <Accordion.Body>

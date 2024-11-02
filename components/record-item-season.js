@@ -12,7 +12,7 @@ export default function RecordItemSeason({ record, logoStyle, recordName }) {
       <h5>{recordName}</h5>
       {record.map((record) => {
         return (
-          <Accordion.Item>
+          <Accordion.Item key={record}>
             <Container fluid>
               <Row>
                 <Col

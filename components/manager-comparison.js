@@ -1,8 +1,6 @@
 "use client";
-import Image from "next/image";
+
 import { Spinner } from "react-bootstrap";
-import { useEffect, useState } from "react";
-import { getCookie } from "@/actions/cookies";
 import ManagerMatchup from "./manager-matchup";
 import SeasonGrid from "./season-grid";
 

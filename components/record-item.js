@@ -17,7 +17,10 @@ export default function RecordItem({
       <h5>{recordName}</h5>
       {record.map((record) => {
         return (
-          <Accordion.Item eventKey={`${record.season}${record.week}`}>
+          <Accordion.Item
+            key={record}
+            eventKey={`${record.season}${record.week}`}
+          >
             <Accordion.Header>
               <Container fluid>
                 <Row>

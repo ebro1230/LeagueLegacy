@@ -1,5 +1,5 @@
-import { useEffect, useState } from "react";
-import { getCookie } from "@/actions/cookies";
+import { useState } from "react";
+
 import { useRouter } from "next/navigation";
 import Accordion from "react-bootstrap/Accordion";
 import Table from "react-bootstrap/Table";
@@ -134,11 +134,17 @@ export default function Roster({
             <div className="roster-div">
               {rosters.map((roster) => {
                 return (
-                  <Table responsive striped bordered className="player-table">
+                  <Table
+                    key={roster}
+                    responsive
+                    striped
+                    bordered
+                    className="player-table"
+                  >
                     <tbody>
                       {roster.map((player) => {
                         return (
-                          <tr>
+                          <tr key={player}>
                             <td>{player.playerPosition}</td>
                             <td>
                               <Image
@@ -179,7 +185,7 @@ export default function Roster({
                   <tbody>
                     {team1Roster.map((player) => {
                       return (
-                        <tr>
+                        <tr key={player}>
                           <td>{player.playerPosition}</td>
                           <td>
                             <Image
@@ -224,7 +230,7 @@ export default function Roster({
                   <tbody>
                     {team2Roster.map((player) => {
                       return (
-                        <tr>
+                        <tr key={player}>
                           <td>{player.playerPosition}</td>
                           <td>
                             <Image
