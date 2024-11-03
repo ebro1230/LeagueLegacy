@@ -26,6 +26,11 @@ handler.post(async (req) => {
   // });
   const accessToken = await body.accessToken;
   const leagueType = await body.leagueType;
+  return NextResponse.json({
+    message: "You've Made it to the Post Request",
+    accessToken: accessToken,
+    leagueType: leagueType,
+  });
 
   const date = new Date();
   const currentYear = date.getFullYear();
