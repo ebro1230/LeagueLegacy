@@ -1,11 +1,11 @@
-import { createEdgeRouter } from "next-connect";
+import { createRouter } from "next-connect";
 import { NextResponse } from "next/server";
 import bodyParser from "body-parser";
 import bodyParserXml from "body-parser-xml";
 import cors from "cors";
 import { parseString } from "xml2js";
 
-const handler = createEdgeRouter();
+const handler = createRouter();
 // bodyParserXml(bodyParser);
 
 // // Attach bodyParser middleware
