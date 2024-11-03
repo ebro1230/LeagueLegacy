@@ -79,6 +79,7 @@ export default function SportPage({ params }) {
           console.log(
             `ERROR MESSAGE: ${error.message} & ERROR STATUS: ${error.status}`
           );
+          console.log(error);
           // router.push(
           //   `/error?message=${encodeURIComponent(
           //     error.message
