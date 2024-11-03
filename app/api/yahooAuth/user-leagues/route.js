@@ -746,7 +746,12 @@ handler.post((req) => {
         );
       }
       return NextResponse.json(
-        { message: "League Type Missing outside the if/else statement" },
+        {
+          message: "League Type Missing outside the if/else statement",
+          body: body,
+          acessToken: accessToken,
+          leagueType: leagueType,
+        },
         { status: 400 }
       );
     })
