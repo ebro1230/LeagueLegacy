@@ -24,7 +24,9 @@ handler.post(async (req) => {
   //   message: "You've Made it to the Post Request",
   //   req: body,
   // });
-  const { accessToken, leagueType } = body;
+  const accessToken = await body.accessToken;
+  const leagueType = await body.leagueType;
+
   const date = new Date();
   const currentYear = date.getFullYear();
   if (leagueType === "football") {
