@@ -5,7 +5,7 @@ import bodyParserXml from "body-parser-xml";
 import cors from "cors";
 import { parseString } from "xml2js";
 
-const handler = createEdgehandler();
+const handler = createEdgeRouter();
 bodyParserXml(bodyParser);
 
 // Attach bodyParser middleware
