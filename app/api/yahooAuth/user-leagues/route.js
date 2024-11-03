@@ -14,7 +14,7 @@ router.use(bodyParser.urlencoded({ extended: false }));
 router.use(bodyParser.json());
 router.use(bodyParser.xml());
 
-router.post((req, event) => {
+router.post((req) => {
   return NextResponse({
     message: "You've Made it to the Post Request",
     req: req,
