@@ -26,10 +26,10 @@ handler.post((req) => {
       const leagueType = body.leagueType;
       const date = new Date();
       const currentYear = date.getFullYear();
-      return NextResponse.json(
-        { accessToken: accessToken, leagueType: leagueType },
-        { status: 200 }
-      );
+      // return NextResponse.json(
+      //   { accessToken: accessToken, leagueType: leagueType },
+      //   { status: 200 }
+      // );
       if (leagueType === "football") {
         fetch(
           `https://fantasysports.yahooapis.com/fantasy/v2/users;use_login=1/games;game_keys=57,49,79,101,124,153,175,199,222,242,257,273,314,331,348,359,371,380,390,399,406,414,423,449/leagues/teams/standings`,
