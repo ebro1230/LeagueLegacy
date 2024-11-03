@@ -54,8 +54,9 @@ export default function SportPage({ params }) {
           }),
         }
       )
-        .then((response) => {
-          console.log(response);
+        .then(async (response) => {
+          console.log("RESPONSE");
+          console.log(await response.json());
           if (!response.ok) {
             console.log("RESPONSE NOT OK");
             //console.log(`RESPONSE STATUS: ${response.status}`);
