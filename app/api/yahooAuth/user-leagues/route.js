@@ -185,16 +185,20 @@ router.post((req, event) => {
                 return b.memberYears - a.memberYears;
               }
             });
-            NextResponse.json(leagueSummaries);
+            return NextResponse.json(leagueSummaries);
             //res.send(JSON.stringify(leagueSummaries));
           });
         })
         .catch((error) => {
           console.error("Error parsing JSON or network issue:", error);
           console.log(error.message);
-          res
-            .status(error.status || 500)
-            .json({ message: error.message, status: error.status });
+          return NextResponse.json(
+            { error: { message: error.message, status: error.status } },
+            { status: error.status || 500 }
+          );
+          // res
+          //   .status(error.status || 500)
+          //   .json({ message: error.message, status: error.status });
         });
     } else if (leagueType === "hockey") {
       fetch(
@@ -352,16 +356,20 @@ router.post((req, event) => {
                 return b.memberYears - a.memberYears;
               }
             });
-            NextResponse.json(leagueSummaries);
+            return NextResponse.json(leagueSummaries);
             //res.send(JSON.stringify(leagueSummaries));
           });
         })
         .catch((error) => {
           console.error("Error parsing JSON or network issue:", error);
           console.log(error.message);
-          res
-            .status(error.status || 500)
-            .json({ message: error.message, status: error.status });
+          return NextResponse.json(
+            { error: { message: error.message, status: error.status } },
+            { status: error.status || 500 }
+          );
+          // res
+          //   .status(error.status || 500)
+          //   .json({ message: error.message, status: error.status });
         });
     } else if (leagueType === "basketball") {
       fetch(
@@ -517,16 +525,20 @@ router.post((req, event) => {
                 return b.memberYears - a.memberYears;
               }
             });
-            NextResponse.json(leagueSummaries);
+            return NextResponse.json(leagueSummaries);
             //res.send(JSON.stringify(leagueSummaries));
           });
         })
         .catch((error) => {
           console.error("Error parsing JSON or network issue:", error);
           console.log(error.message);
-          res
-            .status(error.status || 500)
-            .json({ message: error.message, status: error.status });
+          return NextResponse.json(
+            { error: { message: error.message, status: error.status } },
+            { status: error.status || 500 }
+          );
+          // res
+          //   .status(error.status || 500)
+          //   .json({ message: error.message, status: error.status });
         });
     } else if (leagueType === "baseball") {
       fetch(
@@ -682,21 +694,25 @@ router.post((req, event) => {
                 return b.memberYears - a.memberYears;
               }
             });
-            NextResponse.json(leagueSummaries);
+            return NextResponse.json(leagueSummaries);
             //res.send(JSON.stringify(leagueSummaries));
           });
         })
         .catch((error) => {
           console.error("Error parsing JSON or network issue:", error);
           console.log(error.message);
-          res
-            .status(error.status || 500)
-            .json({ message: error.message, status: error.status });
+          return NextResponse.json(
+            { error: { message: error.message, status: error.status } },
+            { status: error.status || 500 }
+          );
+          // res
+          //   .status(error.status || 500)
+          //   .json({ message: error.message, status: error.status });
         });
     }
   } else {
     // Handle other HTTP methods if necessary
-    NextResponse.json(
+    return NextResponse.json(
       { error: `Method ${req.method} Not Allowed` },
       {
         status: 405,
