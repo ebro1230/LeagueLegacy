@@ -15,7 +15,7 @@ const handler = createRouter();
 // handler.use(bodyParser.xml());
 
 handler.post((req) => {
-  return NextResponse({
+  return NextResponse.json({
     message: "You've Made it to the Post Request",
     req: req,
   });
@@ -735,4 +735,19 @@ handler.post((req) => {
 // export async function POST(request, context) {
 //   return router.run(request, context);
 // }
-export { handler as POST };
+
+// export { handler as POST };
+
+// import { createRouter } from "next-connect";
+// import { NextResponse } from "next/server";
+
+// const handler = createRouter();
+
+// handler.post((req) => {
+//   return NextResponse({
+//     message: "You've Made it to the Post Request",
+//     req: req,
+//   });
+// });
+
+// export { handler as POST };
