@@ -56,6 +56,7 @@ handler.post((req) => {
               console.error("Error parsing XML:", err);
               return NextResponse.json({ error: `XML parsing error: ${err}` });
             } else {
+              console.log("INTO PARSE STRING");
               const leagues =
                 result.fantasy_content.users[0].user[0].games[0].game.filter(
                   (league) => league.leagues[0]
@@ -192,6 +193,7 @@ handler.post((req) => {
                   return b.memberYears - a.memberYears;
                 }
               });
+              console.log("MADE IT TO THE END OF PARSE STRING");
               return NextResponse.json(leagueSummaries);
             }
           });
