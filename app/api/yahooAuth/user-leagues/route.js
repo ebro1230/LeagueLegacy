@@ -6,13 +6,17 @@ import cors from "cors";
 import { parseString } from "xml2js";
 
 const handler = createRouter();
-// bodyParserXml(bodyParser);
+bodyParserXml(bodyParser);
 
-// // Attach bodyParser middleware
-// handler.use(cors());
-// handler.use(bodyParser.urlencoded({ extended: false }));
-// handler.use(bodyParser.json());
-// handler.use(bodyParser.xml());
+// Attach bodyParser middleware
+handler.use(
+  cors({
+    origin: "*", // Allow all origins
+  })
+);
+handler.use(bodyParser.urlencoded({ extended: false }));
+handler.use(bodyParser.json());
+handler.use(bodyParser.xml());
 
 handler.post((req) => {
   return NextResponse.json({
@@ -731,22 +735,6 @@ handler.post((req) => {
   //   //res.status(405).end(`Method ${req.method} Not Allowed`);
   // }
 });
-// export async function POST(request, context) {
-//   return router.run(request, context);
-// }
-
-export { handler as POST };
-
-// import { createRouter } from "next-connect";
-// import { NextResponse } from "next/server";
-
-// const handler = createRouter();
-
-// handler.post((req) => {
-//   return NextResponse({
-//     message: "You've Made it to the Post Request",
-//     req: req,
-//   });
-// });
-
-// export { handler as POST };
+export async function POST(request, context) {
+  return handler.run(request, context);
+}
