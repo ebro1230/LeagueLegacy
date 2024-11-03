@@ -39,11 +39,7 @@ handler.post(async (req) => {
         },
       }
     )
-      .then((response) => {
-        return NextResponse.json({
-          message: "You've Made it to the Fetch Response",
-          fetchResponse: response,
-        });
+      .then(async (response) => {
         console.log("RESPONSE OK:", response.ok);
         if (!response.ok) {
           const error = new Error(
@@ -55,6 +51,11 @@ handler.post(async (req) => {
           );
           throw error;
         }
+        const response = await response.text();
+        return NextResponse.json({
+          message: "You've Made it to the Fetch Response",
+          fetchResponse: response,
+        });
         return response.text();
       })
       .then((data) => {
@@ -204,8 +205,9 @@ handler.post(async (req) => {
         console.error("Error parsing JSON or network issue:", error);
         console.log(error.message);
         return NextResponse.json(
-          { error: { message: error.message, status: error.status } },
-          { status: error.status || 500 }
+          { error: error },
+          //{ error: { message: error.message, status: error.status } },
+          { status: error.status || 404 }
         );
         // res
         //   .status(error.status || 500)
