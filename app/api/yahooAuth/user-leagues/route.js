@@ -42,7 +42,7 @@ handler.post(async (req) => {
       .then(async (response) => {
         console.log("RESPONSE OK:", response.ok);
         if (!response.ok) {
-          const error = new Error(
+          let error = new Error(
             `Request failed when requesting all user football leagues with status ${response.status}`
           );
           error.status = response.status; // Add status property
@@ -51,10 +51,10 @@ handler.post(async (req) => {
           );
           throw error;
         }
-        const response = await response.text();
+        const data = await response.text();
         return NextResponse.json({
           message: "You've Made it to the Fetch Response",
-          fetchResponse: response,
+          fetchResponse: data,
         });
         return response.text();
       })
