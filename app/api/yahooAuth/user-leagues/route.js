@@ -1,23 +1,26 @@
 import { createEdgeRouter } from "next-connect";
+import { NextResponse } from "next/server";
 import bodyParser from "body-parser";
 import bodyParserXml from "body-parser-xml";
 import cors from "cors";
 import { parseString } from "xml2js";
 
-const handler = createEdgeRouter();
+const router = createEdgeRouter();
 bodyParserXml(bodyParser);
 
 // Attach bodyParser middleware
-handler.use(cors());
-handler.use(bodyParser.urlencoded({ extended: false }));
-handler.use(bodyParser.json());
-handler.use(bodyParser.xml());
+router.use(cors());
+router.use(bodyParser.urlencoded({ extended: false }));
+router.use(bodyParser.json());
+router.use(bodyParser.xml());
 
-handler.post((req, res) => {
+router.post((req, event) => {
   console.log("REQ METHOD");
   console.log(req.method);
   console.log("METHOD");
   console.log(req);
+  console.log("BODY");
+  console.log(req.body);
   if (req.method === "POST") {
     const { accessToken, leagueType } = req.body;
     const date = new Date();
@@ -182,7 +185,8 @@ handler.post((req, res) => {
                 return b.memberYears - a.memberYears;
               }
             });
-            res.send(JSON.stringify(leagueSummaries));
+            NextResponse.json(leagueSummaries);
+            //res.send(JSON.stringify(leagueSummaries));
           });
         })
         .catch((error) => {
@@ -348,7 +352,8 @@ handler.post((req, res) => {
                 return b.memberYears - a.memberYears;
               }
             });
-            res.send(JSON.stringify(leagueSummaries));
+            NextResponse.json(leagueSummaries);
+            //res.send(JSON.stringify(leagueSummaries));
           });
         })
         .catch((error) => {
@@ -512,7 +517,8 @@ handler.post((req, res) => {
                 return b.memberYears - a.memberYears;
               }
             });
-            res.send(JSON.stringify(leagueSummaries));
+            NextResponse.json(leagueSummaries);
+            //res.send(JSON.stringify(leagueSummaries));
           });
         })
         .catch((error) => {
@@ -676,7 +682,8 @@ handler.post((req, res) => {
                 return b.memberYears - a.memberYears;
               }
             });
-            res.send(JSON.stringify(leagueSummaries));
+            NextResponse.json(leagueSummaries);
+            //res.send(JSON.stringify(leagueSummaries));
           });
         })
         .catch((error) => {
@@ -689,8 +696,19 @@ handler.post((req, res) => {
     }
   } else {
     // Handle other HTTP methods if necessary
-    res.setHeader("Allow", ["POST"]);
-    res.status(405).end(`Method ${req.method} Not Allowed`);
+    NextResponse.json(
+      { error: `Method ${req.method} Not Allowed` },
+      {
+        status: 405,
+        headers: {
+          Allow: "POST",
+        },
+      }
+    );
+    //res.setHeader("Allow", ["POST"]);
+    //res.status(405).end(`Method ${req.method} Not Allowed`);
   }
 });
-export default handler;
+export async function POST(request, context) {
+  return router.run(request, context);
+}
