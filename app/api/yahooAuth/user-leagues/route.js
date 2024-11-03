@@ -18,10 +18,11 @@ handler.use(bodyParser.urlencoded({ extended: false }));
 handler.use(bodyParser.json());
 handler.use(bodyParser.xml());
 
-handler.post((req) => {
+handler.post(async (req) => {
+  const body = await req.json();
   return NextResponse.json({
     message: "You've Made it to the Post Request",
-    req: req,
+    req: body,
   });
   // if (req.method === "POST") {
   //   console.log("REQ METHOD");
