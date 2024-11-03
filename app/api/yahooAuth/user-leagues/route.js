@@ -17,7 +17,6 @@ const handler = createRouter();
 handler.post((req) => {
   return NextResponse.json({
     message: "You've Made it to the Post Request",
-    req: req,
   });
   // if (req.method === "POST") {
   //   console.log("REQ METHOD");
