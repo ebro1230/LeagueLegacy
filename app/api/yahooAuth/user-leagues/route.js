@@ -26,12 +26,6 @@ handler.post((req) => {
       const leagueType = body.leagueType;
       const date = new Date();
       const currentYear = date.getFullYear();
-      if (!leagueType) {
-        return NextResponse.json(
-          { message: "League Type Missing" },
-          { status: 400 }
-        );
-      }
 
       if (leagueType === "football") {
         fetch(
@@ -62,7 +56,7 @@ handler.post((req) => {
               parseString(xml, (err, result) => {
                 if (err) {
                   console.error("Error parsing XML:", err);
-                  reject(new Error(`Error parsing XML: ${err}`));
+                  return reject(new Error(`Error parsing XML: ${err}`));
                 }
                 const leagues =
                   result.fantasy_content.users[0].user[0].games[0].game.filter(
@@ -204,7 +198,7 @@ handler.post((req) => {
                     return b.memberYears - a.memberYears;
                   }
                 });
-                resolve(NextResponse.json(leagueSummaries));
+                return resolve(NextResponse.json(leagueSummaries));
               });
               //return NextResponse.json(leagueSummaries);
               //res.send(JSON.stringify(leagueSummaries));
@@ -732,11 +726,12 @@ handler.post((req) => {
       //       //   .json({ message: error.message, status: error.status });
       //     });
       // }
-      else
+      else {
         return NextResponse.json(
           { message: "League Type Missing" },
           { status: 400 }
         );
+      }
     })
     .catch((error) => {
       console.error("Request body parsing error:", error);
