@@ -408,7 +408,7 @@ handler.post(async (req) => {
             );
             throw error;
           } else {
-            data = await response.text();
+            const data = await response.text();
             return data;
             //.then((response) => response.text())
           }
