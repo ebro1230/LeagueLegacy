@@ -26,11 +26,6 @@ handler.post(async (req) => {
   // });
   const accessToken = await body.accessToken;
   const leagueType = await body.leagueType;
-  return NextResponse.json({
-    message: "You've Made it to the Post Request",
-    accessToken: accessToken,
-    leagueType: leagueType,
-  });
 
   const date = new Date();
   const currentYear = date.getFullYear();
@@ -45,6 +40,10 @@ handler.post(async (req) => {
       }
     )
       .then((response) => {
+        return NextResponse.json({
+          message: "You've Made it to the Fetch Response",
+          fetchResponse: response,
+        });
         console.log("RESPONSE OK:", response.ok);
         if (!response.ok) {
           const error = new Error(
