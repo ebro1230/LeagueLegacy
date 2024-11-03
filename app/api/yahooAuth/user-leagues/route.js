@@ -15,6 +15,10 @@ router.use(bodyParser.json());
 router.use(bodyParser.xml());
 
 router.post((req, event) => {
+  return NextResponse({
+    message: "You've Made it to the Post Request",
+    req: req,
+  });
   if (req.method === "POST") {
     console.log("REQ METHOD");
     console.log(req.method);
