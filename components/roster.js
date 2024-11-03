@@ -43,7 +43,7 @@ export default function Roster({
       }
       setWeekDays(weekDay);
       fetch(
-        `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/yahooAuth//weekly-lineups`,
+        `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/yahooAuth/weekly-lineups`,
         {
           method: "POST",
           headers: {
@@ -96,11 +96,11 @@ export default function Roster({
           console.log(
             `ERROR MESSAGE: ${error.message} & ERROR STATUS: ${error.status}`
           );
-          router.push(
-            `/error?message=${encodeURIComponent(
-              error.message
-            )}&status=${encodeURIComponent(error.status)}`
-          );
+          // router.push(
+          //   `/error?message=${encodeURIComponent(
+          //     error.message
+          //   )}&status=${encodeURIComponent(error.status)}`
+          // );
         });
     }
   };

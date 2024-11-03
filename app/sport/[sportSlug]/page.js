@@ -79,11 +79,11 @@ export default function SportPage({ params }) {
           console.log(
             `ERROR MESSAGE: ${error.message} & ERROR STATUS: ${error.status}`
           );
-          router.push(
-            `/error?message=${encodeURIComponent(
-              error.message
-            )}&status=${encodeURIComponent(error.status)}`
-          );
+          // router.push(
+          //   `/error?message=${encodeURIComponent(
+          //     error.message
+          //   )}&status=${encodeURIComponent(error.status)}`
+          // );
         })
         .finally(() => {
           setLoading(false);
