@@ -31,6 +31,13 @@ handler.post((req) => {
       //   { status: 200 }
       // );
       if (leagueType === "football") {
+        return NextResponse.json(
+          {
+            accessToken: "Made it into the if statement",
+            leagueType: leagueType,
+          },
+          { status: 200 }
+        );
         fetch(
           `https://fantasysports.yahooapis.com/fantasy/v2/users;use_login=1/games;game_keys=57,49,79,101,124,153,175,199,222,242,257,273,314,331,348,359,371,380,390,399,406,414,423,449/leagues/teams/standings`,
           {
