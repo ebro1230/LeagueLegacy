@@ -387,8 +387,8 @@ handler.post(async (req) => {
             ];
           }
         });
-        const fetchPromises = leagues.map((league) =>
-          fetch(
+        const fetchPromises = leagues.map(async (league) => {
+          const response = await fetch(
             `https://fantasysports.yahooapis.com/fantasy/v2/league/${league.key}/scoreboard;week=${league.leagueWeeks}`,
             {
               method: "GET",
@@ -397,8 +397,22 @@ handler.post(async (req) => {
                 timeout: 5000,
               },
             }
-          ).then((response) => response.text())
-        );
+          );
+          if (!response.ok) {
+            let error = new Error(
+              `Request failed when fetching promises with status ${response.status}`
+            );
+            error.status = response.status; // Add status property
+            console.error(
+              `Request failed when fetching promises data with status ${response.status}`
+            );
+            throw error;
+          } else {
+            data = await response.text();
+            return data;
+            //.then((response) => response.text())
+          }
+        });
         try {
           const responses = await Promise.all(fetchPromises);
           responses.map((xml) => {
