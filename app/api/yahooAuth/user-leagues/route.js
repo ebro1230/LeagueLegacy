@@ -920,22 +920,34 @@ handler.post((req) => {
       //     { status: 400 }
       //   );
       // }
-      return NextResponse.json(
-        {
-          message: "League Type Missing outside the if/else statement",
-          body: body,
-          acessToken: accessToken,
-          leagueType: leagueType,
-          parsedData: parsedData,
-        },
-        { status: 400 }
-      );
+      if (!parsedData.error) {
+        return NextResponse.json(
+          {
+            message: "League Type Missing outside the if/else statement",
+            body: body,
+            acessToken: accessToken,
+            leagueType: leagueType,
+            parsedData: parsedData,
+          },
+          { status: 200 }
+        );
+      } else {
+        return NextResponse.json(
+          {
+            parsedData: parsedData,
+          },
+          { status: 400 }
+        );
+      }
     })
     .catch((error) => {
       console.error("Request body parsing error:", error);
       return NextResponse.json(
-        { error: { message: "Request body parsing error:", error } },
-        { status: 400 }
+        {
+          error: { message: `Request body parsing error: ${error.message}` },
+          status: error.status,
+        },
+        { status: error.status }
       );
     });
 });
