@@ -736,7 +736,7 @@ handler.post((req) => {
 //   return router.run(request, context);
 // }
 
-// export { handler as POST };
+export { handler as POST };
 
 // import { createRouter } from "next-connect";
 // import { NextResponse } from "next/server";
