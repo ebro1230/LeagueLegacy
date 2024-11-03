@@ -1,41 +1,46 @@
-import { createEdgeRouter } from "next-connect";
+import { createRouter } from "next-connect";
+import { NextResponse } from "next/server";
 import bodyParser from "body-parser";
 import bodyParserXml from "body-parser-xml";
 import cors from "cors";
 import { parseString } from "xml2js";
 
-const handler = createEdgeRouter();
+const handler = createRouter();
 bodyParserXml(bodyParser);
 
 // Attach bodyParser middleware
-handler.use(cors());
+handler.use(
+  cors({
+    origin: "*", // Allow all origins
+  })
+);
 handler.use(bodyParser.urlencoded({ extended: false }));
 handler.use(bodyParser.json());
 handler.use(bodyParser.xml());
 
-handler.post(async (req, res) => {
-  if (req.method === "POST") {
-    const { accessToken, leagueKeys } = req.body;
-    const date = new Date();
-    const currentYear = date.getFullYear();
-    let keys;
-    let trends = [];
-    let leagueTeams = [];
-    let leagues = [];
-    if (!Array.isArray(leagueKeys)) {
-      keys = leagueKeys;
-    } else {
-      keys = leagueKeys.join(",");
+handler.post(async (req) => {
+  const { accessToken, leagueKeys } = req.body;
+  const date = new Date();
+  const currentYear = date.getFullYear();
+  let keys;
+  let trends = [];
+  let leagueTeams = [];
+  let leagues = [];
+  if (!Array.isArray(leagueKeys)) {
+    keys = leagueKeys;
+  } else {
+    keys = leagueKeys.join(",");
+  }
+  const response = await fetch(
+    `https://fantasysports.yahooapis.com/fantasy/v2/leagues;league_keys=${keys}/standings`,
+    {
+      method: "GET",
+      headers: {
+        Authorization: `Bearer ${accessToken}`,
+      },
     }
-    const response = await fetch(
-      `https://fantasysports.yahooapis.com/fantasy/v2/leagues;league_keys=${keys}/standings`,
-      {
-        method: "GET",
-        headers: {
-          Authorization: `Bearer ${accessToken}`,
-        },
-      }
-    ).then(async (response) => {
+  )
+    .then(async (response) => {
       const xml = await response.text();
       parseString(xml, (err, result) => {
         if (err) {
@@ -3268,15 +3273,33 @@ handler.post(async (req, res) => {
         });
         leagueTeams[leagueTeams.length - 1].overallRecords = overallRecords;
 
-        res.send(JSON.stringify(leagueTeams));
+        return NextResponse(leagueTeams, { status: 200 });
+      } catch (error) {
+        console.error("Error when requesting all the league promises:", error);
+        return NextResponse.json(
+          {
+            error: {
+              message: `Error when requesting all the league promises: ${error.message}`,
+            },
+            status: error.status,
+          },
+          { status: error.status }
+        );
       } finally {
       }
+    })
+    .catch((error) => {
+      console.error("Request body parsing error:", error);
+      return NextResponse.json(
+        {
+          error: { message: `Request body parsing error: ${error.message}` },
+          status: error.status,
+        },
+        { status: error.status }
+      );
     });
-  } else {
-    // Handle other HTTP methods if necessary
-    res.setHeader("Allow", ["POST"]);
-    res.status(405).end(`Method ${req.method} Not Allowed`);
-  }
 });
 
-export default handler;
+export async function POST(request, context) {
+  return handler.run(request, context);
+}
