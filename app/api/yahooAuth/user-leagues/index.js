@@ -14,6 +14,10 @@ handler.use(bodyParser.json());
 handler.use(bodyParser.xml());
 
 handler.post((req, res) => {
+  console.log("REQ METHOD");
+  console.log(req.method);
+  console.log("METHOD");
+  console.log(req);
   if (req.method === "POST") {
     const { accessToken, leagueType } = req.body;
     const date = new Date();
