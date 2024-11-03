@@ -55,7 +55,7 @@ handler.post((req) => {
           parseString(xml, (err, result) => {
             if (err) {
               console.error("Error parsing XML:", err);
-              parsedData = { error: `XML parsing error: ${err}` };
+              parsedData.error = `XML parsing error: ${err}`;
             } else {
               console.log("INTO PARSE STRING");
               const leagues =
@@ -934,7 +934,7 @@ handler.post((req) => {
     .catch((error) => {
       console.error("Request body parsing error:", error);
       return NextResponse.json(
-        { error: { message: "Invalid request body" } },
+        { error: { message: "Request body parsing error:", error } },
         { status: 400 }
       );
     });
