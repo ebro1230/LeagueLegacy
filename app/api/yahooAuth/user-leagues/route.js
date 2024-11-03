@@ -51,10 +51,10 @@ handler.post((req) => {
           throw error;
         } else {
           const xml = await response.text();
-          parseString(xml, (err, result) => {
+          const parsedData = parseString(xml, (err, result) => {
             if (err) {
               console.error("Error parsing XML:", err);
-              return NextResponse.json({ error: `XML parsing error: ${err}` });
+              return { error: `XML parsing error: ${err}` };
             } else {
               console.log("INTO PARSE STRING");
               const leagues =
@@ -194,7 +194,7 @@ handler.post((req) => {
                 }
               });
               console.log("MADE IT TO THE END OF PARSE STRING");
-              return NextResponse.json(leagueSummaries);
+              return leagueSummaries;
             }
           });
           //return NextResponse.json({ data: data });
@@ -925,6 +925,7 @@ handler.post((req) => {
           body: body,
           acessToken: accessToken,
           leagueType: leagueType,
+          parsedData: parsedData,
         },
         { status: 400 }
       );
