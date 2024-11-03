@@ -21,7 +21,7 @@ handler.use(bodyParser.xml());
 handler.post((req) => {
   return NextResponse.json({
     message: "You've Made it to the Post Request",
-    reqBody: req.body,
+    req: req,
   });
   // if (req.method === "POST") {
   //   console.log("REQ METHOD");
