@@ -741,12 +741,12 @@ handler.post((req) => {
       // }
       else {
         return NextResponse.json(
-          { message: "League Type Missing" },
+          { message: "League Type Missing in the else statement" },
           { status: 400 }
         );
       }
       return NextResponse.json(
-        { message: "League Type Missing" },
+        { message: "League Type Missing outside the if/else statement" },
         { status: 400 }
       );
     })
