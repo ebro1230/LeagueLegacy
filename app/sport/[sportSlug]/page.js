@@ -54,9 +54,7 @@ export default function SportPage({ params }) {
           }),
         }
       )
-        .then(async (response) => {
-          console.log("RESPONSE");
-          console.log(await response.json());
+        .then((response) => {
           if (!response.ok) {
             console.log("RESPONSE NOT OK");
             //console.log(`RESPONSE STATUS: ${response.status}`);
@@ -74,6 +72,7 @@ export default function SportPage({ params }) {
           return response.json();
         })
         .then((leagueData) => {
+          console.log("LEAGUE DATA");
           console.log(leagueData);
           setLeagues(leagueData);
         })
