@@ -5,16 +5,16 @@ import bodyParserXml from "body-parser-xml";
 import cors from "cors";
 import { parseString } from "xml2js";
 
-const router = createEdgeRouter();
+const handler = createEdgehandler();
 bodyParserXml(bodyParser);
 
 // Attach bodyParser middleware
-router.use(cors());
-router.use(bodyParser.urlencoded({ extended: false }));
-router.use(bodyParser.json());
-router.use(bodyParser.xml());
+handler.use(cors());
+handler.use(bodyParser.urlencoded({ extended: false }));
+handler.use(bodyParser.json());
+handler.use(bodyParser.xml());
 
-router.post((req) => {
+handler.post((req) => {
   return NextResponse({
     message: "You've Made it to the Post Request",
     req: req,
@@ -732,6 +732,7 @@ router.post((req) => {
     //res.status(405).end(`Method ${req.method} Not Allowed`);
   }
 });
-export async function POST(request, context) {
-  return router.run(request, context);
-}
+// export async function POST(request, context) {
+//   return router.run(request, context);
+// }
+export default handler;
