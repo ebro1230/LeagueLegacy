@@ -735,4 +735,4 @@ handler.post((req) => {
 // export async function POST(request, context) {
 //   return router.run(request, context);
 // }
-export default handler;
+export { handler as POST };
