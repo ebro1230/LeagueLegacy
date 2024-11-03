@@ -15,13 +15,13 @@ router.use(bodyParser.json());
 router.use(bodyParser.xml());
 
 router.post((req, event) => {
-  console.log("REQ METHOD");
-  console.log(req.method);
-  console.log("METHOD");
-  console.log(req);
-  console.log("BODY");
-  console.log(req.body);
   if (req.method === "POST") {
+    console.log("REQ METHOD");
+    console.log(req.method);
+    console.log("METHOD");
+    console.log(req);
+    console.log("BODY");
+    console.log(req.body);
     const { accessToken, leagueType } = req.body;
     const date = new Date();
     const currentYear = date.getFullYear();
@@ -42,6 +42,9 @@ router.post((req, event) => {
               `Request failed when requesting all user football leagues with status ${response.status}`
             );
             error.status = response.status; // Add status property
+            console.error(
+              `Request failed when requesting all user football leagues with status ${response.status}`
+            );
             throw error;
           }
           return response.text();
