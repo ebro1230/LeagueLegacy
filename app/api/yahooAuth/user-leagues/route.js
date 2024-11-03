@@ -51,7 +51,7 @@ handler.post((req) => {
           throw error;
         } else {
           const data = await response.text();
-          return NextResponse.text(data);
+          return NextResponse.json({ data: data });
         }
       }
 
