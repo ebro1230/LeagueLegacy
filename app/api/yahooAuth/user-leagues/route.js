@@ -24,6 +24,7 @@ handler.post((req) => {
     .then(async (body) => {
       const accessToken = body.accessToken;
       const leagueType = body.leagueType;
+      let parsedData;
       const date = new Date();
       const currentYear = date.getFullYear();
       // return NextResponse.json(
@@ -51,7 +52,7 @@ handler.post((req) => {
           throw error;
         } else {
           const xml = await response.text();
-          const parsedData = parseString(xml, (err, result) => {
+          parsedData = parseString(xml, (err, result) => {
             if (err) {
               console.error("Error parsing XML:", err);
               return { error: `XML parsing error: ${err}` };
