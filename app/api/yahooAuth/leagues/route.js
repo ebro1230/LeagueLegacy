@@ -3233,14 +3233,14 @@ handler.post(async (req) => {
               if (
                 season.seasonRecords.leastPointsSeason[0].pointsFor <
                   overallRecords.leastPointsSeason[0].pointsFor &&
-                Number(seasonRecords.leastPointsSeason.season) != currentYear
+                Number(season.seasonRecords.leastPointsSeason[0]) != currentYear
               ) {
                 overallRecords.leastPointsSeason =
                   season.seasonRecords.leastPointsSeason;
               } else if (
                 season.seasonRecords.leastPointsSeason[0].pointsFor ===
                   overallRecords.leastPointsSeason[0].pointsFor &&
-                Number(seasonRecords.leastPointsSeason.season) != currentYear
+                Number(season.seasonRecords.leastPointsSeason[0]) != currentYear
               ) {
                 season.seasonRecords.leastPointsSeason.forEach((person) => {
                   overallRecords.leastPointsSeason.push(person);
@@ -3266,8 +3266,9 @@ handler.post(async (req) => {
               if (
                 season.seasonRecords.leastPointsAgainstSeason[0].pointsAgainst <
                   overallRecords.leastPointsAgainstSeason[0].pointsAgainst &&
-                Number(seasonRecords.leastPointsAgainstSeason.season) !=
-                  currentYear
+                Number(
+                  season.seasonRecords.leastPointsAgainstSeason[0].season
+                ) != currentYear
               ) {
                 overallRecords.leastPointsAgainstSeason =
                   season.seasonRecords.leastPointsAgainstSeason;
@@ -3275,7 +3276,7 @@ handler.post(async (req) => {
                 season.seasonRecords.leastPointsAgainstSeason[0]
                   .pointsAgainst ===
                   overallRecords.leastPointsAgainstSeason[0].pointsAgainst &&
-                Number(seasonRecords.leastPointsAgainstSeason.season) !=
+                Number(season.seasonRecords.leastPointsAgainstSeason[0]) !=
                   currentYear
               ) {
                 season.seasonRecords.leastPointsAgainstSeason.forEach(
