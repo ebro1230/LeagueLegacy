@@ -26,8 +26,6 @@ ChartJS.register(
 );
 
 export default function Trends({ chartData }) {
-  //console.log("TRENDS CHART DATA");
-  //console.log(chartData);
   const defaultData = {
     labels: ["Loading..."],
     datasets: [

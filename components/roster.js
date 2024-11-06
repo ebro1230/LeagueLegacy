@@ -60,14 +60,10 @@ export default function Roster({
         }
       )
         .then(async (response) => {
-          console.log("RESPONSE OK:", response.ok);
           if (!response.ok) {
-            console.log("RESPONSE NOT OK");
-            //console.log(`RESPONSE STATUS: ${response.status}`);
-            //console.log(`RESPONSE MESSAGE: ${response.message}`);
             return response.json().then((errorData) => {
-              console.log("ERROR DATA");
-              console.log(errorData);
+              // console.log("ERROR DATA");
+              // console.log(errorData);
               const error = new Error(
                 errorData.message || "Failed to fetch data"
               );
@@ -79,7 +75,6 @@ export default function Roster({
         })
         .then((data) => {
           const fetchResponse = data;
-          console.log(fetchResponse);
           setRosters(fetchResponse);
           if (leagueType != "football") {
             setTeam1Roster(
@@ -92,15 +87,15 @@ export default function Roster({
           setLoading(false);
         })
         .catch((error) => {
-          console.log("ERROR");
-          console.log(
-            `ERROR MESSAGE: ${error.message} & ERROR STATUS: ${error.status}`
-          );
-          // router.push(
-          //   `/error?message=${encodeURIComponent(
-          //     error.message
-          //   )}&status=${encodeURIComponent(error.status)}`
+          // console.log("ERROR");
+          // console.log(
+          //   `ERROR MESSAGE: ${error.message} & ERROR STATUS: ${error.status}`
           // );
+          router.push(
+            `/error?message=${encodeURIComponent(
+              error.message
+            )}&status=${encodeURIComponent(error.status)}`
+          );
         });
     }
   };

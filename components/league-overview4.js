@@ -121,7 +121,6 @@ export default function LeagueOverview({ leagueType, leagueKeysString }) {
 
   useEffect(() => {
     const getLeagueInfo = (leagueKeys, accessToken) => {
-      console.log("FETCH SENT");
       fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/api/yahooAuth/leagues`, {
         method: "POST",
         headers: {
@@ -437,13 +436,6 @@ export default function LeagueOverview({ leagueType, leagueKeysString }) {
     }
   }, [status]);
 
-  console.log("LEAGUE INFO");
-  console.log(leagueInfo);
-  // console.log("CHOSEN TEAMS");
-  // console.log(chosenSeasonTeams);
-  console.log("CHOSEN SEASONS");
-  console.log(chosenSeason);
-
   const handleSeasonSelect = (e) => {
     const chosenSeason = JSON.parse(e);
     setChosenSeason(chosenSeason);
@@ -478,7 +470,6 @@ export default function LeagueOverview({ leagueType, leagueKeysString }) {
     if (chosenTeam2.managerName === "---") {
       setChosenTeam2({ managerName: "Overall" });
     }
-    // console.log(manager.managerName === team2.managerName);
     if (manager.managerName === team2.managerName) {
       setChosenTeam2(manager);
       setChosenTeam1(team2);
@@ -972,7 +963,6 @@ export default function LeagueOverview({ leagueType, leagueKeysString }) {
 
   const handleRecordsTeamSelect = async (e) => {
     let manager = JSON.parse(e);
-    console.log(manager);
     setChosenRecordTeam(manager);
 
     leagueInfo.forEach((season) => {

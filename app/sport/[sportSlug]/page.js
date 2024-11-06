@@ -15,8 +15,6 @@ import { useRouter } from "next/navigation";
 export default function SportPage({ params }) {
   const { data: session, status } = useSession();
   const router = useRouter();
-  console.log(session);
-  console.log(`STATUS: ${status}`);
   const leagueType = params.sportSlug;
   let imageSource = "";
   if (leagueType === "football") {
@@ -56,12 +54,7 @@ export default function SportPage({ params }) {
       )
         .then((response) => {
           if (!response.ok) {
-            console.log("RESPONSE NOT OK");
-            //console.log(`RESPONSE STATUS: ${response.status}`);
-            //console.log(`RESPONSE MESSAGE: ${response.message}`);
             return response.json().then((errorData) => {
-              console.log("ERROR DATA");
-              console.log(errorData);
               const error = new Error(
                 errorData.message || "Failed to fetch data"
               );
@@ -72,21 +65,19 @@ export default function SportPage({ params }) {
           return response.json();
         })
         .then((leagueData) => {
-          console.log("LEAGUE DATA");
-          console.log(leagueData);
           setLeagues(leagueData);
         })
         .catch((error) => {
-          console.log("ERROR");
-          console.log(
-            `ERROR MESSAGE: ${error.message} & ERROR STATUS: ${error.status}`
-          );
-          console.log(error);
-          // router.push(
-          //   `/error?message=${encodeURIComponent(
-          //     error.message
-          //   )}&status=${encodeURIComponent(error.status)}`
+          // console.log("ERROR");
+          // console.log(
+          //   `ERROR MESSAGE: ${error.message} & ERROR STATUS: ${error.status}`
           // );
+          // console.log(error);
+          router.push(
+            `/error?message=${encodeURIComponent(
+              error.message
+            )}&status=${encodeURIComponent(error.status)}`
+          );
         })
         .finally(() => {
           setLoading(false);
