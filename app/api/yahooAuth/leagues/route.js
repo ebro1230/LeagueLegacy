@@ -55,11 +55,13 @@ handler.post(async (req) => {
         throw error;
       } else {
         const xml = await response.text();
+        console.log("LEAGUE DATA RETURNED");
         parseString(xml, (err, result) => {
           if (err) {
             console.error("Error parsing XML:", err);
             parsedData.error = `XML parsing error: ${err}`;
           } else {
+            console.log("PARSING LEAGUE DATA");
             const league = result.fantasy_content.leagues[0].league;
             league.forEach((league) => {
               let leagueWeeks = "";
@@ -388,6 +390,7 @@ handler.post(async (req) => {
           }
         });
         const fetchPromises = leagues.map(async (league) => {
+          console.log("FETCHING PROMISES FOR SCOREBOARD DATA FROM EACH LEAGUE");
           const response = await fetch(
             `https://fantasysports.yahooapis.com/fantasy/v2/league/${league.key}/scoreboard;week=${league.leagueWeeks}`,
             {
@@ -409,6 +412,7 @@ handler.post(async (req) => {
             throw error;
           } else {
             const data = await response.text();
+            console.log("SCOREBOARD FOR EACH LEAGUE RETURNED");
             return data;
             //.then((response) => response.text())
           }
