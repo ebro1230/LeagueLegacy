@@ -419,107 +419,115 @@ handler.post(async (req) => {
         });
         try {
           const responses = await Promise.all(fetchPromises);
+          console.log("RESPONSES RECEIVED FROM PROMISE.ALL");
           responses.map((xml) => {
+            console.log("MAPPING RESPONSES");
             parseString(xml, (err, result) => {
+              console.log("PARSING RESPONSES");
               if (err) {
+                console.log("ERROR PARSING XML");
                 console.error("Error parsing XML:", err);
                 throw new Error(`Error parsing XML: ${err}`);
+              } else {
+                const league = result.fantasy_content.league[0];
+                const matchup =
+                  result.fantasy_content.league[0].scoreboard[0].matchups[0].matchup.map(
+                    (matchup) => {
+                      return {
+                        status: matchup.status[0],
+                        week: Number(matchup.week[0]),
+                        weekStart: matchup.week_start[0],
+                        weekEnd: matchup.week_end[0],
+                        isPlayoff:
+                          matchup.is_playoffs[0] === "1" ? true : false,
+                        isConsolation:
+                          matchup.is_consolation[0] === "1" ? true : false,
+                        tied:
+                          matchup.status[0] === "postevent"
+                            ? matchup.is_tied[0] === "1"
+                              ? true
+                              : false
+                            : false,
+                        winnerTeamKey: matchup.winner_team_key
+                          ? matchup.winner_team_key[0]
+                          : "",
+                        team1ManagerName:
+                          matchup.teams[0].team[0].managers[0].manager[0]
+                            .nickname[0],
+                        team1ManagerId:
+                          matchup.teams[0].team[0].managers[0].manager[0]
+                            .guid[0],
+                        team1Name: matchup.teams[0].team[0].name[0],
+                        team1Key: matchup.teams[0].team[0].team_key[0],
+                        team1Logo:
+                          matchup.teams[0].team[0].team_logos[0].team_logo[0]
+                            .url[0],
+                        team1PointsFor: Number(
+                          matchup.teams[0].team[0].team_points[0].total[0]
+                        ),
+                        team1ProjectedPointsFor: Number(
+                          matchup.teams[0].team[0].team_projected_points[0]
+                            .total[0]
+                        ),
+                        team1PointsAgainst: Number(
+                          matchup.teams[0].team[1].team_points[0].total[0]
+                        ),
+                        team1ProjectedPointsAgainst: Number(
+                          matchup.teams[0].team[1].team_projected_points[0]
+                            .total[0]
+                        ),
+                        team2ManagerName:
+                          matchup.teams[0].team[1].managers[0].manager[0]
+                            .nickname[0],
+                        team2ManagerId:
+                          matchup.teams[0].team[1].managers[0].manager[0]
+                            .guid[0],
+                        team2Name: matchup.teams[0].team[1].name[0],
+                        team2Key: matchup.teams[0].team[1].team_key[0],
+                        team2Logo:
+                          matchup.teams[0].team[1].team_logos[0].team_logo[0]
+                            .url[0],
+                        team2PointsFor: Number(
+                          matchup.teams[0].team[1].team_points[0].total[0]
+                        ),
+                        team2ProjectedPointsFor: Number(
+                          matchup.teams[0].team[1].team_projected_points[0]
+                            .total[0]
+                        ),
+                        team2PointsAgainst: Number(
+                          matchup.teams[0].team[0].team_points[0].total[0]
+                        ),
+                        team2ProjectedPointsAgainst: Number(
+                          matchup.teams[0].team[0].team_projected_points[0]
+                            .total[0]
+                        ),
+                      };
+                    }
+                  );
+                let leagueWeeksArray = [];
+                for (
+                  let i = Number(league.start_week[0]);
+                  i < Number(league.end_week) + 1;
+                  i++
+                ) {
+                  leagueWeeksArray.push(i);
+                }
+                trends.push({
+                  season: result.fantasy_content.league[0].season[0],
+                  seasonKey: result.fantasy_content.league[0].league_key[0],
+                  seasonStartWeek: Number(
+                    result.fantasy_content.league[0].start_week[0]
+                  ),
+                  seasonEndWeek: Number(
+                    result.fantasy_content.league[0].end_week[0]
+                  ),
+                  seasonWeeks: leagueWeeksArray,
+                  matchups: matchup,
+                });
               }
-              const league = result.fantasy_content.league[0];
-              const matchup =
-                result.fantasy_content.league[0].scoreboard[0].matchups[0].matchup.map(
-                  (matchup) => {
-                    return {
-                      status: matchup.status[0],
-                      week: Number(matchup.week[0]),
-                      weekStart: matchup.week_start[0],
-                      weekEnd: matchup.week_end[0],
-                      isPlayoff: matchup.is_playoffs[0] === "1" ? true : false,
-                      isConsolation:
-                        matchup.is_consolation[0] === "1" ? true : false,
-                      tied:
-                        matchup.status[0] === "postevent"
-                          ? matchup.is_tied[0] === "1"
-                            ? true
-                            : false
-                          : false,
-                      winnerTeamKey: matchup.winner_team_key
-                        ? matchup.winner_team_key[0]
-                        : "",
-                      team1ManagerName:
-                        matchup.teams[0].team[0].managers[0].manager[0]
-                          .nickname[0],
-                      team1ManagerId:
-                        matchup.teams[0].team[0].managers[0].manager[0].guid[0],
-                      team1Name: matchup.teams[0].team[0].name[0],
-                      team1Key: matchup.teams[0].team[0].team_key[0],
-                      team1Logo:
-                        matchup.teams[0].team[0].team_logos[0].team_logo[0]
-                          .url[0],
-                      team1PointsFor: Number(
-                        matchup.teams[0].team[0].team_points[0].total[0]
-                      ),
-                      team1ProjectedPointsFor: Number(
-                        matchup.teams[0].team[0].team_projected_points[0]
-                          .total[0]
-                      ),
-                      team1PointsAgainst: Number(
-                        matchup.teams[0].team[1].team_points[0].total[0]
-                      ),
-                      team1ProjectedPointsAgainst: Number(
-                        matchup.teams[0].team[1].team_projected_points[0]
-                          .total[0]
-                      ),
-                      team2ManagerName:
-                        matchup.teams[0].team[1].managers[0].manager[0]
-                          .nickname[0],
-                      team2ManagerId:
-                        matchup.teams[0].team[1].managers[0].manager[0].guid[0],
-                      team2Name: matchup.teams[0].team[1].name[0],
-                      team2Key: matchup.teams[0].team[1].team_key[0],
-                      team2Logo:
-                        matchup.teams[0].team[1].team_logos[0].team_logo[0]
-                          .url[0],
-                      team2PointsFor: Number(
-                        matchup.teams[0].team[1].team_points[0].total[0]
-                      ),
-                      team2ProjectedPointsFor: Number(
-                        matchup.teams[0].team[1].team_projected_points[0]
-                          .total[0]
-                      ),
-                      team2PointsAgainst: Number(
-                        matchup.teams[0].team[0].team_points[0].total[0]
-                      ),
-                      team2ProjectedPointsAgainst: Number(
-                        matchup.teams[0].team[0].team_projected_points[0]
-                          .total[0]
-                      ),
-                    };
-                  }
-                );
-              let leagueWeeksArray = [];
-              for (
-                let i = Number(league.start_week[0]);
-                i < Number(league.end_week) + 1;
-                i++
-              ) {
-                leagueWeeksArray.push(i);
-              }
-              trends.push({
-                season: result.fantasy_content.league[0].season[0],
-                seasonKey: result.fantasy_content.league[0].league_key[0],
-                seasonStartWeek: Number(
-                  result.fantasy_content.league[0].start_week[0]
-                ),
-                seasonEndWeek: Number(
-                  result.fantasy_content.league[0].end_week[0]
-                ),
-                seasonWeeks: leagueWeeksArray,
-                matchups: matchup,
-              });
             });
           });
-
+          console.log("ERROR AFTER PARSING LEAGUE DATA");
           leagueTeams.forEach((leagueSeason) => {
             if (leagueSeason.season != "Overall") {
               let seasonRecords = {
