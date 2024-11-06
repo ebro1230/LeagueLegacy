@@ -1,12 +1,12 @@
 {
     "functions": {
-      "api/yahooAuth/leagues/route.js": {
+      "app/api/yahooAuth/leagues/route.js": {
         "maxDuration": 60
       },
-      "api/yahooAuth/user-leauges/route.js": {
+      "app/api/yahooAuth/user-leauges/route.js": {
         "maxDuration": 60
       },
-      "api/yahooAuth/weekly-lineups/route.js": {
+      "app/api/yahooAuth/weekly-lineups/route.js": {
         "maxDuration": 60
       }
     }
