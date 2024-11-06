@@ -6,8 +6,6 @@ const nextConfig = {
       { hostname: "s.yimg.com" },
     ],
   },
-};
-module.exports = {
   swcMinify: false, // Disable SWC minification temporarily
 };
 
