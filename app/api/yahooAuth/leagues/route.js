@@ -1478,6 +1478,7 @@ handler.post(async (req) => {
               leagueSeason.seasonRecords = seasonRecords;
             }
           });
+          console.log("ERROR AFTER leagueTeams.forEach");
 
           leagueTeams[leagueTeams.length - 1].teams = leagueTeams[
             leagueTeams.length - 1
@@ -3045,7 +3046,7 @@ handler.post(async (req) => {
               gameRecords,
             };
           });
-
+          console.log("ERROR AFTER leagueTeams[leagueTeams.length-1].teams");
           let overallRecords = {
             winningStreak: [{ streak: 0 }],
             losingStreak: [{ streak: 0 }],
@@ -3090,6 +3091,7 @@ handler.post(async (req) => {
             mostWins: [{ wins: 0 }],
             mostLosses: [{ losses: 0 }],
           };
+          console.log("ERROR AFTER OVERALL RECORDS");
 
           leagueTeams.forEach((season) => {
             if (season.season != "Overall") {
@@ -3378,6 +3380,7 @@ handler.post(async (req) => {
               }
             }
           });
+          console.log("ERROR AFTER SECOND leagueTeams.forEach");
           leagueTeams[leagueTeams.length - 1].overallRecords = overallRecords;
 
           return NextResponse(leagueTeams, { status: 200 });
