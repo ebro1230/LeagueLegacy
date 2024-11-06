@@ -7,5 +7,8 @@ const nextConfig = {
     ],
   },
 };
+module.exports = {
+  swcMinify: false, // Disable SWC minification temporarily
+};
 
 export default nextConfig;
