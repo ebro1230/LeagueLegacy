@@ -3382,7 +3382,7 @@ handler.post(async (req) => {
           });
           console.log("ERROR AFTER SECOND leagueTeams.forEach");
           leagueTeams[leagueTeams.length - 1].overallRecords = overallRecords;
-
+          console.log("ERROR IN RETURN STATEMENT");
           return NextResponse(leagueTeams, { status: 200 });
         } catch (error) {
           console.error(
