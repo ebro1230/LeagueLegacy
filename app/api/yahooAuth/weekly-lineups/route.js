@@ -179,11 +179,11 @@ handler.post(async (req) => {
             );
             if (!response.ok) {
               let error = new Error(
-                `Request failed when requesting Team 1 Player with status ${response.status}`
+                `Request failed when requesting Team 2 Player with status ${response.status}`
               );
               error.status = response.status; // Add status property
               console.error(
-                `Request failed when requesting Team 1 Player with status ${response.status}`
+                `Request failed when requesting Team 2 Player with status ${response.status}`
               );
               throw error;
             } else {
@@ -254,7 +254,7 @@ handler.post(async (req) => {
           async (teamKey) =>
             await Promise.all(
               weekDays.map(async (weekDay) => {
-                const response = fetch(
+                const response = await fetch(
                   `https://fantasysports.yahooapis.com/fantasy/v2/team/${teamKey}/roster;date=${weekDay}`,
                   {
                     method: "GET",
