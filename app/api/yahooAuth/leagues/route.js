@@ -1299,7 +1299,9 @@ handler.post(async (req) => {
                   });
                 }
                 if (
-                  team.pointsFor < seasonRecords.leastPointsSeason[0].pointsFor
+                  team.pointsFor <
+                    seasonRecords.leastPointsSeason[0].pointsFor &&
+                  Number(leagueSeason.season) != currentYear
                 ) {
                   seasonRecords.leastPointsSeason = [
                     {
@@ -1312,7 +1314,8 @@ handler.post(async (req) => {
                   ];
                 } else if (
                   team.pointsFor ===
-                  seasonRecords.leastPointsSeason[0].pointsFor
+                    seasonRecords.leastPointsSeason[0].pointsFor &&
+                  Number(leagueSeason.season) != currentYear
                 ) {
                   seasonRecords.leastPointsSeason.push({
                     pointsFor: team.pointsFor,
@@ -1349,7 +1352,8 @@ handler.post(async (req) => {
                 }
                 if (
                   team.pointsAgainst <
-                  seasonRecords.leastPointsAgainstSeason[0].pointsAgainst
+                    seasonRecords.leastPointsAgainstSeason[0].pointsAgainst &&
+                  Number(leagueSeason.season) != currentYear
                 ) {
                   seasonRecords.leastPointsAgainstSeason = [
                     {
@@ -1362,7 +1366,8 @@ handler.post(async (req) => {
                   ];
                 } else if (
                   team.pointsAgainst ===
-                  seasonRecords.leastPointsAgainstSeason[0].pointsAgainst
+                    seasonRecords.leastPointsAgainstSeason[0].pointsAgainst &&
+                  Number(leagueSeason.season) != currentYear
                 ) {
                   seasonRecords.leastPointsAgainstSeason.push({
                     pointsAgainst: team.pointsAgainst,
@@ -3227,13 +3232,15 @@ handler.post(async (req) => {
               }
               if (
                 season.seasonRecords.leastPointsSeason[0].pointsFor <
-                overallRecords.leastPointsSeason[0].pointsFor
+                  overallRecords.leastPointsSeason[0].pointsFor &&
+                Number(seasonRecords.leastPointsSeason.season) != currentYear
               ) {
                 overallRecords.leastPointsSeason =
                   season.seasonRecords.leastPointsSeason;
               } else if (
                 season.seasonRecords.leastPointsSeason[0].pointsFor ===
-                overallRecords.leastPointsSeason[0].pointsFor
+                  overallRecords.leastPointsSeason[0].pointsFor &&
+                Number(seasonRecords.leastPointsSeason.season) != currentYear
               ) {
                 season.seasonRecords.leastPointsSeason.forEach((person) => {
                   overallRecords.leastPointsSeason.push(person);
@@ -3258,14 +3265,18 @@ handler.post(async (req) => {
               }
               if (
                 season.seasonRecords.leastPointsAgainstSeason[0].pointsAgainst <
-                overallRecords.leastPointsAgainstSeason[0].pointsAgainst
+                  overallRecords.leastPointsAgainstSeason[0].pointsAgainst &&
+                Number(seasonRecords.leastPointsAgainstSeason.season) !=
+                  currentYear
               ) {
                 overallRecords.leastPointsAgainstSeason =
                   season.seasonRecords.leastPointsAgainstSeason;
               } else if (
                 season.seasonRecords.leastPointsAgainstSeason[0]
                   .pointsAgainst ===
-                overallRecords.leastPointsAgainstSeason[0].pointsAgainst
+                  overallRecords.leastPointsAgainstSeason[0].pointsAgainst &&
+                Number(seasonRecords.leastPointsAgainstSeason.season) !=
+                  currentYear
               ) {
                 season.seasonRecords.leastPointsAgainstSeason.forEach(
                   (person) => {
