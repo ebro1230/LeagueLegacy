@@ -1,0 +1,13 @@
+{
+    "functions": {
+      "api/yahooAuth/leagues.js": {
+        "maxDuration": 60
+      },
+      "api/yahooAuth/user-leauges.js": {
+        "maxDuration": 60
+      },
+      "api/yahooAuth/weekly-lineups.js": {
+        "maxDuration": 60
+      }
+    }
+  }
