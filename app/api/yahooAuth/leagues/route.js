@@ -55,13 +55,12 @@ handler.post(async (req) => {
         throw error;
       } else {
         const xml = await response.text();
-        console.log("LEAGUE DATA RETURNED");
+
         parseString(xml, (err, result) => {
           if (err) {
             console.error("Error parsing XML:", err);
             parsedData.error = `XML parsing error: ${err}`;
           } else {
-            console.log("PARSING LEAGUE DATA");
             const league = result.fantasy_content.leagues[0].league;
             league.forEach((league) => {
               let leagueWeeks = "";
@@ -390,7 +389,6 @@ handler.post(async (req) => {
           }
         });
         const fetchPromises = leagues.map(async (league) => {
-          console.log("FETCHING PROMISES FOR SCOREBOARD DATA FROM EACH LEAGUE");
           const response = await fetch(
             `https://fantasysports.yahooapis.com/fantasy/v2/league/${league.key}/scoreboard;week=${league.leagueWeeks}`,
             {
@@ -412,18 +410,16 @@ handler.post(async (req) => {
             throw error;
           } else {
             const data = await response.text();
-            console.log("SCOREBOARD FOR EACH LEAGUE RETURNED");
+
             return data;
             //.then((response) => response.text())
           }
         });
         try {
           const responses = await Promise.all(fetchPromises);
-          console.log("RESPONSES RECEIVED FROM PROMISE.ALL");
+
           responses.map((xml) => {
-            console.log("MAPPING RESPONSES");
             parseString(xml, (err, result) => {
-              console.log("PARSING RESPONSES");
               if (err) {
                 console.log("ERROR PARSING XML");
                 console.error("Error parsing XML:", err);
@@ -527,7 +523,7 @@ handler.post(async (req) => {
               }
             });
           });
-          console.log("ERROR AFTER PARSING LEAGUE DATA");
+
           leagueTeams.forEach((leagueSeason) => {
             if (leagueSeason.season != "Overall") {
               let seasonRecords = {
@@ -1483,7 +1479,6 @@ handler.post(async (req) => {
               leagueSeason.seasonRecords = seasonRecords;
             }
           });
-          console.log("ERROR AFTER leagueTeams.forEach");
 
           leagueTeams[leagueTeams.length - 1].teams = leagueTeams[
             leagueTeams.length - 1
@@ -3051,7 +3046,7 @@ handler.post(async (req) => {
               gameRecords,
             };
           });
-          console.log("ERROR AFTER leagueTeams[leagueTeams.length-1].teams");
+
           let overallRecords = {
             winningStreak: [{ streak: 0 }],
             losingStreak: [{ streak: 0 }],
@@ -3096,7 +3091,6 @@ handler.post(async (req) => {
             mostWins: [{ wins: 0 }],
             mostLosses: [{ losses: 0 }],
           };
-          console.log("ERROR AFTER OVERALL RECORDS");
 
           leagueTeams.forEach((season) => {
             if (season.season != "Overall") {
@@ -3392,9 +3386,9 @@ handler.post(async (req) => {
               }
             }
           });
-          console.log("ERROR AFTER SECOND leagueTeams.forEach");
+
           leagueTeams[leagueTeams.length - 1].overallRecords = overallRecords;
-          console.log("ERROR IN RETURN STATEMENT");
+
           return NextResponse.json(leagueTeams, { status: 200 });
         } catch (error) {
           console.error(

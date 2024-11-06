@@ -54,7 +54,6 @@ handler.post((req) => {
               console.error("Error parsing XML:", err);
               parsedData.error = `XML parsing error: ${err}`;
             } else {
-              console.log("INTO PARSE STRING");
               const leagues =
                 result.fantasy_content.users[0].user[0].games[0].game.filter(
                   (league) => league.leagues[0]
