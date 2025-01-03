@@ -425,12 +425,12 @@ export default function LeagueOverview({ leagueType, leagueKeysString }) {
           setLoading(false);
         });
     };
-    if (status === "authenticated") {
-      setLoading(true);
-      getLeagueInfo(leagueKeys, session.accessToken);
-    } else if (status === "unauthenticated" || session.expires < Date.now()) {
+    if (status === "unauthenticated" || session.expires < Date.now()) {
       setLoading(false);
       return <h1>Please Sign In</h1>;
+    } else if (status === "authenticated") {
+      setLoading(true);
+      getLeagueInfo(leagueKeys, session.accessToken);
     } else if (status === "loading") {
       setLoading(true);
     }
