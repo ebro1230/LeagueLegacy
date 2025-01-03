@@ -33,7 +33,7 @@ function NavigationBar() {
             </NavDropdown>
           </Nav>
           <Nav>
-            {session && session.expires < Date.now() ? ( // If session exists
+            {session && session.expires > Date.now() ? ( // If session exists
               <Nav.Link onClick={() => signOut()}>Sign Out</Nav.Link>
             ) : (
               <Nav.Link href="/api/auth/signin">Sign in</Nav.Link>
