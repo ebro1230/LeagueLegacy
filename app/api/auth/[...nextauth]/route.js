@@ -44,12 +44,11 @@ const handler = NextAuth({
   callbacks: {
     // jwt callback to capture the access token from Yahoo
     async jwt({ token, account, profile }) {
-      const maxAge = 3600;
       // Persist the OAuth access_token and or the user id to the token right after signin
       if (account) {
         token.accessToken = account.access_token;
         token.refreshToken = account.refresh_token;
-        token.exp = new Date(Date.now() + maxAge * 1000).toISOString(); // Add expiration
+        token.exp = new Date(Date.now() + 3600 * 1000); // Add expiration
         token.id = profile.id;
       }
       return token;
@@ -61,7 +60,7 @@ const handler = NextAuth({
       session.accessToken = token.accessToken;
       session.refreshToken = token.refreshToken;
       session.user.id = token.id;
-      session.expires = token.exp;
+      session.expires = token.exp.toISOString();
 
       return session;
     },
