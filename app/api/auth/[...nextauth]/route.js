@@ -48,6 +48,7 @@ const handler = NextAuth({
       if (account) {
         token.accessToken = account.access_token;
         token.refreshToken = account.refresh_token;
+        token.exp = Math.floor(Date.now() / 1000) + 3600; // Add expiration
         token.id = profile.id;
       }
       return token;
