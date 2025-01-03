@@ -48,7 +48,7 @@ const handler = NextAuth({
       if (account) {
         token.accessToken = account.access_token;
         token.refreshToken = account.refresh_token;
-        token.exp = new Date(Date.now() + 3600 * 1000); // Add expiration
+        token.exp = new Date(Date.now() + 3600 * 1000).toISOString; // Add expiration
         token.id = profile.id;
       }
       return token;
@@ -60,7 +60,7 @@ const handler = NextAuth({
       session.accessToken = token.accessToken;
       session.refreshToken = token.refreshToken;
       session.user.id = token.id;
-      session.expires = token.exp.toISOString();
+      session.expires = token.exp;
 
       return session;
     },
