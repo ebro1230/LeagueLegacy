@@ -9,6 +9,7 @@ import fantasyBasketball from "@/assets/Fantasy-Basketball.png";
 import fantasyBaseball from "@/assets/Fantasy-Baseball.png";
 import "bootstrap/dist/css/bootstrap.min.css";
 import Link from "next/link";
+
 export default function Home() {
   //redirect("/signin");
   const logoStyle = {
@@ -30,6 +31,7 @@ export default function Home() {
       </div>
     );
   } else {
+    console.log(session);
     return (
       <>
         <div className="welcome-div">
