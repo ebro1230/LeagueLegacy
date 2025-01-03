@@ -85,7 +85,7 @@ export default function SportPage({ params }) {
     };
     if (status === "authenticated") {
       handleGetLeagues(leagueType, session.accessToken);
-    } else if (status === "unauthenticated") {
+    } else if (status === "unauthenticated" || session.expires < Date.now()) {
       setLoading(false);
       return <h1>Please Sign In</h1>;
     } else {

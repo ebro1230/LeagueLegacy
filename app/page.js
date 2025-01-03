@@ -24,7 +24,7 @@ export default function Home() {
         <h1>LOADING SESSION DATA...</h1>
       </div>
     );
-  } else if (status === "unauthenticated") {
+  } else if (status === "unauthenticated" || session.expires < Date.now()) {
     return (
       <div className="welcome-div">
         <h1>USER IS NOT AUTHENTICATED, PLEASE LOG IN</h1>

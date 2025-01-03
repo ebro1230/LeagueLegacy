@@ -428,7 +428,7 @@ export default function LeagueOverview({ leagueType, leagueKeysString }) {
     if (status === "authenticated") {
       setLoading(true);
       getLeagueInfo(leagueKeys, session.accessToken);
-    } else if (status === "unauthenticated") {
+    } else if (status === "unauthenticated" || session.expires < Date.now()) {
       setLoading(false);
       return <h1>Please Sign In</h1>;
     } else if (status === "loading") {
