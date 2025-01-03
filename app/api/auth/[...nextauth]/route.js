@@ -60,10 +60,13 @@ const handler = NextAuth({
       session.accessToken = token.accessToken;
       session.refreshToken = token.refreshToken;
       session.user.id = token.id;
-      session.expires = token.exp;
+      new Date(token.exp * 1000).toISOString();
 
       return session;
     },
+  },
+  session: {
+    strategy: "jwt", // Ensure session uses JWT strategy
   },
 });
 
