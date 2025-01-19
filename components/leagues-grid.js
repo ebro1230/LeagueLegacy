@@ -32,7 +32,13 @@ export default function LeaguesGrid({ leagues, leagueType }) {
       <Container fluid>
         <Row>
           {leagues.map((league) => (
-            <Col xs="12" md="6" xl="4" key={`${league.leagueKeys} + Col`}>
+            <Col
+              xs="12"
+              md="6"
+              xl="4"
+              key={`${league.leagueKeys} + Col`}
+              style={{ marginBottom: "2rem" }}
+            >
               <Link
                 key={`${league.leagueKeys} + 1`}
                 href={`/sport/${leagueType}/league/${league.leagueKeys}`}
@@ -67,12 +73,13 @@ export default function LeaguesGrid({ leagues, leagueType }) {
                         objectFit: "cover",
                         margin: "auto",
                         color: "white",
+                        alignItems: "center",
                       }}
                       alt={`${league.leagueName}'s Logo`}
                     />
                   )}
                   <Card.Body>
-                    <Row className="league-grid-row">
+                    <Row>
                       <Col>
                         <p className={`${inter.className} card-titles`}>
                           League
