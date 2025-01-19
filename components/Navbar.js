@@ -15,7 +15,11 @@ function NavigationBar() {
   const { data: session } = useSession(); // Access session data
 
   return (
-    <Navbar collapseOnSelect expand="lg" className="bg-body-tertiary">
+    <Navbar
+      collapseOnSelect
+      expand="md"
+      className="bg-body-tertiary navbar-dark"
+    >
       <Container>
         <Navbar.Brand href="/" className={koulen.className}>
           League Legacy

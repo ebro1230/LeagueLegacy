@@ -366,3 +366,7 @@ td p {
     line-height: 30px;
     text-align: center; 
   }
+
+  .navbar-dark{
+    background-color: #2A3440;
+  }
