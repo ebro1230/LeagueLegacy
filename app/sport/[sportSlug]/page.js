@@ -109,13 +109,13 @@ export default function SportPage({ params }) {
         minHeight: "100vh",
       }}
     >
-      <div className="league-logo-div">
+      <div className="specific-league-logo-div">
         {imageSource ? (
           <Image
             src={imageSource}
             height={60}
             placeholder="blur"
-            style={logoStyle}
+            //style={logoStyle}
             alt={`Picture for fantasy ${params.sportSlug} league`}
           />
         ) : (
