@@ -427,13 +427,13 @@ td p {
 
   h1{
     color:white;
-    /* font-size: 60px; */
+    font-size: 5vw;
     font-weight: 400;
     text-align: center;
   }
   h2{
     color:white;
-    /* font-size: 48px; */
+    font-size: 4vw;
     font-weight: 400;
     text-align: center;
     text-underline-position: from-font;
@@ -441,7 +441,7 @@ td p {
   }
   h3{
     color:white;
-    /* font-size: 60px; */
+    font-size: 3vw;
     font-weight: 400;
     text-align: center;
     padding: 0rem 1rem;
