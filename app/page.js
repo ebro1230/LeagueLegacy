@@ -28,7 +28,7 @@ export default function Home() {
     return (
       <div
         style={{
-          backgroundImage: background ? `url('${background}')` : "none",
+          backgroundImage: background ? `url(${background.src})` : none,
           backgroundSize: "cover",
           backgroundPosition: "center",
           minHeight: "100vh",
@@ -43,7 +43,7 @@ export default function Home() {
     return (
       <div
         style={{
-          backgroundImage: background ? `url('${background}')` : "none",
+          backgroundImage: background ? `url(${background.src})` : none,
           backgroundSize: "cover",
           backgroundPosition: "center",
           minHeight: "100vh",
@@ -61,7 +61,7 @@ export default function Home() {
     return (
       <div
         style={{
-          backgroundImage: background ? `url('${background}')` : "none",
+          backgroundImage: background ? `url(${background.src})` : none,
           backgroundSize: "cover",
           backgroundPosition: "center",
           minHeight: "100vh",
