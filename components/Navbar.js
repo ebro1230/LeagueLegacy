@@ -6,13 +6,20 @@ import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
 import NavDropdown from "react-bootstrap/NavDropdown";
 import "bootstrap/dist/css/bootstrap.min.css";
+import { Koulen } from "@next/font/google";
 
 function NavigationBar() {
   const { data: session } = useSession(); // Access session data
+  const koulen = Koulen({
+    subsets: ["serif"], // Specify subsets like 'latin', 'cyrillic', etc.
+    weight: ["400"], // Include specific font weights
+  });
   return (
     <Navbar collapseOnSelect expand="lg" className="bg-body-tertiary">
       <Container>
-        <Navbar.Brand href="/">League Legacy</Navbar.Brand>
+        <Navbar.Brand href="/" className={koulen.className}>
+          League Legacy
+        </Navbar.Brand>
         <Navbar.Toggle aria-controls="responsive-navbar-nav" />
         <Navbar.Collapse id="responsive-navbar-nav">
           <Nav>
