@@ -389,7 +389,21 @@ td p {
     color:white;
   }
 
-  #nav-football #nav-hockey #nav-basketball #nav-baseball {
-    margin-left: 2rem;
-    margin-right: 2rem;
+  #nav-football{
+    margin-left: 1rem;
+    margin-right: 1rem;
+  }
+
+  #nav-hockey{
+    margin-left: 1rem;
+    margin-right: 1rem;
+  }
+
+  #nav-basketball{
+    margin-left: 1rem;
+    margin-right: 1rem;
+  }
+  #nav-baseball{
+    margin-left: 1rem;
+    margin-right: 1rem;
   }

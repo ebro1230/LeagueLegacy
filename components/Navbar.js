@@ -22,7 +22,7 @@ function NavigationBar() {
   return (
     <Navbar
       collapseOnSelect
-      expand="md"
+      expand="lg"
       className="bg-body-tertiary"
       bg="custom"
       variant="dark"
