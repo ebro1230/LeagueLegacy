@@ -22,7 +22,7 @@ export default function LeaguesGrid({ leagues, leagueType }) {
       <Container fluid>
         <Row>
           {leagues.map((league) => (
-            <Col md="12" lg="6" xl="4">
+            <Col md="12" lg="6" xl="4" key={`${league.leagueKeys} + Col`}>
               <Link
                 key={`${league.leagueKeys} + 1`}
                 href={`/sport/${leagueType}/league/${league.leagueKeys}`}
