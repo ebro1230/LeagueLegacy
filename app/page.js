@@ -26,7 +26,14 @@ export default function Home() {
   const { data: session, status } = useSession(); // Access session data
   if (status === "loading") {
     return (
-      <div className="homepage-background">
+      <div
+        style={{
+          backgroundImage: background ? `url('${background}')` : "none",
+          backgroundSize: "cover",
+          backgroundPosition: "center",
+          minHeight: "100vh",
+        }}
+      >
         <div className="welcome-div">
           <h2 className={koulen.className}>LOADING SESSION DATA...</h2>
         </div>
@@ -34,7 +41,14 @@ export default function Home() {
     );
   } else if (status === "unauthenticated" || session.expires < Date.now()) {
     return (
-      <div className="homepage-background">
+      <div
+        style={{
+          backgroundImage: background ? `url('${background}')` : "none",
+          backgroundSize: "cover",
+          backgroundPosition: "center",
+          minHeight: "100vh",
+        }}
+      >
         <div className="welcome-div">
           <h2 className={koulen.className}>
             USER IS NOT AUTHENTICATED, PLEASE LOG IN
@@ -46,9 +60,11 @@ export default function Home() {
     console.log(session);
     return (
       <div
-        className="homepage-background"
         style={{
           backgroundImage: background ? `url('${background}')` : "none",
+          backgroundSize: "cover",
+          backgroundPosition: "center",
+          minHeight: "100vh",
         }}
       >
         <div className="welcome-div">
