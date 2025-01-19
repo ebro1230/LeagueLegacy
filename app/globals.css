@@ -338,6 +338,8 @@ td p {
 }
   a {
     text-decoration: none !important;
+    margin-left:0px;
+    margin-right:0px;
     /* color: black !important; */
   }
 
@@ -385,7 +387,7 @@ td p {
     justify-content: flex-end;
   }
 
-  .nav-ling{
+  .nav-link{
     color:white;
   }
 
