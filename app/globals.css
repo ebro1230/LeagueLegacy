@@ -496,3 +496,7 @@ td p {
   .league-grid-row{
     margin-bottom:2rem;
   }
+
+  .normal-background{
+    background: linear-gradient(106.73deg, #2A3440 5.49%, #3A4B5F 100%);
+  }
