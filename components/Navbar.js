@@ -4,6 +4,7 @@ import { useSession, signOut } from "next-auth/react"; // Import useSession and 
 import Container from "react-bootstrap/Container";
 import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
+import Link from "next/link";
 import NavDropdown from "react-bootstrap/NavDropdown";
 import Image from "next/image";
 import "bootstrap/dist/css/bootstrap.min.css";
@@ -35,8 +36,8 @@ function NavigationBar() {
         <Navbar.Toggle aria-controls="responsive-navbar-nav" />
         <Navbar.Collapse id="responsive-navbar-nav">
           <Nav className="navbar-league-div">
-            <Nav.Link
-              href="/sport/football"
+            <Link
+              href={`/sport/football`}
               className={koulen.className}
               id="nav-football"
             >
@@ -48,9 +49,9 @@ function NavigationBar() {
                 alt={`Picture for fantasy football league`}
               />{" "}
               Football
-            </Nav.Link>
-            <Nav.Link
-              href="/sport/hockey"
+            </Link>
+            <Link
+              href={`/sport/hockey`}
               className={koulen.className}
               id="nav-hockey"
             >
@@ -62,9 +63,9 @@ function NavigationBar() {
                 alt={`Picture for fantasy hockey league`}
               />{" "}
               Hockey
-            </Nav.Link>
-            <Nav.Link
-              href="/sport/basketball"
+            </Link>
+            <Link
+              href={`/sport/basketball`}
               className={koulen.className}
               id="nav-basketball"
             >
@@ -76,9 +77,9 @@ function NavigationBar() {
                 alt={`Picture for fantasy basketball league`}
               />{" "}
               Basketball
-            </Nav.Link>
-            <Nav.Link
-              href="/sport/baseball"
+            </Link>
+            <Link
+              href={`/sport/baseball`}
               className={koulen.className}
               id="nav-baseball"
             >
@@ -90,7 +91,7 @@ function NavigationBar() {
                 alt={`Picture for fantasy baseball league`}
               />{" "}
               Baseball
-            </Nav.Link>
+            </Link>
           </Nav>
           <Nav className="navbar-signin-div">
             {session && session.expires > Date.now() ? ( // If session exists
