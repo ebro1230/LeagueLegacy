@@ -442,7 +442,6 @@ td p {
   }
 
   .homepage-background{
-    background-image: url('@/assets/Homepage-Background.jpg');
     background-size: cover;
     background-position: center;
     height: 100vh; /* Full viewport height */

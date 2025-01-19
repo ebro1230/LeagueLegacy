@@ -7,6 +7,7 @@ import fantasyFootball from "@/assets/Fantasy-Football.png";
 import fantasyHockey from "@/assets/Fantasy-Hockey.png";
 import fantasyBasketball from "@/assets/Fantasy-Basketball.png";
 import fantasyBaseball from "@/assets/Fantasy-Baseball.png";
+import background from "@/assets/Homepage-Background.jpg";
 import "bootstrap/dist/css/bootstrap.min.css";
 import Link from "next/link";
 import { Koulen } from "@next/font/google";
@@ -44,7 +45,12 @@ export default function Home() {
   } else {
     console.log(session);
     return (
-      <div className="homepage-background">
+      <div
+        className="homepage-background"
+        style={{
+          backgroundImage: background ? `url('${background}')` : "none",
+        }}
+      >
         <div className="welcome-div">
           <h2 className={koulen.className}>
             Welcome Back, {session.user.name}
