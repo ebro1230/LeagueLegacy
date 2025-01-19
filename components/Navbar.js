@@ -5,6 +5,7 @@ import Container from "react-bootstrap/Container";
 import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
 import NavDropdown from "react-bootstrap/NavDropdown";
+import Image from "next/image";
 import "bootstrap/dist/css/bootstrap.min.css";
 import football from "@/assets/Navbar-Football.png";
 import { Koulen } from "@next/font/google";
