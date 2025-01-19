@@ -26,6 +26,7 @@ function NavigationBar() {
       className="bg-body-tertiary"
       bg="custom"
       variant="dark"
+      fixed="top"
     >
       <Container>
         <Navbar.Brand href="/" className={koulen.className}>
