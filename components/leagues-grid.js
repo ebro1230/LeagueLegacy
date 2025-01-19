@@ -28,7 +28,7 @@ export default function LeaguesGrid({ leagues, leagueType }) {
   };
 
   return (
-    <div className="normal-background">
+    <>
       <Container fluid>
         <Row>
           {leagues.map((league) => (
@@ -172,6 +172,6 @@ export default function LeaguesGrid({ leagues, leagueType }) {
           ))}
         </Row>
       </Container>
-    </div>
+    </>
   );
 }

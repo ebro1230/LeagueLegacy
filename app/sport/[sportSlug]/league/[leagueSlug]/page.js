@@ -5,7 +5,7 @@ export default function LeaguePage({ params }) {
   const leagueKeysString = params.leagueSlug;
   return (
     <>
-      <div>
+      <div className="normal-background">
         <LeagueOverview
           leagueType={leagueType}
           leagueKeysString={leagueKeysString}
