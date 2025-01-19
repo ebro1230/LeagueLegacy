@@ -73,14 +73,14 @@ export default function LeaguesGrid({ leagues, leagueType }) {
                         objectFit: "cover",
                         margin: "auto",
                         color: "white",
-                        alignItems: "center",
+                        alignContent: "center",
                       }}
                       alt={`${league.leagueName}'s Logo`}
                     />
                   )}
                   <Card.Body>
                     <Row>
-                      <Col>
+                      <Col style={{ textAlign: "center" }}>
                         <p className={`${inter.className} card-titles`}>
                           League
                         </p>
@@ -91,7 +91,7 @@ export default function LeaguesGrid({ leagues, leagueType }) {
                       </Col>
                     </Row>
                     <Row>
-                      <Col>
+                      <Col style={{ textAlign: "center" }}>
                         <p className={`${inter.className} card-titles`}>
                           Team Name
                         </p>{" "}
@@ -99,7 +99,7 @@ export default function LeaguesGrid({ leagues, leagueType }) {
                           {league.teamName}
                         </p>
                       </Col>
-                      <Col>
+                      <Col style={{ textAlign: "center" }}>
                         <p className={`${inter.className} card-titles`}>
                           Member Years
                         </p>
@@ -112,7 +112,7 @@ export default function LeaguesGrid({ leagues, leagueType }) {
                       </Col>
                     </Row>
                     <Row>
-                      <Col>
+                      <Col style={{ textAlign: "center" }}>
                         <p className={`${inter.className} card-titles`}>
                           Record
                         </p>
@@ -120,7 +120,7 @@ export default function LeaguesGrid({ leagues, leagueType }) {
                           {league.wins} - {league.losses} - {league.ties}
                         </p>
                       </Col>
-                      <Col>
+                      <Col style={{ textAlign: "center" }}>
                         <p className={`${inter.className} card-titles`}>
                           Win %{" "}
                         </p>
@@ -130,7 +130,7 @@ export default function LeaguesGrid({ leagues, leagueType }) {
                       </Col>
                     </Row>
                     <Row>
-                      <Col>
+                      <Col style={{ textAlign: "center" }}>
                         <p className={`${inter.className} card-titles`}>
                           Top Finish
                         </p>{" "}
@@ -147,7 +147,7 @@ export default function LeaguesGrid({ leagues, leagueType }) {
                             : "th Place"}{" "}
                         </p>
                       </Col>
-                      <Col>
+                      <Col style={{ textAlign: "center" }}>
                         <p className={`${inter.className} card-titles`}>
                           Bottom Finish
                         </p>
