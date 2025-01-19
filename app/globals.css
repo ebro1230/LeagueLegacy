@@ -369,6 +369,12 @@ td p {
     text-decoration-skip-ink: none;
   }
 
+  .navbar-nav{
+    padding: 16px 0px 16px 0px;
+    gap: 48px;
+    opacity: 0px;
+  }
+
   .bg-custom {
     background-color: #2A3440 !important; /* Custom color */
   }
