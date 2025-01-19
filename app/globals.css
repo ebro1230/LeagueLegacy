@@ -65,9 +65,15 @@
     justify-content: center;
     align-items: center;
   }
-  .league-div p {
+  .card-title {
     margin:0rem;
     padding:0rem;
+    color:#83A6CF;
+  }
+  .card-info {
+    margin:0rem;
+    padding:0rem;
+    color:white
   }
   .manager-div{
     display: flex;

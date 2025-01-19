@@ -6,6 +6,15 @@ import Card from "react-bootstrap/Card";
 import Container from "react-bootstrap/Container";
 import Col from "react-bootstrap/Col";
 import Row from "react-bootstrap/Row";
+import { Inter } from "@next/font/google";
+const inter = Inter({
+  subsets: ["latin"], // Specify subsets like 'latin', 'cyrillic', etc.
+  weight: ["400"], // Include specific font weights
+});
+const koulen = Koulen({
+  subsets: ["latin"], // Specify subsets like 'latin', 'cyrillic', etc.
+  weight: ["400"], // Include specific font weights
+});
 
 export default function LeaguesGrid({ leagues, leagueType }) {
   const date = new Date();
@@ -63,16 +72,26 @@ export default function LeaguesGrid({ leagues, leagueType }) {
                   )}
                   <Card.Body>
                     <Row>
-                      <p>League</p>
-                      <p> {league.leagueName}</p>
+                      <p className={`${inter.className} card-titles`}>League</p>
+                      <p className={`${koulen.className} card-info`}>
+                        {" "}
+                        {league.leagueName}
+                      </p>
                     </Row>
                     <Row>
                       <Col>
-                        <p>Team Name</p> <p>{league.teamName}</p>
+                        <p className={`${inter.className} card-titles`}>
+                          Team Name
+                        </p>{" "}
+                        <p className={`${koulen.className} card-info`}>
+                          {league.teamName}
+                        </p>
                       </Col>
                       <Col>
-                        <p>Member Years</p>
-                        <p>
+                        <p className={`${inter.className} card-titles`}>
+                          Member Years
+                        </p>
+                        <p className={`${koulen.className} card-info`}>
                           {league.memberSince} -{" "}
                           {league.memberUntil === currentYear
                             ? "Present"
@@ -82,20 +101,28 @@ export default function LeaguesGrid({ leagues, leagueType }) {
                     </Row>
                     <Row>
                       <Col>
-                        <p>Record</p>
-                        <p>
+                        <p className={`${inter.className} card-titles`}>
+                          Record
+                        </p>
+                        <p className={`${koulen.className} card-info`}>
                           {league.wins} - {league.losses} - {league.ties}
                         </p>
                       </Col>
                       <Col>
-                        <p>Win % </p>
-                        <p>{league.winPercentage}%</p>
+                        <p className={`${inter.className} card-titles`}>
+                          Win %{" "}
+                        </p>
+                        <p className={`${koulen.className} card-info`}>
+                          {league.winPercentage}%
+                        </p>
                       </Col>
                     </Row>
                     <Row>
                       <Col>
-                        <p>Top Finish</p>{" "}
-                        <p>
+                        <p className={`${inter.className} card-titles`}>
+                          Top Finish
+                        </p>{" "}
+                        <p className={`${koulen.className} card-info`}>
                           {league.bestFinish}
                           {league.bestFinish == 1
                             ? "st Place"
@@ -109,8 +136,10 @@ export default function LeaguesGrid({ leagues, leagueType }) {
                         </p>
                       </Col>
                       <Col>
-                        <p>Bottom Finish</p>
-                        <p>
+                        <p className={`${inter.className} card-titles`}>
+                          Bottom Finish
+                        </p>
+                        <p className={`${koulen.className} card-info`}>
                           {league.worstFinish}
                           {league.worstFinish == 1
                             ? "st Place"
