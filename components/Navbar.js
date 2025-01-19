@@ -8,7 +8,7 @@ import NavDropdown from "react-bootstrap/NavDropdown";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { Koulen } from "@next/font/google";
 const koulen = Koulen({
-  subsets: ["serif"], // Specify subsets like 'latin', 'cyrillic', etc.
+  subsets: ["latin"], // Specify subsets like 'latin', 'cyrillic', etc.
   weight: ["400"], // Include specific font weights
 });
 function NavigationBar() {
