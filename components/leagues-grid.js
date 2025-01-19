@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import Image from "next/image";
+import Card from "react-bootstrap/Card";
 
 export default function LeaguesGrid({ leagues, leagueType }) {
   const date = new Date();
@@ -20,31 +21,43 @@ export default function LeaguesGrid({ leagues, leagueType }) {
           key={`${league.leagueKeys} + 1`}
           href={`/sport/${leagueType}/league/${league.leagueKeys}`}
         >
-          <div className="league-div" key={league.leagueKeys}>
+          <Card border="light" className="league-div" key={league.leagueKeys}>
             {league.leagueLogo ? (
-              <Image
+              <Card.Img
+                variant="top"
                 src={league.leagueLogo}
                 width={120}
                 height={120}
                 style={logoStyle}
                 alt={`${league.leagueName}'s Logo`}
               />
-            ) : null}
-            <p>League: {league.leagueName}</p>
-            <p>Team Name: {league.teamName}</p>
-            <p>
-              {league.memberSince} -{" "}
-              {league.memberUntil === currentYear
-                ? "Present"
-                : league.memberUntil}
-            </p>
-            <p>
-              {league.wins} - {league.losses} - {league.ties}
-            </p>
-            <p>Win Percentage: {league.winPercentage}%</p>
-            <p>Top Finish: {league.bestFinish}</p>
-            <p>Bottom Finish: {league.worstFinish}</p>
-          </div>
+            ) : (
+              <Card.Img
+                variant="top"
+                src="N/A"
+                width={120}
+                height={120}
+                style={logoStyle}
+                alt={`${league.leagueName}'s Logo`}
+              />
+            )}
+            <Card.Body>
+              <p>League: {league.leagueName}</p>
+              <p>Team Name: {league.teamName}</p>
+              <p>
+                {league.memberSince} -{" "}
+                {league.memberUntil === currentYear
+                  ? "Present"
+                  : league.memberUntil}
+              </p>
+              <p>
+                {league.wins} - {league.losses} - {league.ties}
+              </p>
+              <p>Win Percentage: {league.winPercentage}%</p>
+              <p>Top Finish: {league.bestFinish}</p>
+              <p>Bottom Finish: {league.worstFinish}</p>
+            </Card.Body>
+          </Card>
         </Link>
       ))}
     </>
