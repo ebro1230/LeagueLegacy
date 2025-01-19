@@ -64,9 +64,6 @@
     margin: 1rem;
     justify-content: center;
     align-items: center;
-    border-style: solid;
-    border-width: 2px;
-    border-color: blue;
   }
   .league-div p {
     margin:0rem;

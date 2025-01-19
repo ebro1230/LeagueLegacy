@@ -21,23 +21,36 @@ export default function LeaguesGrid({ leagues, leagueType }) {
           key={`${league.leagueKeys} + 1`}
           href={`/sport/${leagueType}/league/${league.leagueKeys}`}
         >
-          <Card border="light" className="league-div" key={league.leagueKeys}>
+          <Card
+            border="light"
+            style={{ backgroundColor: "transparent" }}
+            className="league-div"
+            key={league.leagueKeys}
+          >
             {league.leagueLogo ? (
               <Card.Img
                 variant="top"
                 src={league.leagueLogo}
-                width={120}
-                height={120}
-                style={logoStyle}
+                className="rounded-circle"
+                style={{
+                  width: "150px",
+                  height: "150px",
+                  objectFit: "cover",
+                  margin: "auto",
+                }}
                 alt={`${league.leagueName}'s Logo`}
               />
             ) : (
               <Card.Img
                 variant="top"
                 src="N/A"
-                width={120}
-                height={120}
-                style={logoStyle}
+                className="rounded-circle"
+                style={{
+                  width: "150px",
+                  height: "150px",
+                  objectFit: "cover",
+                  margin: "auto",
+                }}
                 alt={`${league.leagueName}'s Logo`}
               />
             )}
