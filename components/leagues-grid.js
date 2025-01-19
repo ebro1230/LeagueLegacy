@@ -32,7 +32,7 @@ export default function LeaguesGrid({ leagues, leagueType }) {
       <Container fluid>
         <Row>
           {leagues.map((league) => (
-            <Col xs="12" lg="6" xl="4" key={`${league.leagueKeys} + Col`}>
+            <Col xs="12" md="6" xl="4" key={`${league.leagueKeys} + Col`}>
               <Link
                 key={`${league.leagueKeys} + 1`}
                 href={`/sport/${leagueType}/league/${league.leagueKeys}`}
@@ -72,12 +72,16 @@ export default function LeaguesGrid({ leagues, leagueType }) {
                     />
                   )}
                   <Card.Body>
-                    <Row>
-                      <p className={`${inter.className} card-titles`}>League</p>
-                      <p className={`${koulen.className} card-info`}>
-                        {" "}
-                        {league.leagueName}
-                      </p>
+                    <Row className="league-grid-row">
+                      <Col>
+                        <p className={`${inter.className} card-titles`}>
+                          League
+                        </p>
+                        <p className={`${koulen.className} card-info`}>
+                          {" "}
+                          {league.leagueName}
+                        </p>
+                      </Col>
                     </Row>
                     <Row>
                       <Col>

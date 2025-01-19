@@ -492,3 +492,7 @@ td p {
     justify-content: center;
     align-items: center;
   }
+
+  .league-grid-row{
+    margin-bottom:2rem;
+  }
