@@ -4,6 +4,7 @@ import football from "@/assets/Fantasy-Football.png";
 import hockey from "@/assets/Fantasy-Hockey.png";
 import basketball from "@/assets/Fantasy-Basketball.png";
 import baseball from "@/assets/Fantasy-Baseball.png";
+import background from "@/assets/Homepage-Background.jpg";
 import Image from "next/image";
 import LeaguesGrid from "@/components/leagues-grid";
 import { useSession } from "next-auth/react";
@@ -100,7 +101,14 @@ export default function SportPage({ params }) {
   }, [status]);
 
   return (
-    <>
+    <div
+      style={{
+        backgroundImage: background ? `url(${background.src})` : none,
+        backgroundSize: "cover",
+        backgroundPosition: "center",
+        minHeight: "100vh",
+      }}
+    >
       <div className="league-logo-div">
         {imageSource ? (
           <Image
@@ -136,6 +144,6 @@ export default function SportPage({ params }) {
           <h1>No League Data Found</h1>
         </div>
       )}
-    </>
+    </div>
   );
 }
