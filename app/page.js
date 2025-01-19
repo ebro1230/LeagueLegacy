@@ -51,11 +51,11 @@ export default function Home() {
       >
         <div className="welcome-div">
           <h1 className={koulen.className}>WELCOME TO LEAGUE LEGACY</h1>
-          <div className="signin-div">
-            <a href="/api/auth/signin" className={koulen.className}>
-              SIGN IN
-            </a>
-          </div>
+          <a href="/api/auth/signin" className={koulen.className}>
+            <div className="signin-div">
+              <h1>SIGN IN</h1>
+            </div>
+          </a>
         </div>
       </div>
     );
