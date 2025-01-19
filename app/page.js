@@ -25,32 +25,37 @@ export default function Home() {
   const { data: session, status } = useSession(); // Access session data
   if (status === "loading") {
     return (
-      <div className={`${koulen.className} welcome-div`}>
-        <h1>LOADING SESSION DATA...</h1>
+      <div className="welcome-div">
+        <h1 className={koulen.className}>LOADING SESSION DATA...</h1>
       </div>
     );
   } else if (status === "unauthenticated" || session.expires < Date.now()) {
     return (
       <div className="welcome-div">
-        <h1>USER IS NOT AUTHENTICATED, PLEASE LOG IN</h1>
+        <h1 className={koulen.className}>
+          USER IS NOT AUTHENTICATED, PLEASE LOG IN
+        </h1>
       </div>
     );
   } else {
     console.log(session);
     return (
-      <>
+      <div className="homepage-background">
         <div className="welcome-div">
-          <h2>Welcome Back,</h2>
-
-          <h2>{session.user.name}</h2>
+          <h2 className={koulen.className}>
+            Welcome Back, {session.user.name}
+          </h2>
+        </div>
+        <div className="select-league-div">
+          <h3 className={koulen.className}>Select Your Fantasy League</h3>
         </div>
         <div className="league-logo-div">
           <Link href={`/sport/football`}>
             <Image
               src={fantasyFootball}
-              height={120}
+              height={233}
               placeholder="blur"
-              style={logoStyle}
+              //style={logoStyle}
               alt="Picture for Fantasy Football Leagues"
             />
           </Link>
@@ -58,31 +63,31 @@ export default function Home() {
             <Image
               src={fantasyHockey}
               placeholder="blur"
-              height={120}
-              style={logoStyle}
+              height={233}
+              //style={logoStyle}
               alt="Picture for Fantasy Hockey Leagues"
             />
           </Link>
           <Link href={`/sport/basketball`}>
             <Image
               src={fantasyBasketball}
-              height={120}
+              height={233}
               placeholder="blur"
-              style={logoStyle}
+              //style={logoStyle}
               alt="Picture for Fantasy Basketball Leagues"
             />
           </Link>
           <Link href={`/sport/baseball`}>
             <Image
               src={fantasyBaseball}
-              height={120}
+              height={233}
               placeholder="blur"
-              style={logoStyle}
+              //style={logoStyle}
               alt="Picture for Fantasy Baseball Leagues"
             />
           </Link>
         </div>
-      </>
+      </div>
     );
   }
 }
