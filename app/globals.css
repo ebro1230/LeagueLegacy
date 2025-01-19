@@ -365,8 +365,20 @@ td p {
     font-weight: 400;
     line-height: 30px;
     text-align: center; 
+    text-underline-position: from-font;
+    text-decoration-skip-ink: none;
   }
 
   .bg-custom {
     background-color: #2A3440 !important; /* Custom color */
+  }
+
+  .nav-link{
+    color: white;
+    font-size: 18px;
+    font-weight: 400;
+    line-height: 24px;
+    text-align: center;
+    text-underline-position: from-font;
+    text-decoration-skip-ink: none;
   }
