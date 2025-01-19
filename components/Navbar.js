@@ -34,7 +34,11 @@ function NavigationBar() {
         <Navbar.Toggle aria-controls="responsive-navbar-nav" />
         <Navbar.Collapse id="responsive-navbar-nav">
           <Nav className="navbar-league-div">
-            <Nav.Link href="/sport/football" className={koulen.className}>
+            <Nav.Link
+              href="/sport/football"
+              className={koulen.className}
+              id="nav-football"
+            >
               <Image
                 src={football}
                 height={20}
@@ -44,7 +48,11 @@ function NavigationBar() {
               />{" "}
               Football
             </Nav.Link>
-            <Nav.Link href="/sport/hockey" className={koulen.className}>
+            <Nav.Link
+              href="/sport/hockey"
+              className={koulen.className}
+              id="nav-hockey"
+            >
               <Image
                 src={hockey}
                 height={20}
@@ -54,7 +62,11 @@ function NavigationBar() {
               />{" "}
               Hockey
             </Nav.Link>
-            <Nav.Link href="/sport/basketball" className={koulen.className}>
+            <Nav.Link
+              href="/sport/basketball"
+              className={koulen.className}
+              id="nav-basketball"
+            >
               <Image
                 src={basketball}
                 height={20}
@@ -64,7 +76,11 @@ function NavigationBar() {
               />{" "}
               Basketball
             </Nav.Link>
-            <Nav.Link href="/sport/baseball" className={koulen.className}>
+            <Nav.Link
+              href="/sport/baseball"
+              className={koulen.className}
+              id="nav-baseball"
+            >
               <Image
                 src={baseball}
                 height={20}

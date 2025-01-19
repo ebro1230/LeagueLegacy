@@ -384,3 +384,12 @@ td p {
     width:248px;
     justify-content: flex-end;
   }
+
+  .nav-ling{
+    color:white;
+  }
+
+  #nav-football #nav-hockey #nav-basketball #nav-baseball {
+    margin-left: 2rem;
+    margin-right: 2rem;
+  }
