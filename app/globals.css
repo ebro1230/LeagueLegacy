@@ -409,20 +409,24 @@ td p {
   #nav-football{
     margin-left: 0.75rem;
     margin-right: 0.75rem;
+    color:white;
   }
 
   #nav-hockey{
     margin-left: 0.75rem;
     margin-right: 0.75rem;
+    color:white;
   }
 
   #nav-basketball{
     margin-left: 0.75rem;
     margin-right: 0.75rem;
+    color:white;
   }
   #nav-baseball{
     margin-left: 0.75rem;
     margin-right: 0.75rem;
+    color:white;
   }
 
   h1{
@@ -464,4 +468,12 @@ td p {
     border-style: solid;    /* Border style */
     border-color: white;    /* Border color */
     border-radius: 50px;
+  }
+
+  .loading-div{
+    height:100%;
+    width:100%;
+    display:flex;
+    justify-content: center;
+    align-items: center;
   }

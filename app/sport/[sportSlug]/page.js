@@ -10,7 +10,13 @@ import { useSession } from "next-auth/react";
 import { useState, useEffect } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import Spinner from "react-bootstrap/Spinner";
+import LoadingIndicator from "@/components/loading-indicator";
 import { useRouter } from "next/navigation";
+import { Koulen } from "@next/font/google";
+const koulen = Koulen({
+  subsets: ["latin"], // Specify subsets like 'latin', 'cyrillic', etc.
+  weight: ["400"], // Include specific font weights
+});
 
 export default function SportPage({ params }) {
   const { data: session, status } = useSession();
@@ -95,17 +101,11 @@ export default function SportPage({ params }) {
 
   return (
     <>
-      <div className="title-div">
-        <h1>
-          Fantasy {leagueType.charAt(0).toUpperCase() + leagueType.slice(1)}{" "}
-          League Legacy
-        </h1>
-      </div>
       <div className="league-logo-div">
         {imageSource ? (
           <Image
             src={imageSource}
-            height={120}
+            height={60}
             placeholder="blur"
             style={logoStyle}
             alt={`Picture for fantasy ${params.sportSlug} league`}
@@ -114,11 +114,18 @@ export default function SportPage({ params }) {
           <h1>Not a valid fantasy leauge</h1>
         )}
       </div>
+      <div className="title-div">
+        <h2 className={koulen.className}>
+          Fantasy {leagueType.charAt(0).toUpperCase() + leagueType.slice(1)}{" "}
+          League Legacy
+        </h2>
+      </div>
+
       {loading ? (
-        <div>
-          <Spinner animation="border" role="status">
+        <div className="loading-div">
+          <LoadingIndicator>
             <span className="visually-hidden">Loading...</span>
-          </Spinner>
+          </LoadingIndicator>
         </div>
       ) : leagues.length ? (
         <div>
