@@ -50,7 +50,7 @@ export default function Home() {
         }}
       >
         <div className="welcome-div">
-          <h2 className={koulen.className}>WELCOME TO LEAGUE LEGACY</h2>
+          <h1 className={koulen.className}>WELCOME TO LEAGUE LEGACY</h1>
           <div className="signin-div">
             <a href="/api/auth/signin" className={koulen.className}>
               SIGN IN

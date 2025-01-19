@@ -425,14 +425,14 @@ td p {
     margin-right: 0.75rem;
   }
 
-  h2{
+  h1{
     color:white;
     /* font-size: 60px; */
     font-weight: 400;
     line-height: 66px;
     text-align: center;
   }
-  h3{
+  h2{
     color:white;
     /* font-size: 48px; */
     font-weight: 400;
@@ -448,7 +448,8 @@ td p {
     height: 100vh; /* Full viewport height */
     width: 100%; /* Full width */
   }
-  .welcome-div{
+  .signin-div{
+    color:white;
     display: flex;
     flex-direction: column;
     margin-top: 0.5rem;
