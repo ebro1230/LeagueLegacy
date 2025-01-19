@@ -50,9 +50,12 @@ export default function Home() {
         }}
       >
         <div className="welcome-div">
-          <h2 className={koulen.className}>
-            USER IS NOT AUTHENTICATED, PLEASE LOG IN
-          </h2>
+          <h2 className={koulen.className}>WELCOME TO LEAGUE LEGACY</h2>
+          <div className="signin-div">
+            <a href="/api/auth/signin" className={koulen.className}>
+              SIGN IN
+            </a>
+          </div>
         </div>
       </div>
     );

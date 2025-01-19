@@ -92,7 +92,7 @@ function NavigationBar() {
               Baseball
             </Nav.Link>
           </Nav>
-          <Nav className="signin-div">
+          <Nav className="navbar-signin-div">
             {session && session.expires > Date.now() ? ( // If session exists
               <Nav.Link className={koulen.className} onClick={() => signOut()}>
                 Sign Out
