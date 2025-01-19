@@ -93,9 +93,13 @@ function NavigationBar() {
           </Nav>
           <Nav className="signin-div">
             {session && session.expires > Date.now() ? ( // If session exists
-              <Nav.Link onClick={() => signOut()}>Sign Out</Nav.Link>
+              <Nav.Link className={koulen.className} onClick={() => signOut()}>
+                Sign Out
+              </Nav.Link>
             ) : (
-              <Nav.Link href="/api/auth/signin">Sign in</Nav.Link>
+              <Nav.Link className={koulen.className} href="/api/auth/signin">
+                Sign in
+              </Nav.Link>
             )}
           </Nav>
         </Navbar.Collapse>

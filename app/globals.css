@@ -385,6 +385,8 @@ td p {
     color:white;
     width:248px;
     justify-content: flex-end;
+    margin-left: 1rem;
+    margin-right: 1rem;
   }
 
   .nav-link{
