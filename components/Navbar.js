@@ -33,7 +33,7 @@ function NavigationBar() {
         </Navbar.Brand>
         <Navbar.Toggle aria-controls="responsive-navbar-nav" />
         <Navbar.Collapse id="responsive-navbar-nav">
-          <Nav>
+          <Nav className="navbar-league-div">
             <Nav.Link href="/sport/football" className={koulen.className}>
               <Image
                 src={football}
