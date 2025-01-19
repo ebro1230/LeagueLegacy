@@ -9,6 +9,11 @@ import fantasyBasketball from "@/assets/Fantasy-Basketball.png";
 import fantasyBaseball from "@/assets/Fantasy-Baseball.png";
 import "bootstrap/dist/css/bootstrap.min.css";
 import Link from "next/link";
+import { Koulen } from "@next/font/google";
+const koulen = Koulen({
+  subsets: ["latin"], // Specify subsets like 'latin', 'cyrillic', etc.
+  weight: ["400"], // Include specific font weights
+});
 
 export default function Home() {
   //redirect("/signin");
@@ -20,7 +25,7 @@ export default function Home() {
   const { data: session, status } = useSession(); // Access session data
   if (status === "loading") {
     return (
-      <div className="welcome-div">
+      <div className={`${koulen.className} welcome-div`}>
         <h1>LOADING SESSION DATA...</h1>
       </div>
     );
