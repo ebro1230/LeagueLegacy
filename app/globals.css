@@ -367,6 +367,6 @@ td p {
     text-align: center; 
   }
 
-  .navbar-dark{
-    background-color: #2A3440;
+  .bg-custom {
+    background-color: #2A3440 !important; /* Custom color */
   }

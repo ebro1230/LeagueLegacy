@@ -18,7 +18,9 @@ function NavigationBar() {
     <Navbar
       collapseOnSelect
       expand="md"
-      className="bg-body-tertiary navbar-dark"
+      className="bg-body-tertiary"
+      bg="custom"
+      variant="dark"
     >
       <Container>
         <Navbar.Brand href="/" className={koulen.className}>
