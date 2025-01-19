@@ -8,6 +8,9 @@ import NavDropdown from "react-bootstrap/NavDropdown";
 import Image from "next/image";
 import "bootstrap/dist/css/bootstrap.min.css";
 import football from "@/assets/Navbar-Football.png";
+import hockey from "@/assets/Navbar-Hockey.png";
+import basketball from "@/assets/Navbar-Basketball.png";
+import baseball from "@/assets/Navbar-Baseball.png";
 import { Koulen } from "@next/font/google";
 const koulen = Koulen({
   subsets: ["latin"], // Specify subsets like 'latin', 'cyrillic', etc.
@@ -31,8 +34,10 @@ function NavigationBar() {
         <Navbar.Toggle aria-controls="responsive-navbar-nav" />
         <Navbar.Collapse id="responsive-navbar-nav">
           <Nav>
-            <Nav.Link href="/">Home</Nav.Link>
-            <Nav.Link href="/sport/football">
+            <Nav.Link href="/" className={koulen.className}>
+              Home
+            </Nav.Link>
+            <Nav.Link href="/sport/football" className={koulen.className}>
               <Image
                 src={football}
                 height={20}
@@ -41,6 +46,36 @@ function NavigationBar() {
                 alt={`Picture for fantasy football league`}
               />{" "}
               Football
+            </Nav.Link>
+            <Nav.Link href="/sport/hockey" className={koulen.className}>
+              <Image
+                src={hockey}
+                height={20}
+                placeholder="blur"
+                //style={logoStyle}
+                alt={`Picture for fantasy hockey league`}
+              />{" "}
+              Hockey
+            </Nav.Link>
+            <Nav.Link href="/sport/basketball" className={koulen.className}>
+              <Image
+                src={basketball}
+                height={20}
+                placeholder="blur"
+                //style={logoStyle}
+                alt={`Picture for fantasy basketball league`}
+              />{" "}
+              Basketball
+            </Nav.Link>
+            <Nav.Link href="/sport/baseball" className={koulen.className}>
+              <Image
+                src={baseball}
+                height={20}
+                placeholder="blur"
+                //style={logoStyle}
+                alt={`Picture for fantasy baseball league`}
+              />{" "}
+              Baseball
             </Nav.Link>
           </Nav>
           <Nav className="me-auto">
