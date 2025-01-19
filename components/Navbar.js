@@ -6,6 +6,7 @@ import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
 import NavDropdown from "react-bootstrap/NavDropdown";
 import "bootstrap/dist/css/bootstrap.min.css";
+import football from "@/assets/Navbar-Football.png";
 import { Koulen } from "@next/font/google";
 const koulen = Koulen({
   subsets: ["latin"], // Specify subsets like 'latin', 'cyrillic', etc.
@@ -30,6 +31,16 @@ function NavigationBar() {
         <Navbar.Collapse id="responsive-navbar-nav">
           <Nav>
             <Nav.Link href="/">Home</Nav.Link>
+            <Nav.Link href="/sport/football">
+              <Image
+                src={football}
+                height={20}
+                placeholder="blur"
+                //style={logoStyle}
+                alt={`Picture for fantasy football league`}
+              />{" "}
+              Football
+            </Nav.Link>
           </Nav>
           <Nav className="me-auto">
             <NavDropdown title="Leagues" id="collapsible-nav-dropdown">

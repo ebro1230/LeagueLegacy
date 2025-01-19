@@ -83,11 +83,11 @@ export default function SportPage({ params }) {
           setLoading(false);
         });
     };
-    if (status === "authenticated") {
-      handleGetLeagues(leagueType, session.accessToken);
-    } else if (status === "unauthenticated" || session.expires < Date.now()) {
+    if (status === "unauthenticated" || session.expires < Date.now()) {
       setLoading(false);
       return <h1>Please Sign In</h1>;
+    } else if (status === "authenticated") {
+      handleGetLeagues(leagueType, session.accessToken);
     } else {
       setLoading(true);
     }
