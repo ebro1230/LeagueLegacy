@@ -1,8 +1,8 @@
 .league-logo-div{
     display: flex;
-    padding: 1rem;
+    padding: 2rem;
     height: 200px;
-    justify-content: center;
+    justify-content: space-evenly;
     position: relative;
   }
   .league-name-div{
@@ -421,22 +421,28 @@ td p {
   }
 
   h2{
+    color:white;
     font-size: 60px;
     font-weight: 400;
     line-height: 66px;
     text-align: center;
+    margin-top:2rem;
+    margin-bottom: 2rem;
   }
   h3{
+    color:white;
     font-size: 48px;
     font-weight: 400;
     line-height: 56px;
     text-align: center;
+    margin-top:2rem;
+    margin-bottom: 2rem;
     text-underline-position: from-font;
     text-decoration-skip-ink: none;
   }
 
   .homepage-background{
-    background-image: url('/assets/Homepage-Background.jpg');
+    background-image: url('@/assets/Homepage-Background.jpg');
     background-size: cover;
     background-position: center;
     height: 100vh; /* Full viewport height */

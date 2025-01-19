@@ -25,16 +25,20 @@ export default function Home() {
   const { data: session, status } = useSession(); // Access session data
   if (status === "loading") {
     return (
-      <div className="welcome-div">
-        <h1 className={koulen.className}>LOADING SESSION DATA...</h1>
+      <div className="homepage-background">
+        <div className="welcome-div">
+          <h2 className={koulen.className}>LOADING SESSION DATA...</h2>
+        </div>
       </div>
     );
   } else if (status === "unauthenticated" || session.expires < Date.now()) {
     return (
-      <div className="welcome-div">
-        <h1 className={koulen.className}>
-          USER IS NOT AUTHENTICATED, PLEASE LOG IN
-        </h1>
+      <div className="homepage-background">
+        <div className="welcome-div">
+          <h2 className={koulen.className}>
+            USER IS NOT AUTHENTICATED, PLEASE LOG IN
+          </h2>
+        </div>
       </div>
     );
   } else {
@@ -53,7 +57,7 @@ export default function Home() {
           <Link href={`/sport/football`}>
             <Image
               src={fantasyFootball}
-              height={233}
+              height={150}
               placeholder="blur"
               //style={logoStyle}
               alt="Picture for Fantasy Football Leagues"
@@ -63,7 +67,7 @@ export default function Home() {
             <Image
               src={fantasyHockey}
               placeholder="blur"
-              height={233}
+              height={150}
               //style={logoStyle}
               alt="Picture for Fantasy Hockey Leagues"
             />
@@ -71,7 +75,7 @@ export default function Home() {
           <Link href={`/sport/basketball`}>
             <Image
               src={fantasyBasketball}
-              height={233}
+              height={150}
               placeholder="blur"
               //style={logoStyle}
               alt="Picture for Fantasy Basketball Leagues"
@@ -80,7 +84,7 @@ export default function Home() {
           <Link href={`/sport/baseball`}>
             <Image
               src={fantasyBaseball}
-              height={233}
+              height={150}
               placeholder="blur"
               //style={logoStyle}
               alt="Picture for Fantasy Baseball Leagues"
