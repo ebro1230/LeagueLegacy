@@ -364,7 +364,8 @@ td p {
     font-size: 24px;
     font-weight: 400;
     line-height: 30px;
-    text-align: center; 
+    text-align: left; 
+    margin:0px;
     text-underline-position: from-font;
     text-decoration-skip-ink: none;
   }
