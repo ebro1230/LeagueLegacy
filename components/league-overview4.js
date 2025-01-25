@@ -60,6 +60,7 @@ export default function LeagueOverview({ leagueType, leagueKeysString }) {
   const [chosenSeason, setChosenSeason] = useState("---");
   const [chosenSeasonKey, setChosenSeasonKey] = useState([]);
   const [chosenSeasonTeams, setChosenSeasonTeams] = useState([]);
+  const [isMobile, setIsMobile] = useState(false);
 
   const [chosenTrend, setChosenTrend] = useState({
     name: "Regular Season Wins",
@@ -127,6 +128,16 @@ export default function LeagueOverview({ leagueType, leagueKeysString }) {
   };
 
   useEffect(() => {
+    const handleResize = () => {
+      setIsMobile(window.innerWidth <= 768); // Change this breakpoint as needed
+    };
+
+    // Set initial state
+    handleResize();
+
+    // Add resize listener
+    window.addEventListener("resize", handleResize);
+
     const getLeagueInfo = (leagueKeys, accessToken) => {
       fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/api/yahooAuth/leagues`, {
         method: "POST",
@@ -441,6 +452,9 @@ export default function LeagueOverview({ leagueType, leagueKeysString }) {
     } else if (status === "loading") {
       setLoading(true);
     }
+
+    // Clean up listener on unmount
+    return () => window.removeEventListener("resize", handleResize);
   }, [status]);
 
   const handleSeasonSelect = (e) => {
@@ -1039,12 +1053,21 @@ export default function LeagueOverview({ leagueType, leagueKeysString }) {
                 variant="pills"
               >
                 <Tab eventKey="Standings" title="Standings">
-                  <SeasonDropdown
-                    onSeasonSelect={handleSeasonSelect}
-                    leagueSeasons={leagueSeasons}
-                    chosenSeason={chosenSeason}
-                    seasonDropdownActive={seasonDropdownActive}
-                  />
+                  {isMobile ? (
+                    <SeasonDropdown
+                      onSeasonSelect={handleSeasonSelect}
+                      leagueSeasons={leagueSeasons}
+                      chosenSeason={chosenSeason}
+                      seasonDropdownActive={seasonDropdownActive}
+                    />
+                  ) : (
+                    <SeasonListGroup
+                      onSeasonSelect={handleSeasonSelect}
+                      leagueSeasons={leagueSeasons}
+                      chosenSeason={chosenSeason}
+                      seasonDropdownActive={seasonDropdownActive}
+                    />
+                  )}
                   <ManagerGrid
                     managers={chosenSeasonTeams}
                     chosenSeason={chosenSeason}
