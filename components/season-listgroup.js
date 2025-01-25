@@ -1,12 +1,7 @@
 "use client";
 import ListGroup from "react-bootstrap/ListGroup";
 
-export default function SeasonListGroup({
-  onSeasonSelect,
-  chosenSeason,
-  leagueSeasons,
-  seasonDropdownActive,
-}) {
+export default function SeasonListGroup({ onSeasonSelect, leagueSeasons }) {
   return (
     <div className="season-dropdown-div">
       <ListGroup onSelect={onSeasonSelect} horizontal variant="flush">
@@ -14,7 +9,6 @@ export default function SeasonListGroup({
           <ListGroup.Item
             eventKey={JSON.stringify(season)}
             key={season.key}
-            disabled={Number(chosenSeason) === Number(season.year)}
             action
             className="custom-list-group-item"
           >

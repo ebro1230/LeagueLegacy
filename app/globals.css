@@ -544,7 +544,7 @@ td p {
 .custom-list-group-item {
   background:none;
   border: none;
-  margin: 1rem;
+  margin: 0rem 1rem;
   color: white;
 }
 
@@ -552,6 +552,6 @@ td p {
 .custom-list-group-item.active {
   background:none;
   border: 1px solid #83A6CF;
-  margin: 1rem;
+  margin: 0rem 1rem;
   color: white;
 }

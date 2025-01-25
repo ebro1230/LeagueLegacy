@@ -20,11 +20,7 @@ export default function SeasonDropdown({
 
         <Dropdown.Menu>
           {leagueSeasons.map((season) => (
-            <Dropdown.Item
-              eventKey={JSON.stringify(season)}
-              key={season.key}
-              disabled={Number(chosenSeason) === Number(season.year)}
-            >
+            <Dropdown.Item eventKey={JSON.stringify(season)} key={season.key}>
               {season.year}
             </Dropdown.Item>
           ))}
