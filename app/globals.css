@@ -545,6 +545,7 @@ td p {
   background:none;
   border: none;
   color: white;
+  text-align: center;
 }
 
 /* Styling for the active item */
