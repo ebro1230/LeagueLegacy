@@ -11,9 +11,9 @@ export default function SeasonDropdown({
     <div className="season-dropdown-div">
       <Dropdown onSelect={onSeasonSelect}>
         <Dropdown.Toggle
-          id="dropdown-basic"
+          // id="dropdown-basic"
           disabled={!seasonDropdownActive}
-          bsPrefix="my-custom-dropdown-toggle"
+          className="custom-dropdown-toggle"
         >
           {chosenSeason.year}
         </Dropdown.Toggle>

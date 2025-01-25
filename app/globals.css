@@ -592,7 +592,7 @@ td p {
   border-bottom-width: 1px !important;
 }
 
-.my-custom-dropdown-toggle {
+.custom-dropdown-toggle {
   background-color:none !important;
   color: white;
   border-radius: 0px;
