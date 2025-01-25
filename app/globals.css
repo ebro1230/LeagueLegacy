@@ -540,9 +540,18 @@ td p {
   color: #495057; /* Hover text color */
 }
 
-.list-group-item{
+/* General styling for all items */
+.custom-list-group-item {
   background-color:linear-gradient(106.73deg, #2A3440 5.49%, #3A4B5F 100%); /* Inactive tab background color */
   border: none;
-  margin: 0rem 1rem;
+  margin: 1rem;
+  color: white;
+}
+
+/* Styling for the active item */
+.custom-list-group-item.active {
+  background-color:linear-gradient(106.73deg, #2A3440 5.49%, #3A4B5F 100%); /* Inactive tab background color */
+  border: 1px solid #83A6CF;
+  margin: 1rem;
   color: white;
 }

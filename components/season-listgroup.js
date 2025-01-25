@@ -16,6 +16,7 @@ export default function SeasonListGroup({
             key={season.key}
             disabled={!seasonDropdownActive}
             action
+            className="custom-list-group-item"
           >
             {season.year}
           </ListGroup.Item>
