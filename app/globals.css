@@ -552,10 +552,12 @@ td p {
   background:none;
   border: 1px solid #83A6CF;
   color: white;
+  text-align: center;
 }
 
 .list-group {
   margin: 1rem 0rem;
+  width:100%;
 }
 
 .season-list-group-div{
