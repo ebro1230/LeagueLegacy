@@ -23,7 +23,7 @@ export default function SeasonDropdown({
             <Dropdown.Item
               eventKey={JSON.stringify(season)}
               key={season.key}
-              disabled={chosenSeason === season.year}
+              disabled={Number(chosenSeason) === Number(season.year)}
             >
               {season.year}
             </Dropdown.Item>

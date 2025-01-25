@@ -14,7 +14,7 @@ export default function SeasonListGroup({
           <ListGroup.Item
             eventKey={JSON.stringify(season)}
             key={season.key}
-            disabled={!seasonDropdownActive}
+            disabled={Number(choseSeason) === Number(season.year)}
             action
             className="custom-list-group-item"
           >

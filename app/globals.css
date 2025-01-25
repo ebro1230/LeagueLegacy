@@ -542,7 +542,7 @@ td p {
 
 /* General styling for all items */
 .custom-list-group-item {
-  background-color:linear-gradient(106.73deg, #2A3440 5.49%, #3A4B5F 100%); /* Inactive tab background color */
+  background:none;
   border: none;
   margin: 1rem;
   color: white;
@@ -550,7 +550,7 @@ td p {
 
 /* Styling for the active item */
 .custom-list-group-item.active {
-  background-color:linear-gradient(106.73deg, #2A3440 5.49%, #3A4B5F 100%); /* Inactive tab background color */
+  background:none;
   border: 1px solid #83A6CF;
   margin: 1rem;
   color: white;
