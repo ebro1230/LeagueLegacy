@@ -590,4 +590,5 @@ td p {
   border-top-right-radius: 0 !important;
   border-bottom-left-radius: 0 !important;
   border-bottom-right-radius: 0 !important;
+  border-bottom-width: 1px !important;
 }
