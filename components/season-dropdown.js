@@ -13,7 +13,7 @@ export default function SeasonDropdown({
         <Dropdown.Toggle
           id="dropdown-basic"
           disabled={!seasonDropdownActive}
-          className="custom-dropdown-toggle"
+          bsPrefix="my-custom-dropdown-toggle"
         >
           {chosenSeason.year}
         </Dropdown.Toggle>
