@@ -32,42 +32,43 @@ export default function SeasonListGroup({ onSeasonSelect, leagueSeasons }) {
         </>
       ) : (
         <>
-          <ListGroup
-            onSelect={onSeasonSelect}
-            horizontal
-            variant="flush"
-            className="season-list-group-div"
-          >
-            <ListGroup.Item
-              eventKey={JSON.stringify(leagueSeasons[leagueSeasons.length - 1])}
-              key={leagueSeasons[leagueSeasons.length - 1].key}
-              action
-              className="custom-list-group-item"
-            >
-              {leagueSeasons[leagueSeasons.length - 1].year}
-            </ListGroup.Item>
-
-            {leagueSeasons.slice(0, 10).map((season) => (
+          <ListGroup onSelect={onSeasonSelect} horizontal variant="flush">
+            <div>
               <ListGroup.Item
-                eventKey={JSON.stringify(season)}
-                key={season.key}
+                eventKey={JSON.stringify(
+                  leagueSeasons[leagueSeasons.length - 1]
+                )}
+                key={leagueSeasons[leagueSeasons.length - 1].key}
                 action
                 className="custom-list-group-item"
               >
-                {season.year}
+                {leagueSeasons[leagueSeasons.length - 1].year}
               </ListGroup.Item>
-            ))}
-
-            {leagueSeasons.slice(10, -1).map((season) => (
-              <ListGroup.Item
-                eventKey={JSON.stringify(season)}
-                key={season.key}
-                action
-                className="custom-list-group-item"
-              >
-                {season.year}
-              </ListGroup.Item>
-            ))}
+            </div>
+            <div>
+              {leagueSeasons.slice(0, 10).map((season) => (
+                <ListGroup.Item
+                  eventKey={JSON.stringify(season)}
+                  key={season.key}
+                  action
+                  className="custom-list-group-item"
+                >
+                  {season.year}
+                </ListGroup.Item>
+              ))}
+            </div>
+            <div>
+              {leagueSeasons.slice(10, -1).map((season) => (
+                <ListGroup.Item
+                  eventKey={JSON.stringify(season)}
+                  key={season.key}
+                  action
+                  className="custom-list-group-item"
+                >
+                  {season.year}
+                </ListGroup.Item>
+              ))}
+            </div>
           </ListGroup>
         </>
       )}

@@ -472,6 +472,9 @@ td p {
     padding: 0rem 1rem;
     margin: 0rem;
   }
+  h4{
+    margin: 1rem;
+  }
 
   .homepage-background{
     background-size: cover;
@@ -483,6 +486,7 @@ td p {
     color:white;
     display: flex;
     flex-direction: column;
+    margin: 4rem;
     justify-content: center;
     align-items: center;
     border-width: 1px;      /* Border width */
