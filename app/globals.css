@@ -539,3 +539,10 @@ td p {
   background-color: #83A6CF; /* Hover background color */
   color: #495057; /* Hover text color */
 }
+
+.list-group-item{
+  background-color:linear-gradient(106.73deg, #2A3440 5.49%, #3A4B5F 100%); /* Inactive tab background color */
+  border: none;
+  margin: 0rem 1rem;
+  color: white;
+}
