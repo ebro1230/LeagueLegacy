@@ -24,6 +24,12 @@ import Trends from "./trends";
 import RecordGrid from "./record-grid";
 import { useSession } from "next-auth/react";
 
+import { Koulen } from "@next/font/google";
+const koulen = Koulen({
+  subsets: ["latin"], // Specify subsets like 'latin', 'cyrillic', etc.
+  weight: ["400"], // Include specific font weights
+});
+
 export default function LeagueOverview({ leagueType, leagueKeysString }) {
   const { data: session, status } = useSession();
   const date = new Date();
@@ -1001,27 +1007,27 @@ export default function LeagueOverview({ leagueType, leagueKeysString }) {
           <>
             <div className="league-title-div">
               <div className="league-logo-div">
-                <div className="specific-league-logo-div">
-                  {leagueLogo ? (
-                    <Image
-                      src={leagueLogo}
-                      width={120}
-                      height={120}
-                      style={logoStyle}
-                      alt={`Picture for fantasy ${leagueType} league`}
-                    />
-                  ) : null}
-                </div>
+                {leagueLogo ? (
+                  <Image
+                    src={leagueLogo}
+                    width={120}
+                    height={120}
+                    style={logoStyle}
+                    alt={`Picture for fantasy ${leagueType} league`}
+                  />
+                ) : null}
               </div>
-              <div className="league-name-div">
+              <div className="title-div">
                 {leagueName ? (
-                  <h1>{leagueName} League Legacy</h1>
+                  <h2 className={koulen.className}>
+                    {leagueName} League Legacy
+                  </h2>
                 ) : (
-                  <h1>
+                  <h2 className={koulen.className}>
                     Fantasy{" "}
                     {leagueType.charAt(0).toUpperCase() + leagueType.slice(1)}{" "}
                     League Legacy
-                  </h1>
+                  </h2>
                 )}
               </div>
             </div>

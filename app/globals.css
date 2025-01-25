@@ -500,3 +500,13 @@ td p {
   .normal-background{
     background: linear-gradient(106.73deg, #2A3440 5.49%, #3A4B5F 100%);
   }
+
+  .spacing-div{
+    height:100vh
+  }
+
+  .league-title-div{
+    display:flex;
+    padding-top:5rem;
+    
+  }
