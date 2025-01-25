@@ -14,6 +14,7 @@ import baseball from "@/assets/Fantasy-Baseball.png";
 
 import ManagerGrid from "./manager-grid3";
 import SeasonDropdown from "./season-dropdown";
+import SeasonListGroup from "./season-listgroup";
 import TeamDropdown from "./team-dropdown";
 import ManagerComparison from "./manager-comparison";
 import TrendsDropdown from "./trends-dropdown";
