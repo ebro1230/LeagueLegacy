@@ -18,6 +18,7 @@ import TeamDropdown from "./team-dropdown";
 import ManagerComparison from "./manager-comparison";
 import TrendsDropdown from "./trends-dropdown";
 import TrendSeasonDropdown from "./trend-season-dropdown";
+import LoadingIndicator from "./loading-indicator";
 
 import Trends from "./trends";
 import RecordGrid from "./record-grid";
@@ -987,11 +988,15 @@ export default function LeagueOverview({ leagueType, leagueKeysString }) {
 
   return (
     <>
-      <div>
+      <div className="normal-background">
         {loading ? (
-          <Spinner animation="border" role="status">
-            <span className="visually-hidden">Loading...</span>
-          </Spinner>
+          <div className="spacing-div">
+            <div className="loading-div">
+              <LoadingIndicator>
+                <span className="visually-hidden">Loading...</span>
+              </LoadingIndicator>
+            </div>
+          </div>
         ) : (
           <>
             <div className="league-title-div">
