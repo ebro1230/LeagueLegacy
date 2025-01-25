@@ -12,6 +12,12 @@
     position: relative;
     flex-wrap: wrap;
   }
+  .league-type-div{
+    display:flex;
+    padding-top:5rem;
+    justify-content: center;
+    align-items: center;
+  }
   .league-name-div{
     display: flex;
     padding: 1rem;
@@ -510,4 +516,5 @@ td p {
     padding-top:5rem;
     justify-content: center;
     align-items: center;
+    padding-bottom:2rem;
   }

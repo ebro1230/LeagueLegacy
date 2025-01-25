@@ -109,7 +109,7 @@ export default function SportPage({ params }) {
         minHeight: "100vh",
       }}
     >
-      <div className="specific-league-logo-div">
+      <div className="league-type-div">
         {imageSource ? (
           <Image
             src={imageSource}
