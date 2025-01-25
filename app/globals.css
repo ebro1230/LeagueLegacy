@@ -1,8 +1,6 @@
 .league-logo-div{
     display: flex;
-    padding: 2rem;
-    height: 200px;
-    justify-content: space-evenly;
+    height: 100%;
     position: relative;
     flex-wrap: wrap;
   }
@@ -508,5 +506,7 @@ td p {
   .league-title-div{
     display:flex;
     padding-top:5rem;
-    
+    justify-content: center;
+    align-items: center;
+
   }

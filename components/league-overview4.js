@@ -1010,9 +1010,8 @@ export default function LeagueOverview({ leagueType, leagueKeysString }) {
                 {leagueLogo ? (
                   <Image
                     src={leagueLogo}
-                    width={120}
-                    height={120}
-                    style={logoStyle}
+                    height={60}
+                    //style={logoStyle}
                     alt={`Picture for fantasy ${leagueType} league`}
                   />
                 ) : null}
