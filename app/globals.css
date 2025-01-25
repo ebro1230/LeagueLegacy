@@ -1,13 +1,14 @@
 .league-logo-div{
     display: flex;
-    height: 100%;
+    padding: 2rem;
+    height: 200px;
+    justify-content: space-evenly;
     position: relative;
     flex-wrap: wrap;
   }
   .specific-league-logo-div{
     display: flex;
-    padding: 7rem 1rem 0rem 1rem;
-    justify-content: center;
+    height: 100%;
     position: relative;
     flex-wrap: wrap;
   }
@@ -455,6 +456,7 @@ td p {
     text-align: center;
     text-underline-position: from-font;
     text-decoration-skip-ink: none;
+    margin-bottom: 0rem;
   }
   h3{
     color:white;
@@ -508,5 +510,4 @@ td p {
     padding-top:5rem;
     justify-content: center;
     align-items: center;
-
   }
