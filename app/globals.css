@@ -593,7 +593,7 @@ td p {
 }
 
 .custom-dropdown-toggle {
-  background-color:none;
+  background-color:none !important;
   color: white;
   border-radius: 0px;
   border: 1px solid #83A6CF;
