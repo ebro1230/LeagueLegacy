@@ -1006,7 +1006,7 @@ export default function LeagueOverview({ leagueType, leagueKeysString }) {
         ) : (
           <>
             <div className="league-title-div">
-              <div className="league-logo-div">
+              <div className="specific-league-logo-div">
                 {leagueLogo ? (
                   <Image
                     src={leagueLogo}
