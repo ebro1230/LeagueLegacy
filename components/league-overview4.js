@@ -1036,6 +1036,7 @@ export default function LeagueOverview({ leagueType, leagueKeysString }) {
                 id="justify-tab-example"
                 className="mb-3 custom-tabs"
                 justify
+                variant="pills"
               >
                 <Tab eventKey="Standings" title="Standings">
                   <SeasonDropdown
