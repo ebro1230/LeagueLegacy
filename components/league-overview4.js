@@ -1030,11 +1030,11 @@ export default function LeagueOverview({ leagueType, leagueKeysString }) {
                 )}
               </div>
             </div>
-            <div>
+            <div style={{ padding: "0rem 4rem" }}>
               <Tabs
                 defaultActiveKey="Standings"
                 id="justify-tab-example"
-                className="mb-3"
+                className="mb-3 custom-tabs"
                 justify
               >
                 <Tab eventKey="Standings" title="Standings">

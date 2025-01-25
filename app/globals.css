@@ -518,3 +518,24 @@ td p {
     align-items: center;
     padding-bottom:2rem;
   }
+
+  /* Change the background color of tabs */
+.custom-tabs .nav-link {
+  background-color: linear-gradient(106.73deg, #2A3440 5.49%, #3A4B5F 100%); /* Inactive tab background color */
+  color: white; /* Inactive tab text color */
+  /* border: 1px solid #dee2e6; Border color for tabs */
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* Active tab styling */
+.custom-tabs .nav-link.active {
+  background-color: #83A6CF; /* Active tab background color */
+  color: white; /* Active tab text color */
+  border-color: #83A6CF; /* Active tab border color */
+}
+
+/* Hover effect for tabs */
+.custom-tabs .nav-link:hover {
+  background-color: #83A6CF; /* Hover background color */
+  color: #495057; /* Hover text color */
+}
