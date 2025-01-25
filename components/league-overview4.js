@@ -994,28 +994,30 @@ export default function LeagueOverview({ leagueType, leagueKeysString }) {
           </Spinner>
         ) : (
           <>
-            <div className="league-name-div">
-              {leagueName ? (
-                <h1>{leagueName} League Legacy</h1>
-              ) : (
-                <h1>
-                  Fantasy{" "}
-                  {leagueType.charAt(0).toUpperCase() + leagueType.slice(1)}{" "}
-                  League Legacy
-                </h1>
-              )}
-            </div>
-            <div className="league-logo-div">
-              <div className="specific-league-logo-div">
-                {leagueLogo ? (
-                  <Image
-                    src={leagueLogo}
-                    width={120}
-                    height={120}
-                    style={logoStyle}
-                    alt={`Picture for fantasy ${leagueType} league`}
-                  />
-                ) : null}
+            <div className="league-title-div">
+              <div className="league-logo-div">
+                <div className="specific-league-logo-div">
+                  {leagueLogo ? (
+                    <Image
+                      src={leagueLogo}
+                      width={120}
+                      height={120}
+                      style={logoStyle}
+                      alt={`Picture for fantasy ${leagueType} league`}
+                    />
+                  ) : null}
+                </div>
+              </div>
+              <div className="league-name-div">
+                {leagueName ? (
+                  <h1>{leagueName} League Legacy</h1>
+                ) : (
+                  <h1>
+                    Fantasy{" "}
+                    {leagueType.charAt(0).toUpperCase() + leagueType.slice(1)}{" "}
+                    League Legacy
+                  </h1>
+                )}
               </div>
             </div>
             <div>
