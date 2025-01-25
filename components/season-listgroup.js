@@ -33,7 +33,7 @@ export default function SeasonListGroup({ onSeasonSelect, leagueSeasons }) {
       ) : (
         <>
           <ListGroup onSelect={onSeasonSelect} horizontal variant="flush">
-            <div>
+            <div style={{ display: "flex", width: "fit-content" }}>
               <ListGroup.Item
                 eventKey={JSON.stringify(
                   leagueSeasons[leagueSeasons.length - 1]
@@ -45,7 +45,7 @@ export default function SeasonListGroup({ onSeasonSelect, leagueSeasons }) {
                 {leagueSeasons[leagueSeasons.length - 1].year}
               </ListGroup.Item>
             </div>
-            <div>
+            <div style={{ display: "flex", width: "fit-content" }}>
               {leagueSeasons.slice(0, 10).map((season) => (
                 <ListGroup.Item
                   eventKey={JSON.stringify(season)}
@@ -57,7 +57,7 @@ export default function SeasonListGroup({ onSeasonSelect, leagueSeasons }) {
                 </ListGroup.Item>
               ))}
             </div>
-            <div>
+            <div style={{ display: "flex", width: "fit-content" }}>
               {leagueSeasons.slice(10, -1).map((season) => (
                 <ListGroup.Item
                   eventKey={JSON.stringify(season)}

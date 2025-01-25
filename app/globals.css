@@ -570,6 +570,9 @@ td p {
 
 .list-group {
   margin: 1rem 0rem;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 
 .season-list-group-div{
@@ -595,7 +598,7 @@ td p {
 }
 
 .custom-dropdown-toggle {
-  background-color:none !important;
+  background:none !important;
   color: white;
   border-radius: 0px;
   border: 1px solid #83A6CF;
