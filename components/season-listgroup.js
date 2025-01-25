@@ -5,14 +5,16 @@ export default function SeasonListGroup({ onSeasonSelect, leagueSeasons }) {
   return (
     <div className="season-listgroup-div">
       <ListGroup.Item
-        eventKey={JSON.stringify(leagueSeasons[leagueSeasons.length].season)}
-        key={leagueSeasons[leagueSeasons.length].season.key}
+        eventKey={JSON.stringify(
+          leagueSeasons[leagueSeasons.length - 1].season
+        )}
+        key={leagueSeasons[leagueSeasons.length - 1].season.key}
         action
         className="custom-list-group-item"
       >
-        {leagueSeasons[leagueSeasons.length].season.year}
+        {leagueSeasons[leagueSeasons.length - 1].season.year}
       </ListGroup.Item>
-      {leagueSeasons.length < 10 ? (
+      {leagueSeasons.length <= 10 ? (
         <ListGroup onSelect={onSeasonSelect} horizontal variant="flush">
           {leagueSeasonsleagueSeasons.slice(0, -1).map((season) => (
             <ListGroup.Item
@@ -30,13 +32,13 @@ export default function SeasonListGroup({ onSeasonSelect, leagueSeasons }) {
           <ListGroup onSelect={onSeasonSelect} horizontal variant="flush">
             <ListGroup.Item
               eventKey={JSON.stringify(
-                leagueSeasons[leagueSeasons.length].season
+                leagueSeasons[leagueSeasons.length - 1].season
               )}
-              key={leagueSeasons[leagueSeasons.length].season.key}
+              key={leagueSeasons[leagueSeasons.length - 1].season.key}
               action
               className="custom-list-group-item"
             >
-              {leagueSeasons[leagueSeasons.length].season.year}
+              {leagueSeasons[leagueSeasons.length - 1].season.year}
             </ListGroup.Item>
           </ListGroup>
           <ListGroup onSelect={onSeasonSelect} horizontal variant="flush">
