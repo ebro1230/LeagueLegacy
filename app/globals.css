@@ -485,10 +485,9 @@ td p {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    border-width: 2px;      /* Border width */
+    border-width: 1px;      /* Border width */
     border-style: solid;    /* Border style */
-    border-color: white;    /* Border color */
-    border-radius: 50px;
+    border-color: #83A6CF;    /* Border color */
   }
 
   .loading-div{
@@ -571,10 +570,9 @@ td p {
 
 .season-list-group-div{
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
-  flex-wrap: wrap;
-  width:100%;
 }
 
 .list-group-flush .list-group-item:first-child {
