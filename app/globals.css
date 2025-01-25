@@ -544,7 +544,6 @@ td p {
 .custom-list-group-item {
   background:none;
   border: none;
-  margin: 0rem 1rem;
   color: white;
 }
 
@@ -552,6 +551,17 @@ td p {
 .custom-list-group-item.active {
   background:none;
   border: 1px solid #83A6CF;
-  margin: 0rem 1rem;
   color: white;
+}
+
+.list-group {
+  margin: 1rem 0rem;
+}
+
+.season-list-group-div{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  width:100%;
 }

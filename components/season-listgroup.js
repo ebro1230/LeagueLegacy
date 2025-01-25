@@ -3,7 +3,7 @@ import ListGroup from "react-bootstrap/ListGroup";
 
 export default function SeasonListGroup({ onSeasonSelect, leagueSeasons }) {
   return (
-    <div className="season-dropdown-div">
+    <div className="season-list-group-div">
       <ListGroup onSelect={onSeasonSelect} horizontal variant="flush">
         {leagueSeasons.map((season) => (
           <ListGroup.Item
