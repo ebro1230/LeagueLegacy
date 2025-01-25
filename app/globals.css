@@ -602,5 +602,6 @@ td p {
   color: white;
   border-radius: 0px;
   border: 1px solid #83A6CF;
-  margin: 1rem 0rem
+  margin: 1rem 0rem;
+  padding: 0.5rem 1rem;
 }

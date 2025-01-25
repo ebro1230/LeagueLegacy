@@ -18,7 +18,7 @@ export default function SeasonListGroup({ onSeasonSelect, leagueSeasons }) {
             </ListGroup.Item>
           </ListGroup>
           <ListGroup onSelect={onSeasonSelect} horizontal variant="flush">
-            {leagueSeasonsleagueSeasons.slice(0, -1).map((season) => (
+            {leagueSeasons.slice(0, -1).map((season) => (
               <ListGroup.Item
                 eventKey={JSON.stringify(season)}
                 key={season.key}
