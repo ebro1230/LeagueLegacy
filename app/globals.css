@@ -592,3 +592,10 @@ td p {
   border-bottom-right-radius: 0 !important;
   border-bottom-width: 1px !important;
 }
+
+.custom-dropdown-toggle {
+  background-color:none;
+  color: white;
+  border-radius: 0px;
+  border: 1px solid #83A6CF;
+}
