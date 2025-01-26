@@ -1134,6 +1134,11 @@ export default function LeagueOverview({ leagueType, leagueKeysString }) {
                       matchupsLoading={matchupsLoading}
                       leagueType={leagueType}
                       accessToken={session.accessToken}
+                      onTeamSelect1={handleTeamSelect1}
+                      onTeamSelect2={handleTeamSelect2}
+                      managers={chosenSeasonTeams}
+                      isTeam1Active={team1Active}
+                      isTeam2Active={team2Active}
                     />
                   </div>
                 </Tab>
