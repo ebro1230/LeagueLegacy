@@ -21,6 +21,7 @@ export default function TeamDropdown({
   isActive,
   isTeam2,
   isRecordTeamDropdown,
+  chosenSeason,
   logoStyle,
 }) {
   return (
@@ -40,7 +41,27 @@ export default function TeamDropdown({
               key={"Overall"}
               disabled={chosenTeam2.managerName === "Overall"}
             >
-              Overall
+              <Row style={{ width: "100%", flexWrap: "nowrap" }}>
+                <Col xs={4}>
+                  <Image
+                    src={chosenSeason.leagueLogo}
+                    width={58}
+                    height={58}
+                    style={{
+                      borderRadius: "50%",
+                      border: "1px solid #fff",
+                      margin: "0rem",
+                      objectFit: "contain",
+                    }}
+                    alt={`${chosenSeason.leagueName}'s Logo`}
+                  />
+                </Col>
+                <Col>
+                  <Row>
+                    <h5 className={koulen.className}>Overall</h5>
+                  </Row>
+                </Col>
+              </Row>
             </Dropdown.Item>
           ) : null}
           {isRecordTeamDropdown ? (
