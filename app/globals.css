@@ -314,7 +314,7 @@
 
 }
 .standings-div{
-  width: 80%;
+  width: 100%;
   overflow-x: auto;
 }
 .table > thead{
@@ -533,6 +533,10 @@ td p {
   align-items: center;
 }
 
+.custom-tabs .nav {
+  flex-wrap: wrap !important;
+}
+
 /* Active tab styling */
 .custom-tabs .nav-link.active {
   background-color: #83A6CF; /* Active tab background color */
@@ -613,6 +617,7 @@ td p {
   border-top: none !important;
   border-right: none !important;
   border-left: none !important;
+  font-size: clamp(0.7rem, 2vw, 14px) !important;
 }
 .table-striped tbody tr:nth-child(even) td{
   background:none !important;
@@ -621,6 +626,7 @@ td p {
   border-top: none !important;
   border-right: none !important;
   border-left: none !important;
+  font-size: clamp(0.7rem, 2vw, 14px) !important;
 }
 
 thead tr th{
@@ -630,4 +636,6 @@ thead tr th{
   border-top: none !important;
   border-right: none !important;
   border-left: none !important;
+  font-size: 14px !important;
+  font-size: clamp(0.7rem, 2vw, 14px) !important;
 }
