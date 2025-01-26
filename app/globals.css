@@ -641,5 +641,5 @@ thead tr th{
 }
 .fixed-table {
   table-layout: fixed;
-  width: 100%;
+  width: auto;
 }

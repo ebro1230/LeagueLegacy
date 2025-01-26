@@ -119,14 +119,14 @@ export default function ManagerItem({
                 manager.overallCumulativeRecord[
                   manager.overallCumulativeRecord.length - 1
                 ].regularSeasonRecord.wins
-              }{" "}
-              -{" "}
+              }
+              -
               {
                 manager.overallCumulativeRecord[
                   manager.overallCumulativeRecord.length - 1
                 ].regularSeasonRecord.losses
-              }{" "}
-              -{" "}
+              }
+              -
               {
                 manager.overallCumulativeRecord[
                   manager.overallCumulativeRecord.length - 1
