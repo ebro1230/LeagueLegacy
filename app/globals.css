@@ -658,3 +658,7 @@ thead tr th{
   color: #FF7474 !important;
 
 }
+
+.blurredImage {
+  filter: blur(10px)
+}

@@ -357,7 +357,7 @@ export default function LeagueOverview({ leagueType, leagueKeysString }) {
           //   overallCumulativeRecord.week = overallCumulativeWeeks;
           //   return { ...manager, overallCumulativeRecord };
           // });
-
+          console.log(fetchResponse[fetchResponse.length - 1]);
           setChosenSeasonTeams(fetchResponse[fetchResponse.length - 1].teams);
           setRecords(fetchResponse[fetchResponse.length - 1].overallRecords);
           setChartData({

@@ -55,7 +55,9 @@ export default function ManagerMatchup({
               <Card.Img
                 variant="top"
                 src={summary.logo}
-                className="rounded-circle"
+                className={`rounded-circle ${
+                  chosenTeam1.managerId === "---" ? "blurredImage" : ""
+                }`}
                 style={{
                   width: "150px",
                   height: "150px",
@@ -68,7 +70,9 @@ export default function ManagerMatchup({
               <Card.Img
                 variant="top"
                 src="N/A"
-                className="rounded-circle"
+                className={`rounded-circle ${
+                  chosenTeam1.managerId === "---" ? "blurredImage" : ""
+                }`}
                 style={{
                   width: "150px",
                   height: "150px",
@@ -164,7 +168,9 @@ export default function ManagerMatchup({
               <Card.Img
                 variant="top"
                 src={summary.opponentLogo}
-                className="rounded-circle"
+                className={`rounded-circle ${
+                  chosenTeam1.managerId === "---" ? "blurredImage" : ""
+                }`}
                 style={{
                   width: "150px",
                   height: "150px",
@@ -177,7 +183,9 @@ export default function ManagerMatchup({
               <Card.Img
                 variant="top"
                 src="N/A"
-                className="rounded-circle"
+                className={`rounded-circle ${
+                  chosenTeam1.managerId === "---" ? "blurredImage" : ""
+                }`}
                 style={{
                   width: "150px",
                   height: "150px",
@@ -275,7 +283,9 @@ export default function ManagerMatchup({
               <Card.Img
                 variant="top"
                 src={summary.logo}
-                className="rounded-circle"
+                className={`rounded-circle ${
+                  chosenTeam1.managerId === "---" ? "blurredImage" : ""
+                }`}
                 style={{
                   width: "150px",
                   height: "150px",
@@ -288,7 +298,9 @@ export default function ManagerMatchup({
               <Card.Img
                 variant="top"
                 src="N/A"
-                className="rounded-circle"
+                className={`rounded-circle ${
+                  chosenTeam1.managerId === "---" ? "blurredImage" : ""
+                }`}
                 style={{
                   width: "150px",
                   height: "150px",
@@ -384,7 +396,9 @@ export default function ManagerMatchup({
               <Card.Img
                 variant="top"
                 src={summary.opponentLogo}
-                className="rounded-circle"
+                className={`rounded-circle ${
+                  chosenTeam1.managerId === "---" ? "blurredImage" : ""
+                }`}
                 style={{
                   width: "150px",
                   height: "150px",
@@ -397,7 +411,9 @@ export default function ManagerMatchup({
               <Card.Img
                 variant="top"
                 src="N/A"
-                className="rounded-circle"
+                className={`rounded-circle ${
+                  chosenTeam1.managerId === "---" ? "blurredImage" : ""
+                }`}
                 style={{
                   width: "150px",
                   height: "150px",
