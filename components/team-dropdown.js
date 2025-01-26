@@ -1,4 +1,5 @@
 "use client";
+import { Col, Row } from "react-bootstrap";
 import Dropdown from "react-bootstrap/Dropdown";
 
 export default function TeamDropdown({
@@ -9,13 +10,13 @@ export default function TeamDropdown({
   isActive,
   isTeam2,
   isRecordTeamDropdown,
+  logoStyle,
 }) {
   return (
     <div className="season-dropdown-div">
       <Dropdown onSelect={onTeamSelect}>
         <Dropdown.Toggle
-          variant="success"
-          id="dropdown-basic"
+          className="custom-dropdown-toggle"
           disabled={!isActive}
         >
           {!isTeam2 ? chosenTeam1.managerName : chosenTeam2.managerName}
@@ -49,7 +50,25 @@ export default function TeamDropdown({
                 (isTeam2 && manager.managerId === chosenTeam2.managerId)
               }
             >
-              {manager.managerName}
+              <Row>
+                <Col xs={2}>
+                  <Image
+                    src={manager.logo}
+                    width={58}
+                    height={58}
+                    style={logoStyle}
+                    alt={`${manager.name}'s Logo`}
+                  />
+                </Col>
+                <Col>
+                  <Row>
+                    <h1>{manager.name}</h1>
+                  </Row>
+                  <Row>
+                    <h3>{manager.managerName}</h3>
+                  </Row>
+                </Col>
+              </Row>
             </Dropdown.Item>
           ))}
         </Dropdown.Menu>

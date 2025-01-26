@@ -1102,6 +1102,7 @@ export default function LeagueOverview({ leagueType, leagueKeysString }) {
                       isActive={team1Active}
                       isTeam2={false}
                       isRecordTeamDropdown={false}
+                      logoStyle={logoStyle}
                     />
                     {/* <SeasonDropdown
                       onSeasonSelect={handleSeasonSelect}
@@ -1118,6 +1119,7 @@ export default function LeagueOverview({ leagueType, leagueKeysString }) {
                       isActive={team2Active}
                       isTeam2={true}
                       isRecordTeamDropdown={false}
+                      logoStyle={logoStyle}
                     />
                   </div>
                   <div className="team-comparison-div">
