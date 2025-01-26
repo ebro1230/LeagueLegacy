@@ -180,6 +180,8 @@ export default function LeagueOverview({ leagueType, leagueKeysString }) {
             key: fetchResponse[fetchResponse.length - 1].key,
             year: fetchResponse[fetchResponse.length - 1].season,
             weeks: fetchResponse[fetchResponse.length - 1].leagueWeeks,
+            leagueName: fetchResponse[fetchResponse.length - 1].name,
+            leagueLogo: fetchResponse[fetchResponse.length - 1].leagueLogo,
           });
           // fetchResponse[fetchResponse.length - 1].teams = fetchResponse[
           //   fetchResponse.length - 1

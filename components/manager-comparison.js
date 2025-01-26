@@ -27,8 +27,8 @@ export default function ManagerComparison({
         <div className="manager-specifics-div">
           <ManagerMatchup
             summary={{
-              name: chosenSeason.name,
-              logo: chosenSeason.logo,
+              name: chosenSeason.leagueName,
+              logo: chosenSeason.leagueLogo,
               wins: 0,
               losses: 0,
               ties: 0,
@@ -40,8 +40,8 @@ export default function ManagerComparison({
               projectedPointsAgainst: 0,
               pointsFor: 0,
               pointsAgainst: 0,
-              opponentName: chosenSeason.name,
-              opponentLogo: chosenSeason.logo,
+              opponentName: "TBD",
+              opponentLogo: "TBD",
             }}
             logoStyle={logoStyle}
             onTeamSelect1={onTeamSelect1}
