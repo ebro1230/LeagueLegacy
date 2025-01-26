@@ -164,14 +164,18 @@ export default function ManagerItem({
             %
           </td>
           <td className={`${inter.className} small-table-data`}>
-            {manager.overallCumulativeRecord[
-              manager.overallCumulativeRecord.length - 1
-            ].regularSeasonRecord.pointsFor.toFixed(2)}
+            {Number(
+              manager.overallCumulativeRecord[
+                manager.overallCumulativeRecord.length - 1
+              ].regularSeasonRecord.pointsFor.toFixed(2)
+            ).toLocaleString("en-US", { signDisplay: "always" })}
           </td>
           <td className={`${inter.className} small-table-data`}>
-            {manager.overallCumulativeRecord[
-              manager.overallCumulativeRecord.length - 1
-            ].regularSeasonRecord.pointsAgainst.toFixed(2)}
+            {Number(
+              manager.overallCumulativeRecord[
+                manager.overallCumulativeRecord.length - 1
+              ].regularSeasonRecord.pointsAgainst.toFixed(2)
+            ).toLocaleString("en-US", { signDisplay: "always" })}
           </td>
           <td
             className={`${inter.className} small-table-data ${
