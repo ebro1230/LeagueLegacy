@@ -627,4 +627,7 @@ thead tr th{
   color:#83A6CF !important;
   background: none !important;
   border-bottom: 1px solid #858585 !important;
+  border-top: none !important;
+  border-right: none !important;
+  border-left: none !important;
 }

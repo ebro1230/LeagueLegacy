@@ -15,7 +15,9 @@ export default function ManagerItem({
 }) {
   return (
     <>
-      <td className={`${inter.className} small-table-data`}></td>
+      <td className={`${inter.className} small-table-data`}>
+        {manager.rank.rank}
+      </td>
       <td className={`${inter.className} small-table-data`}>
         {manager.logo ? (
           <Image

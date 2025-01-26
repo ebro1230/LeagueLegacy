@@ -2,12 +2,21 @@
 import ListGroup from "react-bootstrap/ListGroup";
 import { Row } from "react-bootstrap";
 
-export default function SeasonListGroup({ onSeasonSelect, leagueSeasons }) {
+export default function SeasonListGroup({
+  onSeasonSelect,
+  leagueSeasons,
+  chosenSeason,
+}) {
   return (
     <>
       {leagueSeasons.length <= 10 ? (
         <>
-          <ListGroup onSelect={onSeasonSelect} horizontal variant="flush">
+          <ListGroup
+            onSelect={onSeasonSelect}
+            horizontal
+            variant="flush"
+            activeKey={chosenSeason.key}
+          >
             <div style={{ display: "flex", width: "fit-content" }}>
               <ListGroup.Item
                 eventKey={JSON.stringify(
@@ -15,7 +24,6 @@ export default function SeasonListGroup({ onSeasonSelect, leagueSeasons }) {
                 )}
                 key={leagueSeasons[leagueSeasons.length - 1].key}
                 action
-                active
                 className="custom-list-group-item"
               >
                 {leagueSeasons[leagueSeasons.length - 1].year}
@@ -37,7 +45,12 @@ export default function SeasonListGroup({ onSeasonSelect, leagueSeasons }) {
         </>
       ) : (
         <>
-          <ListGroup onSelect={onSeasonSelect} horizontal variant="flush">
+          <ListGroup
+            onSelect={onSeasonSelect}
+            horizontal
+            variant="flush"
+            activeKey={chosenSeason.key}
+          >
             <div style={{ display: "flex", width: "fit-content" }}>
               <ListGroup.Item
                 eventKey={JSON.stringify(
@@ -45,7 +58,6 @@ export default function SeasonListGroup({ onSeasonSelect, leagueSeasons }) {
                 )}
                 key={leagueSeasons[leagueSeasons.length - 1].key}
                 action
-                active
                 className="custom-list-group-item"
               >
                 {leagueSeasons[leagueSeasons.length - 1].year}
