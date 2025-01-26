@@ -1,6 +1,16 @@
 "use client";
 import ManagerItem from "./manager-item";
 import Table from "react-bootstrap/Table";
+import { Koulen } from "@next/font/google";
+const koulen = Koulen({
+  subsets: ["latin"], // Specify subsets like 'latin', 'cyrillic', etc.
+  weight: ["400"], // Include specific font weights
+});
+import { Inter } from "@next/font/google";
+const inter = Inter({
+  subsets: ["latin"], // Specify subsets like 'latin', 'cyrillic', etc.
+  weight: ["400"], // Include specific font weights
+});
 
 export default function ManagerGrid({
   managers,
@@ -10,8 +20,8 @@ export default function ManagerGrid({
 }) {
   return (
     <div className="standings-div">
-      <Table responsive striped bordered size="sm">
-        <thead>
+      <Table responsive striped bordered size="sm" variant="dark">
+        <thead className={koulen.className}>
           <tr>
             <th>Rank</th>
             <th>Logo</th>
@@ -50,7 +60,7 @@ export default function ManagerGrid({
             ) : null}
           </tr>
         </thead>
-        <tbody className="small-table-body">
+        <tbody className={`${inter.className} small-table-body`}>
           {managers.length
             ? managers.map((manager) => {
                 return (
