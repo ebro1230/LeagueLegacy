@@ -1,6 +1,7 @@
 "use client";
 import { Col, Row } from "react-bootstrap";
 import Dropdown from "react-bootstrap/Dropdown";
+import Image from "next/image";
 
 export default function TeamDropdown({
   onTeamSelect,
