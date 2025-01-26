@@ -606,9 +606,13 @@ td p {
   padding: 0.5rem 1rem;
 }
 
-.table-striped tbody tr:nth-child(odd){
-  background:none;
+.table-striped tbody tr:nth-child(odd) td{
+  background:none !important;
 }
-.table-striped tbody tr:nth-child(even){
-  background:#464646;
+.table-striped tbody tr:nth-child(even) td{
+  background:#464646 !important;
+}
+
+thead {
+  color:#83A6CF;
 }
