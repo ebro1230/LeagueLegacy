@@ -460,7 +460,9 @@ export default function LeagueOverview({ leagueType, leagueKeysString }) {
   }, [status]);
 
   const handleSeasonSelect = (e) => {
-    const chosenSeason = JSON.parse(e);
+    let chosenSeason = JSON.parse(e);
+    chosenSeason.leagueLogo = leagueLogo;
+    chosenSeason.leagueName = leagueName;
     setChosenSeason(chosenSeason);
     setChosenTeam1({ managerName: "---" });
     setChosenTeam2({ managerName: "---" });
