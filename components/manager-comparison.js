@@ -40,8 +40,8 @@ export default function ManagerComparison({
               projectedPointsAgainst: 0,
               pointsFor: 0,
               pointsAgainst: 0,
-              opponentName: "TBD",
-              opponentLogo: "TBD",
+              opponentName: chosenSeason.leagueName,
+              opponentLogo: chosenSeason.leagueLogo,
             }}
             logoStyle={logoStyle}
             onTeamSelect1={onTeamSelect1}
