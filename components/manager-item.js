@@ -114,23 +114,25 @@ export default function ManagerItem({
       {chosenSeason.year === "Overall" ? (
         <>
           <td className={`${inter.className} small-table-data`}>
-            {
-              manager.overallCumulativeRecord[
-                manager.overallCumulativeRecord.length - 1
-              ].regularSeasonRecord.wins
-            }{" "}
-            -{" "}
-            {
-              manager.overallCumulativeRecord[
-                manager.overallCumulativeRecord.length - 1
-              ].regularSeasonRecord.losses
-            }{" "}
-            -{" "}
-            {
-              manager.overallCumulativeRecord[
-                manager.overallCumulativeRecord.length - 1
-              ].regularSeasonRecord.ties
-            }
+            <p>
+              {
+                manager.overallCumulativeRecord[
+                  manager.overallCumulativeRecord.length - 1
+                ].regularSeasonRecord.wins
+              }{" "}
+              -{" "}
+              {
+                manager.overallCumulativeRecord[
+                  manager.overallCumulativeRecord.length - 1
+                ].regularSeasonRecord.losses
+              }{" "}
+              -{" "}
+              {
+                manager.overallCumulativeRecord[
+                  manager.overallCumulativeRecord.length - 1
+                ].regularSeasonRecord.ties
+              }
+            </p>
           </td>
           <td className={`${inter.className} small-table-data`}>
             {manager.overallCumulativeRecord[
