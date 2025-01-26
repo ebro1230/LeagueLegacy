@@ -15,7 +15,7 @@ export default function SeasonListGroup({
             onSelect={onSeasonSelect}
             horizontal
             variant="flush"
-            activeKey={chosenSeason.key}
+            activeKey={JSON.stringify(chosenSeason)}
           >
             <div style={{ display: "flex", width: "fit-content" }}>
               <ListGroup.Item
@@ -49,7 +49,7 @@ export default function SeasonListGroup({
             onSelect={onSeasonSelect}
             horizontal
             variant="flush"
-            activeKey={chosenSeason.key}
+            activeKey={JSON.stringify(chosenSeason)}
           >
             <div style={{ display: "flex", width: "fit-content" }}>
               <ListGroup.Item
