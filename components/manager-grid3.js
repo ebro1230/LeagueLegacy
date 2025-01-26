@@ -20,7 +20,7 @@ export default function ManagerGrid({
 }) {
   return (
     <div className="standings-div">
-      <Table responsive striped bordered size="sm" variant="dark">
+      <Table responsive striped bordered size="sm">
         <thead className={koulen.className}>
           <tr>
             <th>Rank</th>
