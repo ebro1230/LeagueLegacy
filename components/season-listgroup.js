@@ -15,6 +15,7 @@ export default function SeasonListGroup({ onSeasonSelect, leagueSeasons }) {
                 )}
                 key={leagueSeasons[leagueSeasons.length - 1].key}
                 action
+                active
                 className="custom-list-group-item"
               >
                 {leagueSeasons[leagueSeasons.length - 1].year}
@@ -44,6 +45,7 @@ export default function SeasonListGroup({ onSeasonSelect, leagueSeasons }) {
                 )}
                 key={leagueSeasons[leagueSeasons.length - 1].key}
                 action
+                active
                 className="custom-list-group-item"
               >
                 {leagueSeasons[leagueSeasons.length - 1].year}
