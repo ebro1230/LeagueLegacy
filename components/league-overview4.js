@@ -1077,6 +1077,21 @@ export default function LeagueOverview({ leagueType, leagueKeysString }) {
                   />
                 </Tab>
                 <Tab eventKey="Matchups" title="Matchups">
+                  {isMobile ? (
+                    <SeasonDropdown
+                      onSeasonSelect={handleSeasonSelect}
+                      leagueSeasons={leagueSeasons}
+                      chosenSeason={chosenSeason}
+                      seasonDropdownActive={seasonDropdownActive}
+                    />
+                  ) : (
+                    <SeasonListGroup
+                      onSeasonSelect={handleSeasonSelect}
+                      leagueSeasons={leagueSeasons}
+                      chosenSeason={chosenSeason}
+                      seasonDropdownActive={seasonDropdownActive}
+                    />
+                  )}
                   <div className="teams-dropdown-div">
                     <TeamDropdown
                       onTeamSelect={handleTeamSelect1}
