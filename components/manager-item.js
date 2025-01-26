@@ -168,14 +168,14 @@ export default function ManagerItem({
               manager.overallCumulativeRecord[
                 manager.overallCumulativeRecord.length - 1
               ].regularSeasonRecord.pointsFor.toFixed(2)
-            ).toLocaleString("en-US", { signDisplay: "always" })}
+            ).toLocaleString("en-US")}
           </td>
           <td className={`${inter.className} small-table-data`}>
             {Number(
               manager.overallCumulativeRecord[
                 manager.overallCumulativeRecord.length - 1
               ].regularSeasonRecord.pointsAgainst.toFixed(2)
-            ).toLocaleString("en-US", { signDisplay: "always" })}
+            ).toLocaleString("en-US")}
           </td>
           <td
             className={`${inter.className} small-table-data ${
@@ -200,30 +200,16 @@ export default function ManagerItem({
                 : ""
             }`}
           >
-            {(
+            {Number(
               manager.overallCumulativeRecord[
                 manager.overallCumulativeRecord.length - 1
               ].regularSeasonRecord.pointsFor -
-              manager.overallCumulativeRecord[
-                manager.overallCumulativeRecord.length - 1
-              ].regularSeasonRecord.pointsAgainst
-            ).toFixed(2) > 0
-              ? `+${(
-                  manager.overallCumulativeRecord[
-                    manager.overallCumulativeRecord.length - 1
-                  ].regularSeasonRecord.pointsFor -
-                  manager.overallCumulativeRecord[
-                    manager.overallCumulativeRecord.length - 1
-                  ].regularSeasonRecord.pointsAgainst
-                ).toFixed(2)}`
-              : (
-                  manager.overallCumulativeRecord[
-                    manager.overallCumulativeRecord.length - 1
-                  ].regularSeasonRecord.pointsFor -
-                  manager.overallCumulativeRecord[
-                    manager.overallCumulativeRecord.length - 1
-                  ].regularSeasonRecord.pointsAgainst
-                ).toFixed(2)}
+                manager.overallCumulativeRecord[
+                  manager.overallCumulativeRecord.length - 1
+                ].regularSeasonRecord.pointsAgainst
+            )
+              .toFixed(2)
+              .toLocaleString("en-US", { signDisplay: "always" })}
           </td>
           <td className={`${inter.className} small-table-data`}>
             {
@@ -277,18 +263,22 @@ export default function ManagerItem({
             {manager.overallCumulativeRecord[
               manager.overallCumulativeRecord.length - 1
             ].playoffSeasonRecord.pointsFor
-              ? manager.overallCumulativeRecord[
-                  manager.overallCumulativeRecord.length - 1
-                ].playoffSeasonRecord.pointsFor.toFixed(2)
+              ? Number(
+                  manager.overallCumulativeRecord[
+                    manager.overallCumulativeRecord.length - 1
+                  ].playoffSeasonRecord.pointsFor.toFixed(2)
+                ).toLocaleString("en-US")
               : 0}
           </td>
           <td className={`${inter.className} small-table-data`}>
             {manager.overallCumulativeRecord[
               manager.overallCumulativeRecord.length - 1
             ].playoffSeasonRecord.pointsAgainst
-              ? manager.overallCumulativeRecord[
-                  manager.overallCumulativeRecord.length - 1
-                ].playoffSeasonRecord.pointsAgainst.toFixed(2)
+              ? Number(
+                  manager.overallCumulativeRecord[
+                    manager.overallCumulativeRecord.length - 1
+                  ].playoffSeasonRecord.pointsAgainst.toFixed(2)
+                ).toLocaleString("en-US")
               : 0}
           </td>
           <td
@@ -320,23 +310,8 @@ export default function ManagerItem({
             manager.overallCumulativeRecord[
               manager.overallCumulativeRecord.length - 1
             ].playoffSeasonRecord.pointsAgainst
-              ? (
-                  manager.overallCumulativeRecord[
-                    manager.overallCumulativeRecord.length - 1
-                  ].playoffSeasonRecord.pointsFor -
-                  manager.overallCumulativeRecord[
-                    manager.overallCumulativeRecord.length - 1
-                  ].playoffSeasonRecord.pointsAgainst
-                ).toFixed(2) > 0
-                ? `+${(
-                    manager.overallCumulativeRecord[
-                      manager.overallCumulativeRecord.length - 1
-                    ].playoffSeasonRecord.pointsFor -
-                    manager.overallCumulativeRecord[
-                      manager.overallCumulativeRecord.length - 1
-                    ].playoffSeasonRecord.pointsAgainst
-                  ).toFixed(2)}`
-                : (
+              ? Number(
+                  (
                     manager.overallCumulativeRecord[
                       manager.overallCumulativeRecord.length - 1
                     ].playoffSeasonRecord.pointsFor -
@@ -344,6 +319,7 @@ export default function ManagerItem({
                       manager.overallCumulativeRecord.length - 1
                     ].playoffSeasonRecord.pointsAgainst
                   ).toFixed(2)
+                ).toLocaleString("en-US", { signDisplay: "always" })
               : 0}
           </td>
           <td className={`${inter.className} small-table-data`}>
@@ -398,18 +374,22 @@ export default function ManagerItem({
             {manager.overallCumulativeRecord[
               manager.overallCumulativeRecord.length - 1
             ].consolationSeasonRecord.pointsFor
-              ? manager.overallCumulativeRecord[
-                  manager.overallCumulativeRecord.length - 1
-                ].consolationSeasonRecord.pointsFor.toFixed(2)
+              ? Number(
+                  manager.overallCumulativeRecord[
+                    manager.overallCumulativeRecord.length - 1
+                  ].consolationSeasonRecord.pointsFor.toFixed(2)
+                ).toLocaleString("en-US")
               : 0}
           </td>
           <td className={`${inter.className} small-table-data`}>
             {manager.overallCumulativeRecord[
               manager.overallCumulativeRecord.length - 1
             ].consolationSeasonRecord.pointsAgainst
-              ? manager.overallCumulativeRecord[
-                  manager.overallCumulativeRecord.length - 1
-                ].consolationSeasonRecord.pointsAgainst.toFixed(2)
+              ? Number(
+                  manager.overallCumulativeRecord[
+                    manager.overallCumulativeRecord.length - 1
+                  ].consolationSeasonRecord.pointsAgainst.toFixed(2)
+                ).toLocaleString("en-US")
               : 0}
           </td>
           <td
@@ -441,23 +421,8 @@ export default function ManagerItem({
             manager.overallCumulativeRecord[
               manager.overallCumulativeRecord.length - 1
             ].consolationSeasonRecord.pointsAgainst
-              ? (
-                  manager.overallCumulativeRecord[
-                    manager.overallCumulativeRecord.length - 1
-                  ].consolationSeasonRecord.pointsFor -
-                  manager.overallCumulativeRecord[
-                    manager.overallCumulativeRecord.length - 1
-                  ].consolationSeasonRecord.pointsAgainst
-                ).toFixed(2) > 0
-                ? `+${(
-                    manager.overallCumulativeRecord[
-                      manager.overallCumulativeRecord.length - 1
-                    ].consolationSeasonRecord.pointsFor -
-                    manager.overallCumulativeRecord[
-                      manager.overallCumulativeRecord.length - 1
-                    ].consolationSeasonRecord.pointsAgainst
-                  ).toFixed(2)}`
-                : (
+              ? Number(
+                  (
                     manager.overallCumulativeRecord[
                       manager.overallCumulativeRecord.length - 1
                     ].consolationSeasonRecord.pointsFor -
@@ -465,6 +430,7 @@ export default function ManagerItem({
                       manager.overallCumulativeRecord.length - 1
                     ].consolationSeasonRecord.pointsAgainst
                   ).toFixed(2)
+                ).toLocaleString("en-US", { signDisplay: "always" })
               : 0}
           </td>
         </>
@@ -492,16 +458,20 @@ export default function ManagerItem({
           </td>
           <td className={`${inter.className} small-table-data`}>
             {manager.cumulativeRecord.regularSeasonRecord.pointsFor
-              ? manager.cumulativeRecord.regularSeasonRecord.pointsFor.toFixed(
-                  2
-                )
+              ? Number(
+                  manager.cumulativeRecord.regularSeasonRecord.pointsFor.toFixed(
+                    2
+                  )
+                ).toLocaleString("en-US")
               : 0}
           </td>
           <td className={`${inter.className} small-table-data`}>
             {manager.cumulativeRecord.regularSeasonRecord.pointsAgainst
-              ? manager.cumulativeRecord.regularSeasonRecord.pointsAgainst.toFixed(
-                  2
-                )
+              ? Number(
+                  manager.cumulativeRecord.regularSeasonRecord.pointsAgainst.toFixed(
+                    2
+                  )
+                ).toLocaleString("en-US")
               : 0}
           </td>
           <td
@@ -521,18 +491,12 @@ export default function ManagerItem({
           >
             {manager.cumulativeRecord.regularSeasonRecord.pointsFor -
             manager.cumulativeRecord.regularSeasonRecord.pointsAgainst
-              ? (
-                  manager.cumulativeRecord.regularSeasonRecord.pointsFor -
-                  manager.cumulativeRecord.regularSeasonRecord.pointsAgainst
-                ).toFixed(2) > 0
-                ? `+${(
-                    manager.cumulativeRecord.regularSeasonRecord.pointsFor -
-                    manager.cumulativeRecord.regularSeasonRecord.pointsAgainst
-                  ).toFixed(2)}`
-                : (
+              ? Number(
+                  (
                     manager.cumulativeRecord.regularSeasonRecord.pointsFor -
                     manager.cumulativeRecord.regularSeasonRecord.pointsAgainst
                   ).toFixed(2)
+                ).toLocaleString("en-US", { signDisplay: "always" })
               : 0}
           </td>
           <td className={`${inter.className} small-table-data`}>
@@ -557,16 +521,20 @@ export default function ManagerItem({
           </td>
           <td className={`${inter.className} small-table-data`}>
             {manager.cumulativeRecord.playoffSeasonRecord.pointsFor
-              ? manager.cumulativeRecord.playoffSeasonRecord.pointsFor.toFixed(
-                  2
-                )
+              ? Number(
+                  manager.cumulativeRecord.playoffSeasonRecord.pointsFor.toFixed(
+                    2
+                  )
+                ).toLocaleString("en-US")
               : 0}
           </td>
           <td className={`${inter.className} small-table-data`}>
             {manager.cumulativeRecord.playoffSeasonRecord.pointsAgainst
-              ? manager.cumulativeRecord.playoffSeasonRecord.pointsAgainst.toFixed(
-                  2
-                )
+              ? Number(
+                  manager.cumulativeRecord.playoffSeasonRecord.pointsAgainst.toFixed(
+                    2
+                  )
+                ).toLocaleString("en-US")
               : 0}
           </td>
           <td
@@ -586,18 +554,12 @@ export default function ManagerItem({
           >
             {manager.cumulativeRecord.playoffSeasonRecord.pointsFor -
             manager.cumulativeRecord.playoffSeasonRecord.pointsAgainst
-              ? (
-                  manager.cumulativeRecord.playoffSeasonRecord.pointsFor -
-                  manager.cumulativeRecord.playoffSeasonRecord.pointsAgainst
-                ).toFixed(2) > 0
-                ? `+${(
-                    manager.cumulativeRecord.playoffSeasonRecord.pointsFor -
-                    manager.cumulativeRecord.playoffSeasonRecord.pointsAgainst
-                  ).toFixed(2)}`
-                : (
+              ? Number(
+                  (
                     manager.cumulativeRecord.playoffSeasonRecord.pointsFor -
                     manager.cumulativeRecord.playoffSeasonRecord.pointsAgainst
                   ).toFixed(2)
+                ).toLocaleString("en-US", { signDisplay: "always" })
               : 0}
           </td>
           <td className={`${inter.className} small-table-data`}>
@@ -622,16 +584,20 @@ export default function ManagerItem({
           </td>
           <td className={`${inter.className} small-table-data`}>
             {manager.cumulativeRecord.consolationSeasonRecord.pointsFor
-              ? manager.cumulativeRecord.consolationSeasonRecord.pointsFor.toFixed(
-                  2
-                )
+              ? Number(
+                  manager.cumulativeRecord.consolationSeasonRecord.pointsFor.toFixed(
+                    2
+                  )
+                ).toLocaleString("en-US")
               : 0}
           </td>
           <td className={`${inter.className} small-table-data`}>
             {manager.cumulativeRecord.consolationSeasonRecord.pointsAgainst
-              ? manager.cumulativeRecord.consolationSeasonRecord.pointsAgainst.toFixed(
-                  2
-                )
+              ? Number(
+                  manager.cumulativeRecord.consolationSeasonRecord.pointsAgainst.toFixed(
+                    2
+                  )
+                ).toLocaleString("en-US")
               : 0}
           </td>
           <td
@@ -652,20 +618,13 @@ export default function ManagerItem({
           >
             {manager.cumulativeRecord.consolationSeasonRecord.pointsFor -
             manager.cumulativeRecord.consolationSeasonRecord.pointsAgainst
-              ? (
-                  manager.cumulativeRecord.consolationSeasonRecord.pointsFor -
-                  manager.cumulativeRecord.consolationSeasonRecord.pointsAgainst
-                ).toFixed(2) > 0
-                ? `+${(
-                    manager.cumulativeRecord.consolationSeasonRecord.pointsFor -
-                    manager.cumulativeRecord.consolationSeasonRecord
-                      .pointsAgainst
-                  ).toFixed(2)}`
-                : (
+              ? Number(
+                  (
                     manager.cumulativeRecord.consolationSeasonRecord.pointsFor -
                     manager.cumulativeRecord.consolationSeasonRecord
                       .pointsAgainst
                   ).toFixed(2)
+                ).toLocaleString("en-US", { signDisplay: "always" })
               : 0}
           </td>
         </>
