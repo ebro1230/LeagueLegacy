@@ -5,6 +5,8 @@ import Image from "next/image";
 import { Card } from "react-bootstrap";
 import { Inter } from "@next/font/google";
 import { Koulen } from "@next/font/google";
+import TeamDropdown from "./team-dropdown";
+
 const inter = Inter({
   subsets: ["latin"], // Specify subsets like 'latin', 'cyrillic', etc.
   weight: ["400"], // Include specific font weights
@@ -14,7 +16,18 @@ const koulen = Koulen({
   weight: ["400"], // Include specific font weights
 });
 
-export default function ManagerMatchup({ summary, logoStyle }) {
+export default function ManagerMatchup({
+  summary,
+  logoStyle,
+  onTeamSelect1,
+  onTeamSelect2,
+  managers,
+  chosenSeason,
+  chosenTeam1,
+  chosenTeam2,
+  team1Active,
+  team2Active,
+}) {
   //console.log("SUMMARY");
   //console.log(summary);
   return summary.wins || summary.losses ? (
@@ -27,6 +40,17 @@ export default function ManagerMatchup({ summary, logoStyle }) {
             className="league-div"
             key={summary.name}
           >
+            <TeamDropdown
+              onTeamSelect={onTeamSelect1}
+              managers={managers}
+              chosenSeason={chosenSeason}
+              chosenTeam1={chosenTeam1}
+              chosenTeam2={chosenTeam2}
+              isActive={team1Active}
+              isTeam2={false}
+              isRecordTeamDropdown={false}
+              logoStyle={logoStyle}
+            />
             {summary.logo ? (
               <Card.Img
                 variant="top"
@@ -125,6 +149,17 @@ export default function ManagerMatchup({ summary, logoStyle }) {
             className="league-div"
             key={summary.opponentName}
           >
+            <TeamDropdown
+              onTeamSelect={onTeamSelect2}
+              managers={managers}
+              chosenSeason={chosenSeason}
+              chosenTeam1={chosenTeam1}
+              chosenTeam2={chosenTeam2}
+              isActive={team2Active}
+              isTeam2={true}
+              isRecordTeamDropdown={false}
+              logoStyle={logoStyle}
+            />
             {summary.opponentLogo ? (
               <Card.Img
                 variant="top"

@@ -15,6 +15,11 @@ export default function ManagerComparison({
   matchupsLoading,
   leagueType,
   accessToken,
+  onTeamSelect1,
+  onTeamSelect2,
+  managers,
+  isTeam1Active,
+  isTeam2Active,
 }) {
   return chosenTeam1.managerId != "---" ? (
     <div className="manager-comparison-div">
@@ -24,7 +29,18 @@ export default function ManagerComparison({
         </Spinner>
       ) : (
         <div className="manager-specifics-div">
-          <ManagerMatchup summary={filteredSummary} logoStyle={logoStyle} />
+          <ManagerMatchup
+            summary={filteredSummary}
+            logoStyle={logoStyle}
+            onTeamSelect1={onTeamSelect1}
+            onTeamSelect2={onTeamSelect2}
+            managers={managers}
+            team1Active={isTeam1Active}
+            team2Active={isTeam2Active}
+            chosenSeason={chosenSeason}
+            chosenTeam1={chosenTeam1}
+            chosenTeam2={chosenTeam2}
+          />
           <SeasonGrid
             seasons={filteredMatchups}
             logoStyle={logoStyle}
