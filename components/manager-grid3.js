@@ -38,20 +38,20 @@ export default function ManagerGrid({
               </>
             ) : null}
             <th className="record-column">Regular Season Record</th>
-            <th>Win Percentage</th>
+            <th>Win %</th>
             <th>Points For</th>
             <th>Points Against</th>
-            <th>Points Differential</th>
+            <th>Points Diff.</th>
             <th className="record-column">Playoff Record</th>
-            <th>Playoff Win Percentage</th>
+            <th>Playoff Win %</th>
             <th>Playoff Points For</th>
             <th>Playoff Points Against</th>
-            <th>Playoff Points Differential</th>
+            <th>Playoff Points Diff.</th>
             <th className="record-column">Consolation Record</th>
-            <th>Consolation Win Percentage</th>
+            <th>Consolation Win %</th>
             <th>Consolation Points For</th>
             <th>Consolation Points Against</th>
-            <th>Consolation Points Differential</th>
+            <th>Consolation Points Diff.</th>
 
             {chosenSeason.year === "Overall" ? (
               <>

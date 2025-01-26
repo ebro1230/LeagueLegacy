@@ -643,3 +643,12 @@ thead tr th{
   table-layout: fixed;
   width: auto;
 }
+
+.positive-differential {
+  color: #11D000 !important;
+}
+
+.negative-differential {
+  color: #FF7474 !important;
+
+}
