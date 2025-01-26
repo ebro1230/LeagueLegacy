@@ -23,7 +23,7 @@ export default function ManagerMatchup({ summary, logoStyle }) {
         <Col className="d-flex flex-column justify-content-center align-items-center">
           <Card
             border="light"
-            style={{ backgroundColor: "transparent" }}
+            style={{ backgroundColor: "transparent", width: "100%" }}
             className="league-div"
             key={summary.name}
           >
@@ -116,9 +116,12 @@ export default function ManagerMatchup({ summary, logoStyle }) {
           </Card>
         </Col>
         <Col className="d-flex flex-column justify-content-center align-items-center">
+          <h1 className={koulen.className}>VS</h1>
+        </Col>
+        <Col className="d-flex flex-column justify-content-center align-items-center">
           <Card
             border="light"
-            style={{ backgroundColor: "transparent" }}
+            style={{ backgroundColor: "transparent", width: "100%" }}
             className="league-div"
             key={summary.opponentName}
           >

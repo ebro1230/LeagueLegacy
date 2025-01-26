@@ -1103,12 +1103,12 @@ export default function LeagueOverview({ leagueType, leagueKeysString }) {
                       isTeam2={false}
                       isRecordTeamDropdown={false}
                     />
-                    <SeasonDropdown
+                    {/* <SeasonDropdown
                       onSeasonSelect={handleSeasonSelect}
                       leagueSeasons={leagueSeasons}
                       chosenSeason={chosenSeason}
                       seasonDropdownActive={seasonDropdownActive}
-                    />
+                    /> */}
                     <TeamDropdown
                       onTeamSelect={handleTeamSelect2}
                       managers={chosenSeasonTeams}
