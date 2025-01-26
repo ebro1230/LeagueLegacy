@@ -60,6 +60,7 @@ export default function TeamDropdown({
                 manager.managerId === chosenTeam1.managerId ||
                 (isTeam2 && manager.managerId === chosenTeam2.managerId)
               }
+              style={{ width: "fit-content" }}
             >
               <Row>
                 <Col xs={2}>
@@ -67,7 +68,12 @@ export default function TeamDropdown({
                     src={manager.logo}
                     width={58}
                     height={58}
-                    style={logoStyle}
+                    style={{
+                      borderRadius: "50%",
+                      border: "1px solid #fff",
+                      margin: "0rem",
+                      objectFit: "contain",
+                    }}
                     alt={`${manager.name}'s Logo`}
                   />
                 </Col>
