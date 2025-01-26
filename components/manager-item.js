@@ -1,6 +1,12 @@
 "use client";
 import Image from "next/image";
 import Table from "react-bootstrap/Table";
+import { Inter } from "@next/font/google";
+const inter = Inter({
+  subsets: ["latin"], // Specify subsets like 'latin', 'cyrillic', etc.
+  weight: ["400"], // Include specific font weights
+});
+
 export default function ManagerItem({
   manager,
   currentYear,
@@ -9,8 +15,8 @@ export default function ManagerItem({
 }) {
   return (
     <>
-      <td className="small-table-data">{manager.rank.rank}</td>
-      <td className="small-table-data">
+      <td className={`${inter.className} small-table-data`}></td>
+      <td className={`${inter.className} small-table-data`}>
         {manager.logo ? (
           <Image
             src={manager.logo}
@@ -23,12 +29,16 @@ export default function ManagerItem({
           <h1>No valid team logo</h1>
         )}
       </td>
-      <td className="small-table-data">{manager.managerName}</td>
-      <td className="small-table-data">{manager.name}</td>
+      <td className={`${inter.className} small-table-data`}>
+        {manager.managerName}
+      </td>
+      <td className={`${inter.className} small-table-data`}>{manager.name}</td>
       {chosenSeason.year === "Overall" ? (
         <>
-          <td className="small-table-data">{manager.championships.length}</td>
-          <td className="small-table-data">
+          <td className={`${inter.className} small-table-data`}>
+            {manager.championships.length}
+          </td>
+          <td className={`${inter.className} small-table-data`}>
             {manager.championships.length > 0 ? (
               manager.championships.map((championship) => {
                 return (
@@ -39,26 +49,30 @@ export default function ManagerItem({
               <p>N/A</p>
             )}
           </td>
-          <td className="small-table-data">{manager.bestFinish[0].rank}</td>
-          <td className="small-table-data">
+          <td className={`${inter.className} small-table-data`}>
+            {manager.bestFinish[0].rank}
+          </td>
+          <td className={`${inter.className} small-table-data`}>
             {manager.bestFinish.map((finish) => {
               return <p key={finish.seasonYear}>{finish.seasonYear}</p>;
             })}
           </td>
-          <td className="small-table-data">{manager.worstFinish[0].rank}</td>
-          <td className="small-table-data">
+          <td className={`${inter.className} small-table-data`}>
+            {manager.worstFinish[0].rank}
+          </td>
+          <td className={`${inter.className} small-table-data`}>
             {manager.worstFinish.map((finish) => {
               return <p key={finish.seasonYear}>{finish.seasonYear}</p>;
             })}
           </td>
-          <td className="small-table-data">
+          <td className={`${inter.className} small-table-data`}>
             {
               manager.overallCumulativeRecord[
                 manager.overallCumulativeRecord.length - 1
               ].playoffSeasonRecord.playoffAppearances.length
             }
           </td>
-          <td className="small-table-data">
+          <td className={`${inter.className} small-table-data`}>
             {manager.overallCumulativeRecord[
               manager.overallCumulativeRecord.length - 1
             ].playoffSeasonRecord.playoffAppearances.length > 0 ? (
@@ -71,14 +85,14 @@ export default function ManagerItem({
               <p>N/A</p>
             )}
           </td>
-          <td className="small-table-data">
+          <td className={`${inter.className} small-table-data`}>
             {
               manager.overallCumulativeRecord[
                 manager.overallCumulativeRecord.length - 1
               ].consolationSeasonRecord.consolationAppearances.length
             }
           </td>
-          <td className="small-table-data">
+          <td className={`${inter.className} small-table-data`}>
             {manager.overallCumulativeRecord[
               manager.overallCumulativeRecord.length - 1
             ].consolationSeasonRecord.consolationAppearances.length > 0 ? (
@@ -97,7 +111,7 @@ export default function ManagerItem({
       ) : null}
       {chosenSeason.year === "Overall" ? (
         <>
-          <td className="small-table-data">
+          <td className={`${inter.className} small-table-data`}>
             {
               manager.overallCumulativeRecord[
                 manager.overallCumulativeRecord.length - 1
@@ -116,7 +130,7 @@ export default function ManagerItem({
               ].regularSeasonRecord.ties
             }
           </td>
-          <td className="small-table-data">
+          <td className={`${inter.className} small-table-data`}>
             {manager.overallCumulativeRecord[
               manager.overallCumulativeRecord.length - 1
             ].regularSeasonRecord.wins +
@@ -145,17 +159,17 @@ export default function ManagerItem({
               : 0.0}
             %
           </td>
-          <td className="small-table-data">
+          <td className={`${inter.className} small-table-data`}>
             {manager.overallCumulativeRecord[
               manager.overallCumulativeRecord.length - 1
             ].regularSeasonRecord.pointsFor.toFixed(2)}
           </td>
-          <td className="small-table-data">
+          <td className={`${inter.className} small-table-data`}>
             {manager.overallCumulativeRecord[
               manager.overallCumulativeRecord.length - 1
             ].regularSeasonRecord.pointsAgainst.toFixed(2)}
           </td>
-          <td className="small-table-data">
+          <td className={`${inter.className} small-table-data`}>
             {(
               manager.overallCumulativeRecord[
                 manager.overallCumulativeRecord.length - 1
@@ -165,7 +179,7 @@ export default function ManagerItem({
               ].regularSeasonRecord.pointsAgainst
             ).toFixed(2)}
           </td>
-          <td className="small-table-data">
+          <td className={`${inter.className} small-table-data`}>
             {
               manager.overallCumulativeRecord[
                 manager.overallCumulativeRecord.length - 1
@@ -184,7 +198,7 @@ export default function ManagerItem({
               ].playoffSeasonRecord.ties
             }
           </td>
-          <td className="small-table-data">
+          <td className={`${inter.className} small-table-data`}>
             {manager.overallCumulativeRecord[
               manager.overallCumulativeRecord.length - 1
             ].playoffSeasonRecord.wins +
@@ -213,7 +227,7 @@ export default function ManagerItem({
               : 0.0}
             %
           </td>
-          <td className="small-table-data">
+          <td className={`${inter.className} small-table-data`}>
             {manager.overallCumulativeRecord[
               manager.overallCumulativeRecord.length - 1
             ].playoffSeasonRecord.pointsFor
@@ -222,7 +236,7 @@ export default function ManagerItem({
                 ].playoffSeasonRecord.pointsFor.toFixed(2)
               : 0}
           </td>
-          <td className="small-table-data">
+          <td className={`${inter.className} small-table-data`}>
             {manager.overallCumulativeRecord[
               manager.overallCumulativeRecord.length - 1
             ].playoffSeasonRecord.pointsAgainst
@@ -231,7 +245,7 @@ export default function ManagerItem({
                 ].playoffSeasonRecord.pointsAgainst.toFixed(2)
               : 0}
           </td>
-          <td className="small-table-data">
+          <td className={`${inter.className} small-table-data`}>
             {manager.overallCumulativeRecord[
               manager.overallCumulativeRecord.length - 1
             ].playoffSeasonRecord.pointsFor -
@@ -248,7 +262,7 @@ export default function ManagerItem({
                 ).toFixed(2)
               : 0}
           </td>
-          <td className="small-table-data">
+          <td className={`${inter.className} small-table-data`}>
             {
               manager.overallCumulativeRecord[
                 manager.overallCumulativeRecord.length - 1
@@ -267,7 +281,7 @@ export default function ManagerItem({
               ].consolationSeasonRecord.ties
             }
           </td>
-          <td className="small-table-data">
+          <td className={`${inter.className} small-table-data`}>
             {manager.overallCumulativeRecord[
               manager.overallCumulativeRecord.length - 1
             ].consolationSeasonRecord.wins +
@@ -296,7 +310,7 @@ export default function ManagerItem({
               : 0.0}
             %
           </td>
-          <td className="small-table-data">
+          <td className={`${inter.className} small-table-data`}>
             {manager.overallCumulativeRecord[
               manager.overallCumulativeRecord.length - 1
             ].consolationSeasonRecord.pointsFor
@@ -305,7 +319,7 @@ export default function ManagerItem({
                 ].consolationSeasonRecord.pointsFor.toFixed(2)
               : 0}
           </td>
-          <td className="small-table-data">
+          <td className={`${inter.className} small-table-data`}>
             {manager.overallCumulativeRecord[
               manager.overallCumulativeRecord.length - 1
             ].consolationSeasonRecord.pointsAgainst
@@ -314,7 +328,7 @@ export default function ManagerItem({
                 ].consolationSeasonRecord.pointsAgainst.toFixed(2)
               : 0}
           </td>
-          <td className="small-table-data">
+          <td className={`${inter.className} small-table-data`}>
             {manager.overallCumulativeRecord[
               manager.overallCumulativeRecord.length - 1
             ].consolationSeasonRecord.pointsFor -
@@ -334,12 +348,12 @@ export default function ManagerItem({
         </>
       ) : (
         <>
-          <td className="small-table-data">
+          <td className={`${inter.className} small-table-data`}>
             {manager.cumulativeRecord.regularSeasonRecord.wins} -{" "}
             {manager.cumulativeRecord.regularSeasonRecord.losses} -{" "}
             {manager.cumulativeRecord.regularSeasonRecord.ties}
           </td>
-          <td className="small-table-data">
+          <td className={`${inter.className} small-table-data`}>
             {manager.cumulativeRecord.regularSeasonRecord.wins +
               manager.cumulativeRecord.regularSeasonRecord.losses +
               manager.cumulativeRecord.regularSeasonRecord.ties >
@@ -354,21 +368,21 @@ export default function ManagerItem({
               : 0.0}
             %
           </td>
-          <td className="small-table-data">
+          <td className={`${inter.className} small-table-data`}>
             {manager.cumulativeRecord.regularSeasonRecord.pointsFor
               ? manager.cumulativeRecord.regularSeasonRecord.pointsFor.toFixed(
                   2
                 )
               : 0}
           </td>
-          <td className="small-table-data">
+          <td className={`${inter.className} small-table-data`}>
             {manager.cumulativeRecord.regularSeasonRecord.pointsAgainst
               ? manager.cumulativeRecord.regularSeasonRecord.pointsAgainst.toFixed(
                   2
                 )
               : 0}
           </td>
-          <td className="small-table-data">
+          <td className={`${inter.className} small-table-data`}>
             {manager.cumulativeRecord.regularSeasonRecord.pointsFor -
             manager.cumulativeRecord.regularSeasonRecord.pointsAgainst
               ? (
@@ -377,12 +391,12 @@ export default function ManagerItem({
                 ).toFixed(2)
               : 0}
           </td>
-          <td className="small-table-data">
+          <td className={`${inter.className} small-table-data`}>
             {manager.cumulativeRecord.playoffSeasonRecord.wins} -{" "}
             {manager.cumulativeRecord.playoffSeasonRecord.losses} -{" "}
             {manager.cumulativeRecord.playoffSeasonRecord.ties}
           </td>
-          <td className="small-table-data">
+          <td className={`${inter.className} small-table-data`}>
             {manager.cumulativeRecord.playoffSeasonRecord.wins +
               manager.cumulativeRecord.playoffSeasonRecord.losses +
               manager.cumulativeRecord.playoffSeasonRecord.ties >
@@ -397,21 +411,21 @@ export default function ManagerItem({
               : 0.0}
             %
           </td>
-          <td className="small-table-data">
+          <td className={`${inter.className} small-table-data`}>
             {manager.cumulativeRecord.playoffSeasonRecord.pointsFor
               ? manager.cumulativeRecord.playoffSeasonRecord.pointsFor.toFixed(
                   2
                 )
               : 0}
           </td>
-          <td className="small-table-data">
+          <td className={`${inter.className} small-table-data`}>
             {manager.cumulativeRecord.playoffSeasonRecord.pointsAgainst
               ? manager.cumulativeRecord.playoffSeasonRecord.pointsAgainst.toFixed(
                   2
                 )
               : 0}
           </td>
-          <td className="small-table-data">
+          <td className={`${inter.className} small-table-data`}>
             {manager.cumulativeRecord.playoffSeasonRecord.pointsFor -
             manager.cumulativeRecord.playoffSeasonRecord.pointsAgainst
               ? (
@@ -420,12 +434,12 @@ export default function ManagerItem({
                 ).toFixed(2)
               : 0}
           </td>
-          <td className="small-table-data">
+          <td className={`${inter.className} small-table-data`}>
             {manager.cumulativeRecord.consolationSeasonRecord.wins} -{" "}
             {manager.cumulativeRecord.consolationSeasonRecord.losses} -{" "}
             {manager.cumulativeRecord.consolationSeasonRecord.ties}
           </td>
-          <td className="small-table-data">
+          <td className={`${inter.className} small-table-data`}>
             {manager.cumulativeRecord.consolationSeasonRecord.wins +
               manager.cumulativeRecord.consolationSeasonRecord.losses +
               manager.cumulativeRecord.consolationSeasonRecord.ties >
@@ -440,21 +454,21 @@ export default function ManagerItem({
               : 0.0}
             %
           </td>
-          <td className="small-table-data">
+          <td className={`${inter.className} small-table-data`}>
             {manager.cumulativeRecord.consolationSeasonRecord.pointsFor
               ? manager.cumulativeRecord.consolationSeasonRecord.pointsFor.toFixed(
                   2
                 )
               : 0}
           </td>
-          <td className="small-table-data">
+          <td className={`${inter.className} small-table-data`}>
             {manager.cumulativeRecord.consolationSeasonRecord.pointsAgainst
               ? manager.cumulativeRecord.consolationSeasonRecord.pointsAgainst.toFixed(
                   2
                 )
               : 0}
           </td>
-          <td className="small-table-data">
+          <td className={`${inter.className} small-table-data`}>
             {manager.cumulativeRecord.consolationSeasonRecord.pointsFor -
             manager.cumulativeRecord.consolationSeasonRecord.pointsAgainst
               ? (
@@ -466,7 +480,7 @@ export default function ManagerItem({
         </>
       )}
       {chosenSeason.year === "Overall" ? (
-        <td className="small-table-data">
+        <td className={`${inter.className} small-table-data`}>
           {manager.memberSince.seasonYear} -{" "}
           {manager.memberUntil === currentYear
             ? "Present"

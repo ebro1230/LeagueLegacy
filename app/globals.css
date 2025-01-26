@@ -607,15 +607,18 @@ td p {
 }
 
 .table-striped tbody tr:nth-child(odd) td{
-  background:none !important;
-  color: white;
+  background:#464646 !important;
+  color: white !important;
+  border-bottom: 1px solid #858585 !important;
 }
 .table-striped tbody tr:nth-child(even) td{
-  background:#464646 !important;
-  color: white;
+  background:none !important;
+  color: white !important;
+  border-bottom: 1px solid #858585 !important;
 }
 
 thead tr th{
-  color:#83A6CF;
-  background: none;
+  color:#83A6CF !important;
+  background: none !important;
+  border-bottom: 1px solid #858585 !important;
 }
