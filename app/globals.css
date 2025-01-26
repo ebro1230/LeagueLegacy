@@ -608,11 +608,14 @@ td p {
 
 .table-striped tbody tr:nth-child(odd) td{
   background:none !important;
+  color: white;
 }
 .table-striped tbody tr:nth-child(even) td{
   background:#464646 !important;
+  color: white;
 }
 
-thead {
+thead tr th{
   color:#83A6CF;
+  background: none;
 }
