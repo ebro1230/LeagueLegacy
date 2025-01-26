@@ -203,9 +203,23 @@ export default function ManagerItem({
               manager.overallCumulativeRecord[
                 manager.overallCumulativeRecord.length - 1
               ].regularSeasonRecord.pointsAgainst
-            )
-              .toFixed(2)
-              .toLocaleString("en-US", { signDisplay: "always" })}
+            ).toFixed(2) > 0
+              ? `+${(
+                  manager.overallCumulativeRecord[
+                    manager.overallCumulativeRecord.length - 1
+                  ].regularSeasonRecord.pointsFor -
+                  manager.overallCumulativeRecord[
+                    manager.overallCumulativeRecord.length - 1
+                  ].regularSeasonRecord.pointsAgainst
+                ).toFixed(2)}`
+              : (
+                  manager.overallCumulativeRecord[
+                    manager.overallCumulativeRecord.length - 1
+                  ].regularSeasonRecord.pointsFor -
+                  manager.overallCumulativeRecord[
+                    manager.overallCumulativeRecord.length - 1
+                  ].regularSeasonRecord.pointsAgainst
+                ).toFixed(2)}
           </td>
           <td className={`${inter.className} small-table-data`}>
             {
@@ -273,7 +287,29 @@ export default function ManagerItem({
                 ].playoffSeasonRecord.pointsAgainst.toFixed(2)
               : 0}
           </td>
-          <td className={`${inter.className} small-table-data`}>
+          <td
+            className={`${inter.className} small-table-data ${
+              (
+                manager.overallCumulativeRecord[
+                  manager.overallCumulativeRecord.length - 1
+                ].playoffSeasonRecord.pointsFor -
+                manager.overallCumulativeRecord[
+                  manager.overallCumulativeRecord.length - 1
+                ].playoffSeasonRecord.pointsAgainst
+              ).toFixed(2) > 0
+                ? "positive-differential"
+                : (
+                    manager.overallCumulativeRecord[
+                      manager.overallCumulativeRecord.length - 1
+                    ].playoffSeasonRecord.pointsFor -
+                    manager.overallCumulativeRecord[
+                      manager.overallCumulativeRecord.length - 1
+                    ].playoffSeasonRecord.pointsAgainst
+                  ).toFixed(2) < 0
+                ? "negative-differential"
+                : ""
+            }`}
+          >
             {manager.overallCumulativeRecord[
               manager.overallCumulativeRecord.length - 1
             ].playoffSeasonRecord.pointsFor -
@@ -287,7 +323,23 @@ export default function ManagerItem({
                   manager.overallCumulativeRecord[
                     manager.overallCumulativeRecord.length - 1
                   ].playoffSeasonRecord.pointsAgainst
-                ).toFixed(2)
+                ).toFixed(2) > 0
+                ? `+${(
+                    manager.overallCumulativeRecord[
+                      manager.overallCumulativeRecord.length - 1
+                    ].playoffSeasonRecord.pointsFor -
+                    manager.overallCumulativeRecord[
+                      manager.overallCumulativeRecord.length - 1
+                    ].playoffSeasonRecord.pointsAgainst
+                  ).toFixed(2)}`
+                : (
+                    manager.overallCumulativeRecord[
+                      manager.overallCumulativeRecord.length - 1
+                    ].playoffSeasonRecord.pointsFor -
+                    manager.overallCumulativeRecord[
+                      manager.overallCumulativeRecord.length - 1
+                    ].playoffSeasonRecord.pointsAgainst
+                  ).toFixed(2)
               : 0}
           </td>
           <td className={`${inter.className} small-table-data`}>
@@ -356,7 +408,29 @@ export default function ManagerItem({
                 ].consolationSeasonRecord.pointsAgainst.toFixed(2)
               : 0}
           </td>
-          <td className={`${inter.className} small-table-data`}>
+          <td
+            className={`${inter.className} small-table-data ${
+              (
+                manager.overallCumulativeRecord[
+                  manager.overallCumulativeRecord.length - 1
+                ].consolationSeasonRecord.pointsFor -
+                manager.overallCumulativeRecord[
+                  manager.overallCumulativeRecord.length - 1
+                ].consolationSeasonRecord.pointsAgainst
+              ).toFixed(2) > 0
+                ? "positive-differential"
+                : (
+                    manager.overallCumulativeRecord[
+                      manager.overallCumulativeRecord.length - 1
+                    ].consolationSeasonRecord.pointsFor -
+                    manager.overallCumulativeRecord[
+                      manager.overallCumulativeRecord.length - 1
+                    ].consolationSeasonRecord.pointsAgainst
+                  ).toFixed(2) < 0
+                ? "negative-differential"
+                : ""
+            }`}
+          >
             {manager.overallCumulativeRecord[
               manager.overallCumulativeRecord.length - 1
             ].consolationSeasonRecord.pointsFor -
@@ -370,7 +444,23 @@ export default function ManagerItem({
                   manager.overallCumulativeRecord[
                     manager.overallCumulativeRecord.length - 1
                   ].consolationSeasonRecord.pointsAgainst
-                ).toFixed(2)
+                ).toFixed(2) > 0
+                ? `+${(
+                    manager.overallCumulativeRecord[
+                      manager.overallCumulativeRecord.length - 1
+                    ].consolationSeasonRecord.pointsFor -
+                    manager.overallCumulativeRecord[
+                      manager.overallCumulativeRecord.length - 1
+                    ].consolationSeasonRecord.pointsAgainst
+                  ).toFixed(2)}`
+                : (
+                    manager.overallCumulativeRecord[
+                      manager.overallCumulativeRecord.length - 1
+                    ].consolationSeasonRecord.pointsFor -
+                    manager.overallCumulativeRecord[
+                      manager.overallCumulativeRecord.length - 1
+                    ].consolationSeasonRecord.pointsAgainst
+                  ).toFixed(2)
               : 0}
           </td>
         </>

@@ -612,7 +612,7 @@ td p {
 
 .table-striped tbody tr:nth-child(odd) td{
   background:#464646 !important;
-  color: white !important;
+  color: white;
   border-bottom: 1px solid #858585 !important;
   border-top: none !important;
   border-right: none !important;
@@ -621,7 +621,7 @@ td p {
 }
 .table-striped tbody tr:nth-child(even) td{
   background:none !important;
-  color: white !important;
+  color: white;
   border-bottom: 1px solid #858585 !important;
   border-top: none !important;
   border-right: none !important;
