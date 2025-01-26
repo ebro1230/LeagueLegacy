@@ -1009,6 +1009,7 @@ export default function LeagueOverview({ leagueType, leagueKeysString }) {
   };
 
   console.log(chosenTeam1);
+  console.log(chosenSeason);
 
   return (
     <>
