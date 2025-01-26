@@ -23,62 +23,62 @@ export default function ManagerComparison({
 }) {
   return (
     <>
-      chosenTeam1.managerId != "---" ? (
-      <div className="manager-specifics-div">
-        <ManagerMatchup
-          summary={{
-            name: chosenSeason.name,
-            logo: chosenSeason.logo,
-            wins: 0,
-            losses: 0,
-            ties: 0,
-            playoffWins: 0,
-            playoffLosses: 0,
-            consolationWins: 0,
-            consolationLosses: 0,
-            projectedPointsFor: 0,
-            projectedPointsAgainst: 0,
-            pointsFor: 0,
-            pointsAgainst: 0,
-            opponentName: chosenSeason.name,
-            opponentLogo: chosenSeason.logo,
-          }}
-          logoStyle={logoStyle}
-          onTeamSelect1={onTeamSelect1}
-          onTeamSelect2={onTeamSelect2}
-          managers={managers}
-          team1Active={isTeam1Active}
-          team2Active={isTeam2Active}
-          chosenSeason={chosenSeason}
-          chosenTeam1={chosenTeam1}
-          chosenTeam2={chosenTeam2}
-        />
-      </div>
+      {chosenTeam1.managerId != "---" ? (
+        <div className="manager-specifics-div">
+          <ManagerMatchup
+            summary={{
+              name: chosenSeason.name,
+              logo: chosenSeason.logo,
+              wins: 0,
+              losses: 0,
+              ties: 0,
+              playoffWins: 0,
+              playoffLosses: 0,
+              consolationWins: 0,
+              consolationLosses: 0,
+              projectedPointsFor: 0,
+              projectedPointsAgainst: 0,
+              pointsFor: 0,
+              pointsAgainst: 0,
+              opponentName: chosenSeason.name,
+              opponentLogo: chosenSeason.logo,
+            }}
+            logoStyle={logoStyle}
+            onTeamSelect1={onTeamSelect1}
+            onTeamSelect2={onTeamSelect2}
+            managers={managers}
+            team1Active={isTeam1Active}
+            team2Active={isTeam2Active}
+            chosenSeason={chosenSeason}
+            chosenTeam1={chosenTeam1}
+            chosenTeam2={chosenTeam2}
+          />
+        </div>
       ) : (
-      <div className="manager-specifics-div">
-        <ManagerMatchup
-          summary={filteredSummary}
-          logoStyle={logoStyle}
-          onTeamSelect1={onTeamSelect1}
-          onTeamSelect2={onTeamSelect2}
-          managers={managers}
-          team1Active={isTeam1Active}
-          team2Active={isTeam2Active}
-          chosenSeason={chosenSeason}
-          chosenTeam1={chosenTeam1}
-          chosenTeam2={chosenTeam2}
-        />
-        <SeasonGrid
-          seasons={filteredMatchups}
-          logoStyle={logoStyle}
-          onCompareManager={onCompareManager}
-          chosenSeason={chosenSeason}
-          chosenTeam2={chosenTeam2}
-          leagueType={leagueType}
-          accessToken={accessToken}
-        />
-      </div>
-      )
+        <div className="manager-specifics-div">
+          <ManagerMatchup
+            summary={filteredSummary}
+            logoStyle={logoStyle}
+            onTeamSelect1={onTeamSelect1}
+            onTeamSelect2={onTeamSelect2}
+            managers={managers}
+            team1Active={isTeam1Active}
+            team2Active={isTeam2Active}
+            chosenSeason={chosenSeason}
+            chosenTeam1={chosenTeam1}
+            chosenTeam2={chosenTeam2}
+          />
+          <SeasonGrid
+            seasons={filteredMatchups}
+            logoStyle={logoStyle}
+            onCompareManager={onCompareManager}
+            chosenSeason={chosenSeason}
+            chosenTeam2={chosenTeam2}
+            leagueType={leagueType}
+            accessToken={accessToken}
+          />
+        </div>
+      )}
     </>
   );
 }
