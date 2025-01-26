@@ -60,8 +60,9 @@ export default function TeamDropdown({
                 manager.managerId === chosenTeam1.managerId ||
                 (isTeam2 && manager.managerId === chosenTeam2.managerId)
               }
+              style={{ display: "flex", width: "100%" }}
             >
-              <Row style={{ width: "fit-content", flexWrap: "nowrap" }}>
+              <Row style={{ width: "100%", flexWrap: "nowrap" }}>
                 <Col xs={4}>
                   <Image
                     src={manager.logo}
