@@ -1007,6 +1007,8 @@ export default function LeagueOverview({ leagueType, leagueKeysString }) {
     });
   };
 
+  console.log(chosenSeason);
+
   return (
     <>
       <div className="normal-background">
