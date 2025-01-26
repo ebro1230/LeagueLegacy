@@ -475,6 +475,12 @@ td p {
   h4{
     margin: 1rem;
   }
+  h5{
+    font-size: 16px;
+  }
+  h6{
+    font-size: 14px;
+  }
 
   .homepage-background{
     background-size: cover;

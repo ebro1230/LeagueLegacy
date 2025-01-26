@@ -2,6 +2,16 @@
 import { Col, Row } from "react-bootstrap";
 import Dropdown from "react-bootstrap/Dropdown";
 import Image from "next/image";
+import { Inter } from "@next/font/google";
+import { Koulen } from "@next/font/google";
+const inter = Inter({
+  subsets: ["latin"], // Specify subsets like 'latin', 'cyrillic', etc.
+  weight: ["400"], // Include specific font weights
+});
+const koulen = Koulen({
+  subsets: ["latin"], // Specify subsets like 'latin', 'cyrillic', etc.
+  weight: ["400"], // Include specific font weights
+});
 
 export default function TeamDropdown({
   onTeamSelect,
@@ -63,10 +73,10 @@ export default function TeamDropdown({
                 </Col>
                 <Col>
                   <Row>
-                    <h1>{manager.name}</h1>
+                    <h5 className={koulen.className}>{manager.name}</h5>
                   </Row>
                   <Row>
-                    <h3>{manager.managerName}</h3>
+                    <h6 className={inter.className}>{manager.managerName}</h6>
                   </Row>
                 </Col>
               </Row>
