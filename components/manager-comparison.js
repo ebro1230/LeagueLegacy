@@ -23,7 +23,7 @@ export default function ManagerComparison({
 }) {
   return (
     <>
-      {chosenTeam1.managerId === "---" ? (
+      {chosenTeam1.managerName === "---" ? (
         <div className="manager-specifics-div">
           <ManagerMatchup
             summary={{

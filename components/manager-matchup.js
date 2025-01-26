@@ -56,7 +56,7 @@ export default function ManagerMatchup({
                 variant="top"
                 src={summary.logo}
                 className={`rounded-circle ${
-                  chosenTeam1.managerId === "---" ? "blurredImage" : ""
+                  chosenTeam1.managerName === "---" ? "blurredImage" : ""
                 }`}
                 style={{
                   width: "150px",
@@ -71,7 +71,7 @@ export default function ManagerMatchup({
                 variant="top"
                 src="N/A"
                 className={`rounded-circle ${
-                  chosenTeam1.managerId === "---" ? "blurredImage" : ""
+                  chosenTeam1.managerName === "---" ? "blurredImage" : ""
                 }`}
                 style={{
                   width: "150px",
@@ -169,7 +169,7 @@ export default function ManagerMatchup({
                 variant="top"
                 src={summary.opponentLogo}
                 className={`rounded-circle ${
-                  chosenTeam1.managerId === "---" ? "blurredImage" : ""
+                  chosenTeam1.managerName === "---" ? "blurredImage" : ""
                 }`}
                 style={{
                   width: "150px",
@@ -184,7 +184,7 @@ export default function ManagerMatchup({
                 variant="top"
                 src="N/A"
                 className={`rounded-circle ${
-                  chosenTeam1.managerId === "---" ? "blurredImage" : ""
+                  chosenTeam1.managerName === "---" ? "blurredImage" : ""
                 }`}
                 style={{
                   width: "150px",
@@ -284,7 +284,7 @@ export default function ManagerMatchup({
                 variant="top"
                 src={summary.logo}
                 className={`rounded-circle ${
-                  chosenTeam1.managerId === "---" ? "blurredImage" : ""
+                  chosenTeam1.managerName === "---" ? "blurredImage" : ""
                 }`}
                 style={{
                   width: "150px",
@@ -299,7 +299,7 @@ export default function ManagerMatchup({
                 variant="top"
                 src="N/A"
                 className={`rounded-circle ${
-                  chosenTeam1.managerId === "---" ? "blurredImage" : ""
+                  chosenTeam1.managerName === "---" ? "blurredImage" : ""
                 }`}
                 style={{
                   width: "150px",
@@ -397,7 +397,7 @@ export default function ManagerMatchup({
                 variant="top"
                 src={summary.opponentLogo}
                 className={`rounded-circle ${
-                  chosenTeam1.managerId === "---" ? "blurredImage" : ""
+                  chosenTeam1.managerName === "---" ? "blurredImage" : ""
                 }`}
                 style={{
                   width: "150px",
@@ -412,7 +412,7 @@ export default function ManagerMatchup({
                 variant="top"
                 src="N/A"
                 className={`rounded-circle ${
-                  chosenTeam1.managerId === "---" ? "blurredImage" : ""
+                  chosenTeam1.managerName === "---" ? "blurredImage" : ""
                 }`}
                 style={{
                   width: "150px",

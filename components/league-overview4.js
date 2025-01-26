@@ -181,7 +181,7 @@ export default function LeagueOverview({ leagueType, leagueKeysString }) {
             year: fetchResponse[fetchResponse.length - 1].season,
             weeks: fetchResponse[fetchResponse.length - 1].leagueWeeks,
             leagueName: fetchResponse[fetchResponse.length - 1].name,
-            leagueLogo: fetchResponse[fetchResponse.length - 1].leagueLogo,
+            leagueLogo: fetchResponse[fetchResponse.length - 1].mostRecentLogo,
           });
           // fetchResponse[fetchResponse.length - 1].teams = fetchResponse[
           //   fetchResponse.length - 1
@@ -357,7 +357,6 @@ export default function LeagueOverview({ leagueType, leagueKeysString }) {
           //   overallCumulativeRecord.week = overallCumulativeWeeks;
           //   return { ...manager, overallCumulativeRecord };
           // });
-          console.log(fetchResponse[fetchResponse.length - 1]);
           setChosenSeasonTeams(fetchResponse[fetchResponse.length - 1].teams);
           setRecords(fetchResponse[fetchResponse.length - 1].overallRecords);
           setChartData({
@@ -1009,7 +1008,7 @@ export default function LeagueOverview({ leagueType, leagueKeysString }) {
     });
   };
 
-  console.log(chosenSeason);
+  console.log(chosenTeam1);
 
   return (
     <>
