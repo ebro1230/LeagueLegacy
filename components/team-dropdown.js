@@ -34,14 +34,14 @@ export default function TeamDropdown({
           {!isTeam2 ? chosenTeam1.managerName : chosenTeam2.managerName}
         </Dropdown.Toggle>
 
-        <Dropdown.Menu>
+        <Dropdown.Menu style={{ width: "100%" }}>
           {isTeam2 ? (
             <Dropdown.Item
               eventKey={JSON.stringify({ managerName: "Overall" })}
               key={"Overall"}
               disabled={chosenTeam2.managerName === "Overall"}
             >
-              <Row style={{ width: "100%", flexWrap: "nowrap" }}>
+              <Row style={{ width: "100%" }}>
                 <Col xs={4}>
                   <Image
                     src={chosenSeason.leagueLogo}
@@ -83,7 +83,7 @@ export default function TeamDropdown({
               }
               style={{ display: "flex", width: "100%" }}
             >
-              <Row style={{ width: "100%", flexWrap: "nowrap" }}>
+              <Row style={{ width: "100%" }}>
                 <Col xs={4}>
                   <Image
                     src={manager.logo}
