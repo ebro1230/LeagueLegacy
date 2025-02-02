@@ -62,6 +62,7 @@ export default function LeagueOverview({ leagueType, leagueKeysString }) {
   const [chosenSeasonKey, setChosenSeasonKey] = useState([]);
   const [chosenSeasonTeams, setChosenSeasonTeams] = useState([]);
   const [isMobile, setIsMobile] = useState(false);
+  const [isOpen, setIsOpen] = useState(false);
 
   const [chosenTrend, setChosenTrend] = useState({
     name: "Regular Season Wins",
@@ -1011,6 +1012,10 @@ export default function LeagueOverview({ leagueType, leagueKeysString }) {
     });
   };
 
+  const handleIsOpen = (e) => {
+    setIsOpen(!isOpen);
+  };
+
   return (
     <>
       <div className="normal-background">
@@ -1143,6 +1148,8 @@ export default function LeagueOverview({ leagueType, leagueKeysString }) {
                       managers={chosenSeasonTeams}
                       isTeam1Active={team1Active}
                       isTeam2Active={team2Active}
+                      onIsOpen={handleIsOpen}
+                      isOpen={isOpen}
                     />
                   </div>
                 </Tab>

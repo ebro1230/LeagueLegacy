@@ -23,6 +23,8 @@ export default function SeasonItem({
   chosenTeam2,
   leagueType,
   accessToken,
+  isOpen,
+  onIsOpen,
 }) {
   season.matchups.forEach((week) => {
     console.log(week);
@@ -42,53 +44,55 @@ export default function SeasonItem({
                   <Col md={12} lg={2} className="d-flex align-items-center">
                     <h5 className={koulen.className}>{`Week ${week.week}`}</h5>
                   </Col>
-                  <Col sm={12} md={6} lg={5}>
-                    <div className="team-column-div">
-                      <p className={inter.className}>
-                        <span
-                          className={`${
-                            week.pointsFor > week.pointsAgainst
-                              ? "positive-differential"
-                              : week.pointsFor < week.pointsAgainst
-                              ? "negative-differential"
-                              : ""
-                          }`}
-                        >
-                          {week.pointsFor > week.pointsAgainst
-                            ? "Winner"
-                            : week.pointsFor < week.pointsAgainst
-                            ? "Loser"
-                            : "Tie"}
-                        </span>{" "}
-                        {week.name} - {week.pointsFor}
-                      </p>
-                    </div>
-                  </Col>
+                  {!isOpen ? (
+                    <>
+                      <Col sm={12} md={6} lg={5}>
+                        <div className="team-column-div">
+                          <p className={inter.className}>
+                            <span
+                              className={`${
+                                week.pointsFor > week.pointsAgainst
+                                  ? "positive-differential"
+                                  : week.pointsFor < week.pointsAgainst
+                                  ? "negative-differential"
+                                  : ""
+                              }`}
+                            >
+                              {week.pointsFor > week.pointsAgainst
+                                ? "Winner"
+                                : week.pointsFor < week.pointsAgainst
+                                ? "Loser"
+                                : "Tie"}
+                            </span>{" "}
+                            {week.name} - {week.pointsFor}
+                          </p>
+                        </div>
+                      </Col>
 
-                  <Col sm={12} md={6} lg={5}>
-                    <div className="team-column-div">
-                      <p className={inter.className}>
-                        {" "}
-                        <span
-                          className={`${
-                            week.pointsFor < week.pointsAgainst
-                              ? "positive-differential"
-                              : week.pointsFor > week.pointsAgainst
-                              ? "negative-differential"
-                              : ""
-                          }`}
-                        >
-                          {week.pointsAgainst > week.pointsFor
-                            ? "Winner"
-                            : week.pointsFor > week.pointsAgainst
-                            ? "Loser"
-                            : "Tie"}
-                        </span>{" "}
-                        {week.opponentName} - {week.pointsAgainst}
-                      </p>
-                    </div>
+                      <Col sm={12} md={6} lg={5}>
+                        <div className="team-column-div">
+                          <p className={inter.className}>
+                            {" "}
+                            <span
+                              className={`${
+                                week.pointsFor < week.pointsAgainst
+                                  ? "positive-differential"
+                                  : week.pointsFor > week.pointsAgainst
+                                  ? "negative-differential"
+                                  : ""
+                              }`}
+                            >
+                              {week.pointsAgainst > week.pointsFor
+                                ? "Winner"
+                                : week.pointsFor > week.pointsAgainst
+                                ? "Loser"
+                                : "Tie"}
+                            </span>{" "}
+                            {week.opponentName} - {week.pointsAgainst}
+                          </p>
+                        </div>
 
-                    {/* {chosenTeam2.managerId != week.opponentManagerId ? (
+                        {/* {chosenTeam2.managerId != week.opponentManagerId ? (
                       <div className="team-column-div">
                         <Button
                           id={week.opponentManagerId}
@@ -99,7 +103,9 @@ export default function SeasonItem({
                         </Button>
                       </div>
                     ) : null} */}
-                  </Col>
+                      </Col>
+                    </>
+                  ) : null}
                 </Row>
               </Container>
             </Accordion.Header>
@@ -109,6 +115,7 @@ export default function SeasonItem({
               logoStyle={logoStyle}
               leagueType={leagueType}
               accessToken={accessToken}
+              onIsOpen={onIsOpen}
             />
           </Accordion.Item>
         );

@@ -20,6 +20,8 @@ export default function ManagerComparison({
   managers,
   isTeam1Active,
   isTeam2Active,
+  onIsOpen,
+  isOpen,
 }) {
   return (
     <>
@@ -76,6 +78,8 @@ export default function ManagerComparison({
             chosenTeam2={chosenTeam2}
             leagueType={leagueType}
             accessToken={accessToken}
+            onIsOpen={onIsOpen}
+            isOpen={isOpen}
           />
         </div>
       )}

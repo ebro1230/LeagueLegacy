@@ -20,6 +20,8 @@ export default function SeasonGrid({
   chosenTeam2,
   leagueType,
   accessToken,
+  onIsOpen,
+  isOpen,
 }) {
   return seasons.length
     ? chosenSeason.year != "Overall"
@@ -34,6 +36,8 @@ export default function SeasonGrid({
               chosenTeam2={chosenTeam2}
               leagueType={leagueType}
               accessToken={accessToken}
+              onIsOpen={onIsOpen}
+              isOpen={isOpen}
             />
           );
         })
@@ -53,6 +57,8 @@ export default function SeasonGrid({
                     chosenTeam2={chosenTeam2}
                     leagueType={leagueType}
                     accessToken={accessToken}
+                    onIsOpen={onIsOpen}
+                    isOpen={isOpen}
                   />
                 </Accordion.Body>
               </Accordion.Item>

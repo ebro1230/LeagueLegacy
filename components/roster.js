@@ -25,6 +25,7 @@ export default function Roster({
   logoStyle,
   leagueType,
   accessToken,
+  onIsOpen,
 }) {
   const [loading, setLoading] = useState(true);
   const [rosters, setRosters] = useState([]);
@@ -136,7 +137,11 @@ export default function Roster({
   };
 
   return (
-    <Accordion.Body onEntering={() => getRoster(week)}>
+    <Accordion.Body
+      onEntering={() => getRoster(week)}
+      onEntered={onIsOpen}
+      onExited={onIsOpen}
+    >
       {loading ? (
         <div className="loading-div">
           <LoadingIndicator />
@@ -145,9 +150,9 @@ export default function Roster({
         <div>
           {rosters.length ? (
             <>
-              <Row className="week-results-div">
+              <Row>
                 <Col md={12} lg={6}>
-                  <Row>
+                  <Row className="week-results-div">
                     <Col className="inside-week-results">
                       <p className={`${inter.className} card-titles`}>Result</p>{" "}
                       <p
@@ -220,7 +225,7 @@ export default function Roster({
                   </Table>
                 </Col>
                 <Col md={12} lg={6}>
-                  <Row>
+                  <Row className="week-results-div">
                     <Col className="inside-week-results">
                       <p className={`${inter.className} card-titles`}>Result</p>{" "}
                       <p
