@@ -62,7 +62,7 @@ export default function LeagueOverview({ leagueType, leagueKeysString }) {
   const [chosenSeasonKey, setChosenSeasonKey] = useState([]);
   const [chosenSeasonTeams, setChosenSeasonTeams] = useState([]);
   const [isMobile, setIsMobile] = useState(false);
-  const [isOpen, setIsOpen] = useState(false);
+  const [isOpen, setIsOpen] = useState([]);
 
   const [chosenTrend, setChosenTrend] = useState({
     name: "Regular Season Wins",
@@ -1015,7 +1015,11 @@ export default function LeagueOverview({ leagueType, leagueKeysString }) {
   const handleIsOpen = (e) => {
     console.log("WEEK OPENED");
     console.log(e);
-    setIsOpen(!isOpen);
+    if (!isOpen.some((week) => week === JSON.stringify(e))) {
+      setIsOpen([...isOpen, JSON.stringify(e)]);
+    } else {
+      setIsOpen(isOpen.filter((week) => week !== JSON.stringify(e)));
+    }
   };
 
   return (
