@@ -16,7 +16,7 @@ const koulen = Koulen({
   weight: ["400"], // Include specific font weights
 });
 import LoadingIndicator from "./loading-indicator";
-import { Row } from "react-bootstrap";
+import { Row, Col } from "react-bootstrap";
 
 export default function Roster({
   week,
