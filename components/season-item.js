@@ -56,7 +56,9 @@ export default function SeasonItem({
                         >
                           {week.pointsFor > week.pointsAgainst
                             ? "Winner"
-                            : "Loser"}
+                            : week.pointsFor < week.pointsAgainst
+                            ? "Loser"
+                            : "Tie"}
                         </span>{" "}
                         {week.name} - {week.pointsFor}
                       </p>
@@ -78,7 +80,9 @@ export default function SeasonItem({
                         >
                           {week.pointsAgainst > week.pointsFor
                             ? "Winner"
-                            : "Loser"}
+                            : week.pointsFor > week.pointsAgainst
+                            ? "Loser"
+                            : "Tie"}
                         </span>{" "}
                         {week.opponentName} - {week.pointsAgainst}
                       </p>

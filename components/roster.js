@@ -5,6 +5,18 @@ import Accordion from "react-bootstrap/Accordion";
 import Table from "react-bootstrap/Table";
 import Image from "next/image";
 import WeekDayDropdown from "./weekday-dropdown";
+import { Inter } from "@next/font/google";
+import { Koulen } from "@next/font/google";
+const inter = Inter({
+  subsets: ["latin"], // Specify subsets like 'latin', 'cyrillic', etc.
+  weight: ["400"], // Include specific font weights
+});
+const koulen = Koulen({
+  subsets: ["latin"], // Specify subsets like 'latin', 'cyrillic', etc.
+  weight: ["400"], // Include specific font weights
+});
+import LoadingIndicator from "./loading-indicator";
+import { Row } from "react-bootstrap";
 
 export default function Roster({
   week,
@@ -125,11 +137,83 @@ export default function Roster({
   return (
     <Accordion.Body onEntering={() => getRoster(week)}>
       {loading ? (
-        <p>Loading...</p>
+        <div className="loading-div">
+          <LoadingIndicator />
+        </div>
       ) : leagueType === "football" ? (
         <div>
           {rosters.length ? (
             <div className="roster-div">
+              <Row className="week-results-div">
+                <Col>
+                  <p className={`${inter.className} card-titles`}>Result</p>{" "}
+                  <p
+                    className={`${koulen.className} card-info ${
+                      week.pointsFor > week.pointsAgainst
+                        ? "positive-differential"
+                        : week.pointsFor < week.pointsAgainst
+                        ? "negative-differential"
+                        : ""
+                    }`}
+                  >
+                    {week.pointsFor > week.pointsAgainst
+                      ? "Winner"
+                      : week.pointsFor < week.pointsAgainst
+                      ? "Loser"
+                      : "Tie"}
+                  </p>
+                </Col>
+                <Col>
+                  <p className={`${inter.className} card-titles`}>
+                    Projected Points
+                  </p>{" "}
+                  <p className={`${koulen.className} card-info`}>
+                    {week.projectedPointsFor}
+                  </p>
+                </Col>
+                <Col>
+                  <p className={`${inter.className} card-titles`}>
+                    Actual Points
+                  </p>{" "}
+                  <p className={`${koulen.className} card-info`}>
+                    {week.pointsFor}
+                  </p>
+                </Col>
+                <Col>
+                  <p className={`${inter.className} card-titles`}>Result</p>{" "}
+                  <p
+                    className={`${koulen.className} card-info ${
+                      week.pointsFor < week.pointsAgainst
+                        ? "positive-differential"
+                        : week.pointsFor < week.pointsAgainst
+                        ? "negative-differential"
+                        : ""
+                    }`}
+                  >
+                    {week.pointsFor < week.pointsAgainst
+                      ? "Winner"
+                      : week.pointsFor > week.pointsAgainst
+                      ? "Loser"
+                      : "Tie"}
+                  </p>
+                </Col>
+                <Col>
+                  <p className={`${inter.className} card-titles`}>
+                    Projected Points
+                  </p>{" "}
+                  <p className={`${koulen.className} card-info`}>
+                    {week.projectedPointsAgainst}
+                  </p>
+                </Col>
+                <Col>
+                  <p className={`${inter.className} card-titles`}>
+                    Actual Points
+                  </p>{" "}
+                  <p className={`${koulen.className} card-info`}>
+                    {week.pointsAgainst}
+                  </p>
+                </Col>
+              </Row>
               {rosters.map((roster) => {
                 return (
                   <Table
