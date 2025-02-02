@@ -145,7 +145,7 @@ export default function Roster({
           {rosters.length ? (
             <>
               <Row className="week-results-div">
-                <Col>
+                <Col md={12} lg={6}>
                   <Row>
                     <Col className="inside-week-results">
                       <p className={`${inter.className} card-titles`}>Result</p>{" "}
@@ -218,7 +218,7 @@ export default function Roster({
                     </tbody>
                   </Table>
                 </Col>
-                <Col>
+                <Col md={12} lg={6}>
                   <Row>
                     <Col className="inside-week-results">
                       <p className={`${inter.className} card-titles`}>Result</p>{" "}
@@ -292,52 +292,9 @@ export default function Roster({
                   </Table>
                 </Col>
               </Row>
-              <div className="roster-div">
-                {rosters.map((roster) => {
-                  return (
-                    <Table
-                      key={roster}
-                      responsive
-                      striped
-                      bordered
-                      className="player-table"
-                    >
-                      <thead
-                        className={`${koulen.className} player-table-head`}
-                      >
-                        <tr>
-                          <th>POS.</th>
-                          <th>Player</th>
-                          <th>Points</th>
-                        </tr>
-                      </thead>
-                      <tbody className="player-table-body">
-                        {roster.map((player) => {
-                          return (
-                            <tr key={player}>
-                              <td>{player.playerPosition}</td>
-                              <td>
-                                <Image
-                                  src={player.playerImage}
-                                  width={25}
-                                  height={25}
-                                  style={logoStyle}
-                                  alt={`${player.playerName}'s Image`}
-                                />{" "}
-                                {player.playerName}
-                              </td>
-                              <td>{player.playerPoints}</td>
-                            </tr>
-                          );
-                        })}
-                      </tbody>
-                    </Table>
-                  );
-                })}
-              </div>
             </>
           ) : (
-            <p>No data loaded</p>
+            <p>Weekly Lineup Unavailable</p>
           )}
         </div>
       ) : (
