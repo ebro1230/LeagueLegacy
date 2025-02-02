@@ -41,9 +41,11 @@ export default function SeasonItem({
                   {!isOpen.some((open) => open === JSON.stringify(week)) ? (
                     <>
                       <Col md={12} lg={2} className="d-flex align-items-center">
-                        <h5
-                          className={koulen.className}
-                        >{`Week ${week.week}`}</h5>
+                        <h5 className={koulen.className}>
+                          {`Week ${week.week}`}
+                          {week.isPlayoff ? " - Playoff" : null}
+                          {week.isConsolation ? " - Consolation" : null}
+                        </h5>
                       </Col>
                       <Col sm={12} md={6} lg={5}>
                         <div className="team-column-div">
@@ -105,10 +107,12 @@ export default function SeasonItem({
                       </Col>
                     </>
                   ) : (
-                    <Col md={12} lg={2} className="d-flex">
-                      <h5
-                        className={koulen.className}
-                      >{`Week ${week.week}`}</h5>
+                    <Col className="d-flex">
+                      <h5 className={koulen.className}>
+                        {`Week ${week.week}`}
+                        {week.isPlayoff ? " - Playoff" : null}
+                        {week.isConsolation ? " - Consolation" : null}
+                      </h5>
                     </Col>
                   )}
                 </Row>
