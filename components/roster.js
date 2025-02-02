@@ -147,7 +147,7 @@ export default function Roster({
               <Row className="week-results-div">
                 <Col>
                   <Row>
-                    <Col>
+                    <Col className="inside-week-results">
                       <p className={`${inter.className} card-titles`}>Result</p>{" "}
                       <p
                         className={`${koulen.className} card-info ${
@@ -165,7 +165,7 @@ export default function Roster({
                           : "Tie"}
                       </p>
                     </Col>
-                    <Col>
+                    <Col className="inside-week-results">
                       <p className={`${inter.className} card-titles`}>
                         Projected Points
                       </p>{" "}
@@ -173,7 +173,7 @@ export default function Roster({
                         {week.projectedPointsFor}
                       </p>
                     </Col>
-                    <Col>
+                    <Col className="inside-week-results">
                       <p className={`${inter.className} card-titles`}>
                         Actual Points
                       </p>{" "}
@@ -185,7 +185,7 @@ export default function Roster({
                 </Col>
                 <Col>
                   <Row>
-                    <Col>
+                    <Col className="inside-week-results">
                       <p className={`${inter.className} card-titles`}>Result</p>{" "}
                       <p
                         className={`${koulen.className} card-info ${
@@ -203,7 +203,7 @@ export default function Roster({
                           : "Tie"}
                       </p>
                     </Col>
-                    <Col>
+                    <Col className="inside-week-results">
                       <p className={`${inter.className} card-titles`}>
                         Projected Points
                       </p>{" "}
@@ -211,7 +211,7 @@ export default function Roster({
                         {week.projectedPointsAgainst}
                       </p>
                     </Col>
-                    <Col>
+                    <Col className="inside-week-results">
                       <p className={`${inter.className} card-titles`}>
                         Actual Points
                       </p>{" "}

@@ -693,3 +693,9 @@ thead tr th{
 .accordion-item{
   background: none;
 }
+
+.inside-week-results{
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+}
