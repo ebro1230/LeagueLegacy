@@ -139,9 +139,8 @@ export default function Roster({
   return (
     <Accordion.Body
       onEntering={() => getRoster(week)}
-      onEntered={onIsOpen}
-      onExited={onIsOpen}
-      eventkey={JSON.stringify(week)}
+      onEntered={() => onIsOpen(week)}
+      onExited={() => onIsOpen(week)}
     >
       {loading ? (
         <div className="loading-div">
