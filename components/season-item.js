@@ -27,7 +27,7 @@ export default function SeasonItem({
   onIsOpen,
 }) {
   return (
-    <Accordion>
+    <Accordion alwaysOpen>
       {season.matchups.map((week) => {
         return (
           <Accordion.Item
@@ -38,11 +38,13 @@ export default function SeasonItem({
             <Accordion.Header>
               <Container fluid>
                 <Row>
-                  <Col md={12} lg={2} className="d-flex align-items-center">
-                    <h5 className={koulen.className}>{`Week ${week.week}`}</h5>
-                  </Col>
                   {!isOpen.some((open) => open === JSON.stringify(week)) ? (
                     <>
+                      <Col md={12} lg={2} className="d-flex align-items-center">
+                        <h5
+                          className={koulen.className}
+                        >{`Week ${week.week}`}</h5>
+                      </Col>
                       <Col sm={12} md={6} lg={5}>
                         <div className="team-column-div">
                           <p className={inter.className}>
@@ -102,7 +104,13 @@ export default function SeasonItem({
                     ) : null} */}
                       </Col>
                     </>
-                  ) : null}
+                  ) : (
+                    <Col md={12} lg={2} className="d-flex">
+                      <h5
+                        className={koulen.className}
+                      >{`Week ${week.week}`}</h5>
+                    </Col>
+                  )}
                 </Row>
               </Container>
             </Accordion.Header>
