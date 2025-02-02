@@ -643,7 +643,6 @@ thead tr th{
   border-top: none !important;
   border-right: none !important;
   border-left: none !important;
-  font-size: 14px !important;
   font-size: clamp(0.7rem, 2vw, 14px) !important;
 }
 .fixed-table {
@@ -700,9 +699,6 @@ thead tr th{
   flex-direction: column;
 }
 
-.inside-week-results p{
-  font-size: clamp(8px, 2vw, 16px)
-}
 .player-table-body{
   text-align: left !important;
 }
@@ -716,8 +712,8 @@ thead tr th{
   border-top-right-radius: 0px !important;
 }
 .accordion-item:last-of-type{
-  border-top-left-radius: 0px !important;
-  border-top-right-radius: 0px !important;
+  border-bottom-right-radius: 0px !important;
+  border-bottom-left-radius: 0px !important;
 }
 
 .accordion-item-week{
@@ -731,4 +727,17 @@ thead tr th{
   color: inherit !important;
   background-color: inherit !important;
   box-shadow: inherit !important;
+}
+
+.accordion{
+  margin-top: 0.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.accordion-body{
+  padding-top:0px;
+}
+
+.week-results-div{
+  margin-bottom: 1rem;
 }
