@@ -377,7 +377,7 @@ td p {
   .nav{
     display: flex;
     justify-content: space-between;
-    flex-wrap: nowrap !important;
+    /* flex-wrap: nowrap !important; */
   }
   .nav-div{
     display: flex;
