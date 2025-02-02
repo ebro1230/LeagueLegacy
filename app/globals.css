@@ -710,3 +710,25 @@ thead tr th{
 .player-table-head{
   text-align: left !important;
 }
+
+.accordion-item:first-of-type{
+  border-top-left-radius: 0px !important;
+  border-top-right-radius: 0px !important;
+}
+.accordion-item:last-of-type{
+  border-top-left-radius: 0px !important;
+  border-top-right-radius: 0px !important;
+}
+
+.accordion-item-week{
+  border-left:none !important;
+  border-right:none !important;
+  border-color: #858585;
+  ;
+}
+
+.accordion-button:not(.collapsed) {
+  color: inherit !important;
+  background-color: inherit !important;
+  box-shadow: inherit !important;
+}
