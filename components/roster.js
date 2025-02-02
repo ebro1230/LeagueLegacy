@@ -143,110 +143,127 @@ export default function Roster({
       ) : leagueType === "football" ? (
         <div>
           {rosters.length ? (
-            <div className="roster-div">
+            <>
               <Row className="week-results-div">
                 <Col>
-                  <p className={`${inter.className} card-titles`}>Result</p>{" "}
-                  <p
-                    className={`${koulen.className} card-info ${
-                      week.pointsFor > week.pointsAgainst
-                        ? "positive-differential"
-                        : week.pointsFor < week.pointsAgainst
-                        ? "negative-differential"
-                        : ""
-                    }`}
-                  >
-                    {week.pointsFor > week.pointsAgainst
-                      ? "Winner"
-                      : week.pointsFor < week.pointsAgainst
-                      ? "Loser"
-                      : "Tie"}
-                  </p>
+                  <Row>
+                    <Col>
+                      <p className={`${inter.className} card-titles`}>Result</p>{" "}
+                      <p
+                        className={`${koulen.className} card-info ${
+                          week.pointsFor > week.pointsAgainst
+                            ? "positive-differential"
+                            : week.pointsFor < week.pointsAgainst
+                            ? "negative-differential"
+                            : ""
+                        }`}
+                      >
+                        {week.pointsFor > week.pointsAgainst
+                          ? "Winner"
+                          : week.pointsFor < week.pointsAgainst
+                          ? "Loser"
+                          : "Tie"}
+                      </p>
+                    </Col>
+                    <Col>
+                      <p className={`${inter.className} card-titles`}>
+                        Projected Points
+                      </p>{" "}
+                      <p className={`${koulen.className} card-info`}>
+                        {week.projectedPointsFor}
+                      </p>
+                    </Col>
+                    <Col>
+                      <p className={`${inter.className} card-titles`}>
+                        Actual Points
+                      </p>{" "}
+                      <p className={`${koulen.className} card-info`}>
+                        {week.pointsFor}
+                      </p>
+                    </Col>
+                  </Row>
                 </Col>
                 <Col>
-                  <p className={`${inter.className} card-titles`}>
-                    Projected Points
-                  </p>{" "}
-                  <p className={`${koulen.className} card-info`}>
-                    {week.projectedPointsFor}
-                  </p>
-                </Col>
-                <Col>
-                  <p className={`${inter.className} card-titles`}>
-                    Actual Points
-                  </p>{" "}
-                  <p className={`${koulen.className} card-info`}>
-                    {week.pointsFor}
-                  </p>
-                </Col>
-                <Col>
-                  <p className={`${inter.className} card-titles`}>Result</p>{" "}
-                  <p
-                    className={`${koulen.className} card-info ${
-                      week.pointsFor < week.pointsAgainst
-                        ? "positive-differential"
-                        : week.pointsFor < week.pointsAgainst
-                        ? "negative-differential"
-                        : ""
-                    }`}
-                  >
-                    {week.pointsFor < week.pointsAgainst
-                      ? "Winner"
-                      : week.pointsFor > week.pointsAgainst
-                      ? "Loser"
-                      : "Tie"}
-                  </p>
-                </Col>
-                <Col>
-                  <p className={`${inter.className} card-titles`}>
-                    Projected Points
-                  </p>{" "}
-                  <p className={`${koulen.className} card-info`}>
-                    {week.projectedPointsAgainst}
-                  </p>
-                </Col>
-                <Col>
-                  <p className={`${inter.className} card-titles`}>
-                    Actual Points
-                  </p>{" "}
-                  <p className={`${koulen.className} card-info`}>
-                    {week.pointsAgainst}
-                  </p>
+                  <Row>
+                    <Col>
+                      <p className={`${inter.className} card-titles`}>Result</p>{" "}
+                      <p
+                        className={`${koulen.className} card-info ${
+                          week.pointsFor < week.pointsAgainst
+                            ? "positive-differential"
+                            : week.pointsFor < week.pointsAgainst
+                            ? "negative-differential"
+                            : ""
+                        }`}
+                      >
+                        {week.pointsFor < week.pointsAgainst
+                          ? "Winner"
+                          : week.pointsFor > week.pointsAgainst
+                          ? "Loser"
+                          : "Tie"}
+                      </p>
+                    </Col>
+                    <Col>
+                      <p className={`${inter.className} card-titles`}>
+                        Projected Points
+                      </p>{" "}
+                      <p className={`${koulen.className} card-info`}>
+                        {week.projectedPointsAgainst}
+                      </p>
+                    </Col>
+                    <Col>
+                      <p className={`${inter.className} card-titles`}>
+                        Actual Points
+                      </p>{" "}
+                      <p className={`${koulen.className} card-info`}>
+                        {week.pointsAgainst}
+                      </p>
+                    </Col>
+                  </Row>
                 </Col>
               </Row>
-              {rosters.map((roster) => {
-                return (
-                  <Table
-                    key={roster}
-                    responsive
-                    striped
-                    bordered
-                    className="player-table"
-                  >
-                    <tbody>
-                      {roster.map((player) => {
-                        return (
-                          <tr key={player}>
-                            <td>{player.playerPosition}</td>
-                            <td>
-                              <Image
-                                src={player.playerImage}
-                                width={25}
-                                height={25}
-                                style={logoStyle}
-                                alt={`${player.playerName}'s Image`}
-                              />
-                            </td>
-                            <td>{player.playerName}</td>
-                            <td>{player.playerPoints}</td>
-                          </tr>
-                        );
-                      })}
-                    </tbody>
-                  </Table>
-                );
-              })}
-            </div>
+              <div className="roster-div">
+                {rosters.map((roster) => {
+                  return (
+                    <Table
+                      key={roster}
+                      responsive
+                      striped
+                      bordered
+                      className="player-table"
+                    >
+                      <thead className={koulen.className}>
+                        <tr>
+                          <th>POS.</th>
+                          <th>Player</th>
+                          <th>Points</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        {roster.map((player) => {
+                          return (
+                            <tr key={player}>
+                              <td>{player.playerPosition}</td>
+                              <td>
+                                <Image
+                                  src={player.playerImage}
+                                  width={25}
+                                  height={25}
+                                  style={logoStyle}
+                                  alt={`${player.playerName}'s Image`}
+                                />
+                                {player.playerName}
+                              </td>
+                              <td>{player.playerPoints}</td>
+                            </tr>
+                          );
+                        })}
+                      </tbody>
+                    </Table>
+                  );
+                })}
+              </div>
+            </>
           ) : (
             <p>No data loaded</p>
           )}
