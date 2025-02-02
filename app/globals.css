@@ -700,6 +700,9 @@ thead tr th{
   flex-direction: column;
 }
 
+.inside-week-results p{
+  font-size: clamp(8px, 2vw, 16px)
+}
 .player-table-body{
   text-align: left !important;
 }

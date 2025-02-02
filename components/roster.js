@@ -5,6 +5,7 @@ import Accordion from "react-bootstrap/Accordion";
 import Table from "react-bootstrap/Table";
 import Image from "next/image";
 import WeekDayDropdown from "./weekday-dropdown";
+import unknownPlayer from "@/assets/Unkown-Player.jpg";
 import { Inter } from "@next/font/google";
 import { Koulen } from "@next/font/google";
 const inter = Inter({
@@ -207,7 +208,7 @@ export default function Roster({
                                 width={25}
                                 height={25}
                                 style={logoStyle}
-                                alt={`${player.playerName}'s Image`}
+                                alt={unknownPlayer}
                               />{" "}
                               {player.playerName}
                             </td>
@@ -226,7 +227,7 @@ export default function Roster({
                         className={`${koulen.className} card-info ${
                           week.pointsFor < week.pointsAgainst
                             ? "positive-differential"
-                            : week.pointsFor < week.pointsAgainst
+                            : week.pointsFor > week.pointsAgainst
                             ? "negative-differential"
                             : ""
                         }`}
@@ -280,7 +281,7 @@ export default function Roster({
                                 width={25}
                                 height={25}
                                 style={logoStyle}
-                                alt={`${player.playerName}'s Image`}
+                                alt={unknownPlayer}
                               />{" "}
                               {player.playerName}
                             </td>
@@ -321,7 +322,7 @@ export default function Roster({
                               width={25}
                               height={25}
                               style={logoStyle}
-                              alt={`${player.playerName}'s Image`}
+                              alt={unknownPlayer}
                             />
                           </td>
                           <td>{player.playerName}</td>
@@ -366,7 +367,7 @@ export default function Roster({
                               width={25}
                               height={25}
                               style={logoStyle}
-                              alt={`${player.playerName}'s Image`}
+                              alt={unknownPlayer}
                             />
                           </td>
                           <td>{player.playerName}</td>
