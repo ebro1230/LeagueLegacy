@@ -24,6 +24,9 @@ export default function SeasonItem({
   leagueType,
   accessToken,
 }) {
+  season.matchups.forEach((week) => {
+    console.log(week);
+  });
   return (
     <Accordion>
       {season.matchups.map((week) => {
