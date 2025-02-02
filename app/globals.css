@@ -260,9 +260,7 @@
   margin-top:0.1rem;
   margin-bottom:0.1rem;
 }
-.accordion-button{
-  padding:0rem;
-}
+
 .week-accordion-div{
   display: flex;
   height:100%;
@@ -670,12 +668,26 @@ thead tr th{
 
 .accordion-button::after {
   content: "+" !important; /* Default closed icon */
-  font-size: 1.2rem;
+  font-size: 24px;
   font-weight: bold;
   transform: none !important;
   background-image: none !important;
+  margin-bottom: 0.4rem;
 }
 
 .accordion-button[aria-expanded="true"]::after {
   content: "−" !important; /* Open icon */
+}
+
+.accordion-header{
+  font-size: clamp(16px, 1.5vw, 24px);
+}
+
+.accordion-button{
+  background: none;
+  color:white;
+}
+
+.accordion-item{
+  background: none;
 }

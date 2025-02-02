@@ -2,6 +2,15 @@ import { useState } from "react";
 import SeasonItem from "./season-item";
 import Accordion from "react-bootstrap/Accordion";
 
+const inter = Inter({
+  subsets: ["latin"], // Specify subsets like 'latin', 'cyrillic', etc.
+  weight: ["400"], // Include specific font weights
+});
+const koulen = Koulen({
+  subsets: ["latin"], // Specify subsets like 'latin', 'cyrillic', etc.
+  weight: ["400"], // Include specific font weights
+});
+
 export default function SeasonGrid({
   seasons,
   logoStyle,
@@ -31,7 +40,9 @@ export default function SeasonGrid({
           return (
             <Accordion key={season}>
               <Accordion.Item eventKey={`${season.season}`}>
-                <Accordion.Header>Season: {season.season}</Accordion.Header>
+                <Accordion.Header className={koulen.className}>
+                  {season.season}
+                </Accordion.Header>
                 <Accordion.Body>
                   <SeasonItem
                     season={season}

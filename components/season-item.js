@@ -6,6 +6,15 @@ import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 
+const inter = Inter({
+  subsets: ["latin"], // Specify subsets like 'latin', 'cyrillic', etc.
+  weight: ["400"], // Include specific font weights
+});
+const koulen = Koulen({
+  subsets: ["latin"], // Specify subsets like 'latin', 'cyrillic', etc.
+  weight: ["400"], // Include specific font weights
+});
+
 export default function SeasonItem({
   season,
   logoStyle,
@@ -26,62 +35,56 @@ export default function SeasonItem({
                     xs={1}
                     className="d-flex justify-content-center align-items-center"
                   >
-                    <h5>{`Week: ${week.week}`}</h5>
+                    <h5 className={koulen.className}>{`Week ${week.week}`}</h5>
                   </Col>
 
                   <Col
                     xs={1}
                     className="d-flex justify-content-center align-items-center"
-                  >
-                    <Image
-                      src={week.logo}
-                      width={50}
-                      height={50}
-                      style={logoStyle}
-                      alt={`${week.name}'s Logo`}
-                    />
-                  </Col>
+                  ></Col>
                   <Col xs={3}>
                     <div className="team-column-div">
-                      <p>{week.name}</p>
-                      <p>{week.managerName}</p>
+                      <p>
+                        <span
+                          className={`${
+                            week.pointsFor > week.pointsAgainst
+                              ? "positive-differential"
+                              : week.pointsFor < week.pointsAgainst
+                              ? "negative-differential"
+                              : ""
+                          }`}
+                        >
+                          {week.pointsFor > week.pointsAgainst
+                            ? "Winner"
+                            : "Loser"}
+                        </span>
+                        {week.name} - {week.pointsFor}
+                      </p>
                     </div>
                   </Col>
 
-                  <Col
-                    xs={2}
-                    className="d-flex justify-content-center align-items-center"
-                  >
-                    <div className="team-column-div">
-                      <h5>
-                        {week.pointsFor} - {week.pointsAgainst}
-                      </h5>
-                      <h6>
-                        {week.projectedPointsFor} -{" "}
-                        {week.projectedPointsAgainst}
-                      </h6>
-                    </div>
-                  </Col>
-
-                  <Col
-                    xs={1}
-                    className="d-flex justify-content-center align-items-center"
-                  >
-                    <Image
-                      src={week.opponentLogo}
-                      width={50}
-                      height={50}
-                      style={logoStyle}
-                      alt={`${week.opponentName}'s Logo`}
-                    />
-                  </Col>
                   <Col xs={4}>
                     <div className="team-column-div">
-                      <p>{week.opponentName}</p>
-                      <p>{week.opponentManagerName}</p>
+                      <p>
+                        {" "}
+                        <span
+                          className={`${
+                            week.pointsFor < week.pointsAgainst
+                              ? "positive-differential"
+                              : week.pointsFor > week.pointsAgainst
+                              ? "negative-differential"
+                              : ""
+                          }`}
+                        >
+                          {week.pointsAgainst > week.pointsFor
+                            ? "Winner"
+                            : "Loser"}
+                        </span>
+                        {week.opponentName} - {week.pointsAgainst}
+                      </p>
                     </div>
 
-                    {chosenTeam2.managerId != week.opponentManagerId ? (
+                    {/* {chosenTeam2.managerId != week.opponentManagerId ? (
                       <div className="team-column-div">
                         <Button
                           id={week.opponentManagerId}
@@ -91,7 +94,7 @@ export default function SeasonItem({
                           Compare Manager
                         </Button>
                       </div>
-                    ) : null}
+                    ) : null} */}
                   </Col>
                 </Row>
               </Container>
