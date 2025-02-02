@@ -25,7 +25,7 @@ export default function TeamDropdown({
   logoStyle,
 }) {
   return (
-    <div className="season-dropdown-div">
+    <div className="team-dropdown-div">
       <Dropdown onSelect={onTeamSelect}>
         <Dropdown.Toggle
           className="custom-dropdown-toggle"

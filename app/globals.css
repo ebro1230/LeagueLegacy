@@ -614,6 +614,7 @@ td p {
   border: 1px solid #83A6CF;
   margin: 1rem 0rem;
   padding: 0.5rem 1rem;
+  width:100%;
 }
 
 .table-striped tbody tr:nth-child(odd) td{
@@ -661,4 +662,8 @@ thead tr th{
 
 .blurredImage {
   filter: blur(5px)
+}
+
+.team-dropdown-div{
+  width:100%;
 }
