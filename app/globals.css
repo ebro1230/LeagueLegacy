@@ -667,3 +667,13 @@ thead tr th{
 .team-dropdown-div{
   width:100%;
 }
+
+.accordion-button::after {
+  content: "+" !important; /* Default closed icon */
+  font-size: 1.2rem;
+  font-weight: bold;
+}
+
+.accordion-button[aria-expanded="true"]::after {
+  content: "−" !important; /* Open icon */
+}
