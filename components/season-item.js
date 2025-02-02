@@ -33,17 +33,13 @@ export default function SeasonItem({
               <Container fluid>
                 <Row>
                   <Col
-                    xs={1}
+                    md={12}
+                    lg={1}
                     className="d-flex justify-content-center align-items-center"
                   >
                     <h5 className={koulen.className}>{`Week ${week.week}`}</h5>
                   </Col>
-
-                  <Col
-                    xs={1}
-                    className="d-flex justify-content-center align-items-center"
-                  ></Col>
-                  <Col xs={3}>
+                  <Col>
                     <div className="team-column-div">
                       <p className={inter.className}>
                         <span
@@ -64,7 +60,7 @@ export default function SeasonItem({
                     </div>
                   </Col>
 
-                  <Col xs={4}>
+                  <Col>
                     <div className="team-column-div">
                       <p className={inter.className}>
                         {" "}
