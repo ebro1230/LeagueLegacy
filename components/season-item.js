@@ -41,7 +41,7 @@ export default function SeasonItem({
                   <Col md={12} lg={2} className="d-flex align-items-center">
                     <h5 className={koulen.className}>{`Week ${week.week}`}</h5>
                   </Col>
-                  {isOpen.some((open) => open === JSON.stringify(week)) ? (
+                  {!isOpen.some((open) => open === JSON.stringify(week)) ? (
                     <>
                       <Col sm={12} md={6} lg={5}>
                         <div className="team-column-div">
