@@ -43,8 +43,11 @@ export default function SeasonItem({
                       <Col md={12} lg={2} className="d-flex align-items-center">
                         <h5 className={koulen.className}>
                           {`Week ${week.week}`}
-                          {week.isPlayoff ? " - Playoff" : null}
-                          {week.isConsolation ? " - Consolation" : null}
+                          {week.isPlayoff && week.isConsolation
+                            ? " - Consolation"
+                            : week.isPlayoff
+                            ? " - Playoff"
+                            : null}
                         </h5>
                       </Col>
                       <Col sm={12} md={6} lg={5}>
@@ -110,8 +113,11 @@ export default function SeasonItem({
                     <Col className="d-flex">
                       <h5 className={koulen.className}>
                         {`Week ${week.week}`}
-                        {week.isPlayoff ? " - Playoff" : null}
-                        {week.isConsolation ? " - Consolation" : null}
+                        {week.isPlayoff && week.isConsolation
+                          ? " - Consolation"
+                          : week.isPlayoff
+                          ? " - Playoff"
+                          : null}
                       </h5>
                     </Col>
                   )}
