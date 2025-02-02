@@ -5,7 +5,8 @@ import Roster from "./roster";
 import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
-
+import { Inter } from "@next/font/google";
+import { Koulen } from "@next/font/google";
 const inter = Inter({
   subsets: ["latin"], // Specify subsets like 'latin', 'cyrillic', etc.
   weight: ["400"], // Include specific font weights

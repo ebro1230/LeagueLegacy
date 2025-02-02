@@ -1,7 +1,8 @@
 import { useState } from "react";
 import SeasonItem from "./season-item";
 import Accordion from "react-bootstrap/Accordion";
-
+import { Inter } from "@next/font/google";
+import { Koulen } from "@next/font/google";
 const inter = Inter({
   subsets: ["latin"], // Specify subsets like 'latin', 'cyrillic', etc.
   weight: ["400"], // Include specific font weights
