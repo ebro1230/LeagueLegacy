@@ -35,11 +35,7 @@ export default function SeasonItem({
             <Accordion.Header>
               <Container fluid>
                 <Row>
-                  <Col
-                    md={12}
-                    lg={2}
-                    className="d-flex justify-content-center align-items-center"
-                  >
+                  <Col md={12} lg={2} className="d-flex align-items-center">
                     <h5 className={koulen.className}>{`Week ${week.week}`}</h5>
                   </Col>
                   <Col sm={12} md={6} lg={5}>

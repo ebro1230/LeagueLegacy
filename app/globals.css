@@ -701,5 +701,9 @@ thead tr th{
 }
 
 .player-table-body{
-  text-align: none !important;
+  text-align: left !important;
+}
+
+.player-table-head{
+  text-align: left !important;
 }

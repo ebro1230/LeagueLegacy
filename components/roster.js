@@ -182,6 +182,41 @@ export default function Roster({
                       </p>
                     </Col>
                   </Row>
+                  <Table
+                    key={rosters[0]}
+                    responsive
+                    striped
+                    bordered
+                    className="player-table"
+                  >
+                    <thead className={`${koulen.className} player-table-head`}>
+                      <tr>
+                        <th>POS.</th>
+                        <th>Player</th>
+                        <th>Points</th>
+                      </tr>
+                    </thead>
+                    <tbody className="player-table-body">
+                      {rosters[0].map((player) => {
+                        return (
+                          <tr key={player}>
+                            <td>{player.playerPosition}</td>
+                            <td>
+                              <Image
+                                src={player.playerImage}
+                                width={25}
+                                height={25}
+                                style={logoStyle}
+                                alt={`${player.playerName}'s Image`}
+                              />{" "}
+                              {player.playerName}
+                            </td>
+                            <td>{player.playerPoints}</td>
+                          </tr>
+                        );
+                      })}
+                    </tbody>
+                  </Table>
                 </Col>
                 <Col>
                   <Row>
@@ -220,6 +255,41 @@ export default function Roster({
                       </p>
                     </Col>
                   </Row>
+                  <Table
+                    key={rosters[1]}
+                    responsive
+                    striped
+                    bordered
+                    className="player-table"
+                  >
+                    <thead className={`${koulen.className} player-table-head`}>
+                      <tr>
+                        <th>POS.</th>
+                        <th>Player</th>
+                        <th>Points</th>
+                      </tr>
+                    </thead>
+                    <tbody className="player-table-body">
+                      {rosters[1].map((player) => {
+                        return (
+                          <tr key={player}>
+                            <td>{player.playerPosition}</td>
+                            <td>
+                              <Image
+                                src={player.playerImage}
+                                width={25}
+                                height={25}
+                                style={logoStyle}
+                                alt={`${player.playerName}'s Image`}
+                              />{" "}
+                              {player.playerName}
+                            </td>
+                            <td>{player.playerPoints}</td>
+                          </tr>
+                        );
+                      })}
+                    </tbody>
+                  </Table>
                 </Col>
               </Row>
               <div className="roster-div">
@@ -232,7 +302,9 @@ export default function Roster({
                       bordered
                       className="player-table"
                     >
-                      <thead className={koulen.className}>
+                      <thead
+                        className={`${koulen.className} player-table-head`}
+                      >
                         <tr>
                           <th>POS.</th>
                           <th>Player</th>
