@@ -39,7 +39,7 @@ export default function SeasonItem({
                   >
                     <h5 className={koulen.className}>{`Week ${week.week}`}</h5>
                   </Col>
-                  <Col md={12}>
+                  <Col md={12} lg={5}>
                     <div className="team-column-div">
                       <p className={inter.className}>
                         <span
@@ -60,7 +60,7 @@ export default function SeasonItem({
                     </div>
                   </Col>
 
-                  <Col md={12}>
+                  <Col md={12} lg={5}>
                     <div className="team-column-div">
                       <p className={inter.className}>
                         {" "}
