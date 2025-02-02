@@ -34,12 +34,12 @@ export default function SeasonItem({
                 <Row>
                   <Col
                     md={12}
-                    lg={1}
+                    lg={2}
                     className="d-flex justify-content-center align-items-center"
                   >
                     <h5 className={koulen.className}>{`Week ${week.week}`}</h5>
                   </Col>
-                  <Col>
+                  <Col md={12}>
                     <div className="team-column-div">
                       <p className={inter.className}>
                         <span
@@ -60,7 +60,7 @@ export default function SeasonItem({
                     </div>
                   </Col>
 
-                  <Col>
+                  <Col md={12}>
                     <div className="team-column-div">
                       <p className={inter.className}>
                         {" "}
