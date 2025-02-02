@@ -45,7 +45,7 @@ export default function SeasonItem({
                   ></Col>
                   <Col xs={3}>
                     <div className="team-column-div">
-                      <p>
+                      <p className={inter.className}>
                         <span
                           className={`${
                             week.pointsFor > week.pointsAgainst
@@ -58,7 +58,7 @@ export default function SeasonItem({
                           {week.pointsFor > week.pointsAgainst
                             ? "Winner"
                             : "Loser"}
-                        </span>
+                        </span>{" "}
                         {week.name} - {week.pointsFor}
                       </p>
                     </div>
@@ -66,7 +66,7 @@ export default function SeasonItem({
 
                   <Col xs={4}>
                     <div className="team-column-div">
-                      <p>
+                      <p className={inter.className}>
                         {" "}
                         <span
                           className={`${
@@ -80,7 +80,7 @@ export default function SeasonItem({
                           {week.pointsAgainst > week.pointsFor
                             ? "Winner"
                             : "Loser"}
-                        </span>
+                        </span>{" "}
                         {week.opponentName} - {week.pointsAgainst}
                       </p>
                     </div>
