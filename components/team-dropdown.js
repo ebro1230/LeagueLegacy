@@ -42,7 +42,7 @@ export default function TeamDropdown({
               disabled={chosenTeam2.managerName === "Overall"}
             >
               <Row style={{ width: "100%" }}>
-                <Col xs={4}>
+                <Col>
                   <Image
                     src={chosenSeason.leagueLogo}
                     width={58}
@@ -84,7 +84,7 @@ export default function TeamDropdown({
               style={{ display: "flex", width: "100%" }}
             >
               <Row style={{ width: "100%" }}>
-                <Col xs={4}>
+                <Col>
                   <Image
                     src={manager.logo}
                     width={58}

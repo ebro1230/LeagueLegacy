@@ -183,6 +183,14 @@ export default function LeagueOverview({ leagueType, leagueKeysString }) {
             leagueName: fetchResponse[fetchResponse.length - 1].name,
             leagueLogo: fetchResponse[fetchResponse.length - 1].mostRecentLogo,
           });
+          console.log("ORIGINAL CHOSEN SEASON");
+          conosole.log({
+            key: fetchResponse[fetchResponse.length - 1].key,
+            year: fetchResponse[fetchResponse.length - 1].season,
+            weeks: fetchResponse[fetchResponse.length - 1].leagueWeeks,
+            leagueName: fetchResponse[fetchResponse.length - 1].name,
+            leagueLogo: fetchResponse[fetchResponse.length - 1].mostRecentLogo,
+          });
           // fetchResponse[fetchResponse.length - 1].teams = fetchResponse[
           //   fetchResponse.length - 1
           // ].teams.map((manager) => {
@@ -464,6 +472,8 @@ export default function LeagueOverview({ leagueType, leagueKeysString }) {
     chosenSeason.leagueLogo = leagueLogo;
     chosenSeason.leagueName = leagueName;
     setChosenSeason(chosenSeason);
+    console.log("NEW CHOSEN SEASON:");
+    console.log(chosenSeason);
     setChosenTeam1({ managerName: "---" });
     setChosenTeam2({ managerName: "---" });
     setChosenRecordTeam({ managerName: "Overall" });
