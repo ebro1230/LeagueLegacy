@@ -178,26 +178,11 @@ export default function LeagueOverview({ leagueType, leagueKeysString }) {
             0,
             -1
           );
-          fetchResponse.forEach((season) => {
-            console.log("EACH SEASON");
-            console.log(season);
-          });
           setLeagueSeasons(reversedLeagueSeasons);
-          console.log("LEAGUE SEASONS");
-          console.log(reversedLeagueSeasons);
           setTrendSeasonArray(reversedLeagueSeasonsNoOverall);
           setChosenSeason({
             key: fetchResponse[fetchResponse.length - 1].key,
             year: fetchResponse[fetchResponse.length - 1].season,
-            weeks: fetchResponse[fetchResponse.length - 1].leagueWeeks,
-            leagueName: fetchResponse[fetchResponse.length - 1].name,
-            leagueLogo: fetchResponse[fetchResponse.length - 1].mostRecentLogo,
-          });
-          console.log("ORIGINAL CHOSEN SEASON");
-          conosole.log({
-            key: fetchResponse[fetchResponse.length - 1].key,
-            year: fetchResponse[fetchResponse.length - 1].season,
-            weeks: fetchResponse[fetchResponse.length - 1].leagueWeeks,
             leagueName: fetchResponse[fetchResponse.length - 1].name,
             leagueLogo: fetchResponse[fetchResponse.length - 1].mostRecentLogo,
           });
@@ -480,8 +465,6 @@ export default function LeagueOverview({ leagueType, leagueKeysString }) {
   const handleSeasonSelect = (e) => {
     let chosenSeason = JSON.parse(e);
     setChosenSeason(chosenSeason);
-    console.log("NEW CHOSEN SEASON:");
-    console.log(chosenSeason);
     setChosenTeam1({ managerName: "---" });
     setChosenTeam2({ managerName: "---" });
     setChosenRecordTeam({ managerName: "Overall" });
@@ -1027,9 +1010,6 @@ export default function LeagueOverview({ leagueType, leagueKeysString }) {
       }
     });
   };
-
-  console.log(chosenTeam1);
-  console.log(chosenSeason);
 
   return (
     <>

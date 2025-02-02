@@ -190,7 +190,7 @@ handler.post((req) => {
                   return b.memberYears - a.memberYears;
                 }
               });
-              console.log("MADE IT TO THE END OF PARSE STRING");
+              //console.log("MADE IT TO THE END OF PARSE STRING");
               parsedData = leagueSummaries;
             }
           });

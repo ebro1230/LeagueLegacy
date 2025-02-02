@@ -26,7 +26,6 @@ export default function LeaguesGrid({ leagues, leagueType }) {
     margin: "1.5rem",
     objectFit: "contain",
   };
-  console.log(leagues);
 
   return (
     <>
