@@ -26,9 +26,6 @@ export default function SeasonItem({
   isOpen,
   onIsOpen,
 }) {
-  season.matchups.forEach((week) => {
-    console.log(week);
-  });
   return (
     <Accordion>
       {season.matchups.map((week) => {

@@ -141,6 +141,7 @@ export default function Roster({
       onEntering={() => getRoster(week)}
       onEntered={onIsOpen}
       onExited={onIsOpen}
+      key={JSON.stringify(week)}
     >
       {loading ? (
         <div className="loading-div">

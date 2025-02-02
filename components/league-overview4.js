@@ -1014,7 +1014,7 @@ export default function LeagueOverview({ leagueType, leagueKeysString }) {
 
   const handleIsOpen = (e) => {
     console.log("WEEK OPENED");
-    console.log(e);
+    console.log(JSON.parse(e));
     setIsOpen(!isOpen);
   };
 
