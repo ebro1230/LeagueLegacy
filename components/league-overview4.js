@@ -168,6 +168,10 @@ export default function LeagueOverview({ leagueType, leagueKeysString }) {
               key: season.key,
               year: season.season,
               weeks: season.leagueWeeks,
+              leagueLogo: season.mostRecentLogo
+                ? season.mostRecentLogo
+                : season.logo,
+              leagueName: season.name,
             };
           });
           const reversedLeagueSeasonsNoOverall = reversedLeagueSeasons.slice(
@@ -475,8 +479,6 @@ export default function LeagueOverview({ leagueType, leagueKeysString }) {
 
   const handleSeasonSelect = (e) => {
     let chosenSeason = JSON.parse(e);
-    chosenSeason.leagueLogo = leagueLogo;
-    chosenSeason.leagueName = leagueName;
     setChosenSeason(chosenSeason);
     console.log("NEW CHOSEN SEASON:");
     console.log(chosenSeason);
