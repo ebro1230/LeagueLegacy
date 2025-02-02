@@ -174,7 +174,13 @@ export default function LeagueOverview({ leagueType, leagueKeysString }) {
             0,
             -1
           );
+          fetchResponse.forEach((season) => {
+            console.log("EACH SEASON");
+            console.log(season);
+          });
           setLeagueSeasons(reversedLeagueSeasons);
+          console.log("LEAGUE SEASONS");
+          console.log(reversedLeagueSeasons);
           setTrendSeasonArray(reversedLeagueSeasonsNoOverall);
           setChosenSeason({
             key: fetchResponse[fetchResponse.length - 1].key,
