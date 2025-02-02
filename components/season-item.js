@@ -50,7 +50,12 @@ export default function SeasonItem({
                             : null}
                         </h5>
                       </Col>
-                      <Col sm={12} md={6} lg={5}>
+                      <Col
+                        sm={12}
+                        md={6}
+                        lg={5}
+                        className="d-flex align-items-center"
+                      >
                         <div className="team-column-div">
                           <p className={inter.className}>
                             <span
@@ -73,7 +78,12 @@ export default function SeasonItem({
                         </div>
                       </Col>
 
-                      <Col sm={12} md={6} lg={5}>
+                      <Col
+                        sm={12}
+                        md={6}
+                        lg={5}
+                        className="d-flex align-items-center"
+                      >
                         <div className="team-column-div">
                           <p className={inter.className}>
                             {" "}
