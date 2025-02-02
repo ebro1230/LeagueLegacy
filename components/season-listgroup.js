@@ -7,6 +7,10 @@ export default function SeasonListGroup({
   leagueSeasons,
   chosenSeason,
 }) {
+  console.log("CHOSEN SEASON");
+  console.log(JSON.stringify(chosenSeason));
+  console.log("OVERALL EVENT KEY:");
+  console.log(JSON.stringify(leagueSeasons[leagueSeasons.length - 1]));
   return (
     <>
       {leagueSeasons.length <= 10 ? (
