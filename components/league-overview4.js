@@ -183,8 +183,8 @@ export default function LeagueOverview({ leagueType, leagueKeysString }) {
           setChosenSeason({
             key: fetchResponse[fetchResponse.length - 1].key,
             year: fetchResponse[fetchResponse.length - 1].season,
-            leagueName: fetchResponse[fetchResponse.length - 1].name,
             leagueLogo: fetchResponse[fetchResponse.length - 1].mostRecentLogo,
+            leagueName: fetchResponse[fetchResponse.length - 1].name,
           });
           // fetchResponse[fetchResponse.length - 1].teams = fetchResponse[
           //   fetchResponse.length - 1
