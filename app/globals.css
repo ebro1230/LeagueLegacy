@@ -699,3 +699,7 @@ thead tr th{
   display: flex;
   flex-direction: column;
 }
+
+.player-table-body{
+  text-align: none !important;
+}

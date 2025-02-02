@@ -239,7 +239,7 @@ export default function Roster({
                           <th>Points</th>
                         </tr>
                       </thead>
-                      <tbody>
+                      <tbody className="player-table-body">
                         {roster.map((player) => {
                           return (
                             <tr key={player}>
@@ -251,7 +251,7 @@ export default function Roster({
                                   height={25}
                                   style={logoStyle}
                                   alt={`${player.playerName}'s Image`}
-                                />
+                                />{" "}
                                 {player.playerName}
                               </td>
                               <td>{player.playerPoints}</td>
