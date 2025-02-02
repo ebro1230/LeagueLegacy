@@ -143,7 +143,11 @@ export default function ManagerMatchup({
             </Card.Body>
           </Card>
         </Col>
-        <Col className="d-flex flex-column justify-content-center align-items-center">
+        <Col
+          md={12}
+          lg={2}
+          className="d-flex flex-column justify-content-center align-items-center"
+        >
           <h1 className={koulen.className}>VS</h1>
         </Col>
         <Col className="d-flex flex-column justify-content-center align-items-center">
