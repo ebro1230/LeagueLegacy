@@ -5,7 +5,7 @@ import Accordion from "react-bootstrap/Accordion";
 import Table from "react-bootstrap/Table";
 import Image from "next/image";
 import WeekDayDropdown from "./weekday-dropdown";
-import unknownPlayer from "@/assets/Unkown-Player.jpg";
+import unknownPlayer from "@/assets/Unknown-Player.jpg";
 import { Inter } from "@next/font/google";
 import { Koulen } from "@next/font/google";
 const inter = Inter({
