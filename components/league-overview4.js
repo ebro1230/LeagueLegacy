@@ -33,7 +33,6 @@ const koulen = Koulen({
 });
 
 import { Inter } from "@next/font/google";
-import { withRouter } from "next/router";
 const inter = Inter({
   subsets: ["latin"], // Specify subsets like 'latin', 'cyrillic', etc.
   weight: ["400"], // Include specific font weights
@@ -401,7 +400,7 @@ export default function LeagueOverview({ leagueType, leagueKeysString }) {
                         ? matchingSeason.regularSeasonRecord.wins
                         : previous.regularSeasonRecord.wins;
                     }),
-                  borderColor: "white", // Line color
+                  borderColor: getColor(index), // Line color
                   backgroundColor: getColor(index).replace("1)", "0.2)"), // Fill color (translucent)
                   pointBackgroundColor: getColor(index), // Color of the points
                   borderWidth: 1,
@@ -1170,7 +1169,10 @@ export default function LeagueOverview({ leagueType, leagueKeysString }) {
                 <Tab eventKey="Trends" title="Trends">
                   <div className="trends-dropdown-div">
                     <Row style={{ width: "100%" }}>
-                      <Col className="d-flex justify-content-space-evenly align-items-center">
+                      <Col
+                        className="d-flex align-items-center"
+                        style={{ justifyContent: "space-evenly" }}
+                      >
                         <h5
                           className={inter.className}
                           style={{ color: "#83A6CF" }}
@@ -1186,7 +1188,10 @@ export default function LeagueOverview({ leagueType, leagueKeysString }) {
                           seasonDropdownActive={true}
                         />
                       </Col>
-                      <Col className="d-flex justify-content-space-evenly align-items-center">
+                      <Col
+                        className="d-flex align-items-center"
+                        style={{ justifyContent: "space-evenly" }}
+                      >
                         <h5
                           className={inter.className}
                           style={{ color: "#83A6CF" }}

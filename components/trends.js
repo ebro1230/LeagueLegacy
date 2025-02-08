@@ -60,6 +60,20 @@ export default function Trends({ chartData }) {
             scales: {
               y: {
                 beginAtZero: true, // y-axis starts at 0
+                ticks: {
+                  color: "white", // Y-axis label color
+                },
+                grid: {
+                  color: "white", // Y-axis grid line color
+                },
+              },
+              x: {
+                ticks: {
+                  color: "white", // Y-axis label color
+                },
+                grid: {
+                  color: "white", // Y-axis grid line color
+                },
               },
             },
           }}
