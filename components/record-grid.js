@@ -38,56 +38,54 @@ export default function RecordGrid({
       ) : (
         <Container fluid>
           <Row>
-            <Col xs="12" md="6" xl="4" style={{ marginBottom: "2rem" }}>
-              <RecordItemSeason
-                record={records.mostWins}
-                logoStyle={logoStyle}
-                recordName="Most Wins In A Season"
-              />
-              <RecordItemSeason
-                record={records.mostLosses}
-                logoStyle={logoStyle}
-                recordName="Most Losses In A Season"
-              />
-              <RecordItemSeason
-                record={records.winningStreak}
-                logoStyle={logoStyle}
-                recordName="Longest Winning Streak"
-              />
-              <RecordItemSeason
-                record={records.losingStreak}
-                logoStyle={logoStyle}
-                recordName="Longest Losing Streak"
-              />
-              <RecordItemSeason
-                record={records.mostPointsSeason}
-                logoStyle={logoStyle}
-                recordName="Most Points In A Season"
-              />
-              <RecordItemSeason
-                record={records.leastPointsSeason}
-                logoStyle={logoStyle}
-                recordName="Least Points In A Season"
-              />
-              <RecordItemSeason
-                record={records.mostPointsAgainstSeason}
-                logoStyle={logoStyle}
-                recordName="Most Points Against In A Season"
-              />
-              <RecordItemSeason
-                record={records.leastPointsAgainstSeason}
-                logoStyle={logoStyle}
-                recordName="Least Points Against In A Season"
-              />
-              <RecordItem
-                record={records.biggestWin}
-                logoStyle={logoStyle}
-                recordName="Biggest Blowout"
-                leagueType={leagueType}
-                accessToken={accessToken}
-                onIsOpen={onIsOpen}
-              />
-            </Col>
+            <RecordItemSeason
+              record={records.mostWins}
+              logoStyle={logoStyle}
+              recordName="Most Wins In A Season"
+            />
+            <RecordItemSeason
+              record={records.mostLosses}
+              logoStyle={logoStyle}
+              recordName="Most Losses In A Season"
+            />
+            <RecordItemSeason
+              record={records.winningStreak}
+              logoStyle={logoStyle}
+              recordName="Longest Winning Streak"
+            />
+            <RecordItemSeason
+              record={records.losingStreak}
+              logoStyle={logoStyle}
+              recordName="Longest Losing Streak"
+            />
+            <RecordItemSeason
+              record={records.mostPointsSeason}
+              logoStyle={logoStyle}
+              recordName="Most Points In A Season"
+            />
+            <RecordItemSeason
+              record={records.leastPointsSeason}
+              logoStyle={logoStyle}
+              recordName="Least Points In A Season"
+            />
+            <RecordItemSeason
+              record={records.mostPointsAgainstSeason}
+              logoStyle={logoStyle}
+              recordName="Most Points Against In A Season"
+            />
+            <RecordItemSeason
+              record={records.leastPointsAgainstSeason}
+              logoStyle={logoStyle}
+              recordName="Least Points Against In A Season"
+            />
+            <RecordItem
+              record={records.biggestWin}
+              logoStyle={logoStyle}
+              recordName="Biggest Blowout"
+              leagueType={leagueType}
+              accessToken={accessToken}
+              onIsOpen={onIsOpen}
+            />
           </Row>
         </Container>
       )}
