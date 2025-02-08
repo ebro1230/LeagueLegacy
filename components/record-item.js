@@ -26,7 +26,14 @@ export default function RecordItem({
   onIsOpen,
 }) {
   return (
-    <Accordion style={{ width: "100%", marginBottom: "2rem" }}>
+    <Accordion
+      style={{
+        width: "100%",
+        marginBottom: "2rem",
+        paddingLeft: "0.5rem",
+        paddingRight: "0.5rem",
+      }}
+    >
       {record.map((record) => {
         return (
           <Accordion.Item

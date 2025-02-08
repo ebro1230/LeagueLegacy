@@ -26,7 +26,7 @@ export default function RecordItemSeason({ record, logoStyle, recordName }) {
             xs="12"
             md="6"
             xl="4"
-            style={{ marginBottom: "2rem", padding: "0rem" }}
+            style={{ marginBottom: "2rem" }}
             key={`${record} + Col`}
           >
             <Accordion key={`${record} + Accordion`}>

@@ -22,6 +22,7 @@ import TrendsDropdown from "./trends-dropdown";
 import TrendSeasonDropdown from "./trend-season-dropdown";
 import LoadingIndicator from "./loading-indicator";
 import TrendListGroup from "./trend-listgroup";
+import RecordTeamDropdown from "./record-team-dropdown";
 
 import Trends from "./trends";
 import RecordGrid from "./record-grid";
@@ -34,6 +35,7 @@ const koulen = Koulen({
 });
 
 import { Inter } from "@next/font/google";
+
 const inter = Inter({
   subsets: ["latin"], // Specify subsets like 'latin', 'cyrillic', etc.
   weight: ["400"], // Include specific font weights
@@ -1253,9 +1255,7 @@ export default function LeagueOverview({ leagueType, leagueKeysString }) {
                   </div>
                 </Tab>
                 <Tab eventKey="League Records" title="League Records">
-                  <div
-                  // className="teams-dropdown-div"
-                  >
+                  <div className="teams-dropdown-div">
                     <Row style={{ width: "100%" }}>
                       <Col
                         className="d-flex align-items-center"
@@ -1284,7 +1284,7 @@ export default function LeagueOverview({ leagueType, leagueKeysString }) {
                         >
                           TEAM
                         </h5>
-                        <TeamDropdown
+                        <RecordTeamDropdown
                           onTeamSelect={handleRecordsTeamSelect}
                           managers={chosenSeasonTeams}
                           chosenSeason={chosenSeason}
