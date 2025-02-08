@@ -20,7 +20,7 @@ const inter = Inter({
 export default function RecordItemSeason({ record, logoStyle, recordName }) {
   return (
     <Container fluid>
-      <Row>
+      <Row width="100%">
         {record.map((record) => {
           return (
             <Col
@@ -56,9 +56,9 @@ export default function RecordItemSeason({ record, logoStyle, recordName }) {
                         alt={`${record.name}'s Logo`}
                       />
                     </Col>
-                    <Col className="d-flex justify-content-center">
+                    <Col>
                       <Row>
-                        <Col>
+                        <Col className="d-flex justify-content-center">
                           <p
                             className={koulen.className}
                             style={{
@@ -72,7 +72,7 @@ export default function RecordItemSeason({ record, logoStyle, recordName }) {
                         </Col>
                       </Row>
                       <Row>
-                        <Col>
+                        <Col className="d-flex justify-content-center">
                           <p
                             className={inter.className}
                             style={{
