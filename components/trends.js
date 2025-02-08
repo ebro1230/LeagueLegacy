@@ -51,6 +51,9 @@ export default function Trends({ chartData }) {
             plugins: {
               legend: {
                 position: "top", // Position of the legend
+                labels: {
+                  color: "white", // Change legend text color
+                },
               },
               // title: {
               //   display: true,
