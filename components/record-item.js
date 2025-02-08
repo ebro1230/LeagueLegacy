@@ -36,7 +36,7 @@ export default function RecordItem({
             <Accordion.Header>
               <Container fluid>
                 <Row>
-                  <Col>
+                  <Col className="d-flex justify-content-center">
                     <h5
                       className={koulen.className}
                       style={{ fontSize: "24px", color: "white" }}
@@ -48,22 +48,30 @@ export default function RecordItem({
                 <Row>
                   <Col>
                     <Row>
-                      <Col>
+                      <Col className="d-flex justify-content-center">
                         <Image
                           src={record.logo}
                           width={50}
                           height={50}
-                          style={logoStyle}
+                          style={{
+                            borderRadius: "50%",
+                            border: "1px solid #fff",
+                            objectFit: "contain",
+                          }}
                           alt={`${record.name}'s Logo`}
                         />
                       </Col>
                       <Col></Col>
-                      <Col>
+                      <Col className="d-flex justify-content-center">
                         <Image
                           src={record.opponentLogo}
                           width={50}
                           height={50}
-                          style={logoStyle}
+                          style={{
+                            borderRadius: "50%",
+                            border: "1px solid #fff",
+                            objectFit: "contain",
+                          }}
                           alt={`${record.opponentName}'s Logo`}
                         />
                       </Col>
@@ -71,50 +79,70 @@ export default function RecordItem({
                     <Row>
                       <Col>
                         <Row>
-                          <Col>
+                          <Col className="d-flex justify-content-center">
                             <p
                               className={`${koulen.className}`}
-                              style={{ fontSize: "18px", color: "white" }}
+                              style={{
+                                fontSize: "18px",
+                                color: "white",
+                                marginBottom: "0rem",
+                              }}
                             >
                               {record.name}
                             </p>
                           </Col>
                         </Row>
                         <Row>
-                          <Col>
+                          <Col className="d-flex justify-content-center">
                             <p
                               className={`${inter.className}`}
-                              style={{ fontSize: "14px", color: "#83A6CF" }}
+                              style={{
+                                fontSize: "14px",
+                                color: "#83A6CF",
+                                marginBottom: "0rem",
+                              }}
                             >
                               {record.managerName}
                             </p>
                           </Col>
                         </Row>
                       </Col>
-                      <Col>
+                      <Col className="d-flex justify-content-center">
                         <p
                           className={`${koulen.className}`}
-                          style={{ fontSize: "24px", color: "white" }}
+                          style={{
+                            fontSize: "24px",
+                            color: "white",
+                            marginBottom: "0rem",
+                          }}
                         >
                           VS
                         </p>
                       </Col>
                       <Col>
                         <Row>
-                          <Col>
+                          <Col className="d-flex justify-content-center">
                             <p
                               className={`${koulen.className}`}
-                              style={{ fontSize: "18px", color: "white" }}
+                              style={{
+                                fontSize: "18px",
+                                color: "white",
+                                marginBottom: "0rem",
+                              }}
                             >
                               {record.opponentName}
                             </p>
                           </Col>
                         </Row>
                         <Row>
-                          <Col>
+                          <Col className="d-flex justify-content-center">
                             <p
                               className={`${inter.className}`}
-                              style={{ fontSize: "14px", color: "#83A6CF" }}
+                              style={{
+                                fontSize: "14px",
+                                color: "#83A6CF",
+                                marginBottom: "0rem",
+                              }}
                             >
                               {record.opponentManagerName}
                             </p>
@@ -125,20 +153,31 @@ export default function RecordItem({
                     <Row>
                       <Col>
                         <Row>
-                          <Col>
+                          <Col className="d-flex justify-content-center">
                             <p
-                              className={`${inter.className} positive-differential`}
-                              style={{ fontSize: "14px", color: "#83A6CF" }}
+                              className={`${inter.className}`}
+                              style={{
+                                fontSize: "14px",
+                                color: "#83A6CF",
+                                marginBottom: "0rem",
+                              }}
                             >
-                              Act. {record.pointsFor}
+                              Act.{" "}
+                              <span className="positive-differential">
+                                {record.pointsFor}
+                              </span>
                             </p>
                           </Col>
                         </Row>
                         <Row>
-                          <Col>
+                          <Col className="d-flex justify-content-center">
                             <p
                               className={`${inter.className}`}
-                              style={{ fontSize: "14px", color: "#83A6CF" }}
+                              style={{
+                                fontSize: "14px",
+                                color: "#83A6CF",
+                                marginBottom: "0rem",
+                              }}
                             >
                               Proj. {record.projectedPointsFor}
                             </p>
@@ -148,20 +187,31 @@ export default function RecordItem({
                       <Col></Col>
                       <Col>
                         <Row>
-                          <Col>
+                          <Col className="d-flex justify-content-center">
                             <p
                               className={`${inter.className} positive-differential`}
-                              style={{ fontSize: "14px", color: "#83A6CF" }}
+                              style={{
+                                fontSize: "14px",
+                                color: "#83A6CF",
+                                marginBottom: "0rem",
+                              }}
                             >
-                              Act. {record.pointsAgainst}
+                              Act.{" "}
+                              <span className="positive-differential">
+                                {record.pointsAgainst}
+                              </span>
                             </p>
                           </Col>
                         </Row>
                         <Row>
-                          <Col>
+                          <Col className="d-flex justify-content-center">
                             <p
                               className={`${inter.className}`}
-                              style={{ fontSize: "14px", color: "#83A6CF" }}
+                              style={{
+                                fontSize: "14px",
+                                color: "#83A6CF",
+                                marginBottom: "0rem",
+                              }}
                             >
                               Proj. {record.projectedPointsAgainst}
                             </p>
@@ -174,20 +224,28 @@ export default function RecordItem({
                 <Row>
                   <Col>
                     <Row>
-                      <Col>
+                      <Col className="d-flex justify-content-center">
                         <p
                           className={`${inter.className}`}
-                          style={{ fontSize: "12px", color: "#83A6CF" }}
+                          style={{
+                            fontSize: "12px",
+                            color: "#83A6CF",
+                            marginBottom: "0rem",
+                          }}
                         >
                           SEASON
                         </p>
                       </Col>
                     </Row>
                     <Row>
-                      <Col>
+                      <Col className="d-flex justify-content-center">
                         <p
                           className={`${koulen.className}`}
-                          style={{ fontSize: "18px", color: "white" }}
+                          style={{
+                            fontSize: "18px",
+                            color: "white",
+                            marginBottom: "0rem",
+                          }}
                         >
                           {record.season}
                         </p>
@@ -196,20 +254,28 @@ export default function RecordItem({
                   </Col>
                   <Col>
                     <Row>
-                      <Col>
+                      <Col className="d-flex justify-content-center">
                         <p
                           className={`${inter.className}`}
-                          style={{ fontSize: "12px", color: "#83A6CF" }}
+                          style={{
+                            fontSize: "12px",
+                            color: "#83A6CF",
+                            marginBottom: "0rem",
+                          }}
                         >
                           WEEK
                         </p>
                       </Col>
                     </Row>
                     <Row>
-                      <Col>
+                      <Col className="d-flex justify-content-center">
                         <p
                           className={`${koulen.className}`}
-                          style={{ fontSize: "18px", color: "white" }}
+                          style={{
+                            fontSize: "18px",
+                            color: "white",
+                            marginBottom: "0rem",
+                          }}
                         >
                           {record.week}
                         </p>
