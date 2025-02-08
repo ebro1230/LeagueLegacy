@@ -49,16 +49,19 @@ export default function LeagueOverview({ leagueType, leagueKeysString }) {
     objectFit: "contain",
   };
   const predefinedColors = [
-    "black",
-    "red",
+    "yellow",
+    "cyan",
+    "magenta",
+    "white",
+    "chartreuse",
+    "gold",
     "orange",
-    "purple",
-    "green",
-    "darkgoldenrod",
-    "navy",
-    "aqua",
-    "hotpink",
-    "tomato",
+    "red",
+    "lime",
+    "deepskyblue",
+    "fuchsia",
+    "springgreen",
+    "aquamarine",
   ];
 
   const [leagueLogo, setLeagueLogo] = useState();
