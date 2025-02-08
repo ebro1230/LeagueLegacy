@@ -43,7 +43,7 @@ export default function Trends({ chartData }) {
     return <p>Loading Team Data</p>;
   } else {
     return (
-      <div style={{ width: "80%", height: "80%" }}>
+      <div style={{ width: "100%", height: "100%" }}>
         <Line
           data={chartData || defaultData}
           options={{
