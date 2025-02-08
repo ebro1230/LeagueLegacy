@@ -1301,7 +1301,7 @@ export default function LeagueOverview({ leagueType, leagueKeysString }) {
                       logoStyle={logoStyle}
                       leagueType={leagueType}
                       chosenTeam={chosenRecordTeam}
-                      accessToken={accessToken}
+                      accessToken={session.accessToken}
                       onIsOpen={handleIsOpen}
                     />
                   </div>
