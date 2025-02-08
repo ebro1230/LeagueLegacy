@@ -6,6 +6,7 @@ import Tabs from "react-bootstrap/Tabs";
 
 import Image from "next/image";
 import { useEffect, useState } from "react";
+import { Row, Col } from "react-bootstrap";
 
 import football from "@/assets/Fantasy-Football.png";
 import hockey from "@/assets/Fantasy-Hockey.png";
@@ -32,6 +33,7 @@ const koulen = Koulen({
 });
 
 import { Inter } from "@next/font/google";
+import { Col, Row } from "react-bootstrap";
 const inter = Inter({
   subsets: ["latin"], // Specify subsets like 'latin', 'cyrillic', etc.
   weight: ["400"], // Include specific font weights
@@ -1167,24 +1169,40 @@ export default function LeagueOverview({ leagueType, leagueKeysString }) {
                 </Tab>
                 <Tab eventKey="Trends" title="Trends">
                   <div className="teams-dropdown-div">
-                    <h5>FROM</h5>
-                    <TrendSeasonDropdown
-                      onSeasonSelect={handleTrendSeason1Select}
-                      leagueSeasons={trendSeasonArray}
-                      chosenSeason={chosenSeason1}
-                      chosenSeason1={chosenSeason1}
-                      isSeason2={false}
-                      seasonDropdownActive={true}
-                    />
-                    <h5>TO</h5>
-                    <TrendSeasonDropdown
-                      onSeasonSelect={handleTrendSeason2Select}
-                      leagueSeasons={trendSeasonArray}
-                      chosenSeason={chosenSeason2}
-                      chosenSeason1={chosenSeason1}
-                      isSeason2={true}
-                      seasonDropdownActive={season2DropdownActive}
-                    />
+                    <Row>
+                      <Col className="d-flex justify-content-center">
+                        <h5
+                          className={inter.className}
+                          style={{ color: "#83A6CF" }}
+                        >
+                          FROM
+                        </h5>
+                        <TrendSeasonDropdown
+                          onSeasonSelect={handleTrendSeason1Select}
+                          leagueSeasons={trendSeasonArray}
+                          chosenSeason={chosenSeason1}
+                          chosenSeason1={chosenSeason1}
+                          isSeason2={false}
+                          seasonDropdownActive={true}
+                        />
+                      </Col>
+                      <Col className="d-flex justify-content-center">
+                        <h5
+                          className={inter.className}
+                          style={{ color: "#83A6CF" }}
+                        >
+                          TO
+                        </h5>
+                        <TrendSeasonDropdown
+                          onSeasonSelect={handleTrendSeason2Select}
+                          leagueSeasons={trendSeasonArray}
+                          chosenSeason={chosenSeason2}
+                          chosenSeason1={chosenSeason1}
+                          isSeason2={true}
+                          seasonDropdownActive={season2DropdownActive}
+                        />
+                      </Col>
+                    </Row>
                   </div>
                   <div className="teams-dropdown-div">
                     <TrendsDropdown
