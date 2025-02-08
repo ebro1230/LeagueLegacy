@@ -21,6 +21,7 @@ import ManagerComparison from "./manager-comparison";
 import TrendsDropdown from "./trends-dropdown";
 import TrendSeasonDropdown from "./trend-season-dropdown";
 import LoadingIndicator from "./loading-indicator";
+import TrendListGroup from "./trend-listgroup";
 
 import Trends from "./trends";
 import RecordGrid from "./record-grid";
@@ -1220,12 +1221,21 @@ export default function LeagueOverview({ leagueType, leagueKeysString }) {
                     </Row>
                   </div>
                   <div className="teams-dropdown-div">
-                    <TrendsDropdown
-                      chosenSeason1={chosenSeason1}
-                      chosenSeason2={chosenSeason2}
-                      chosenTrend={chosenTrend}
-                      onTrendSelect={handleTrendSelect}
-                    />
+                    {isMobile ? (
+                      <TrendsDropdown
+                        chosenSeason1={chosenSeason1}
+                        chosenSeason2={chosenSeason2}
+                        chosenTrend={chosenTrend}
+                        onTrendSelect={handleTrendSelect}
+                      />
+                    ) : (
+                      <TrendListGroup
+                        onSeasonSelect={handleSeasonSelect}
+                        leagueSeasons={leagueSeasons}
+                        chosenSeason={chosenSeason}
+                        seasonDropdownActive={seasonDropdownActive}
+                      />
+                    )}
                   </div>
 
                   <div className="team-comparison-div">

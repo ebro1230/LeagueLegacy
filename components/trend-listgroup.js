@@ -1,28 +1,28 @@
 "use client";
-import Dropdown from "react-bootstrap/Dropdown";
+import ListGroup from "react-bootstrap/ListGroup";
+import { Row } from "react-bootstrap";
 
-export default function TrendsDropdown({
+export default function TrendListGroup({
   onTrendSelect,
   chosenTrend,
   chosenSeason1,
   chosenSeason2,
 }) {
   return (
-    <div className="season-dropdown-div">
-      <Dropdown onSelect={onTrendSelect}>
-        <Dropdown.Toggle
-          //variant="success"
-          //id="dropdown-basic"
-          className="custom-dropdown-toggle"
-        >
-          {chosenTrend.name}
-        </Dropdown.Toggle>
-
-        <Dropdown.Menu>
+    <div className="trend-list-group-div">
+      <ListGroup
+        onSelect={onTrendSelect}
+        horizontal
+        variant="flush"
+        activeKey={JSON.stringify(chosenTrend)}
+      >
+        <div style={{ display: "flex", width: "fit-content" }}>
           {chosenSeason1.year === "Overall" ||
           (chosenSeason1.year !== "Overall" && chosenSeason2.year != "---") ? (
             <>
-              <Dropdown.Item
+              <ListGroup.Item
+                action
+                className="custom-list-group-item"
                 eventKey={JSON.stringify({
                   name: "Championships",
                   value: "championships",
@@ -31,8 +31,10 @@ export default function TrendsDropdown({
                 key="ChampionshipsKey"
               >
                 Championships
-              </Dropdown.Item>
-              <Dropdown.Item
+              </ListGroup.Item>
+              <ListGroup.Item
+                action
+                className="custom-list-group-item"
                 eventKey={JSON.stringify({
                   name: "Playoff Appearances",
                   value: "playoffSeasonRecord",
@@ -41,8 +43,10 @@ export default function TrendsDropdown({
                 key="playoffSeasonRecord.playoffAppearances.length"
               >
                 Playoff Appearances
-              </Dropdown.Item>
-              <Dropdown.Item
+              </ListGroup.Item>
+              <ListGroup.Item
+                action
+                className="custom-list-group-item"
                 eventKey={JSON.stringify({
                   name: "Playoff Wins",
                   value: "playoffSeasonRecord",
@@ -51,8 +55,10 @@ export default function TrendsDropdown({
                 key="playoffSeasonRecord.wins"
               >
                 Playoff Wins
-              </Dropdown.Item>
-              <Dropdown.Item
+              </ListGroup.Item>
+              <ListGroup.Item
+                action
+                className="custom-list-group-item"
                 eventKey={JSON.stringify({
                   name: "Playoff Losses",
                   value: "playoffSeasonRecord",
@@ -61,8 +67,10 @@ export default function TrendsDropdown({
                 key="playoffSeasonRecord.losses"
               >
                 Playoff Losses
-              </Dropdown.Item>
-              <Dropdown.Item
+              </ListGroup.Item>
+              <ListGroup.Item
+                action
+                className="custom-list-group-item"
                 eventKey={JSON.stringify({
                   name: "Playoff Win Differential",
                   value: "playoffSeasonRecord",
@@ -71,8 +79,10 @@ export default function TrendsDropdown({
                 key="playoffSeasonRecord.winDifferential"
               >
                 Playoff Win Differential
-              </Dropdown.Item>
-              <Dropdown.Item
+              </ListGroup.Item>
+              <ListGroup.Item
+                action
+                className="custom-list-group-item"
                 eventKey={JSON.stringify({
                   name: "Consolation Appearances",
                   value: "consolationSeasonRecord",
@@ -81,8 +91,10 @@ export default function TrendsDropdown({
                 key="consolationSeasonRecord.consolationAppearances.length"
               >
                 Consolation Appearances
-              </Dropdown.Item>
-              <Dropdown.Item
+              </ListGroup.Item>
+              <ListGroup.Item
+                action
+                className="custom-list-group-item"
                 eventKey={JSON.stringify({
                   name: "Consolation Wins",
                   value: "consolationSeasonRecord",
@@ -91,8 +103,10 @@ export default function TrendsDropdown({
                 key="consolationSeasonRecord.wins"
               >
                 Consolation Wins
-              </Dropdown.Item>
-              <Dropdown.Item
+              </ListGroup.Item>
+              <ListGroup.Item
+                action
+                className="custom-list-group-item"
                 eventKey={JSON.stringify({
                   name: "Consolation Losses",
                   value: "consolationSeasonRecord",
@@ -101,8 +115,10 @@ export default function TrendsDropdown({
                 key="consolationSeasonRecord.losses"
               >
                 Consolation Losses
-              </Dropdown.Item>
-              <Dropdown.Item
+              </ListGroup.Item>
+              <ListGroup.Item
+                action
+                className="custom-list-group-item"
                 eventKey={JSON.stringify({
                   name: "Consolation Win Differential",
                   value: "consolationSeasonRecord",
@@ -111,10 +127,12 @@ export default function TrendsDropdown({
                 key="consolationSeasonRecord.winDifferential"
               >
                 Consolation Win Differential
-              </Dropdown.Item>
+              </ListGroup.Item>
             </>
           ) : null}
-          <Dropdown.Item
+          <ListGroup.Item
+            action
+            className="custom-list-group-item"
             eventKey={JSON.stringify({
               name: "Regular Season Wins",
               value: "regularSeasonRecord",
@@ -123,8 +141,10 @@ export default function TrendsDropdown({
             key="regularSeasonRecord.wins"
           >
             Wins
-          </Dropdown.Item>
-          <Dropdown.Item
+          </ListGroup.Item>
+          <ListGroup.Item
+            action
+            className="custom-list-group-item"
             eventKey={JSON.stringify({
               name: "Regular Season Losses",
               value: "regularSeasonRecord",
@@ -133,8 +153,10 @@ export default function TrendsDropdown({
             key="regularSeasonRecord.losses"
           >
             Losses
-          </Dropdown.Item>
-          <Dropdown.Item
+          </ListGroup.Item>
+          <ListGroup.Item
+            action
+            className="custom-list-group-item"
             eventKey={JSON.stringify({
               name: "Regular Season Ties",
               value: "regularSeasonRecord",
@@ -143,8 +165,10 @@ export default function TrendsDropdown({
             key="regularSeasonRecord.ties"
           >
             Ties
-          </Dropdown.Item>
-          <Dropdown.Item
+          </ListGroup.Item>
+          <ListGroup.Item
+            action
+            className="custom-list-group-item"
             eventKey={JSON.stringify({
               name: "Regular Season Win Differential",
               value: "regularSeasonRecord",
@@ -153,8 +177,10 @@ export default function TrendsDropdown({
             key="regularSeasonRecord.winDifferential"
           >
             Win Differential
-          </Dropdown.Item>
-          <Dropdown.Item
+          </ListGroup.Item>
+          <ListGroup.Item
+            action
+            className="custom-list-group-item"
             eventKey={JSON.stringify({
               name: "Regular Season Points For",
               value: "regularSeasonRecord",
@@ -163,8 +189,10 @@ export default function TrendsDropdown({
             key="regularSeasonRecord.pointsFor"
           >
             Points For
-          </Dropdown.Item>
-          <Dropdown.Item
+          </ListGroup.Item>
+          <ListGroup.Item
+            action
+            className="custom-list-group-item"
             eventKey={JSON.stringify({
               name: "Regular Season Points Against",
               value: "regularSeasonRecord",
@@ -173,8 +201,10 @@ export default function TrendsDropdown({
             key="regularSeasonRecord.pointsAgainst"
           >
             Points Against
-          </Dropdown.Item>
-          <Dropdown.Item
+          </ListGroup.Item>
+          <ListGroup.Item
+            action
+            className="custom-list-group-item"
             eventKey={JSON.stringify({
               name: "Regular Season Point Differential",
               value: "regularSeasonRecord",
@@ -183,9 +213,9 @@ export default function TrendsDropdown({
             key="regularSeasonRecord.pointsDifferential"
           >
             Point Differential
-          </Dropdown.Item>
-        </Dropdown.Menu>
-      </Dropdown>
+          </ListGroup.Item>
+        </div>
+      </ListGroup>
     </div>
   );
 }

@@ -747,3 +747,7 @@ thead tr th{
 .week-results-div{
   margin-bottom: 1rem;
 }
+.trend-list-group-div{
+  display: flex;
+  flex-wrap: wrap;
+}
