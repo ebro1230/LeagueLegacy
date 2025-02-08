@@ -61,18 +61,18 @@ export default function Trends({ chartData }) {
               y: {
                 beginAtZero: true, // y-axis starts at 0
                 ticks: {
-                  color: "white", // Y-axis label color
+                  color: "rgb(186, 182, 182)", // Y-axis label color
                 },
                 grid: {
-                  color: "white", // Y-axis grid line color
+                  color: "rgb(186, 182, 182)", // Y-axis grid line color
                 },
               },
               x: {
                 ticks: {
-                  color: "white", // Y-axis label color
+                  color: "rgb(186, 182, 182)", // X-axis label color
                 },
                 grid: {
-                  color: "white", // Y-axis grid line color
+                  color: "rgb(186, 182, 182)", // X-axis grid line color
                 },
               },
             },

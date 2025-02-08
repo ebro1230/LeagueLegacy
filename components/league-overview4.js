@@ -430,6 +430,13 @@ export default function LeagueOverview({ leagueType, leagueKeysString }) {
                         },
                       },
                     },
+                    plugins: {
+                      legend: {
+                        labels: {
+                          color: "white", // Change legend text color
+                        },
+                      },
+                    },
                   },
                 };
               }
