@@ -1186,7 +1186,7 @@ export default function LeagueOverview({ leagueType, leagueKeysString }) {
                       >
                         <h5
                           className={inter.className}
-                          style={{ color: "#83A6CF" }}
+                          style={{ color: "#83A6CF", fontSize: "12px" }}
                         >
                           FROM
                         </h5>
@@ -1205,7 +1205,7 @@ export default function LeagueOverview({ leagueType, leagueKeysString }) {
                       >
                         <h5
                           className={inter.className}
-                          style={{ color: "#83A6CF" }}
+                          style={{ color: "#83A6CF", fontSize: "12px" }}
                         >
                           TO
                         </h5>
@@ -1254,22 +1254,46 @@ export default function LeagueOverview({ leagueType, leagueKeysString }) {
                 </Tab>
                 <Tab eventKey="League Records" title="League Records">
                   <div className="teams-dropdown-div">
-                    <SeasonDropdown
-                      onSeasonSelect={handleSeasonSelect}
-                      leagueSeasons={leagueSeasons}
-                      chosenSeason={chosenSeason}
-                      seasonDropdownActive={seasonDropdownActive}
-                    />
-                    <TeamDropdown
-                      onTeamSelect={handleRecordsTeamSelect}
-                      managers={chosenSeasonTeams}
-                      chosenSeason={chosenSeason}
-                      chosenTeam1={chosenRecordTeam}
-                      chosenTeam2={chosenTeam2}
-                      isActive={team1Active}
-                      isTeam2={false}
-                      isRecordTeamDropdown={isRecordTeamDropdown}
-                    />
+                    <Row style={{ width: "100%" }}>
+                      <Col
+                        className="d-flex align-items-center"
+                        style={{ justifyContent: "space-evenly" }}
+                      >
+                        <h5
+                          className={inter.className}
+                          style={{ color: "#83A6CF", fontSize: "12px" }}
+                        >
+                          YEAR
+                        </h5>
+                        <SeasonDropdown
+                          onSeasonSelect={handleSeasonSelect}
+                          leagueSeasons={leagueSeasons}
+                          chosenSeason={chosenSeason}
+                          seasonDropdownActive={seasonDropdownActive}
+                        />
+                      </Col>
+                      <Col
+                        className="d-flex align-items-center"
+                        style={{ justifyContent: "space-evenly" }}
+                      >
+                        <h5
+                          className={inter.className}
+                          style={{ color: "#83A6CF", fontSize: "12px" }}
+                        >
+                          TEAM
+                        </h5>
+                        <TeamDropdown
+                          onTeamSelect={handleRecordsTeamSelect}
+                          managers={chosenSeasonTeams}
+                          chosenSeason={chosenSeason}
+                          chosenTeam1={chosenRecordTeam}
+                          chosenTeam2={chosenTeam2}
+                          isActive={team1Active}
+                          isTeam2={false}
+                          isRecordTeamDropdown={isRecordTeamDropdown}
+                        />
+                      </Col>
+                    </Row>
                   </div>
                   <div className="team-comparison-div">
                     <RecordGrid
@@ -1277,6 +1301,8 @@ export default function LeagueOverview({ leagueType, leagueKeysString }) {
                       logoStyle={logoStyle}
                       leagueType={leagueType}
                       chosenTeam={chosenRecordTeam}
+                      accessToken={accessToken}
+                      onIsOpen={handleIsOpen}
                     />
                   </div>
                 </Tab>

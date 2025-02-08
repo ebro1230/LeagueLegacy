@@ -8,6 +8,8 @@ export default function RecordGrid({
   logoStyle,
   leagueType,
   chosenTeam,
+  accessToken,
+  onIsOpen,
 }) {
   return records ? (
     <>
@@ -18,12 +20,16 @@ export default function RecordGrid({
             logoStyle={logoStyle}
             recordName="Biggest Blowout (Win)"
             leagueType={leagueType}
+            accessToken={accessToken}
+            onIsOpen={onIsOpen}
           />
           <RecordItem
             record={records.biggestLoss}
             logoStyle={logoStyle}
             recordName="Biggest Blowout (Loss)"
             leagueType={leagueType}
+            accessToken={accessToken}
+            onIsOpen={onIsOpen}
           />
         </>
       ) : (
@@ -73,6 +79,8 @@ export default function RecordGrid({
             logoStyle={logoStyle}
             recordName="Biggest Blowout"
             leagueType={leagueType}
+            accessToken={accessToken}
+            onIsOpen={onIsOpen}
           />
         </>
       )}
@@ -82,42 +90,56 @@ export default function RecordGrid({
         logoStyle={logoStyle}
         recordName="Closest Match (Non-Tie)"
         leagueType={leagueType}
+        accessToken={accessToken}
+        onIsOpen={onIsOpen}
       />
       <RecordItem
         record={records.highestScoreVSProjection}
         logoStyle={logoStyle}
         recordName="Highest Score vs. Projected Score"
         leagueType={leagueType}
+        accessToken={accessToken}
+        onIsOpen={onIsOpen}
       />
       <RecordItem
         record={records.mostAccurateProjection}
         logoStyle={logoStyle}
         recordName="Most Accurate Projected Score"
         leagueType={leagueType}
+        accessToken={accessToken}
+        onIsOpen={onIsOpen}
       />
       <RecordItem
         record={records.mostPointsGame}
         logoStyle={logoStyle}
         recordName="Most Points In A Game"
         leagueType={leagueType}
+        accessToken={accessToken}
+        onIsOpen={onIsOpen}
       />
       <RecordItem
         record={records.leastPointsGame}
         logoStyle={logoStyle}
         recordName="Least Points In A Game"
         leagueType={leagueType}
+        accessToken={accessToken}
+        onIsOpen={onIsOpen}
       />
       <RecordItem
         record={records.mostPointsInLoss}
         logoStyle={logoStyle}
         recordName="Most Points In A Loss"
         leagueType={leagueType}
+        accessToken={accessToken}
+        onIsOpen={onIsOpen}
       />
       <RecordItem
         record={records.leastPointsInWin}
         logoStyle={logoStyle}
         recordName="Least Points In A Win"
         leagueType={leagueType}
+        accessToken={accessToken}
+        onIsOpen={onIsOpen}
       />
     </>
   ) : (

@@ -1,6 +1,11 @@
 "use client";
 import ListGroup from "react-bootstrap/ListGroup";
 import { Row } from "react-bootstrap";
+import { Koulen } from "@next/font/google";
+const koulen = Koulen({
+  subsets: ["latin"], // Specify subsets like 'latin', 'cyrillic', etc.
+  weight: ["400"], // Include specific font weights
+});
 
 export default function TrendListGroup({
   onTrendSelect,
@@ -27,9 +32,13 @@ export default function TrendListGroup({
           (chosenSeason1.year !== "Overall" && chosenSeason2.year != "---") ? (
             <>
               <ListGroup.Item
-                style={{ width: "fit-content" }}
+                style={{
+                  width: "fit-content",
+                  color: "#83A6CF",
+                  fontSize: "14px",
+                }}
                 action
-                className="custom-list-group-item"
+                className={`${koulen.className} custom-list-group-item`}
                 eventKey={JSON.stringify({
                   name: "Championships",
                   value: "championships",
@@ -40,9 +49,13 @@ export default function TrendListGroup({
                 Championships
               </ListGroup.Item>
               <ListGroup.Item
-                style={{ width: "fit-content" }}
+                style={{
+                  width: "fit-content",
+                  color: "#83A6CF",
+                  fontSize: "14px",
+                }}
                 action
-                className="custom-list-group-item"
+                className={`${koulen.className} custom-list-group-item`}
                 eventKey={JSON.stringify({
                   name: "Playoff Appearances",
                   value: "playoffSeasonRecord",
@@ -53,9 +66,13 @@ export default function TrendListGroup({
                 Playoff Appearances
               </ListGroup.Item>
               <ListGroup.Item
-                style={{ width: "fit-content" }}
+                style={{
+                  width: "fit-content",
+                  color: "#83A6CF",
+                  fontSize: "14px",
+                }}
                 action
-                className="custom-list-group-item"
+                className={`${koulen.className} custom-list-group-item`}
                 eventKey={JSON.stringify({
                   name: "Playoff Wins",
                   value: "playoffSeasonRecord",
@@ -66,9 +83,13 @@ export default function TrendListGroup({
                 Playoff Wins
               </ListGroup.Item>
               <ListGroup.Item
-                style={{ width: "fit-content" }}
+                style={{
+                  width: "fit-content",
+                  color: "#83A6CF",
+                  fontSize: "14px",
+                }}
                 action
-                className="custom-list-group-item"
+                className={`${koulen.className} custom-list-group-item`}
                 eventKey={JSON.stringify({
                   name: "Playoff Losses",
                   value: "playoffSeasonRecord",
@@ -79,9 +100,13 @@ export default function TrendListGroup({
                 Playoff Losses
               </ListGroup.Item>
               <ListGroup.Item
-                style={{ width: "fit-content" }}
+                style={{
+                  width: "fit-content",
+                  color: "#83A6CF",
+                  fontSize: "14px",
+                }}
                 action
-                className="custom-list-group-item"
+                className={`${koulen.className} custom-list-group-item`}
                 eventKey={JSON.stringify({
                   name: "Playoff Win Differential",
                   value: "playoffSeasonRecord",
@@ -92,9 +117,13 @@ export default function TrendListGroup({
                 Playoff Win Differential
               </ListGroup.Item>
               <ListGroup.Item
-                style={{ width: "fit-content" }}
+                style={{
+                  width: "fit-content",
+                  color: "#83A6CF",
+                  fontSize: "14px",
+                }}
                 action
-                className="custom-list-group-item"
+                className={`${koulen.className} custom-list-group-item`}
                 eventKey={JSON.stringify({
                   name: "Consolation Appearances",
                   value: "consolationSeasonRecord",
@@ -105,9 +134,13 @@ export default function TrendListGroup({
                 Consolation Appearances
               </ListGroup.Item>
               <ListGroup.Item
-                style={{ width: "fit-content" }}
+                style={{
+                  width: "fit-content",
+                  color: "#83A6CF",
+                  fontSize: "14px",
+                }}
                 action
-                className="custom-list-group-item"
+                className={`${koulen.className} custom-list-group-item`}
                 eventKey={JSON.stringify({
                   name: "Consolation Wins",
                   value: "consolationSeasonRecord",
@@ -118,9 +151,13 @@ export default function TrendListGroup({
                 Consolation Wins
               </ListGroup.Item>
               <ListGroup.Item
-                style={{ width: "fit-content" }}
+                style={{
+                  width: "fit-content",
+                  color: "#83A6CF",
+                  fontSize: "14px",
+                }}
                 action
-                className="custom-list-group-item"
+                className={`${koulen.className} custom-list-group-item`}
                 eventKey={JSON.stringify({
                   name: "Consolation Losses",
                   value: "consolationSeasonRecord",
@@ -131,9 +168,13 @@ export default function TrendListGroup({
                 Consolation Losses
               </ListGroup.Item>
               <ListGroup.Item
-                style={{ width: "fit-content" }}
+                style={{
+                  width: "fit-content",
+                  color: "#83A6CF",
+                  fontSize: "14px",
+                }}
                 action
-                className="custom-list-group-item"
+                className={`${koulen.className} custom-list-group-item`}
                 eventKey={JSON.stringify({
                   name: "Consolation Win Differential",
                   value: "consolationSeasonRecord",
@@ -146,9 +187,9 @@ export default function TrendListGroup({
             </>
           ) : null}
           <ListGroup.Item
-            style={{ width: "fit-content" }}
+            style={{ width: "fit-content", color: "#83A6CF", fontSize: "14px" }}
             action
-            className="custom-list-group-item"
+            className={`${koulen.className} custom-list-group-item`}
             eventKey={JSON.stringify({
               name: "Regular Season Wins",
               value: "regularSeasonRecord",
@@ -159,9 +200,9 @@ export default function TrendListGroup({
             Wins
           </ListGroup.Item>
           <ListGroup.Item
-            style={{ width: "fit-content" }}
+            style={{ width: "fit-content", color: "#83A6CF", fontSize: "14px" }}
             action
-            className="custom-list-group-item"
+            className={`${koulen.className} custom-list-group-item`}
             eventKey={JSON.stringify({
               name: "Regular Season Losses",
               value: "regularSeasonRecord",
@@ -172,9 +213,9 @@ export default function TrendListGroup({
             Losses
           </ListGroup.Item>
           <ListGroup.Item
-            style={{ width: "fit-content" }}
+            style={{ width: "fit-content", color: "#83A6CF", fontSize: "14px" }}
             action
-            className="custom-list-group-item"
+            className={`${koulen.className} custom-list-group-item`}
             eventKey={JSON.stringify({
               name: "Regular Season Ties",
               value: "regularSeasonRecord",
@@ -185,9 +226,9 @@ export default function TrendListGroup({
             Ties
           </ListGroup.Item>
           <ListGroup.Item
-            style={{ width: "fit-content" }}
+            style={{ width: "fit-content", color: "#83A6CF", fontSize: "14px" }}
             action
-            className="custom-list-group-item"
+            className={`${koulen.className} custom-list-group-item`}
             eventKey={JSON.stringify({
               name: "Regular Season Win Differential",
               value: "regularSeasonRecord",
@@ -198,9 +239,9 @@ export default function TrendListGroup({
             Win Differential
           </ListGroup.Item>
           <ListGroup.Item
-            style={{ width: "fit-content" }}
+            style={{ width: "fit-content", color: "#83A6CF", fontSize: "14px" }}
             action
-            className="custom-list-group-item"
+            className={`${koulen.className} custom-list-group-item`}
             eventKey={JSON.stringify({
               name: "Regular Season Points For",
               value: "regularSeasonRecord",
@@ -211,9 +252,9 @@ export default function TrendListGroup({
             Points For
           </ListGroup.Item>
           <ListGroup.Item
-            style={{ width: "fit-content" }}
+            style={{ width: "fit-content", color: "#83A6CF", fontSize: "14px" }}
             action
-            className="custom-list-group-item"
+            className={`${koulen.className} custom-list-group-item`}
             eventKey={JSON.stringify({
               name: "Regular Season Points Against",
               value: "regularSeasonRecord",
@@ -224,9 +265,9 @@ export default function TrendListGroup({
             Points Against
           </ListGroup.Item>
           <ListGroup.Item
-            style={{ width: "fit-content" }}
+            style={{ width: "fit-content", color: "#83A6CF", fontSize: "14px" }}
             action
-            className="custom-list-group-item"
+            className={`${koulen.className} custom-list-group-item`}
             eventKey={JSON.stringify({
               name: "Regular Season Point Differential",
               value: "regularSeasonRecord",
