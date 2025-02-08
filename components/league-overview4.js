@@ -33,7 +33,6 @@ const koulen = Koulen({
 });
 
 import { Inter } from "@next/font/google";
-import { Col, Row } from "react-bootstrap";
 const inter = Inter({
   subsets: ["latin"], // Specify subsets like 'latin', 'cyrillic', etc.
   weight: ["400"], // Include specific font weights
