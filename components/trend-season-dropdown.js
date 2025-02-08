@@ -13,8 +13,9 @@ export default function TrendSeasonDropdown({
     <div className="season-dropdown-div">
       <Dropdown onSelect={onSeasonSelect}>
         <Dropdown.Toggle
-          variant="success"
-          id="dropdown-basic"
+          //variant="success"
+          //id="dropdown-basic"
+          className="custom-dropdown-toggle"
           disabled={!seasonDropdownActive}
         >
           {chosenSeason.year}

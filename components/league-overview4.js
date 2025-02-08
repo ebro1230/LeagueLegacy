@@ -31,6 +31,12 @@ const koulen = Koulen({
   weight: ["400"], // Include specific font weights
 });
 
+import { Inter } from "@next/font/google";
+const inter = Inter({
+  subsets: ["latin"], // Specify subsets like 'latin', 'cyrillic', etc.
+  weight: ["400"], // Include specific font weights
+});
+
 export default function LeagueOverview({ leagueType, leagueKeysString }) {
   const { data: session, status } = useSession();
   const date = new Date();
@@ -1161,14 +1167,7 @@ export default function LeagueOverview({ leagueType, leagueKeysString }) {
                 </Tab>
                 <Tab eventKey="Trends" title="Trends">
                   <div className="teams-dropdown-div">
-                    <TrendsDropdown
-                      chosenSeason1={chosenSeason1}
-                      chosenSeason2={chosenSeason2}
-                      chosenTrend={chosenTrend}
-                      onTrendSelect={handleTrendSelect}
-                    />
-                  </div>
-                  <div className="teams-dropdown-div">
+                    <h5>FROM</h5>
                     <TrendSeasonDropdown
                       onSeasonSelect={handleTrendSeason1Select}
                       leagueSeasons={trendSeasonArray}
@@ -1177,6 +1176,7 @@ export default function LeagueOverview({ leagueType, leagueKeysString }) {
                       isSeason2={false}
                       seasonDropdownActive={true}
                     />
+                    <h5>TO</h5>
                     <TrendSeasonDropdown
                       onSeasonSelect={handleTrendSeason2Select}
                       leagueSeasons={trendSeasonArray}
@@ -1186,6 +1186,15 @@ export default function LeagueOverview({ leagueType, leagueKeysString }) {
                       seasonDropdownActive={season2DropdownActive}
                     />
                   </div>
+                  <div className="teams-dropdown-div">
+                    <TrendsDropdown
+                      chosenSeason1={chosenSeason1}
+                      chosenSeason2={chosenSeason2}
+                      chosenTrend={chosenTrend}
+                      onTrendSelect={handleTrendSelect}
+                    />
+                  </div>
+
                   <div className="team-comparison-div">
                     <Trends
                       chosenSeason1={chosenSeason1}
