@@ -42,7 +42,7 @@ export default function RecordItem({
           >
             <Accordion.Header>
               <Container fluid>
-                <Row>
+                <Row style={{ marginTop: "0.5rem", marginBottom: "0.5rem" }}>
                   <Col className="d-flex justify-content-center">
                     <h5
                       className={koulen.className}
@@ -52,7 +52,7 @@ export default function RecordItem({
                     </h5>
                   </Col>
                 </Row>
-                <Row>
+                <Row style={{ marginTop: "0.5rem", marginBottom: "0.5rem" }}>
                   <Col>
                     <Row>
                       <Col className="d-flex justify-content-center">
@@ -228,7 +228,7 @@ export default function RecordItem({
                     </Row>
                   </Col>
                 </Row>
-                <Row>
+                <Row style={{ marginTop: "0.5rem", marginBottom: "0.5rem" }}>
                   <Col>
                     <Row>
                       <Col className="d-flex justify-content-center">
