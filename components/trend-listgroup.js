@@ -16,11 +16,18 @@ export default function TrendListGroup({
         variant="flush"
         activeKey={JSON.stringify(chosenTrend)}
       >
-        <div style={{ display: "flex", width: "fit-content" }}>
+        <div
+          style={{
+            display: "flex",
+            flexWrap: "wrap",
+            justifyContent: "center",
+          }}
+        >
           {chosenSeason1.year === "Overall" ||
           (chosenSeason1.year !== "Overall" && chosenSeason2.year != "---") ? (
             <>
               <ListGroup.Item
+                style={{ width: "fit-content" }}
                 action
                 className="custom-list-group-item"
                 eventKey={JSON.stringify({
@@ -33,6 +40,7 @@ export default function TrendListGroup({
                 Championships
               </ListGroup.Item>
               <ListGroup.Item
+                style={{ width: "fit-content" }}
                 action
                 className="custom-list-group-item"
                 eventKey={JSON.stringify({
@@ -45,6 +53,7 @@ export default function TrendListGroup({
                 Playoff Appearances
               </ListGroup.Item>
               <ListGroup.Item
+                style={{ width: "fit-content" }}
                 action
                 className="custom-list-group-item"
                 eventKey={JSON.stringify({
@@ -57,6 +66,7 @@ export default function TrendListGroup({
                 Playoff Wins
               </ListGroup.Item>
               <ListGroup.Item
+                style={{ width: "fit-content" }}
                 action
                 className="custom-list-group-item"
                 eventKey={JSON.stringify({
@@ -69,6 +79,7 @@ export default function TrendListGroup({
                 Playoff Losses
               </ListGroup.Item>
               <ListGroup.Item
+                style={{ width: "fit-content" }}
                 action
                 className="custom-list-group-item"
                 eventKey={JSON.stringify({
@@ -81,6 +92,7 @@ export default function TrendListGroup({
                 Playoff Win Differential
               </ListGroup.Item>
               <ListGroup.Item
+                style={{ width: "fit-content" }}
                 action
                 className="custom-list-group-item"
                 eventKey={JSON.stringify({
@@ -93,6 +105,7 @@ export default function TrendListGroup({
                 Consolation Appearances
               </ListGroup.Item>
               <ListGroup.Item
+                style={{ width: "fit-content" }}
                 action
                 className="custom-list-group-item"
                 eventKey={JSON.stringify({
@@ -105,6 +118,7 @@ export default function TrendListGroup({
                 Consolation Wins
               </ListGroup.Item>
               <ListGroup.Item
+                style={{ width: "fit-content" }}
                 action
                 className="custom-list-group-item"
                 eventKey={JSON.stringify({
@@ -117,6 +131,7 @@ export default function TrendListGroup({
                 Consolation Losses
               </ListGroup.Item>
               <ListGroup.Item
+                style={{ width: "fit-content" }}
                 action
                 className="custom-list-group-item"
                 eventKey={JSON.stringify({
@@ -131,6 +146,7 @@ export default function TrendListGroup({
             </>
           ) : null}
           <ListGroup.Item
+            style={{ width: "fit-content" }}
             action
             className="custom-list-group-item"
             eventKey={JSON.stringify({
@@ -143,6 +159,7 @@ export default function TrendListGroup({
             Wins
           </ListGroup.Item>
           <ListGroup.Item
+            style={{ width: "fit-content" }}
             action
             className="custom-list-group-item"
             eventKey={JSON.stringify({
@@ -155,6 +172,7 @@ export default function TrendListGroup({
             Losses
           </ListGroup.Item>
           <ListGroup.Item
+            style={{ width: "fit-content" }}
             action
             className="custom-list-group-item"
             eventKey={JSON.stringify({
@@ -167,6 +185,7 @@ export default function TrendListGroup({
             Ties
           </ListGroup.Item>
           <ListGroup.Item
+            style={{ width: "fit-content" }}
             action
             className="custom-list-group-item"
             eventKey={JSON.stringify({
@@ -179,6 +198,7 @@ export default function TrendListGroup({
             Win Differential
           </ListGroup.Item>
           <ListGroup.Item
+            style={{ width: "fit-content" }}
             action
             className="custom-list-group-item"
             eventKey={JSON.stringify({
@@ -191,6 +211,7 @@ export default function TrendListGroup({
             Points For
           </ListGroup.Item>
           <ListGroup.Item
+            style={{ width: "fit-content" }}
             action
             className="custom-list-group-item"
             eventKey={JSON.stringify({
@@ -203,6 +224,7 @@ export default function TrendListGroup({
             Points Against
           </ListGroup.Item>
           <ListGroup.Item
+            style={{ width: "fit-content" }}
             action
             className="custom-list-group-item"
             eventKey={JSON.stringify({

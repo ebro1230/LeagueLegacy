@@ -1220,7 +1220,10 @@ export default function LeagueOverview({ leagueType, leagueKeysString }) {
                       </Col>
                     </Row>
                   </div>
-                  <div className="teams-dropdown-div">
+                  <div
+                    className="teams-dropdown-div"
+                    style={{ justifyContent: "center" }}
+                  >
                     {isMobile ? (
                       <TrendsDropdown
                         chosenSeason1={chosenSeason1}
