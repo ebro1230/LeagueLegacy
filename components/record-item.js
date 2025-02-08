@@ -252,6 +252,7 @@ export default function RecordItem({
                       </Col>
                     </Row>
                   </Col>
+                  <Col></Col>
                   <Col>
                     <Row>
                       <Col className="d-flex justify-content-center">

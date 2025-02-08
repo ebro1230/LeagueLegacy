@@ -1253,7 +1253,9 @@ export default function LeagueOverview({ leagueType, leagueKeysString }) {
                   </div>
                 </Tab>
                 <Tab eventKey="League Records" title="League Records">
-                  <div className="teams-dropdown-div">
+                  <div
+                  // className="teams-dropdown-div"
+                  >
                     <Row style={{ width: "100%" }}>
                       <Col
                         className="d-flex align-items-center"
