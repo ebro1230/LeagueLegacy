@@ -22,7 +22,7 @@ export default function RecordItemSeason({ record, logoStyle, recordName }) {
     <>
       {record.map((record) => {
         return (
-          <Accordion>
+          <Accordion key={`${record} + Accordion`}>
             <Accordion.Item key={record}>
               <Row>
                 <Col className="d-flex justify-content-center">

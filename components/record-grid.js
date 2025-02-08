@@ -38,13 +38,7 @@ export default function RecordGrid({
       ) : (
         <Container fluid>
           <Row>
-            <Col
-              xs="12"
-              md="6"
-              xl="4"
-              key={`${record} + Col`}
-              style={{ marginBottom: "2rem" }}
-            >
+            <Col xs="12" md="6" xl="4" style={{ marginBottom: "2rem" }}>
               <RecordItemSeason
                 record={records.mostWins}
                 logoStyle={logoStyle}
