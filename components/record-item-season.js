@@ -22,7 +22,13 @@ export default function RecordItemSeason({ record, logoStyle, recordName }) {
     <>
       {record.map((record) => {
         return (
-          <Col xs="12" md="6" xl="4" style={{ marginBottom: "2rem" }}>
+          <Col
+            xs="12"
+            md="6"
+            xl="4"
+            style={{ marginBottom: "2rem" }}
+            key={`${record} + Col`}
+          >
             <Accordion key={`${record} + Accordion`}>
               <Accordion.Item key={record}>
                 <Row>
