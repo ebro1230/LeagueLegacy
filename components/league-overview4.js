@@ -1230,10 +1230,10 @@ export default function LeagueOverview({ leagueType, leagueKeysString }) {
                       />
                     ) : (
                       <TrendListGroup
-                        onSeasonSelect={handleSeasonSelect}
-                        leagueSeasons={leagueSeasons}
-                        chosenSeason={chosenSeason}
-                        seasonDropdownActive={seasonDropdownActive}
+                        chosenSeason1={chosenSeason1}
+                        chosenSeason2={chosenSeason2}
+                        chosenTrend={chosenTrend}
+                        onTrendSelect={handleTrendSelect}
                       />
                     )}
                   </div>
