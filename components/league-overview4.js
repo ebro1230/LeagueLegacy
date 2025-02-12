@@ -491,7 +491,9 @@ export default function LeagueOverview({ leagueType, leagueKeysString }) {
       status === "unauthenticated" ||
       session.expires < Date.now() ||
       !session.accessToken ||
-      !session
+      !session ||
+      !leagueType ||
+      !leagueKeysString
     ) {
       setLoading(false);
       router.push("/");
