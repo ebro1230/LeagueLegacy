@@ -54,7 +54,7 @@ export default function Trends({ chartData }) {
         <Line
           data={chartData || defaultData}
           options={{
-            responsive: true,
+            // responsive: true,
             plugins: {
               legend: {
                 position: "top", // Position of the legend
