@@ -17,6 +17,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import LoadingIndicator from "@/components/loading-indicator";
 import { useRouter } from "next/navigation";
 import { Koulen } from "@next/font/google";
+import { Col } from "react-bootstrap";
 const koulen = Koulen({
   subsets: ["latin"], // Specify subsets like 'latin', 'cyrillic', etc.
   weight: ["400"], // Include specific font weights
@@ -215,27 +216,36 @@ export default function SportPage({ params }) {
             backgroundImage: noLeagueDataBackgroundImage
               ? `url(${noLeagueDataBackgroundImage.src})`
               : none,
-            width: "1440px",
+            width: "100%",
             height: "844px",
             gap: "48px",
             paddingTop: "80px",
             paddingRight: "160px",
             paddingBottom: "80px",
             paddingLeft: "160px",
+            display: "flex",
+            flexDirection: "column",
+            justifyContent: "center",
           }}
         >
-          <p
-            className={`no-league-div ${koulen.className}`}
-            style={{
-              paddingTop: "20rem",
-              width: "50%",
-              paddingLeft: "15rem",
-              fontSize: "36px",
-            }}
-          >
-            Sorry, you are not part of any fantasy {leagueType} leagues
-          </p>
-          <button>Go Back</button>
+          <Col xs={4}>
+            <p
+              className={`no-league-div ${koulen.className}`}
+              style={{
+                paddingTop: "20rem",
+                width: "100%",
+                paddingLeft: "15rem",
+                fontSize: "36px",
+                color: "white",
+                textShadow:
+                  "-2px -2px 0 black, 2px -2px 0 black, -2px 2px 0 black, 2px 2px 0 black",
+                textAlign: "center",
+              }}
+            >
+              Sorry, you are not part of any fantasy {leagueType} leagues
+            </p>
+            <button>Go Back</button>
+          </Col>
         </div>
       )}
     </>
