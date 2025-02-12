@@ -3539,6 +3539,17 @@ export default function LeagueOverview({ leagueType, leagueKeysString }) {
           }
         })
       );
+    } else if (e === "Member Seasons" && columnSortedBy === "Member Seasons") {
+      setChosenSeasonTeams(
+        chosenSeasonTeams.sort((a, b) => {
+          if (a.memberSeasons.length !== b.memberSeasons.length) {
+            return a.memberSeasons.length - b.memberSeasons.length;
+          }
+          if (Number(a.rank.rank) !== Number(b.rank.rank)) {
+            return Number(b.rank.rank) - Number(a.rank.rank);
+          }
+        })
+      );
     }
     if (e === columnSortedBy) {
       setColumnSortedBy(e + "-");

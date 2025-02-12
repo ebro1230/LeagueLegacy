@@ -215,12 +215,26 @@ export default function SportPage({ params }) {
             backgroundImage: noLeagueDataBackgroundImage
               ? `url(${noLeagueDataBackgroundImage.src})`
               : none,
-            backgroundSize: "cover",
-            backgroundPosition: "center",
-            minHeight: "100vh",
+            width: "1440px",
+            height: "844px",
+            gap: "48px",
+            paddingTop: "80px",
+            paddingRight: "160px",
+            paddingBottom: "80px",
+            paddingLeft: "160px",
           }}
         >
-          <h1>Sorry, you are not part of any fantasy {leagueType} leagues</h1>
+          <p
+            className={`no-league-div ${koulen.className}`}
+            style={{
+              paddingTop: "20rem",
+              width: "50%",
+              paddingLeft: "15rem",
+              fontSize: "36px",
+            }}
+          >
+            Sorry, you are not part of any fantasy {leagueType} leagues
+          </p>
           <button>Go Back</button>
         </div>
       )}
