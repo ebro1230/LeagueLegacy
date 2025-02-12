@@ -489,9 +489,9 @@ export default function LeagueOverview({ leagueType, leagueKeysString }) {
     };
     if (
       status === "unauthenticated" ||
-      session.expires < Date.now() ||
-      !session.accessToken ||
       !session ||
+      (session && session.expires < Date.now()) ||
+      (session && !session.accessToken) ||
       !leagueType ||
       !leagueKeysString
     ) {
