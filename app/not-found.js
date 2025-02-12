@@ -7,9 +7,12 @@ import { useRouter } from "next/navigation";
 import { Col } from "react-bootstrap";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { useEffect, useState } from "react";
+import LoadingIndicator from "@/components/loading-indicator";
 
 export default function NotFoundPage() {
   const [backgroundImage, setBackgroundImage] = useState(null);
+  const [isLoading, setIsLoading] = useState(true);
+  const router = useRouter();
   useEffect(() => {
     let randomNum = Math.floor(Math.random() * 4) + 1;
     if (randomNum === 1) {
@@ -21,11 +24,12 @@ export default function NotFoundPage() {
     } else if (randomNum === 4) {
       setBackgroundImage(yankees);
     }
+    setIsLoading(false);
   }, []);
-  return (
+  return !isLoading ? (
     <div
       style={{
-        backgroundImage: backgroundImage ? `url(${backgroundImage.src})` : none,
+        backgroundImage: backgroundImage ? `url(${backgroundImage.src})` : null,
         width: "100%",
         height: "100vh",
         gap: "48px",
@@ -73,6 +77,16 @@ export default function NotFoundPage() {
           Go Back to Homepage
         </button>
       </Col>
+    </div>
+  ) : (
+    <div className="normal-background">
+      <div className="spacing-div">
+        <div className="loading-div">
+          <LoadingIndicator>
+            <span className="visually-hidden">Loading...</span>
+          </LoadingIndicator>
+        </div>
+      </div>
     </div>
   );
 }
