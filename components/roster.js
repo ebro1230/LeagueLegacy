@@ -308,18 +308,76 @@ export default function Roster({
         </div>
       ) : (
         <>
-          <div className="weekday-dropdown-div">
-            <WeekDayDropdown
-              weekDays={weekDays}
-              onDateChange={handleDateChange}
-              chosenDate={chosenDate}
-            />
-          </div>
-          <div className="roster-div">
-            {team1Roster.length ? (
-              <div className="roster-div">
-                <Table responsive striped bordered className="player-table">
-                  <tbody>
+          <Row>
+            <Col md={12} lg={6}>
+              <Row className="week-results-div">
+                <Col className="inside-week-results">
+                  <p className={`${inter.className} card-titles`}>Result</p>{" "}
+                  <p
+                    className={`${koulen.className} card-info ${
+                      week.pointsFor > week.pointsAgainst
+                        ? "positive-differential"
+                        : week.pointsFor < week.pointsAgainst
+                        ? "negative-differential"
+                        : ""
+                    }`}
+                  >
+                    {week.pointsFor > week.pointsAgainst
+                      ? "Winner"
+                      : week.pointsFor < week.pointsAgainst
+                      ? "Loser"
+                      : "Tie"}
+                  </p>
+                </Col>
+                <Col className="inside-week-results">
+                  <p className={`${inter.className} card-titles`}>
+                    Projected Points
+                  </p>{" "}
+                  <p className={`${koulen.className} card-info`}>
+                    {week.projectedPointsFor}
+                  </p>
+                </Col>
+                <Col className="inside-week-results">
+                  <p className={`${inter.className} card-titles`}>
+                    Actual Points
+                  </p>{" "}
+                  <p className={`${koulen.className} card-info`}>
+                    {week.pointsFor}
+                  </p>
+                </Col>
+              </Row>
+            </Col>
+          </Row>
+          <Row>
+            <Col>
+              <div className="weekday-dropdown-div">
+                <WeekDayDropdown
+                  weekDays={weekDays}
+                  onDateChange={handleDateChange}
+                  chosenDate={chosenDate}
+                  className="custom-dropdown-toggle2"
+                />
+              </div>
+            </Col>
+          </Row>
+          <Row>
+            <Col md={12} lg={6}>
+              {team1Roster.length ? (
+                <Table
+                  key={team1Roster}
+                  responsive
+                  striped
+                  bordered
+                  className="player-table"
+                >
+                  <thead className={`${koulen.className} player-table-head`}>
+                    <tr>
+                      <th>POS.</th>
+                      <th>Player</th>
+                      <th>Points</th>
+                    </tr>
+                  </thead>
+                  <tbody className="player-table-body">
                     {team1Roster.map((player) => {
                       return (
                         <tr key={player}>
@@ -331,9 +389,9 @@ export default function Roster({
                               height={25}
                               style={logoStyle}
                               alt={unknownPlayer}
-                            />
+                            />{" "}
+                            {player.playerName}
                           </td>
-                          <td>{player.playerName}</td>
                           {chosenDate === "Week" ? (
                             <td>
                               {player.playerActivePoints
@@ -357,14 +415,27 @@ export default function Roster({
                     })}
                   </tbody>
                 </Table>
-              </div>
-            ) : (
-              <p>No Data Available</p>
-            )}
-            {team2Roster.length ? (
-              <div className="roster-div">
-                <Table responsive striped bordered className="player-table">
-                  <tbody>
+              ) : (
+                <p>No Data Available</p>
+              )}
+            </Col>
+            <Col md={12} lg={6}>
+              {team2Roster.length ? (
+                <Table
+                  key={team2Roster}
+                  responsive
+                  striped
+                  bordered
+                  className="player-table"
+                >
+                  <thead className={`${koulen.className} player-table-head`}>
+                    <tr>
+                      <th>POS.</th>
+                      <th>Player</th>
+                      <th>Points</th>
+                    </tr>
+                  </thead>
+                  <tbody className="player-table-body">
                     {team2Roster.map((player) => {
                       return (
                         <tr key={player}>
@@ -376,9 +447,9 @@ export default function Roster({
                               height={25}
                               style={logoStyle}
                               alt={unknownPlayer}
-                            />
+                            />{" "}
+                            {player.playerName}
                           </td>
-                          <td>{player.playerName}</td>
                           {chosenDate === "Week" ? (
                             <td>
                               {player.playerActivePoints
@@ -402,11 +473,11 @@ export default function Roster({
                     })}
                   </tbody>
                 </Table>
-              </div>
-            ) : (
-              <p>No Data Available</p>
-            )}
-          </div>
+              ) : (
+                <p>No Data Available</p>
+              )}
+            </Col>
+          </Row>
         </>
       )}
     </Accordion.Body>
