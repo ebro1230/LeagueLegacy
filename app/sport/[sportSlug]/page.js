@@ -230,8 +230,10 @@ export default function SportPage({ params }) {
           }}
         >
           <Col
-            xs={6}
-            md={4}
+            xs={12}
+            sm={8}
+            md={6}
+            lg={4}
             style={{
               display: "flex",
               flexDirection: "column",
