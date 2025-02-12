@@ -623,6 +623,16 @@ td p {
   width:100%;
 }
 
+.custom-dropdown-toggle2 {
+  background:none !important;
+  color: white;
+  border-radius: 0px;
+  border: 1px solid #83A6CF;
+  margin: 1rem 0rem;
+  padding: 0.5rem 1rem;
+  /* width:100%; */
+}
+
 .table-striped tbody tr:nth-child(odd) td{
   background:#464646 !important;
   color: white;
@@ -750,4 +760,47 @@ thead tr th{
 .trend-list-group-div{
   display: flex;
   flex-wrap: wrap;
+}
+
+.tableContainer {
+  max-height: 7rem; /* Set max height for scroll */
+  overflow: auto;
+  position: relative;
+}
+
+.stickyTable {
+  border-collapse: collapse;
+  width: 100%;
+}
+
+/* Sticky Header */
+.tableHeader {
+  position: sticky;
+  top: 0;
+  /* background: white; */
+  z-index: 100;
+}
+
+/* Sticky First Three Columns */
+.stickyCol1, .stickyCol2, .stickyCol3 {
+  position: sticky;
+  /* background: white; */
+  z-index: 101;
+  /* border-right: 1px solid #ccc; */
+}
+
+/* Set left positions */
+.stickyCol1 {
+  left: 0;
+  min-width: 60px;
+}
+
+.stickyCol2 {
+  left: 60px;
+  min-width: 150px;
+}
+
+.stickyCol3 {
+  left: 210px;
+  min-width: 100px;
 }

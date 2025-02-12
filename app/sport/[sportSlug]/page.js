@@ -10,7 +10,6 @@ import LeaguesGrid from "@/components/leagues-grid";
 import { useSession } from "next-auth/react";
 import { useState, useEffect } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
-import Spinner from "react-bootstrap/Spinner";
 import LoadingIndicator from "@/components/loading-indicator";
 import { useRouter } from "next/navigation";
 import { Koulen } from "@next/font/google";
@@ -24,14 +23,19 @@ export default function SportPage({ params }) {
   const router = useRouter();
   const leagueType = params.sportSlug;
   let imageSource = "";
+  let noLeagueDataBackgroundImage = "";
   if (leagueType === "football") {
     imageSource = football;
+    noLeagueDataBackgroundImage = eagles;
   } else if (leagueType === "hockey") {
     imageSource = hockey;
+    noLeagueDataBackgroundImage = oilers;
   } else if (leagueType === "basketball") {
     imageSource = basketball;
+    noLeagueDataBackgroundImage = Saira_Extra_Condensed;
   } else if (leagueType === "baseball") {
     imageSource = baseball;
+    noLeagueDataBackgroundImage = yankees;
   } else {
     imageSource = "";
   }
@@ -140,8 +144,18 @@ export default function SportPage({ params }) {
           <LeaguesGrid leagues={leagues} leagueType={leagueType} />
         </div>
       ) : (
-        <div>
-          <h1>No League Data Found</h1>
+        <div
+          style={{
+            backgroundImage: noLeagueDataBackgroundImage
+              ? `url(${noLeagueDataBackgroundImage.src})`
+              : none,
+            backgroundSize: "cover",
+            backgroundPosition: "center",
+            minHeight: "100vh",
+          }}
+        >
+          <h1>Sorry, you're not part of any fantasy {leagueType} leagues</h1>
+          <button>Go Back</button>
         </div>
       )}
     </div>

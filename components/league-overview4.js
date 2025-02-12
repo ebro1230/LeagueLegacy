@@ -107,6 +107,7 @@ export default function LeagueOverview({ leagueType, leagueKeysString }) {
   const [leagueKeys, setLeagueKeys] = useState(
     decodeURIComponent(leagueKeysString).split(",")
   );
+  const [columnSortedBy, setColumnSortedBy] = useState("Rank");
 
   const [team1Active, setTeam1Active] = useState(true);
   const [team2Active, setTeam2Active] = useState(false);
@@ -495,6 +496,7 @@ export default function LeagueOverview({ leagueType, leagueKeysString }) {
     setFilteredMatchups([]);
     setSummary([]);
     setFilteredSummary([]);
+    setColumnSortedBy("Rank");
     setTeam2Active(false);
     setChosenSeasonKey(chosenSeason.key);
     leagueInfo.forEach((season) => {
@@ -1042,6 +1044,2508 @@ export default function LeagueOverview({ leagueType, leagueKeysString }) {
     }
   };
 
+  const handleColumnSort = (e) => {
+    console.log(columnSortedBy);
+    if (e === "Rank" && columnSortedBy != "Rank") {
+      setChosenSeasonTeams(
+        chosenSeasonTeams.sort((a, b) => a.rank.rank - b.rank.rank)
+      );
+    } else if (e === "Rank" && columnSortedBy === "Rank") {
+      setChosenSeasonTeams(
+        chosenSeasonTeams.sort((a, b) => b.rank.rank - a.rank.rank)
+      );
+    } else if (e === "Manager" && columnSortedBy != "Manager") {
+      setChosenSeasonTeams(
+        chosenSeasonTeams.sort((a, b) =>
+          a.managerName.localeCompare(b.managerName)
+        )
+      );
+    } else if (e === "Manager" && columnSortedBy === "Manager") {
+      setChosenSeasonTeams(
+        chosenSeasonTeams.sort((a, b) =>
+          b.managerName.localeCompare(a.managerName)
+        )
+      );
+    } else if (e === "Team Name" && columnSortedBy != "Team Name") {
+      setChosenSeasonTeams(
+        chosenSeasonTeams.sort((a, b) => a.name.localeCompare(b.name))
+      );
+    } else if (e === "Team Name" && columnSortedBy === "Team Name") {
+      setChosenSeasonTeams(
+        chosenSeasonTeams.sort((a, b) => b.name.localeCompare(a.name))
+      );
+    } else if (e === "Championships" && columnSortedBy != "Championships") {
+      setChosenSeasonTeams(
+        chosenSeasonTeams.sort((a, b) => {
+          if (
+            Number(a.championships.length) !== Number(b.championships.length)
+          ) {
+            return (
+              Number(b.championships.length) - Number(a.championships.length)
+            );
+          }
+          if (a.winPercentage !== b.winPercentage) {
+            return b.winPercentage - a.winPercentage;
+          }
+          if (a.memberSeasons.length !== b.memberSeasons.length) {
+            return b.memberSeasons.length - a.memberSeasons.length;
+          }
+        })
+      );
+    } else if (e === "Championships" && columnSortedBy === "Championships") {
+      setChosenSeasonTeams(
+        chosenSeasonTeams.sort((a, b) => {
+          if (
+            Number(a.championships.length) !== Number(b.championships.length)
+          ) {
+            return (
+              Number(a.championships.length) - Number(b.championships.length)
+            );
+          }
+          if (a.winPercentage !== b.winPercentage) {
+            return b.winPercentage - a.winPercentage;
+          }
+          if (a.memberSeasons.length !== b.memberSeasons.length) {
+            return b.memberSeasons.length - a.memberSeasons.length;
+          }
+        })
+      );
+    } else if (e === "Best Finish" && columnSortedBy != "Best Finish") {
+      setChosenSeasonTeams(
+        chosenSeasonTeams.sort((a, b) => {
+          if (Number(a.bestFinish[0].rank) !== Number(b.bestFinish[0].rank)) {
+            return Number(a.bestFinish[0].rank) - Number(b.bestFinish[0].rank);
+          }
+          if (Number(a.bestFinish.length) !== Number(b.bestFinish.length)) {
+            return Number(b.bestFinish.length) - Number(a.bestFinish.length);
+          }
+          if (a.winPercentage !== b.winPercentage) {
+            return b.winPercentage - a.winPercentage;
+          }
+          if (a.memberSeasons.length !== b.memberSeasons.length) {
+            return b.memberSeasons.length - a.memberSeasons.length;
+          }
+        })
+      );
+    } else if (e === "Best Finish" && columnSortedBy === "Best Finish") {
+      setChosenSeasonTeams(
+        chosenSeasonTeams.sort((a, b) => {
+          if (Number(a.bestFinish[0].rank) !== Number(b.bestFinish[0].rank)) {
+            return Number(b.bestFinish[0].rank) - Number(a.bestFinish[0].rank);
+          }
+          if (Number(a.bestFinish.length) !== Number(b.bestFinish.length)) {
+            return Number(a.bestFinish.length) - Number(b.bestFinish.length);
+          }
+          if (a.winPercentage !== b.winPercentage) {
+            return a.winPercentage - b.winPercentage;
+          }
+          if (a.memberSeasons.length !== b.memberSeasons.length) {
+            return b.memberSeasons.length - a.memberSeasons.length;
+          }
+        })
+      );
+    } else if (e === "Worst Finish" && columnSortedBy != "Worst Finish") {
+      setChosenSeasonTeams(
+        chosenSeasonTeams.sort((a, b) => {
+          if (Number(a.worstFinish[0].rank) !== Number(b.worstFinish[0].rank)) {
+            return (
+              Number(a.worstFinish[0].rank) - Number(b.worstFinish[0].rank)
+            );
+          }
+          if (Number(a.worstFinish.length) !== Number(b.worstFinish.length)) {
+            return Number(b.worstFinish.length) - Number(a.worstFinish.length);
+          }
+          if (a.winPercentage !== b.winPercentage) {
+            return b.winPercentage - a.winPercentage;
+          }
+          if (a.memberSeasons.length !== b.memberSeasons.length) {
+            return b.memberSeasons.length - a.memberSeasons.length;
+          }
+        })
+      );
+    } else if (e === "Worst Finish" && columnSortedBy === "Worst Finish") {
+      setChosenSeasonTeams(
+        chosenSeasonTeams.sort((a, b) => {
+          if (Number(a.worstFinish[0].rank) !== Number(b.worstFinish[0].rank)) {
+            return (
+              Number(b.worstFinish[0].rank) - Number(a.worstFinish[0].rank)
+            );
+          }
+          if (Number(a.worstFinish.length) !== Number(b.worstFinish.length)) {
+            return Number(a.worstFinish.length) - Number(b.worstFinish.length);
+          }
+          if (a.winPercentage !== b.winPercentage) {
+            return a.winPercentage - b.winPercentage;
+          }
+          if (a.memberSeasons.length !== b.memberSeasons.length) {
+            return b.memberSeasons.length - a.memberSeasons.length;
+          }
+        })
+      );
+    } else if (
+      e === "Playoff Appearances" &&
+      columnSortedBy != "Playoff Appearances"
+    ) {
+      setChosenSeasonTeams(
+        chosenSeasonTeams.sort((a, b) => {
+          if (
+            Number(
+              a.overallCumulativeRecord[a.overallCumulativeRecord.length - 1]
+                .playoffSeasonRecord.playoffAppearances.length
+            ) !==
+            Number(
+              b.overallCumulativeRecord[b.overallCumulativeRecord.length - 1]
+                .playoffSeasonRecord.playoffAppearances.length
+            )
+          ) {
+            return (
+              Number(
+                b.overallCumulativeRecord[b.overallCumulativeRecord.length - 1]
+                  .playoffSeasonRecord.playoffAppearances.length
+              ) -
+              Number(
+                a.overallCumulativeRecord[a.overallCumulativeRecord.length - 1]
+                  .playoffSeasonRecord.playoffAppearances.length
+              )
+            );
+          }
+          if (
+            Number(a.championships.length) !== Number(b.championships.length)
+          ) {
+            return (
+              Number(b.championships.length) - Number(a.championships.length)
+            );
+          }
+          if (a.winPercentage !== b.winPercentage) {
+            return b.winPercentage - a.winPercentage;
+          }
+          if (a.memberSeasons.length !== b.memberSeasons.length) {
+            return b.memberSeasons.length - a.memberSeasons.length;
+          }
+        })
+      );
+    } else if (
+      e === "Playoff Appearances" &&
+      columnSortedBy === "Playoff Appearances"
+    ) {
+      setChosenSeasonTeams(
+        chosenSeasonTeams.sort((a, b) => {
+          if (
+            Number(
+              a.overallCumulativeRecord[a.overallCumulativeRecord.length - 1]
+                .playoffSeasonRecord.playoffAppearances.length
+            ) !==
+            Number(
+              b.overallCumulativeRecord[b.overallCumulativeRecord.length - 1]
+                .playoffSeasonRecord.playoffAppearances.length
+            )
+          ) {
+            return (
+              Number(
+                a.overallCumulativeRecord[a.overallCumulativeRecord.length - 1]
+                  .playoffSeasonRecord.playoffAppearances.length
+              ) -
+              Number(
+                b.overallCumulativeRecord[b.overallCumulativeRecord.length - 1]
+                  .playoffSeasonRecord.playoffAppearances.length
+              )
+            );
+          }
+          if (
+            Number(a.championships.length) !== Number(b.championships.length)
+          ) {
+            return (
+              Number(a.championships.length) - Number(b.championships.length)
+            );
+          }
+          if (a.winPercentage !== b.winPercentage) {
+            return a.winPercentage - b.winPercentage;
+          }
+          if (a.memberSeasons.length !== b.memberSeasons.length) {
+            return b.memberSeasons.length - a.memberSeasons.length;
+          }
+        })
+      );
+    } else if (
+      e === "Consolation Appearances" &&
+      columnSortedBy != "Consolation Appearances"
+    ) {
+      setChosenSeasonTeams(
+        chosenSeasonTeams.sort((a, b) => {
+          if (
+            Number(
+              a.overallCumulativeRecord[a.overallCumulativeRecord.length - 1]
+                .consolationSeasonRecord.consolationAppearances.length
+            ) !==
+            Number(
+              b.overallCumulativeRecord[b.overallCumulativeRecord.length - 1]
+                .consolationSeasonRecord.consolationAppearances.length
+            )
+          ) {
+            return (
+              Number(
+                b.overallCumulativeRecord[b.overallCumulativeRecord.length - 1]
+                  .consolationSeasonRecord.consolationAppearances.length
+              ) -
+              Number(
+                a.overallCumulativeRecord[a.overallCumulativeRecord.length - 1]
+                  .consolationSeasonRecord.consolationAppearances.length
+              )
+            );
+          }
+          if (
+            Number(a.championships.length) !== Number(b.championships.length)
+          ) {
+            return (
+              Number(b.championships.length) - Number(a.championships.length)
+            );
+          }
+          if (a.winPercentage !== b.winPercentage) {
+            return b.winPercentage - a.winPercentage;
+          }
+          if (a.memberSeasons.length !== b.memberSeasons.length) {
+            return b.memberSeasons.length - a.memberSeasons.length;
+          }
+        })
+      );
+    } else if (
+      e === "Consolation Appearances" &&
+      columnSortedBy === "Consolation Appearances"
+    ) {
+      setChosenSeasonTeams(
+        chosenSeasonTeams.sort((a, b) => {
+          if (
+            Number(
+              a.overallCumulativeRecord[a.overallCumulativeRecord.length - 1]
+                .consolationSeasonRecord.consolationAppearances.length
+            ) !==
+            Number(
+              b.overallCumulativeRecord[b.overallCumulativeRecord.length - 1]
+                .consolationSeasonRecord.consolationAppearances.length
+            )
+          ) {
+            return (
+              Number(
+                a.overallCumulativeRecord[a.overallCumulativeRecord.length - 1]
+                  .consolationSeasonRecord.consolationAppearances.length
+              ) -
+              Number(
+                b.overallCumulativeRecord[b.overallCumulativeRecord.length - 1]
+                  .consolationSeasonRecord.consolationAppearances.length
+              )
+            );
+          }
+          if (
+            Number(a.championships.length) !== Number(b.championships.length)
+          ) {
+            return (
+              Number(a.championships.length) - Number(b.championships.length)
+            );
+          }
+          if (a.winPercentage !== b.winPercentage) {
+            return a.winPercentage - b.winPercentage;
+          }
+          if (a.memberSeasons.length !== b.memberSeasons.length) {
+            return b.memberSeasons.length - a.memberSeasons.length;
+          }
+        })
+      );
+    } else if (
+      e === "Regular Season Record" &&
+      columnSortedBy != "Regular Season Record"
+    ) {
+      setChosenSeasonTeams(
+        chosenSeasonTeams.sort((a, b) => {
+          if (
+            Number(
+              a.overallCumulativeRecord[a.overallCumulativeRecord.length - 1]
+                .regularSeasonRecord.wins
+            ) !==
+            Number(
+              b.overallCumulativeRecord[b.overallCumulativeRecord.length - 1]
+                .regularSeasonRecord.wins
+            )
+          ) {
+            return (
+              Number(
+                b.overallCumulativeRecord[b.overallCumulativeRecord.length - 1]
+                  .regularSeasonRecord.wins
+              ) -
+              Number(
+                a.overallCumulativeRecord[a.overallCumulativeRecord.length - 1]
+                  .regularSeasonRecord.wins
+              )
+            );
+          }
+          if (
+            Number(
+              a.overallCumulativeRecord[a.overallCumulativeRecord.length - 1]
+                .regularSeasonRecord.losses
+            ) !==
+            Number(
+              b.overallCumulativeRecord[b.overallCumulativeRecord.length - 1]
+                .regularSeasonRecord.losses
+            )
+          ) {
+            return (
+              Number(
+                a.overallCumulativeRecord[a.overallCumulativeRecord.length - 1]
+                  .regularSeasonRecord.losses
+              ) -
+              Number(
+                b.overallCumulativeRecord[b.overallCumulativeRecord.length - 1]
+                  .regularSeasonRecord.losses
+              )
+            );
+          }
+          if (
+            Number(
+              a.overallCumulativeRecord[a.overallCumulativeRecord.length - 1]
+                .regularSeasonRecord.ties
+            ) !==
+            Number(
+              b.overallCumulativeRecord[b.overallCumulativeRecord.length - 1]
+                .regularSeasonRecord.ties
+            )
+          ) {
+            return (
+              Number(
+                b.overallCumulativeRecord[b.overallCumulativeRecord.length - 1]
+                  .regularSeasonRecord.ties
+              ) -
+              Number(
+                a.overallCumulativeRecord[a.overallCumulativeRecord.length - 1]
+                  .regularSeasonRecord.ties
+              )
+            );
+          }
+          if (
+            Number(a.championships.length) !== Number(b.championships.length)
+          ) {
+            return (
+              Number(b.championships.length) - Number(a.championships.length)
+            );
+          }
+          if (a.memberSeasons.length !== b.memberSeasons.length) {
+            return b.memberSeasons.length - a.memberSeasons.length;
+          }
+        })
+      );
+    } else if (
+      e === "Regular Season Record" &&
+      columnSortedBy === "Regular Season Record"
+    ) {
+      setChosenSeasonTeams(
+        chosenSeasonTeams.sort((a, b) => {
+          if (
+            Number(
+              a.overallCumulativeRecord[a.overallCumulativeRecord.length - 1]
+                .regularSeasonRecord.wins
+            ) !==
+            Number(
+              b.overallCumulativeRecord[b.overallCumulativeRecord.length - 1]
+                .regularSeasonRecord.wins
+            )
+          ) {
+            return (
+              Number(
+                a.overallCumulativeRecord[a.overallCumulativeRecord.length - 1]
+                  .regularSeasonRecord.wins
+              ) -
+              Number(
+                b.overallCumulativeRecord[b.overallCumulativeRecord.length - 1]
+                  .regularSeasonRecord.wins
+              )
+            );
+          }
+          if (
+            Number(
+              a.overallCumulativeRecord[a.overallCumulativeRecord.length - 1]
+                .regularSeasonRecord.losses
+            ) !==
+            Number(
+              b.overallCumulativeRecord[b.overallCumulativeRecord.length - 1]
+                .regularSeasonRecord.losses
+            )
+          ) {
+            return (
+              Number(
+                b.overallCumulativeRecord[b.overallCumulativeRecord.length - 1]
+                  .regularSeasonRecord.losses
+              ) -
+              Number(
+                a.overallCumulativeRecord[a.overallCumulativeRecord.length - 1]
+                  .regularSeasonRecord.losses
+              )
+            );
+          }
+          if (
+            Number(
+              a.overallCumulativeRecord[a.overallCumulativeRecord.length - 1]
+                .regularSeasonRecord.ties
+            ) !==
+            Number(
+              b.overallCumulativeRecord[b.overallCumulativeRecord.length - 1]
+                .regularSeasonRecord.ties
+            )
+          ) {
+            return (
+              Number(
+                a.overallCumulativeRecord[a.overallCumulativeRecord.length - 1]
+                  .regularSeasonRecord.ties
+              ) -
+              Number(
+                b.overallCumulativeRecord[b.overallCumulativeRecord.length - 1]
+                  .regularSeasonRecord.ties
+              )
+            );
+          }
+          if (
+            Number(a.championships.length) !== Number(b.championships.length)
+          ) {
+            return (
+              Number(a.championships.length) - Number(b.championships.length)
+            );
+          }
+          if (a.memberSeasons.length !== b.memberSeasons.length) {
+            return b.memberSeasons.length - a.memberSeasons.length;
+          }
+        })
+      );
+    } else if (e === "Win Percentage" && columnSortedBy != "Win Percentage") {
+      setChosenSeasonTeams(
+        chosenSeasonTeams.sort((a, b) => {
+          if (
+            (a.overallCumulativeRecord[a.overallCumulativeRecord.length - 1]
+              .regularSeasonRecord.wins /
+              (a.overallCumulativeRecord[a.overallCumulativeRecord.length - 1]
+                .regularSeasonRecord.wins +
+                a.overallCumulativeRecord[a.overallCumulativeRecord.length - 1]
+                  .regularSeasonRecord.losses +
+                a.overallCumulativeRecord[a.overallCumulativeRecord.length - 1]
+                  .regularSeasonRecord.ties)) *
+              100 !==
+            (b.overallCumulativeRecord[b.overallCumulativeRecord.length - 1]
+              .regularSeasonRecord.wins /
+              (b.overallCumulativeRecord[b.overallCumulativeRecord.length - 1]
+                .regularSeasonRecord.wins +
+                b.overallCumulativeRecord[b.overallCumulativeRecord.length - 1]
+                  .regularSeasonRecord.losses +
+                b.overallCumulativeRecord[b.overallCumulativeRecord.length - 1]
+                  .regularSeasonRecord.ties)) *
+              100
+          ) {
+            return (
+              ((b.overallCumulativeRecord[b.overallCumulativeRecord.length - 1]
+                .regularSeasonRecord.wins /
+                (b.overallCumulativeRecord[b.overallCumulativeRecord.length - 1]
+                  .regularSeasonRecord.wins +
+                  b.overallCumulativeRecord[
+                    b.overallCumulativeRecord.length - 1
+                  ].regularSeasonRecord.losses +
+                  b.overallCumulativeRecord[
+                    b.overallCumulativeRecord.length - 1
+                  ].regularSeasonRecord.ties)) *
+                100 || 0) -
+              ((a.overallCumulativeRecord[a.overallCumulativeRecord.length - 1]
+                .regularSeasonRecord.wins /
+                (a.overallCumulativeRecord[a.overallCumulativeRecord.length - 1]
+                  .regularSeasonRecord.wins +
+                  a.overallCumulativeRecord[
+                    a.overallCumulativeRecord.length - 1
+                  ].regularSeasonRecord.losses +
+                  a.overallCumulativeRecord[
+                    a.overallCumulativeRecord.length - 1
+                  ].regularSeasonRecord.ties)) *
+                100 || 0)
+            );
+          }
+          if (
+            Number(
+              a.overallCumulativeRecord[a.overallCumulativeRecord.length - 1]
+                .regularSeasonRecord.wins
+            ) !==
+            Number(
+              b.overallCumulativeRecord[b.overallCumulativeRecord.length - 1]
+                .regularSeasonRecord.wins
+            )
+          ) {
+            return (
+              Number(
+                b.overallCumulativeRecord[b.overallCumulativeRecord.length - 1]
+                  .regularSeasonRecord.wins
+              ) -
+              Number(
+                a.overallCumulativeRecord[a.overallCumulativeRecord.length - 1]
+                  .regularSeasonRecord.wins
+              )
+            );
+          }
+          if (
+            Number(a.championships.length) !== Number(b.championships.length)
+          ) {
+            return (
+              Number(b.championships.length) - Number(a.championships.length)
+            );
+          }
+
+          if (a.memberSeasons.length !== b.memberSeasons.length) {
+            return b.memberSeasons.length - a.memberSeasons.length;
+          }
+        })
+      );
+    } else if (e === "Win Percentage" && columnSortedBy === "Win Percentage") {
+      setChosenSeasonTeams(
+        chosenSeasonTeams.sort((a, b) => {
+          if (
+            (a.overallCumulativeRecord[a.overallCumulativeRecord.length - 1]
+              .regularSeasonRecord.wins /
+              (a.overallCumulativeRecord[a.overallCumulativeRecord.length - 1]
+                .regularSeasonRecord.wins +
+                a.overallCumulativeRecord[a.overallCumulativeRecord.length - 1]
+                  .regularSeasonRecord.losses +
+                a.overallCumulativeRecord[a.overallCumulativeRecord.length - 1]
+                  .regularSeasonRecord.ties)) *
+              100 !==
+            (b.overallCumulativeRecord[b.overallCumulativeRecord.length - 1]
+              .regularSeasonRecord.wins /
+              (b.overallCumulativeRecord[b.overallCumulativeRecord.length - 1]
+                .regularSeasonRecord.wins +
+                b.overallCumulativeRecord[b.overallCumulativeRecord.length - 1]
+                  .regularSeasonRecord.losses +
+                b.overallCumulativeRecord[b.overallCumulativeRecord.length - 1]
+                  .regularSeasonRecord.ties)) *
+              100
+          ) {
+            return (
+              ((a.overallCumulativeRecord[a.overallCumulativeRecord.length - 1]
+                .regularSeasonRecord.wins /
+                (a.overallCumulativeRecord[a.overallCumulativeRecord.length - 1]
+                  .regularSeasonRecord.wins +
+                  a.overallCumulativeRecord[
+                    a.overallCumulativeRecord.length - 1
+                  ].regularSeasonRecord.losses +
+                  a.overallCumulativeRecord[
+                    a.overallCumulativeRecord.length - 1
+                  ].regularSeasonRecord.ties)) *
+                100 || 0) -
+              ((b.overallCumulativeRecord[b.overallCumulativeRecord.length - 1]
+                .regularSeasonRecord.wins /
+                (b.overallCumulativeRecord[b.overallCumulativeRecord.length - 1]
+                  .regularSeasonRecord.wins +
+                  b.overallCumulativeRecord[
+                    b.overallCumulativeRecord.length - 1
+                  ].regularSeasonRecord.losses +
+                  b.overallCumulativeRecord[
+                    b.overallCumulativeRecord.length - 1
+                  ].regularSeasonRecord.ties)) *
+                100 || 0)
+            );
+          }
+          if (
+            Number(
+              a.overallCumulativeRecord[a.overallCumulativeRecord.length - 1]
+                .regularSeasonRecord.wins
+            ) !==
+            Number(
+              b.overallCumulativeRecord[b.overallCumulativeRecord.length - 1]
+                .regularSeasonRecord.wins
+            )
+          ) {
+            return (
+              Number(
+                a.overallCumulativeRecord[a.overallCumulativeRecord.length - 1]
+                  .regularSeasonRecord.wins
+              ) -
+              Number(
+                b.overallCumulativeRecord[b.overallCumulativeRecord.length - 1]
+                  .regularSeasonRecord.wins
+              )
+            );
+          }
+          if (
+            Number(a.championships.length) !== Number(b.championships.length)
+          ) {
+            return (
+              Number(a.championships.length) - Number(b.championships.length)
+            );
+          }
+
+          if (a.memberSeasons.length !== b.memberSeasons.length) {
+            return b.memberSeasons.length - a.memberSeasons.length;
+          }
+        })
+      );
+    } else if (e === "Points For" && columnSortedBy != "Points For") {
+      setChosenSeasonTeams(
+        chosenSeasonTeams.sort((a, b) => {
+          if (
+            Number(
+              a.overallCumulativeRecord[
+                a.overallCumulativeRecord.length - 1
+              ].regularSeasonRecord.pointsFor.toFixed(2)
+            ) !==
+            Number(
+              b.overallCumulativeRecord[
+                b.overallCumulativeRecord.length - 1
+              ].regularSeasonRecord.pointsFor.toFixed(2)
+            )
+          ) {
+            return (
+              Number(
+                b.overallCumulativeRecord[
+                  b.overallCumulativeRecord.length - 1
+                ].regularSeasonRecord.pointsFor.toFixed(2)
+              ) -
+              Number(
+                a.overallCumulativeRecord[
+                  a.overallCumulativeRecord.length - 1
+                ].regularSeasonRecord.pointsFor.toFixed(2)
+              )
+            );
+          }
+          if (
+            Number(
+              a.overallCumulativeRecord[a.overallCumulativeRecord.length - 1]
+                .regularSeasonRecord.wins
+            ) !==
+            Number(
+              b.overallCumulativeRecord[b.overallCumulativeRecord.length - 1]
+                .regularSeasonRecord.wins
+            )
+          ) {
+            return (
+              Number(
+                b.overallCumulativeRecord[b.overallCumulativeRecord.length - 1]
+                  .regularSeasonRecord.wins
+              ) -
+              Number(
+                a.overallCumulativeRecord[a.overallCumulativeRecord.length - 1]
+                  .regularSeasonRecord.wins
+              )
+            );
+          }
+          if (
+            Number(a.championships.length) !== Number(b.championships.length)
+          ) {
+            return (
+              Number(b.championships.length) - Number(a.championships.length)
+            );
+          }
+
+          if (a.memberSeasons.length !== b.memberSeasons.length) {
+            return b.memberSeasons.length - a.memberSeasons.length;
+          }
+        })
+      );
+    } else if (e === "Points For" && columnSortedBy === "Points For") {
+      setChosenSeasonTeams(
+        chosenSeasonTeams.sort((a, b) => {
+          if (
+            Number(
+              a.overallCumulativeRecord[
+                a.overallCumulativeRecord.length - 1
+              ].regularSeasonRecord.pointsFor.toFixed(2)
+            ) !==
+            Number(
+              b.overallCumulativeRecord[
+                b.overallCumulativeRecord.length - 1
+              ].regularSeasonRecord.pointsFor.toFixed(2)
+            )
+          ) {
+            return (
+              Number(
+                a.overallCumulativeRecord[
+                  a.overallCumulativeRecord.length - 1
+                ].regularSeasonRecord.pointsFor.toFixed(2)
+              ) -
+              Number(
+                b.overallCumulativeRecord[
+                  b.overallCumulativeRecord.length - 1
+                ].regularSeasonRecord.pointsFor.toFixed(2)
+              )
+            );
+          }
+          if (
+            Number(
+              a.overallCumulativeRecord[a.overallCumulativeRecord.length - 1]
+                .regularSeasonRecord.wins
+            ) !==
+            Number(
+              b.overallCumulativeRecord[b.overallCumulativeRecord.length - 1]
+                .regularSeasonRecord.wins
+            )
+          ) {
+            return (
+              Number(
+                a.overallCumulativeRecord[a.overallCumulativeRecord.length - 1]
+                  .regularSeasonRecord.wins
+              ) -
+              Number(
+                b.overallCumulativeRecord[b.overallCumulativeRecord.length - 1]
+                  .regularSeasonRecord.wins
+              )
+            );
+          }
+          if (
+            Number(a.championships.length) !== Number(b.championships.length)
+          ) {
+            return (
+              Number(a.championships.length) - Number(b.championships.length)
+            );
+          }
+
+          if (a.memberSeasons.length !== b.memberSeasons.length) {
+            return b.memberSeasons.length - a.memberSeasons.length;
+          }
+        })
+      );
+    } else if (e === "Points Against" && columnSortedBy != "Points Against") {
+      setChosenSeasonTeams(
+        chosenSeasonTeams.sort((a, b) => {
+          if (
+            Number(
+              a.overallCumulativeRecord[
+                a.overallCumulativeRecord.length - 1
+              ].regularSeasonRecord.pointsAgainst.toFixed(2)
+            ) !==
+            Number(
+              b.overallCumulativeRecord[
+                b.overallCumulativeRecord.length - 1
+              ].regularSeasonRecord.pointsAgainst.toFixed(2)
+            )
+          ) {
+            return (
+              Number(
+                b.overallCumulativeRecord[
+                  b.overallCumulativeRecord.length - 1
+                ].regularSeasonRecord.pointsAgainst.toFixed(2)
+              ) -
+              Number(
+                a.overallCumulativeRecord[
+                  a.overallCumulativeRecord.length - 1
+                ].regularSeasonRecord.pointsAgainst.toFixed(2)
+              )
+            );
+          }
+          if (
+            Number(
+              a.overallCumulativeRecord[a.overallCumulativeRecord.length - 1]
+                .regularSeasonRecord.wins
+            ) !==
+            Number(
+              b.overallCumulativeRecord[b.overallCumulativeRecord.length - 1]
+                .regularSeasonRecord.wins
+            )
+          ) {
+            return (
+              Number(
+                b.overallCumulativeRecord[b.overallCumulativeRecord.length - 1]
+                  .regularSeasonRecord.wins
+              ) -
+              Number(
+                a.overallCumulativeRecord[a.overallCumulativeRecord.length - 1]
+                  .regularSeasonRecord.wins
+              )
+            );
+          }
+          if (
+            Number(a.championships.length) !== Number(b.championships.length)
+          ) {
+            return (
+              Number(b.championships.length) - Number(a.championships.length)
+            );
+          }
+
+          if (a.memberSeasons.length !== b.memberSeasons.length) {
+            return b.memberSeasons.length - a.memberSeasons.length;
+          }
+        })
+      );
+    } else if (e === "Points Against" && columnSortedBy === "Points Against") {
+      setChosenSeasonTeams(
+        chosenSeasonTeams.sort((a, b) => {
+          if (
+            Number(
+              a.overallCumulativeRecord[
+                a.overallCumulativeRecord.length - 1
+              ].regularSeasonRecord.pointsAgainst.toFixed(2)
+            ) !==
+            Number(
+              b.overallCumulativeRecord[
+                b.overallCumulativeRecord.length - 1
+              ].regularSeasonRecord.pointsAgainst.toFixed(2)
+            )
+          ) {
+            return (
+              Number(
+                a.overallCumulativeRecord[
+                  a.overallCumulativeRecord.length - 1
+                ].regularSeasonRecord.pointsAgainst.toFixed(2)
+              ) -
+              Number(
+                b.overallCumulativeRecord[
+                  b.overallCumulativeRecord.length - 1
+                ].regularSeasonRecord.pointsAgainst.toFixed(2)
+              )
+            );
+          }
+          if (
+            Number(
+              a.overallCumulativeRecord[a.overallCumulativeRecord.length - 1]
+                .regularSeasonRecord.wins
+            ) !==
+            Number(
+              b.overallCumulativeRecord[b.overallCumulativeRecord.length - 1]
+                .regularSeasonRecord.wins
+            )
+          ) {
+            return (
+              Number(
+                a.overallCumulativeRecord[a.overallCumulativeRecord.length - 1]
+                  .regularSeasonRecord.wins
+              ) -
+              Number(
+                b.overallCumulativeRecord[b.overallCumulativeRecord.length - 1]
+                  .regularSeasonRecord.wins
+              )
+            );
+          }
+          if (
+            Number(a.championships.length) !== Number(b.championships.length)
+          ) {
+            return (
+              Number(a.championships.length) - Number(b.championships.length)
+            );
+          }
+
+          if (a.memberSeasons.length !== b.memberSeasons.length) {
+            return b.memberSeasons.length - a.memberSeasons.length;
+          }
+        })
+      );
+    } else if (
+      e === "Point Differential" &&
+      columnSortedBy != "Point Differential"
+    ) {
+      setChosenSeasonTeams(
+        chosenSeasonTeams.sort((a, b) => {
+          if (
+            Number(
+              a.overallCumulativeRecord[a.overallCumulativeRecord.length - 1]
+                .regularSeasonRecord.pointsFor -
+                a.overallCumulativeRecord[a.overallCumulativeRecord.length - 1]
+                  .regularSeasonRecord.pointsAgainst
+            ) !==
+            Number(
+              b.overallCumulativeRecord[b.overallCumulativeRecord.length - 1]
+                .regularSeasonRecord.pointsFor -
+                b.overallCumulativeRecord[b.overallCumulativeRecord.length - 1]
+                  .regularSeasonRecord.pointsAgainst
+            )
+          ) {
+            return (
+              Number(
+                b.overallCumulativeRecord[b.overallCumulativeRecord.length - 1]
+                  .regularSeasonRecord.pointsFor -
+                  b.overallCumulativeRecord[
+                    b.overallCumulativeRecord.length - 1
+                  ].regularSeasonRecord.pointsAgainst
+              ) -
+              Number(
+                a.overallCumulativeRecord[a.overallCumulativeRecord.length - 1]
+                  .regularSeasonRecord.pointsFor -
+                  a.overallCumulativeRecord[
+                    a.overallCumulativeRecord.length - 1
+                  ].regularSeasonRecord.pointsAgainst
+              )
+            );
+          }
+          if (
+            Number(
+              a.overallCumulativeRecord[a.overallCumulativeRecord.length - 1]
+                .regularSeasonRecord.wins
+            ) !==
+            Number(
+              b.overallCumulativeRecord[b.overallCumulativeRecord.length - 1]
+                .regularSeasonRecord.wins
+            )
+          ) {
+            return (
+              Number(
+                b.overallCumulativeRecord[b.overallCumulativeRecord.length - 1]
+                  .regularSeasonRecord.wins
+              ) -
+              Number(
+                a.overallCumulativeRecord[a.overallCumulativeRecord.length - 1]
+                  .regularSeasonRecord.wins
+              )
+            );
+          }
+          if (
+            Number(a.championships.length) !== Number(b.championships.length)
+          ) {
+            return (
+              Number(b.championships.length) - Number(a.championships.length)
+            );
+          }
+
+          if (a.memberSeasons.length !== b.memberSeasons.length) {
+            return b.memberSeasons.length - a.memberSeasons.length;
+          }
+        })
+      );
+    } else if (
+      e === "Point Differential" &&
+      columnSortedBy === "Point Differential"
+    ) {
+      setChosenSeasonTeams(
+        chosenSeasonTeams.sort((a, b) => {
+          if (
+            Number(
+              a.overallCumulativeRecord[a.overallCumulativeRecord.length - 1]
+                .regularSeasonRecord.pointsFor -
+                a.overallCumulativeRecord[a.overallCumulativeRecord.length - 1]
+                  .regularSeasonRecord.pointsAgainst
+            ) !==
+            Number(
+              b.overallCumulativeRecord[b.overallCumulativeRecord.length - 1]
+                .regularSeasonRecord.pointsFor -
+                b.overallCumulativeRecord[b.overallCumulativeRecord.length - 1]
+                  .regularSeasonRecord.pointsAgainst
+            )
+          ) {
+            return (
+              Number(
+                a.overallCumulativeRecord[a.overallCumulativeRecord.length - 1]
+                  .regularSeasonRecord.pointsFor -
+                  a.overallCumulativeRecord[
+                    a.overallCumulativeRecord.length - 1
+                  ].regularSeasonRecord.pointsAgainst
+              ) -
+              Number(
+                b.overallCumulativeRecord[b.overallCumulativeRecord.length - 1]
+                  .regularSeasonRecord.pointsFor -
+                  b.overallCumulativeRecord[
+                    b.overallCumulativeRecord.length - 1
+                  ].regularSeasonRecord.pointsAgainst
+              )
+            );
+          }
+          if (
+            Number(
+              a.overallCumulativeRecord[a.overallCumulativeRecord.length - 1]
+                .regularSeasonRecord.wins
+            ) !==
+            Number(
+              b.overallCumulativeRecord[b.overallCumulativeRecord.length - 1]
+                .regularSeasonRecord.wins
+            )
+          ) {
+            return (
+              Number(
+                a.overallCumulativeRecord[a.overallCumulativeRecord.length - 1]
+                  .regularSeasonRecord.wins
+              ) -
+              Number(
+                b.overallCumulativeRecord[b.overallCumulativeRecord.length - 1]
+                  .regularSeasonRecord.wins
+              )
+            );
+          }
+          if (
+            Number(a.championships.length) !== Number(b.championships.length)
+          ) {
+            return (
+              Number(a.championships.length) - Number(b.championships.length)
+            );
+          }
+
+          if (a.memberSeasons.length !== b.memberSeasons.length) {
+            return b.memberSeasons.length - a.memberSeasons.length;
+          }
+        })
+      );
+    } else if (e === "Playoff Record" && columnSortedBy != "Playoff Record") {
+      setChosenSeasonTeams(
+        chosenSeasonTeams.sort((a, b) => {
+          if (
+            Number(
+              a.overallCumulativeRecord[a.overallCumulativeRecord.length - 1]
+                .playoffSeasonRecord.wins
+            ) !==
+            Number(
+              b.overallCumulativeRecord[b.overallCumulativeRecord.length - 1]
+                .playoffSeasonRecord.wins
+            )
+          ) {
+            return (
+              Number(
+                b.overallCumulativeRecord[b.overallCumulativeRecord.length - 1]
+                  .playoffSeasonRecord.wins
+              ) -
+              Number(
+                a.overallCumulativeRecord[a.overallCumulativeRecord.length - 1]
+                  .playoffSeasonRecord.wins
+              )
+            );
+          }
+          if (
+            Number(
+              a.overallCumulativeRecord[a.overallCumulativeRecord.length - 1]
+                .playoffSeasonRecord.losses
+            ) !==
+            Number(
+              b.overallCumulativeRecord[b.overallCumulativeRecord.length - 1]
+                .playoffSeasonRecord.losses
+            )
+          ) {
+            return (
+              Number(
+                a.overallCumulativeRecord[a.overallCumulativeRecord.length - 1]
+                  .playoffSeasonRecord.losses
+              ) -
+              Number(
+                b.overallCumulativeRecord[b.overallCumulativeRecord.length - 1]
+                  .playoffSeasonRecord.losses
+              )
+            );
+          }
+          if (
+            Number(
+              a.overallCumulativeRecord[a.overallCumulativeRecord.length - 1]
+                .playoffSeasonRecord.ties
+            ) !==
+            Number(
+              b.overallCumulativeRecord[b.overallCumulativeRecord.length - 1]
+                .playoffSeasonRecord.ties
+            )
+          ) {
+            return (
+              Number(
+                b.overallCumulativeRecord[b.overallCumulativeRecord.length - 1]
+                  .playoffSeasonRecord.ties
+              ) -
+              Number(
+                a.overallCumulativeRecord[a.overallCumulativeRecord.length - 1]
+                  .playoffSeasonRecord.ties
+              )
+            );
+          }
+          if (
+            Number(a.championships.length) !== Number(b.championships.length)
+          ) {
+            return (
+              Number(b.championships.length) - Number(a.championships.length)
+            );
+          }
+          if (a.memberSeasons.length !== b.memberSeasons.length) {
+            return b.memberSeasons.length - a.memberSeasons.length;
+          }
+        })
+      );
+    } else if (e === "Playoff Record" && columnSortedBy === "Playoff Record") {
+      setChosenSeasonTeams(
+        chosenSeasonTeams.sort((a, b) => {
+          if (
+            Number(
+              a.overallCumulativeRecord[a.overallCumulativeRecord.length - 1]
+                .playoffSeasonRecord.wins
+            ) !==
+            Number(
+              b.overallCumulativeRecord[b.overallCumulativeRecord.length - 1]
+                .playoffSeasonRecord.wins
+            )
+          ) {
+            return (
+              Number(
+                a.overallCumulativeRecord[a.overallCumulativeRecord.length - 1]
+                  .playoffSeasonRecord.wins
+              ) -
+              Number(
+                b.overallCumulativeRecord[b.overallCumulativeRecord.length - 1]
+                  .playoffSeasonRecord.wins
+              )
+            );
+          }
+          if (
+            Number(
+              a.overallCumulativeRecord[a.overallCumulativeRecord.length - 1]
+                .playoffSeasonRecord.losses
+            ) !==
+            Number(
+              b.overallCumulativeRecord[b.overallCumulativeRecord.length - 1]
+                .playoffSeasonRecord.losses
+            )
+          ) {
+            return (
+              Number(
+                b.overallCumulativeRecord[b.overallCumulativeRecord.length - 1]
+                  .playoffSeasonRecord.losses
+              ) -
+              Number(
+                a.overallCumulativeRecord[a.overallCumulativeRecord.length - 1]
+                  .playoffSeasonRecord.losses
+              )
+            );
+          }
+          if (
+            Number(
+              a.overallCumulativeRecord[a.overallCumulativeRecord.length - 1]
+                .playoffSeasonRecord.ties
+            ) !==
+            Number(
+              b.overallCumulativeRecord[b.overallCumulativeRecord.length - 1]
+                .playoffSeasonRecord.ties
+            )
+          ) {
+            return (
+              Number(
+                a.overallCumulativeRecord[a.overallCumulativeRecord.length - 1]
+                  .playoffSeasonRecord.ties
+              ) -
+              Number(
+                b.overallCumulativeRecord[b.overallCumulativeRecord.length - 1]
+                  .playoffSeasonRecord.ties
+              )
+            );
+          }
+          if (
+            Number(a.championships.length) !== Number(b.championships.length)
+          ) {
+            return (
+              Number(a.championships.length) - Number(b.championships.length)
+            );
+          }
+          if (a.memberSeasons.length !== b.memberSeasons.length) {
+            return b.memberSeasons.length - a.memberSeasons.length;
+          }
+        })
+      );
+    } else if (
+      e === "Playoff Win Percentage" &&
+      columnSortedBy != "Playoff Win Percentage"
+    ) {
+      setChosenSeasonTeams(
+        chosenSeasonTeams.sort((a, b) => {
+          if (
+            (a.overallCumulativeRecord[a.overallCumulativeRecord.length - 1]
+              .playoffSeasonRecord.wins /
+              (a.overallCumulativeRecord[a.overallCumulativeRecord.length - 1]
+                .playoffSeasonRecord.wins +
+                a.overallCumulativeRecord[a.overallCumulativeRecord.length - 1]
+                  .playoffSeasonRecord.losses +
+                a.overallCumulativeRecord[a.overallCumulativeRecord.length - 1]
+                  .playoffSeasonRecord.ties)) *
+              100 !==
+            (b.overallCumulativeRecord[b.overallCumulativeRecord.length - 1]
+              .playoffSeasonRecord.wins /
+              (b.overallCumulativeRecord[b.overallCumulativeRecord.length - 1]
+                .playoffSeasonRecord.wins +
+                b.overallCumulativeRecord[b.overallCumulativeRecord.length - 1]
+                  .playoffSeasonRecord.losses +
+                b.overallCumulativeRecord[b.overallCumulativeRecord.length - 1]
+                  .playoffSeasonRecord.ties)) *
+              100
+          ) {
+            return (
+              ((b.overallCumulativeRecord[b.overallCumulativeRecord.length - 1]
+                .playoffSeasonRecord.wins /
+                (b.overallCumulativeRecord[b.overallCumulativeRecord.length - 1]
+                  .playoffSeasonRecord.wins +
+                  b.overallCumulativeRecord[
+                    b.overallCumulativeRecord.length - 1
+                  ].playoffSeasonRecord.losses +
+                  b.overallCumulativeRecord[
+                    b.overallCumulativeRecord.length - 1
+                  ].playoffSeasonRecord.ties)) *
+                100 || 0) -
+              ((a.overallCumulativeRecord[a.overallCumulativeRecord.length - 1]
+                .playoffSeasonRecord.wins /
+                (a.overallCumulativeRecord[a.overallCumulativeRecord.length - 1]
+                  .playoffSeasonRecord.wins +
+                  a.overallCumulativeRecord[
+                    a.overallCumulativeRecord.length - 1
+                  ].playoffSeasonRecord.losses +
+                  a.overallCumulativeRecord[
+                    a.overallCumulativeRecord.length - 1
+                  ].playoffSeasonRecord.ties)) *
+                100 || 0)
+            );
+          }
+          if (
+            Number(
+              a.overallCumulativeRecord[a.overallCumulativeRecord.length - 1]
+                .playoffSeasonRecord.wins
+            ) !==
+            Number(
+              b.overallCumulativeRecord[b.overallCumulativeRecord.length - 1]
+                .playoffSeasonRecord.wins
+            )
+          ) {
+            return (
+              Number(
+                b.overallCumulativeRecord[b.overallCumulativeRecord.length - 1]
+                  .playoffSeasonRecord.wins
+              ) -
+              Number(
+                a.overallCumulativeRecord[a.overallCumulativeRecord.length - 1]
+                  .playoffSeasonRecord.wins
+              )
+            );
+          }
+          if (
+            Number(a.championships.length) !== Number(b.championships.length)
+          ) {
+            return (
+              Number(b.championships.length) - Number(a.championships.length)
+            );
+          }
+
+          if (a.memberSeasons.length !== b.memberSeasons.length) {
+            return b.memberSeasons.length - a.memberSeasons.length;
+          }
+        })
+      );
+    } else if (
+      e === "Playoff Win Percentage" &&
+      columnSortedBy === "Playoff Win Percentage"
+    ) {
+      setChosenSeasonTeams(
+        chosenSeasonTeams.sort((a, b) => {
+          if (
+            (a.overallCumulativeRecord[a.overallCumulativeRecord.length - 1]
+              .playoffSeasonRecord.wins /
+              (a.overallCumulativeRecord[a.overallCumulativeRecord.length - 1]
+                .playoffSeasonRecord.wins +
+                a.overallCumulativeRecord[a.overallCumulativeRecord.length - 1]
+                  .playoffSeasonRecord.losses +
+                a.overallCumulativeRecord[a.overallCumulativeRecord.length - 1]
+                  .playoffSeasonRecord.ties)) *
+              100 !==
+            (b.overallCumulativeRecord[b.overallCumulativeRecord.length - 1]
+              .playoffSeasonRecord.wins /
+              (b.overallCumulativeRecord[b.overallCumulativeRecord.length - 1]
+                .playoffSeasonRecord.wins +
+                b.overallCumulativeRecord[b.overallCumulativeRecord.length - 1]
+                  .playoffSeasonRecord.losses +
+                b.overallCumulativeRecord[b.overallCumulativeRecord.length - 1]
+                  .playoffSeasonRecord.ties)) *
+              100
+          ) {
+            return (
+              ((a.overallCumulativeRecord[a.overallCumulativeRecord.length - 1]
+                .playoffSeasonRecord.wins /
+                (a.overallCumulativeRecord[a.overallCumulativeRecord.length - 1]
+                  .playoffSeasonRecord.wins +
+                  a.overallCumulativeRecord[
+                    a.overallCumulativeRecord.length - 1
+                  ].playoffSeasonRecord.losses +
+                  a.overallCumulativeRecord[
+                    a.overallCumulativeRecord.length - 1
+                  ].playoffSeasonRecord.ties)) *
+                100 || 0) -
+              ((b.overallCumulativeRecord[b.overallCumulativeRecord.length - 1]
+                .playoffSeasonRecord.wins /
+                (b.overallCumulativeRecord[b.overallCumulativeRecord.length - 1]
+                  .playoffSeasonRecord.wins +
+                  b.overallCumulativeRecord[
+                    b.overallCumulativeRecord.length - 1
+                  ].playoffSeasonRecord.losses +
+                  b.overallCumulativeRecord[
+                    b.overallCumulativeRecord.length - 1
+                  ].playoffSeasonRecord.ties)) *
+                100 || 0)
+            );
+          }
+          if (
+            Number(
+              a.overallCumulativeRecord[a.overallCumulativeRecord.length - 1]
+                .playoffSeasonRecord.wins
+            ) !==
+            Number(
+              b.overallCumulativeRecord[b.overallCumulativeRecord.length - 1]
+                .playoffSeasonRecord.wins
+            )
+          ) {
+            return (
+              Number(
+                a.overallCumulativeRecord[a.overallCumulativeRecord.length - 1]
+                  .playoffSeasonRecord.wins
+              ) -
+              Number(
+                b.overallCumulativeRecord[b.overallCumulativeRecord.length - 1]
+                  .playoffSeasonRecord.wins
+              )
+            );
+          }
+          if (
+            Number(a.championships.length) !== Number(b.championships.length)
+          ) {
+            return (
+              Number(a.championships.length) - Number(b.championships.length)
+            );
+          }
+
+          if (a.memberSeasons.length !== b.memberSeasons.length) {
+            return b.memberSeasons.length - a.memberSeasons.length;
+          }
+        })
+      );
+    } else if (
+      e === "Playoff Points For" &&
+      columnSortedBy != "Playoff Points For"
+    ) {
+      setChosenSeasonTeams(
+        chosenSeasonTeams.sort((a, b) => {
+          if (
+            Number(
+              a.overallCumulativeRecord[
+                a.overallCumulativeRecord.length - 1
+              ].playoffSeasonRecord.pointsFor.toFixed(2)
+            ) !==
+            Number(
+              b.overallCumulativeRecord[
+                b.overallCumulativeRecord.length - 1
+              ].playoffSeasonRecord.pointsFor.toFixed(2)
+            )
+          ) {
+            return (
+              Number(
+                b.overallCumulativeRecord[
+                  b.overallCumulativeRecord.length - 1
+                ].playoffSeasonRecord.pointsFor.toFixed(2)
+              ) -
+              Number(
+                a.overallCumulativeRecord[
+                  a.overallCumulativeRecord.length - 1
+                ].playoffSeasonRecord.pointsFor.toFixed(2)
+              )
+            );
+          }
+          if (
+            Number(
+              a.overallCumulativeRecord[a.overallCumulativeRecord.length - 1]
+                .playoffSeasonRecord.wins
+            ) !==
+            Number(
+              b.overallCumulativeRecord[b.overallCumulativeRecord.length - 1]
+                .playoffSeasonRecord.wins
+            )
+          ) {
+            return (
+              Number(
+                b.overallCumulativeRecord[b.overallCumulativeRecord.length - 1]
+                  .playoffSeasonRecord.wins
+              ) -
+              Number(
+                a.overallCumulativeRecord[a.overallCumulativeRecord.length - 1]
+                  .playoffSeasonRecord.wins
+              )
+            );
+          }
+          if (
+            Number(a.championships.length) !== Number(b.championships.length)
+          ) {
+            return (
+              Number(b.championships.length) - Number(a.championships.length)
+            );
+          }
+
+          if (a.memberSeasons.length !== b.memberSeasons.length) {
+            return b.memberSeasons.length - a.memberSeasons.length;
+          }
+        })
+      );
+    } else if (
+      e === "Playoff Points For" &&
+      columnSortedBy === "Playoff Points For"
+    ) {
+      setChosenSeasonTeams(
+        chosenSeasonTeams.sort((a, b) => {
+          if (
+            Number(
+              a.overallCumulativeRecord[
+                a.overallCumulativeRecord.length - 1
+              ].playoffSeasonRecord.pointsFor.toFixed(2)
+            ) !==
+            Number(
+              b.overallCumulativeRecord[
+                b.overallCumulativeRecord.length - 1
+              ].playoffSeasonRecord.pointsFor.toFixed(2)
+            )
+          ) {
+            return (
+              Number(
+                a.overallCumulativeRecord[
+                  a.overallCumulativeRecord.length - 1
+                ].playoffSeasonRecord.pointsFor.toFixed(2)
+              ) -
+              Number(
+                b.overallCumulativeRecord[
+                  b.overallCumulativeRecord.length - 1
+                ].playoffSeasonRecord.pointsFor.toFixed(2)
+              )
+            );
+          }
+          if (
+            Number(
+              a.overallCumulativeRecord[a.overallCumulativeRecord.length - 1]
+                .playoffSeasonRecord.wins
+            ) !==
+            Number(
+              b.overallCumulativeRecord[b.overallCumulativeRecord.length - 1]
+                .playoffSeasonRecord.wins
+            )
+          ) {
+            return (
+              Number(
+                a.overallCumulativeRecord[a.overallCumulativeRecord.length - 1]
+                  .playoffSeasonRecord.wins
+              ) -
+              Number(
+                b.overallCumulativeRecord[b.overallCumulativeRecord.length - 1]
+                  .playoffSeasonRecord.wins
+              )
+            );
+          }
+          if (
+            Number(a.championships.length) !== Number(b.championships.length)
+          ) {
+            return (
+              Number(a.championships.length) - Number(b.championships.length)
+            );
+          }
+
+          if (a.memberSeasons.length !== b.memberSeasons.length) {
+            return b.memberSeasons.length - a.memberSeasons.length;
+          }
+        })
+      );
+    } else if (
+      e === "Playoff Points Against" &&
+      columnSortedBy != "Playoff Points Against"
+    ) {
+      setChosenSeasonTeams(
+        chosenSeasonTeams.sort((a, b) => {
+          if (
+            Number(
+              a.overallCumulativeRecord[
+                a.overallCumulativeRecord.length - 1
+              ].playoffSeasonRecord.pointsAgainst.toFixed(2)
+            ) !==
+            Number(
+              b.overallCumulativeRecord[
+                b.overallCumulativeRecord.length - 1
+              ].playoffSeasonRecord.pointsAgainst.toFixed(2)
+            )
+          ) {
+            return (
+              Number(
+                b.overallCumulativeRecord[
+                  b.overallCumulativeRecord.length - 1
+                ].playoffSeasonRecord.pointsAgainst.toFixed(2)
+              ) -
+              Number(
+                a.overallCumulativeRecord[
+                  a.overallCumulativeRecord.length - 1
+                ].playoffSeasonRecord.pointsAgainst.toFixed(2)
+              )
+            );
+          }
+          if (
+            Number(
+              a.overallCumulativeRecord[a.overallCumulativeRecord.length - 1]
+                .playoffSeasonRecord.wins
+            ) !==
+            Number(
+              b.overallCumulativeRecord[b.overallCumulativeRecord.length - 1]
+                .playoffSeasonRecord.wins
+            )
+          ) {
+            return (
+              Number(
+                b.overallCumulativeRecord[b.overallCumulativeRecord.length - 1]
+                  .playoffSeasonRecord.wins
+              ) -
+              Number(
+                a.overallCumulativeRecord[a.overallCumulativeRecord.length - 1]
+                  .playoffSeasonRecord.wins
+              )
+            );
+          }
+          if (
+            Number(a.championships.length) !== Number(b.championships.length)
+          ) {
+            return (
+              Number(b.championships.length) - Number(a.championships.length)
+            );
+          }
+
+          if (a.memberSeasons.length !== b.memberSeasons.length) {
+            return b.memberSeasons.length - a.memberSeasons.length;
+          }
+        })
+      );
+    } else if (
+      e === "Playoff Points Against" &&
+      columnSortedBy === "Playoff Points Against"
+    ) {
+      setChosenSeasonTeams(
+        chosenSeasonTeams.sort((a, b) => {
+          if (
+            Number(
+              a.overallCumulativeRecord[
+                a.overallCumulativeRecord.length - 1
+              ].playoffSeasonRecord.pointsAgainst.toFixed(2)
+            ) !==
+            Number(
+              b.overallCumulativeRecord[
+                b.overallCumulativeRecord.length - 1
+              ].playoffSeasonRecord.pointsAgainst.toFixed(2)
+            )
+          ) {
+            return (
+              Number(
+                a.overallCumulativeRecord[
+                  a.overallCumulativeRecord.length - 1
+                ].playoffSeasonRecord.pointsAgainst.toFixed(2)
+              ) -
+              Number(
+                b.overallCumulativeRecord[
+                  b.overallCumulativeRecord.length - 1
+                ].playoffSeasonRecord.pointsAgainst.toFixed(2)
+              )
+            );
+          }
+          if (
+            Number(
+              a.overallCumulativeRecord[a.overallCumulativeRecord.length - 1]
+                .playoffSeasonRecord.wins
+            ) !==
+            Number(
+              b.overallCumulativeRecord[b.overallCumulativeRecord.length - 1]
+                .playoffSeasonRecord.wins
+            )
+          ) {
+            return (
+              Number(
+                a.overallCumulativeRecord[a.overallCumulativeRecord.length - 1]
+                  .playoffSeasonRecord.wins
+              ) -
+              Number(
+                b.overallCumulativeRecord[b.overallCumulativeRecord.length - 1]
+                  .playoffSeasonRecord.wins
+              )
+            );
+          }
+          if (
+            Number(a.championships.length) !== Number(b.championships.length)
+          ) {
+            return (
+              Number(a.championships.length) - Number(b.championships.length)
+            );
+          }
+
+          if (a.memberSeasons.length !== b.memberSeasons.length) {
+            return b.memberSeasons.length - a.memberSeasons.length;
+          }
+        })
+      );
+    } else if (
+      e === "Playoff Point Differential" &&
+      columnSortedBy != "Playoff Point Differential"
+    ) {
+      setChosenSeasonTeams(
+        chosenSeasonTeams.sort((a, b) => {
+          if (
+            Number(
+              a.overallCumulativeRecord[a.overallCumulativeRecord.length - 1]
+                .playoffSeasonRecord.pointsFor -
+                a.overallCumulativeRecord[a.overallCumulativeRecord.length - 1]
+                  .playoffSeasonRecord.pointsAgainst
+            ) !==
+            Number(
+              b.overallCumulativeRecord[b.overallCumulativeRecord.length - 1]
+                .playoffSeasonRecord.pointsFor -
+                b.overallCumulativeRecord[b.overallCumulativeRecord.length - 1]
+                  .playoffSeasonRecord.pointsAgainst
+            )
+          ) {
+            return (
+              Number(
+                b.overallCumulativeRecord[b.overallCumulativeRecord.length - 1]
+                  .playoffSeasonRecord.pointsFor -
+                  b.overallCumulativeRecord[
+                    b.overallCumulativeRecord.length - 1
+                  ].playoffSeasonRecord.pointsAgainst
+              ) -
+              Number(
+                a.overallCumulativeRecord[a.overallCumulativeRecord.length - 1]
+                  .playoffSeasonRecord.pointsFor -
+                  a.overallCumulativeRecord[
+                    a.overallCumulativeRecord.length - 1
+                  ].playoffSeasonRecord.pointsAgainst
+              )
+            );
+          }
+          if (
+            Number(
+              a.overallCumulativeRecord[a.overallCumulativeRecord.length - 1]
+                .playoffSeasonRecord.wins
+            ) !==
+            Number(
+              b.overallCumulativeRecord[b.overallCumulativeRecord.length - 1]
+                .playoffSeasonRecord.wins
+            )
+          ) {
+            return (
+              Number(
+                b.overallCumulativeRecord[b.overallCumulativeRecord.length - 1]
+                  .playoffSeasonRecord.wins
+              ) -
+              Number(
+                a.overallCumulativeRecord[a.overallCumulativeRecord.length - 1]
+                  .playoffSeasonRecord.wins
+              )
+            );
+          }
+          if (
+            Number(a.championships.length) !== Number(b.championships.length)
+          ) {
+            return (
+              Number(b.championships.length) - Number(a.championships.length)
+            );
+          }
+
+          if (a.memberSeasons.length !== b.memberSeasons.length) {
+            return b.memberSeasons.length - a.memberSeasons.length;
+          }
+        })
+      );
+    } else if (
+      e === "Playoff Point Differential" &&
+      columnSortedBy === "Playoff Point Differential"
+    ) {
+      setChosenSeasonTeams(
+        chosenSeasonTeams.sort((a, b) => {
+          if (
+            Number(
+              a.overallCumulativeRecord[a.overallCumulativeRecord.length - 1]
+                .playoffSeasonRecord.pointsFor -
+                a.overallCumulativeRecord[a.overallCumulativeRecord.length - 1]
+                  .playoffSeasonRecord.pointsAgainst
+            ) !==
+            Number(
+              b.overallCumulativeRecord[b.overallCumulativeRecord.length - 1]
+                .playoffSeasonRecord.pointsFor -
+                b.overallCumulativeRecord[b.overallCumulativeRecord.length - 1]
+                  .playoffSeasonRecord.pointsAgainst
+            )
+          ) {
+            return (
+              Number(
+                a.overallCumulativeRecord[a.overallCumulativeRecord.length - 1]
+                  .playoffSeasonRecord.pointsFor -
+                  a.overallCumulativeRecord[
+                    a.overallCumulativeRecord.length - 1
+                  ].playoffSeasonRecord.pointsAgainst
+              ) -
+              Number(
+                b.overallCumulativeRecord[b.overallCumulativeRecord.length - 1]
+                  .playoffSeasonRecord.pointsFor -
+                  b.overallCumulativeRecord[
+                    b.overallCumulativeRecord.length - 1
+                  ].playoffSeasonRecord.pointsAgainst
+              )
+            );
+          }
+          if (
+            Number(
+              a.overallCumulativeRecord[a.overallCumulativeRecord.length - 1]
+                .playoffSeasonRecord.wins
+            ) !==
+            Number(
+              b.overallCumulativeRecord[b.overallCumulativeRecord.length - 1]
+                .playoffSeasonRecord.wins
+            )
+          ) {
+            return (
+              Number(
+                a.overallCumulativeRecord[a.overallCumulativeRecord.length - 1]
+                  .playoffSeasonRecord.wins
+              ) -
+              Number(
+                b.overallCumulativeRecord[b.overallCumulativeRecord.length - 1]
+                  .playoffSeasonRecord.wins
+              )
+            );
+          }
+          if (
+            Number(a.championships.length) !== Number(b.championships.length)
+          ) {
+            return (
+              Number(a.championships.length) - Number(b.championships.length)
+            );
+          }
+
+          if (a.memberSeasons.length !== b.memberSeasons.length) {
+            return b.memberSeasons.length - a.memberSeasons.length;
+          }
+        })
+      );
+    } else if (
+      e === "Consolation Record" &&
+      columnSortedBy != "Consolation Record"
+    ) {
+      setChosenSeasonTeams(
+        chosenSeasonTeams.sort((a, b) => {
+          if (
+            Number(
+              a.overallCumulativeRecord[a.overallCumulativeRecord.length - 1]
+                .consolationSeasonRecord.wins
+            ) !==
+            Number(
+              b.overallCumulativeRecord[b.overallCumulativeRecord.length - 1]
+                .consolationSeasonRecord.wins
+            )
+          ) {
+            return (
+              Number(
+                b.overallCumulativeRecord[b.overallCumulativeRecord.length - 1]
+                  .consolationSeasonRecord.wins
+              ) -
+              Number(
+                a.overallCumulativeRecord[a.overallCumulativeRecord.length - 1]
+                  .consolationSeasonRecord.wins
+              )
+            );
+          }
+          if (
+            Number(
+              a.overallCumulativeRecord[a.overallCumulativeRecord.length - 1]
+                .consolationSeasonRecord.losses
+            ) !==
+            Number(
+              b.overallCumulativeRecord[b.overallCumulativeRecord.length - 1]
+                .consolationSeasonRecord.losses
+            )
+          ) {
+            return (
+              Number(
+                a.overallCumulativeRecord[a.overallCumulativeRecord.length - 1]
+                  .consolationSeasonRecord.losses
+              ) -
+              Number(
+                b.overallCumulativeRecord[b.overallCumulativeRecord.length - 1]
+                  .consolationSeasonRecord.losses
+              )
+            );
+          }
+          if (
+            Number(
+              a.overallCumulativeRecord[a.overallCumulativeRecord.length - 1]
+                .consolationSeasonRecord.ties
+            ) !==
+            Number(
+              b.overallCumulativeRecord[b.overallCumulativeRecord.length - 1]
+                .consolationSeasonRecord.ties
+            )
+          ) {
+            return (
+              Number(
+                b.overallCumulativeRecord[b.overallCumulativeRecord.length - 1]
+                  .consolationSeasonRecord.ties
+              ) -
+              Number(
+                a.overallCumulativeRecord[a.overallCumulativeRecord.length - 1]
+                  .consolationSeasonRecord.ties
+              )
+            );
+          }
+          if (
+            Number(a.championships.length) !== Number(b.championships.length)
+          ) {
+            return (
+              Number(b.championships.length) - Number(a.championships.length)
+            );
+          }
+          if (a.memberSeasons.length !== b.memberSeasons.length) {
+            return b.memberSeasons.length - a.memberSeasons.length;
+          }
+        })
+      );
+    } else if (
+      e === "Consolation Record" &&
+      columnSortedBy === "Consolation Record"
+    ) {
+      setChosenSeasonTeams(
+        chosenSeasonTeams.sort((a, b) => {
+          if (
+            Number(
+              a.overallCumulativeRecord[a.overallCumulativeRecord.length - 1]
+                .consolationSeasonRecord.wins
+            ) !==
+            Number(
+              b.overallCumulativeRecord[b.overallCumulativeRecord.length - 1]
+                .consolationSeasonRecord.wins
+            )
+          ) {
+            return (
+              Number(
+                a.overallCumulativeRecord[a.overallCumulativeRecord.length - 1]
+                  .consolationSeasonRecord.wins
+              ) -
+              Number(
+                b.overallCumulativeRecord[b.overallCumulativeRecord.length - 1]
+                  .consolationSeasonRecord.wins
+              )
+            );
+          }
+          if (
+            Number(
+              a.overallCumulativeRecord[a.overallCumulativeRecord.length - 1]
+                .consolationSeasonRecord.losses
+            ) !==
+            Number(
+              b.overallCumulativeRecord[b.overallCumulativeRecord.length - 1]
+                .consolationSeasonRecord.losses
+            )
+          ) {
+            return (
+              Number(
+                b.overallCumulativeRecord[b.overallCumulativeRecord.length - 1]
+                  .consolationSeasonRecord.losses
+              ) -
+              Number(
+                a.overallCumulativeRecord[a.overallCumulativeRecord.length - 1]
+                  .consolationSeasonRecord.losses
+              )
+            );
+          }
+          if (
+            Number(
+              a.overallCumulativeRecord[a.overallCumulativeRecord.length - 1]
+                .consolationSeasonRecord.ties
+            ) !==
+            Number(
+              b.overallCumulativeRecord[b.overallCumulativeRecord.length - 1]
+                .consolationSeasonRecord.ties
+            )
+          ) {
+            return (
+              Number(
+                a.overallCumulativeRecord[a.overallCumulativeRecord.length - 1]
+                  .consolationSeasonRecord.ties
+              ) -
+              Number(
+                b.overallCumulativeRecord[b.overallCumulativeRecord.length - 1]
+                  .consolationSeasonRecord.ties
+              )
+            );
+          }
+          if (
+            Number(a.championships.length) !== Number(b.championships.length)
+          ) {
+            return (
+              Number(a.championships.length) - Number(b.championships.length)
+            );
+          }
+          if (a.memberSeasons.length !== b.memberSeasons.length) {
+            return b.memberSeasons.length - a.memberSeasons.length;
+          }
+        })
+      );
+    } else if (
+      e === "Consolation Win Percentage" &&
+      columnSortedBy != "Consolation Win Percentage"
+    ) {
+      setChosenSeasonTeams(
+        chosenSeasonTeams.sort((a, b) => {
+          if (
+            (a.overallCumulativeRecord[a.overallCumulativeRecord.length - 1]
+              .consolationSeasonRecord.wins /
+              (a.overallCumulativeRecord[a.overallCumulativeRecord.length - 1]
+                .consolationSeasonRecord.wins +
+                a.overallCumulativeRecord[a.overallCumulativeRecord.length - 1]
+                  .consolationSeasonRecord.losses +
+                a.overallCumulativeRecord[a.overallCumulativeRecord.length - 1]
+                  .consolationSeasonRecord.ties)) *
+              100 !==
+            (b.overallCumulativeRecord[b.overallCumulativeRecord.length - 1]
+              .consolationSeasonRecord.wins /
+              (b.overallCumulativeRecord[b.overallCumulativeRecord.length - 1]
+                .consolationSeasonRecord.wins +
+                b.overallCumulativeRecord[b.overallCumulativeRecord.length - 1]
+                  .consolationSeasonRecord.losses +
+                b.overallCumulativeRecord[b.overallCumulativeRecord.length - 1]
+                  .consolationSeasonRecord.ties)) *
+              100
+          ) {
+            return (
+              ((b.overallCumulativeRecord[b.overallCumulativeRecord.length - 1]
+                .consolationSeasonRecord.wins /
+                (b.overallCumulativeRecord[b.overallCumulativeRecord.length - 1]
+                  .consolationSeasonRecord.wins +
+                  b.overallCumulativeRecord[
+                    b.overallCumulativeRecord.length - 1
+                  ].consolationSeasonRecord.losses +
+                  b.overallCumulativeRecord[
+                    b.overallCumulativeRecord.length - 1
+                  ].consolationSeasonRecord.ties)) *
+                100 || 0) -
+              ((a.overallCumulativeRecord[a.overallCumulativeRecord.length - 1]
+                .consolationSeasonRecord.wins /
+                (a.overallCumulativeRecord[a.overallCumulativeRecord.length - 1]
+                  .consolationSeasonRecord.wins +
+                  a.overallCumulativeRecord[
+                    a.overallCumulativeRecord.length - 1
+                  ].consolationSeasonRecord.losses +
+                  a.overallCumulativeRecord[
+                    a.overallCumulativeRecord.length - 1
+                  ].consolationSeasonRecord.ties)) *
+                100 || 0)
+            );
+          }
+          if (
+            Number(
+              a.overallCumulativeRecord[a.overallCumulativeRecord.length - 1]
+                .consolationSeasonRecord.wins
+            ) !==
+            Number(
+              b.overallCumulativeRecord[b.overallCumulativeRecord.length - 1]
+                .consolationSeasonRecord.wins
+            )
+          ) {
+            return (
+              Number(
+                b.overallCumulativeRecord[b.overallCumulativeRecord.length - 1]
+                  .consolationSeasonRecord.wins
+              ) -
+              Number(
+                a.overallCumulativeRecord[a.overallCumulativeRecord.length - 1]
+                  .consolationSeasonRecord.wins
+              )
+            );
+          }
+          if (
+            Number(a.championships.length) !== Number(b.championships.length)
+          ) {
+            return (
+              Number(b.championships.length) - Number(a.championships.length)
+            );
+          }
+
+          if (a.memberSeasons.length !== b.memberSeasons.length) {
+            return b.memberSeasons.length - a.memberSeasons.length;
+          }
+        })
+      );
+    } else if (
+      e === "Consolation Win Percentage" &&
+      columnSortedBy === "Consolation Win Percentage"
+    ) {
+      setChosenSeasonTeams(
+        chosenSeasonTeams.sort((a, b) => {
+          if (
+            (a.overallCumulativeRecord[a.overallCumulativeRecord.length - 1]
+              .consolationSeasonRecord.wins /
+              (a.overallCumulativeRecord[a.overallCumulativeRecord.length - 1]
+                .consolationSeasonRecord.wins +
+                a.overallCumulativeRecord[a.overallCumulativeRecord.length - 1]
+                  .consolationSeasonRecord.losses +
+                a.overallCumulativeRecord[a.overallCumulativeRecord.length - 1]
+                  .consolationSeasonRecord.ties)) *
+              100 !==
+            (b.overallCumulativeRecord[b.overallCumulativeRecord.length - 1]
+              .consolationSeasonRecord.wins /
+              (b.overallCumulativeRecord[b.overallCumulativeRecord.length - 1]
+                .consolationSeasonRecord.wins +
+                b.overallCumulativeRecord[b.overallCumulativeRecord.length - 1]
+                  .consolationSeasonRecord.losses +
+                b.overallCumulativeRecord[b.overallCumulativeRecord.length - 1]
+                  .consolationSeasonRecord.ties)) *
+              100
+          ) {
+            return (
+              ((a.overallCumulativeRecord[a.overallCumulativeRecord.length - 1]
+                .consolationSeasonRecord.wins /
+                (a.overallCumulativeRecord[a.overallCumulativeRecord.length - 1]
+                  .consolationSeasonRecord.wins +
+                  a.overallCumulativeRecord[
+                    a.overallCumulativeRecord.length - 1
+                  ].consolationSeasonRecord.losses +
+                  a.overallCumulativeRecord[
+                    a.overallCumulativeRecord.length - 1
+                  ].consolationSeasonRecord.ties)) *
+                100 || 0) -
+              ((b.overallCumulativeRecord[b.overallCumulativeRecord.length - 1]
+                .consolationSeasonRecord.wins /
+                (b.overallCumulativeRecord[b.overallCumulativeRecord.length - 1]
+                  .consolationSeasonRecord.wins +
+                  b.overallCumulativeRecord[
+                    b.overallCumulativeRecord.length - 1
+                  ].consolationSeasonRecord.losses +
+                  b.overallCumulativeRecord[
+                    b.overallCumulativeRecord.length - 1
+                  ].consolationSeasonRecord.ties)) *
+                100 || 0)
+            );
+          }
+          if (
+            Number(
+              a.overallCumulativeRecord[a.overallCumulativeRecord.length - 1]
+                .consolationSeasonRecord.wins
+            ) !==
+            Number(
+              b.overallCumulativeRecord[b.overallCumulativeRecord.length - 1]
+                .consolationSeasonRecord.wins
+            )
+          ) {
+            return (
+              Number(
+                a.overallCumulativeRecord[a.overallCumulativeRecord.length - 1]
+                  .consolationSeasonRecord.wins
+              ) -
+              Number(
+                b.overallCumulativeRecord[b.overallCumulativeRecord.length - 1]
+                  .consolationSeasonRecord.wins
+              )
+            );
+          }
+          if (
+            Number(a.championships.length) !== Number(b.championships.length)
+          ) {
+            return (
+              Number(a.championships.length) - Number(b.championships.length)
+            );
+          }
+
+          if (a.memberSeasons.length !== b.memberSeasons.length) {
+            return b.memberSeasons.length - a.memberSeasons.length;
+          }
+        })
+      );
+    } else if (
+      e === "Consolation Points For" &&
+      columnSortedBy != "Consolation Points For"
+    ) {
+      setChosenSeasonTeams(
+        chosenSeasonTeams.sort((a, b) => {
+          if (
+            Number(
+              a.overallCumulativeRecord[
+                a.overallCumulativeRecord.length - 1
+              ].consolationSeasonRecord.pointsFor.toFixed(2)
+            ) !==
+            Number(
+              b.overallCumulativeRecord[
+                b.overallCumulativeRecord.length - 1
+              ].consolationSeasonRecord.pointsFor.toFixed(2)
+            )
+          ) {
+            return (
+              Number(
+                b.overallCumulativeRecord[
+                  b.overallCumulativeRecord.length - 1
+                ].consolationSeasonRecord.pointsFor.toFixed(2)
+              ) -
+              Number(
+                a.overallCumulativeRecord[
+                  a.overallCumulativeRecord.length - 1
+                ].consolationSeasonRecord.pointsFor.toFixed(2)
+              )
+            );
+          }
+          if (
+            Number(
+              a.overallCumulativeRecord[a.overallCumulativeRecord.length - 1]
+                .consolationSeasonRecord.wins
+            ) !==
+            Number(
+              b.overallCumulativeRecord[b.overallCumulativeRecord.length - 1]
+                .consolationSeasonRecord.wins
+            )
+          ) {
+            return (
+              Number(
+                b.overallCumulativeRecord[b.overallCumulativeRecord.length - 1]
+                  .consolationSeasonRecord.wins
+              ) -
+              Number(
+                a.overallCumulativeRecord[a.overallCumulativeRecord.length - 1]
+                  .consolationSeasonRecord.wins
+              )
+            );
+          }
+          if (
+            Number(a.championships.length) !== Number(b.championships.length)
+          ) {
+            return (
+              Number(b.championships.length) - Number(a.championships.length)
+            );
+          }
+
+          if (a.memberSeasons.length !== b.memberSeasons.length) {
+            return b.memberSeasons.length - a.memberSeasons.length;
+          }
+        })
+      );
+    } else if (
+      e === "Consolation Points For" &&
+      columnSortedBy === "Consolation Points For"
+    ) {
+      setChosenSeasonTeams(
+        chosenSeasonTeams.sort((a, b) => {
+          if (
+            Number(
+              a.overallCumulativeRecord[
+                a.overallCumulativeRecord.length - 1
+              ].consolationSeasonRecord.pointsFor.toFixed(2)
+            ) !==
+            Number(
+              b.overallCumulativeRecord[
+                b.overallCumulativeRecord.length - 1
+              ].consolationSeasonRecord.pointsFor.toFixed(2)
+            )
+          ) {
+            return (
+              Number(
+                a.overallCumulativeRecord[
+                  a.overallCumulativeRecord.length - 1
+                ].consolationSeasonRecord.pointsFor.toFixed(2)
+              ) -
+              Number(
+                b.overallCumulativeRecord[
+                  b.overallCumulativeRecord.length - 1
+                ].consolationSeasonRecord.pointsFor.toFixed(2)
+              )
+            );
+          }
+          if (
+            Number(
+              a.overallCumulativeRecord[a.overallCumulativeRecord.length - 1]
+                .consolationSeasonRecord.wins
+            ) !==
+            Number(
+              b.overallCumulativeRecord[b.overallCumulativeRecord.length - 1]
+                .consolationSeasonRecord.wins
+            )
+          ) {
+            return (
+              Number(
+                a.overallCumulativeRecord[a.overallCumulativeRecord.length - 1]
+                  .consolationSeasonRecord.wins
+              ) -
+              Number(
+                b.overallCumulativeRecord[b.overallCumulativeRecord.length - 1]
+                  .consolationSeasonRecord.wins
+              )
+            );
+          }
+          if (
+            Number(a.championships.length) !== Number(b.championships.length)
+          ) {
+            return (
+              Number(a.championships.length) - Number(b.championships.length)
+            );
+          }
+
+          if (a.memberSeasons.length !== b.memberSeasons.length) {
+            return b.memberSeasons.length - a.memberSeasons.length;
+          }
+        })
+      );
+    } else if (
+      e === "Consolation Points Against" &&
+      columnSortedBy != "Consolation Points Against"
+    ) {
+      setChosenSeasonTeams(
+        chosenSeasonTeams.sort((a, b) => {
+          if (
+            Number(
+              a.overallCumulativeRecord[
+                a.overallCumulativeRecord.length - 1
+              ].consolationSeasonRecord.pointsAgainst.toFixed(2)
+            ) !==
+            Number(
+              b.overallCumulativeRecord[
+                b.overallCumulativeRecord.length - 1
+              ].consolationSeasonRecord.pointsAgainst.toFixed(2)
+            )
+          ) {
+            return (
+              Number(
+                b.overallCumulativeRecord[
+                  b.overallCumulativeRecord.length - 1
+                ].consolationSeasonRecord.pointsAgainst.toFixed(2)
+              ) -
+              Number(
+                a.overallCumulativeRecord[
+                  a.overallCumulativeRecord.length - 1
+                ].consolationSeasonRecord.pointsAgainst.toFixed(2)
+              )
+            );
+          }
+          if (
+            Number(
+              a.overallCumulativeRecord[a.overallCumulativeRecord.length - 1]
+                .consolationSeasonRecord.wins
+            ) !==
+            Number(
+              b.overallCumulativeRecord[b.overallCumulativeRecord.length - 1]
+                .consolationSeasonRecord.wins
+            )
+          ) {
+            return (
+              Number(
+                b.overallCumulativeRecord[b.overallCumulativeRecord.length - 1]
+                  .consolationSeasonRecord.wins
+              ) -
+              Number(
+                a.overallCumulativeRecord[a.overallCumulativeRecord.length - 1]
+                  .consolationSeasonRecord.wins
+              )
+            );
+          }
+          if (
+            Number(a.championships.length) !== Number(b.championships.length)
+          ) {
+            return (
+              Number(b.championships.length) - Number(a.championships.length)
+            );
+          }
+
+          if (a.memberSeasons.length !== b.memberSeasons.length) {
+            return b.memberSeasons.length - a.memberSeasons.length;
+          }
+        })
+      );
+    } else if (
+      e === "Consolation Points Against" &&
+      columnSortedBy === "Consolation Points Against"
+    ) {
+      setChosenSeasonTeams(
+        chosenSeasonTeams.sort((a, b) => {
+          if (
+            Number(
+              a.overallCumulativeRecord[
+                a.overallCumulativeRecord.length - 1
+              ].consolationSeasonRecord.pointsAgainst.toFixed(2)
+            ) !==
+            Number(
+              b.overallCumulativeRecord[
+                b.overallCumulativeRecord.length - 1
+              ].consolationSeasonRecord.pointsAgainst.toFixed(2)
+            )
+          ) {
+            return (
+              Number(
+                a.overallCumulativeRecord[
+                  a.overallCumulativeRecord.length - 1
+                ].consolationSeasonRecord.pointsAgainst.toFixed(2)
+              ) -
+              Number(
+                b.overallCumulativeRecord[
+                  b.overallCumulativeRecord.length - 1
+                ].consolationSeasonRecord.pointsAgainst.toFixed(2)
+              )
+            );
+          }
+          if (
+            Number(
+              a.overallCumulativeRecord[a.overallCumulativeRecord.length - 1]
+                .consolationSeasonRecord.wins
+            ) !==
+            Number(
+              b.overallCumulativeRecord[b.overallCumulativeRecord.length - 1]
+                .consolationSeasonRecord.wins
+            )
+          ) {
+            return (
+              Number(
+                a.overallCumulativeRecord[a.overallCumulativeRecord.length - 1]
+                  .consolationSeasonRecord.wins
+              ) -
+              Number(
+                b.overallCumulativeRecord[b.overallCumulativeRecord.length - 1]
+                  .consolationSeasonRecord.wins
+              )
+            );
+          }
+          if (
+            Number(a.championships.length) !== Number(b.championships.length)
+          ) {
+            return (
+              Number(a.championships.length) - Number(b.championships.length)
+            );
+          }
+
+          if (a.memberSeasons.length !== b.memberSeasons.length) {
+            return b.memberSeasons.length - a.memberSeasons.length;
+          }
+        })
+      );
+    } else if (
+      e === "Consolation Point Differential" &&
+      columnSortedBy != "Consolation Point Differential"
+    ) {
+      setChosenSeasonTeams(
+        chosenSeasonTeams.sort((a, b) => {
+          if (
+            Number(
+              a.overallCumulativeRecord[a.overallCumulativeRecord.length - 1]
+                .consolationSeasonRecord.pointsFor -
+                a.overallCumulativeRecord[a.overallCumulativeRecord.length - 1]
+                  .consolationSeasonRecord.pointsAgainst
+            ) !==
+            Number(
+              b.overallCumulativeRecord[b.overallCumulativeRecord.length - 1]
+                .consolationSeasonRecord.pointsFor -
+                b.overallCumulativeRecord[b.overallCumulativeRecord.length - 1]
+                  .consolationSeasonRecord.pointsAgainst
+            )
+          ) {
+            return (
+              Number(
+                b.overallCumulativeRecord[b.overallCumulativeRecord.length - 1]
+                  .consolationSeasonRecord.pointsFor -
+                  b.overallCumulativeRecord[
+                    b.overallCumulativeRecord.length - 1
+                  ].consolationSeasonRecord.pointsAgainst
+              ) -
+              Number(
+                a.overallCumulativeRecord[a.overallCumulativeRecord.length - 1]
+                  .consolationSeasonRecord.pointsFor -
+                  a.overallCumulativeRecord[
+                    a.overallCumulativeRecord.length - 1
+                  ].consolationSeasonRecord.pointsAgainst
+              )
+            );
+          }
+          if (
+            Number(
+              a.overallCumulativeRecord[a.overallCumulativeRecord.length - 1]
+                .consolationSeasonRecord.wins
+            ) !==
+            Number(
+              b.overallCumulativeRecord[b.overallCumulativeRecord.length - 1]
+                .consolationSeasonRecord.wins
+            )
+          ) {
+            return (
+              Number(
+                b.overallCumulativeRecord[b.overallCumulativeRecord.length - 1]
+                  .consolationSeasonRecord.wins
+              ) -
+              Number(
+                a.overallCumulativeRecord[a.overallCumulativeRecord.length - 1]
+                  .consolationSeasonRecord.wins
+              )
+            );
+          }
+          if (
+            Number(a.championships.length) !== Number(b.championships.length)
+          ) {
+            return (
+              Number(b.championships.length) - Number(a.championships.length)
+            );
+          }
+
+          if (a.memberSeasons.length !== b.memberSeasons.length) {
+            return b.memberSeasons.length - a.memberSeasons.length;
+          }
+        })
+      );
+    } else if (
+      e === "Consolation Point Differential" &&
+      columnSortedBy === "Consolation Point Differential"
+    ) {
+      setChosenSeasonTeams(
+        chosenSeasonTeams.sort((a, b) => {
+          if (
+            Number(
+              a.overallCumulativeRecord[a.overallCumulativeRecord.length - 1]
+                .consolationSeasonRecord.pointsFor -
+                a.overallCumulativeRecord[a.overallCumulativeRecord.length - 1]
+                  .consolationSeasonRecord.pointsAgainst
+            ) !==
+            Number(
+              b.overallCumulativeRecord[b.overallCumulativeRecord.length - 1]
+                .consolationSeasonRecord.pointsFor -
+                b.overallCumulativeRecord[b.overallCumulativeRecord.length - 1]
+                  .consolationSeasonRecord.pointsAgainst
+            )
+          ) {
+            return (
+              Number(
+                a.overallCumulativeRecord[a.overallCumulativeRecord.length - 1]
+                  .consolationSeasonRecord.pointsFor -
+                  a.overallCumulativeRecord[
+                    a.overallCumulativeRecord.length - 1
+                  ].consolationSeasonRecord.pointsAgainst
+              ) -
+              Number(
+                b.overallCumulativeRecord[b.overallCumulativeRecord.length - 1]
+                  .consolationSeasonRecord.pointsFor -
+                  b.overallCumulativeRecord[
+                    b.overallCumulativeRecord.length - 1
+                  ].consolationSeasonRecord.pointsAgainst
+              )
+            );
+          }
+          if (
+            Number(
+              a.overallCumulativeRecord[a.overallCumulativeRecord.length - 1]
+                .consolationSeasonRecord.wins
+            ) !==
+            Number(
+              b.overallCumulativeRecord[b.overallCumulativeRecord.length - 1]
+                .consolationSeasonRecord.wins
+            )
+          ) {
+            return (
+              Number(
+                a.overallCumulativeRecord[a.overallCumulativeRecord.length - 1]
+                  .consolationSeasonRecord.wins
+              ) -
+              Number(
+                b.overallCumulativeRecord[b.overallCumulativeRecord.length - 1]
+                  .consolationSeasonRecord.wins
+              )
+            );
+          }
+          if (
+            Number(a.championships.length) !== Number(b.championships.length)
+          ) {
+            return (
+              Number(a.championships.length) - Number(b.championships.length)
+            );
+          }
+
+          if (a.memberSeasons.length !== b.memberSeasons.length) {
+            return b.memberSeasons.length - a.memberSeasons.length;
+          }
+        })
+      );
+    } else if (e === "Member Seasons" && columnSortedBy != "Member Seasons") {
+      setChosenSeasonTeams(
+        chosenSeasonTeams.sort((a, b) => {
+          if (a.memberSeasons.length !== b.memberSeasons.length) {
+            return b.memberSeasons.length - a.memberSeasons.length;
+          }
+          if (Number(a.rank.rank) !== Number(b.rank.rank)) {
+            return Number(b.rank.rank) - Number(a.rank.rank);
+          }
+        })
+      );
+    }
+    if (e === columnSortedBy) {
+      setColumnSortedBy(e + "-");
+    } else {
+      setColumnSortedBy(e);
+    }
+  };
   return (
     <>
       <div className="normal-background">
@@ -1109,6 +3613,8 @@ export default function LeagueOverview({ leagueType, leagueKeysString }) {
                     chosenSeason={chosenSeason}
                     logoStyle={logoStyle}
                     currentYear={currentYear}
+                    onColumnSort={handleColumnSort}
+                    columnSortedBy={columnSortedBy}
                   />
                 </Tab>
                 <Tab eventKey="Matchups" title="Matchups">

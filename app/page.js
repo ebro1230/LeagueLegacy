@@ -10,6 +10,7 @@ import fantasyBaseball from "@/assets/Fantasy-Baseball.png";
 import background from "@/assets/Homepage-Background.jpg";
 import "bootstrap/dist/css/bootstrap.min.css";
 import Link from "next/link";
+import LoadingIndicator from "@/components/loading-indicator";
 import { Koulen } from "@next/font/google";
 const koulen = Koulen({
   subsets: ["latin"], // Specify subsets like 'latin', 'cyrillic', etc.
@@ -35,7 +36,9 @@ export default function Home() {
         }}
       >
         <div className="welcome-div">
-          <h2 className={koulen.className}>LOADING SESSION DATA...</h2>
+          <h2 className={koulen.className}>
+            <LoadingIndicator />
+          </h2>
         </div>
       </div>
     );

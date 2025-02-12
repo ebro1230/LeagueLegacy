@@ -25,10 +25,10 @@ export default function RecordTeamDropdown({
   logoStyle,
 }) {
   return (
-    <div className="team-dropdown-div">
+    <div>
       <Dropdown onSelect={onTeamSelect}>
         <Dropdown.Toggle
-          className="custom-dropdown-toggle"
+          className="custom-dropdown-toggle2"
           disabled={!isActive}
         >
           {!isTeam2 ? chosenTeam1.managerName : chosenTeam2.managerName}
