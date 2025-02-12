@@ -217,7 +217,7 @@ export default function SportPage({ params }) {
               ? `url(${noLeagueDataBackgroundImage.src})`
               : none,
             width: "100%",
-            height: "844px",
+            height: "100vh",
             gap: "48px",
             paddingTop: "80px",
             paddingRight: "160px",
@@ -226,15 +226,22 @@ export default function SportPage({ params }) {
             display: "flex",
             flexDirection: "column",
             justifyContent: "center",
+            backgroundRepeat: "no-repeat",
           }}
         >
-          <Col xs={4}>
+          <Col
+            xs={4}
+            style={{
+              display: "flex",
+              flexDirection: "column",
+              alignItems: "center",
+            }}
+          >
             <p
               className={`no-league-div ${koulen.className}`}
               style={{
                 paddingTop: "20rem",
                 width: "100%",
-                paddingLeft: "15rem",
                 fontSize: "36px",
                 color: "white",
                 textShadow:
@@ -244,7 +251,7 @@ export default function SportPage({ params }) {
             >
               Sorry, you are not part of any fantasy {leagueType} leagues
             </p>
-            <button>Go Back</button>
+            <button style={{ width: "50%" }}>Go Back</button>
           </Col>
         </div>
       )}
