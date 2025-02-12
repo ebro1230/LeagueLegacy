@@ -719,6 +719,9 @@ thead tr th{
   text-align: left !important;
 }
 
+.player-table{
+  margin-bottom: 1rem;
+}
 .player-table-head{
   text-align: left !important;
 }

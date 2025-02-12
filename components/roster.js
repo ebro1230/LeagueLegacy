@@ -361,6 +361,46 @@ export default function Roster({
           </Row>
           <Row>
             <Col md={12} lg={6}>
+              <Row className="week-results-div">
+                <Col className="inside-week-results">
+                  <p className={`${inter.className} card-titles`}>Result</p>{" "}
+                  <p
+                    className={`${koulen.className} card-info ${
+                      week.pointsFor < week.pointsAgainst
+                        ? "positive-differential"
+                        : week.pointsFor > week.pointsAgainst
+                        ? "negative-differential"
+                        : ""
+                    }`}
+                  >
+                    {week.pointsFor < week.pointsAgainst
+                      ? "Winner"
+                      : week.pointsFor > week.pointsAgainst
+                      ? "Loser"
+                      : "Tie"}
+                  </p>
+                </Col>
+                <Col className="inside-week-results">
+                  <p className={`${inter.className} card-titles`}>
+                    Projected Points
+                  </p>{" "}
+                  <p className={`${koulen.className} card-info`}>
+                    {week.projectedPointsAgainst}
+                  </p>
+                </Col>
+                <Col className="inside-week-results">
+                  <p className={`${inter.className} card-titles`}>
+                    Actual Points
+                  </p>{" "}
+                  <p className={`${koulen.className} card-info`}>
+                    {week.pointsAgainst}
+                  </p>
+                </Col>
+              </Row>
+            </Col>
+          </Row>
+          <Row>
+            <Col md={12} lg={6}>
               {team1Roster.length ? (
                 <Table
                   key={team1Roster}
