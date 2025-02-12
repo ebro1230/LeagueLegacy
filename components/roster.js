@@ -32,7 +32,7 @@ export default function Roster({
   const [team1Roster, setTeam1Roster] = useState([]);
   const [team2Roster, setTeam2Roster] = useState([]);
   const [weekDays, setWeekDays] = useState(["Week"]);
-  const [chosenDate, setChosenDate] = useState(["Week"]);
+  const [chosenDate, setChosenDate] = useState("Week");
   const router = useRouter();
   const formatDate = (date) => {
     let d = new Date(date);
@@ -355,7 +355,6 @@ export default function Roster({
                   weekDays={weekDays}
                   onDateChange={handleDateChange}
                   chosenDate={chosenDate}
-                  className="custom-dropdown-toggle2"
                 />
               </div>
             </Col>

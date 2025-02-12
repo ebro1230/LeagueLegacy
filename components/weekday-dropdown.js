@@ -9,7 +9,7 @@ export default function WeekDayDropdown({
   return weekDays.length ? (
     <div className="season-dropdown-div">
       <Dropdown onSelect={onDateChange}>
-        <Dropdown.Toggle variant="success" id="dropdown-basic">
+        <Dropdown.Toggle className="custom-dropdown-toggle2">
           {chosenDate}
         </Dropdown.Toggle>
 
