@@ -255,7 +255,7 @@ export default function SportPage({ params }) {
               Sorry, you are not part of any fantasy {leagueType} leagues
             </p>
             <button
-              style={{ width: "50%" }}
+              style={{ width: "100%" }}
               onClick={() => {
                 router.push("/");
               }}
