@@ -8,14 +8,22 @@ function Error() {
   const errorStatus = searchParams.get("status");
 
   return (
-    <div className="errorpage-div">
-      {errorStatus === "null" || errorStatus === "undefined" ? (
-        <h1>Error: {errorMessage}</h1>
-      ) : (
-        <h1>
-          {errorStatus} Error: {errorMessage}
-        </h1>
-      )}
+    <div className="normal-background">
+      <div className="errorpage-div" style={{ paddingTop: "10rem" }}>
+        {errorStatus === "null" || errorStatus === "undefined" ? (
+          <h3
+            style={{ display: "flex", width: "100%", justifyContent: "center" }}
+          >
+            Error: {errorMessage}
+          </h3>
+        ) : (
+          <h3
+            style={{ display: "flex", width: "100%", justifyContent: "center" }}
+          >
+            {errorStatus} Error: {errorMessage}
+          </h3>
+        )}
+      </div>
     </div>
   );
 }
