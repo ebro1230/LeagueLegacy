@@ -8,6 +8,10 @@ import { Col } from "react-bootstrap";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { useEffect, useState } from "react";
 import LoadingIndicator from "@/components/loading-indicator";
+const koulen = Koulen({
+  subsets: ["latin"], // Specify subsets like 'latin', 'cyrillic', etc.
+  weight: ["400"], // Include specific font weights
+});
 
 export default function NotFoundPage() {
   const [backgroundImage, setBackgroundImage] = useState(null);
