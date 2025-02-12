@@ -44,9 +44,9 @@ export default function ManagerGrid({
             >
               Rank{" "}
               {columnSortedBy === "Rank"
-                ? TRIANGLE
+                ? "▲"
                 : columnSortedBy === "Rank-"
-                ? DTRIANGLE
+                ? "▼"
                 : null}
             </th>
             <th className={!isMobile ? "stickyCol2" : null}>Logo</th>
@@ -56,17 +56,17 @@ export default function ManagerGrid({
             >
               Manager{" "}
               {columnSortedBy === "Manager"
-                ? TRIANGLE
+                ? "▲"
                 : columnSortedBy === "Manager-"
-                ? DTRIANGLE
+                ? "▼"
                 : null}
             </th>
             <th onClick={() => onColumnSort("Team Name")}>
               Team Name{" "}
               {columnSortedBy === "Team Name"
-                ? TRIANGLE
+                ? "▲"
                 : columnSortedBy === "Team Name-"
-                ? DTRIANGLE
+                ? "▼"
                 : null}
             </th>
             {chosenSeason.year === "Overall" ? (
@@ -74,45 +74,45 @@ export default function ManagerGrid({
                 <th onClick={() => onColumnSort("Championships")}>
                   Championships{" "}
                   {columnSortedBy === "Championships"
-                    ? TRIANGLE
+                    ? "▲"
                     : columnSortedBy === "Championships-"
-                    ? DTRIANGLE
+                    ? "▼"
                     : null}
                 </th>{" "}
                 <th>Championship Seasons</th>
                 <th onClick={() => onColumnSort("Best Finish")}>
                   Best Finish{" "}
                   {columnSortedBy === "Best Finish"
-                    ? TRIANGLE
+                    ? "▲"
                     : columnSortedBy === "Best Finish-"
-                    ? DTRIANGLE
+                    ? "▼"
                     : null}
                 </th>{" "}
                 <th>Best Finish Seasons</th>
                 <th onClick={() => onColumnSort("Worst Finish")}>
                   Worst Finish{" "}
                   {columnSortedBy === "Worst Finish"
-                    ? TRIANGLE
+                    ? "▲"
                     : columnSortedBy === "Worst Finish-"
-                    ? DTRIANGLE
+                    ? "▼"
                     : null}
                 </th>
                 <th>Worst Finish Seasons</th>
                 <th onClick={() => onColumnSort("Playoff Appearances")}>
                   Playoff Appearances{" "}
                   {columnSortedBy === "Playoff Appearances"
-                    ? TRIANGLE
+                    ? "▲"
                     : columnSortedBy === "Playoff Appearances-"
-                    ? DTRIANGLE
+                    ? "▼"
                     : null}
                 </th>{" "}
                 <th>Playoff Seasons</th>
                 <th onClick={() => onColumnSort("Consolation Appearances")}>
                   Consolation Appearances{" "}
                   {columnSortedBy === "Consolation Appearances"
-                    ? TRIANGLE
+                    ? "▲"
                     : columnSortedBy === "Consolation Appearances-"
-                    ? DTRIANGLE
+                    ? "▼"
                     : null}
                 </th>{" "}
                 <th>Consolation Seasons</th>
@@ -124,41 +124,41 @@ export default function ManagerGrid({
             >
               Regular Season Record{" "}
               {columnSortedBy === "Regular Season Record"
-                ? TRIANGLE
+                ? "▲"
                 : columnSortedBy === "Regular Season Record-"
-                ? DTRIANGLE
+                ? "▼"
                 : null}
             </th>
             <th onClick={() => onColumnSort("Win Percentage")}>
               Win %{" "}
               {columnSortedBy === "Win Percentage"
-                ? TRIANGLE
+                ? "▲"
                 : columnSortedBy === "Win Percentage-"
-                ? DTRIANGLE
+                ? "▼"
                 : null}
             </th>
             <th onClick={() => onColumnSort("Points For")}>
               Points For{" "}
               {columnSortedBy === "Points For"
-                ? TRIANGLE
+                ? "▲"
                 : columnSortedBy === "Points For-"
-                ? DTRIANGLE
+                ? "▼"
                 : null}
             </th>
             <th onClick={() => onColumnSort("Points Against")}>
               Points Against{" "}
               {columnSortedBy === "Points Against"
-                ? TRIANGLE
+                ? "▲"
                 : columnSortedBy === "Points Against-"
-                ? DTRIANGLE
+                ? "▼"
                 : null}
             </th>
             <th onClick={() => onColumnSort("Point Differential")}>
               Points Diff.{" "}
               {columnSortedBy === "Point Differential"
-                ? TRIANGLE
+                ? "▲"
                 : columnSortedBy === "Point Differential-"
-                ? DTRIANGLE
+                ? "▼"
                 : null}
             </th>
             <th
@@ -167,41 +167,41 @@ export default function ManagerGrid({
             >
               Playoff Record{" "}
               {columnSortedBy === "Playoff Record"
-                ? TRIANGLE
+                ? "▲"
                 : columnSortedBy === "Playoff Record-"
-                ? DTRIANGLE
+                ? "▼"
                 : null}
             </th>
             <th onClick={() => onColumnSort("Playoff Win Percentage")}>
               Playoff Win %{" "}
               {columnSortedBy === "Playoff Win Percentage"
-                ? TRIANGLE
+                ? "▲"
                 : columnSortedBy === "Playoff Win Percentage-"
-                ? DTRIANGLE
+                ? "▼"
                 : null}
             </th>
             <th onClick={() => onColumnSort("Playoff Points For")}>
               Playoff Points For{" "}
               {columnSortedBy === "Playoff Points For"
-                ? TRIANGLE
+                ? "▲"
                 : columnSortedBy === "Playoff Points For-"
-                ? DTRIANGLE
+                ? "▼"
                 : null}
             </th>
             <th onClick={() => onColumnSort("Playoff Points Against")}>
               Playoff Points Against{" "}
               {columnSortedBy === "Playoff Points Against"
-                ? TRIANGLE
+                ? "▲"
                 : columnSortedBy === "Playoff Points Against-"
-                ? DTRIANGLE
+                ? "▼"
                 : null}
             </th>
             <th onClick={() => onColumnSort("Playoff Point Differential")}>
               Playoff Points Diff.{" "}
               {columnSortedBy === "Playoff Point Differential"
-                ? TRIANGLE
+                ? "▲"
                 : columnSortedBy === "Playoff Point Differential-"
-                ? DTRIANGLE
+                ? "▼"
                 : null}
             </th>
             <th
@@ -210,41 +210,41 @@ export default function ManagerGrid({
             >
               Consolation Record{" "}
               {columnSortedBy === "Consolation Record"
-                ? TRIANGLE
+                ? "▲"
                 : columnSortedBy === "Consolation Record-"
-                ? DTRIANGLE
+                ? "▼"
                 : null}
             </th>
             <th onClick={() => onColumnSort("Consolation Win Percentage")}>
               Consolation Win %{" "}
               {columnSortedBy === "Consolation Win Percentage"
-                ? TRIANGLE
+                ? "▲"
                 : columnSortedBy === "Consolation Win Percentage-"
-                ? DTRIANGLE
+                ? "▼"
                 : null}
             </th>
             <th onClick={() => onColumnSort("Consolation Points For")}>
               Consolation Points For{" "}
               {columnSortedBy === "Consolation Points For"
-                ? TRIANGLE
+                ? "▲"
                 : columnSortedBy === "Consolation Points For-"
-                ? DTRIANGLE
+                ? "▼"
                 : null}
             </th>
             <th onClick={() => onColumnSort("Consolation Points Against")}>
               Consolation Points Against{" "}
               {columnSortedBy === "Consolation Points Against"
-                ? TRIANGLE
+                ? "▲"
                 : columnSortedBy === "Consolation Points Against-"
-                ? DTRIANGLE
+                ? "▼"
                 : null}
             </th>
             <th onClick={() => onColumnSort("Consolation Point Differential")}>
               Consolation Points Diff.{" "}
               {columnSortedBy === "Consolation Point Differential"
-                ? TRIANGLE
+                ? "▲"
                 : columnSortedBy === "Consolation Point Differential-"
-                ? DTRIANGLE
+                ? "▼"
                 : null}
             </th>
 
@@ -253,9 +253,9 @@ export default function ManagerGrid({
                 <th onClick={() => onColumnSort("Member Seasons")}>
                   Member Seasons{" "}
                   {columnSortedBy === "Member Seasons"
-                    ? TRIANGLE
+                    ? "▲"
                     : columnSortedBy === "Member Seasons-"
-                    ? DTRIANGLE
+                    ? "▼"
                     : null}
                 </th>
               </>
