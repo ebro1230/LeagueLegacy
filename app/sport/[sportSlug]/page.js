@@ -109,44 +109,106 @@ export default function SportPage({ params }) {
   }, [status]);
 
   return (
-    <div
-      style={{
-        backgroundImage: background ? `url(${background.src})` : none,
-        backgroundSize: "cover",
-        backgroundPosition: "center",
-        minHeight: "100vh",
-      }}
-    >
-      <div className="league-type-div">
-        {imageSource ? (
-          <Image
-            src={imageSource}
-            height={60}
-            placeholder="blur"
-            //style={logoStyle}
-            alt={`Picture for fantasy ${params.sportSlug} league`}
-          />
-        ) : (
-          <h1>Not a valid fantasy leauge</h1>
-        )}
-      </div>
-      <div className="title-div">
-        <h2 className={koulen.className}>
-          Fantasy {leagueType.charAt(0).toUpperCase() + leagueType.slice(1)}{" "}
-          League Legacy
-        </h2>
-      </div>
-
+    // <div
+    //   style={{
+    //     backgroundImage: background ? `url(${background.src})` : none,
+    //     backgroundSize: "cover",
+    //     backgroundPosition: "center",
+    //     minHeight: "100vh",
+    //   }}
+    // >
+    //   <div className="league-type-div">
+    //     {imageSource ? (
+    //       <Image
+    //         src={imageSource}
+    //         height={60}
+    //         placeholder="blur"
+    //         //style={logoStyle}
+    //         alt={`Picture for fantasy ${params.sportSlug} league`}
+    //       />
+    //     ) : (
+    //       <h1>Not a valid fantasy leauge</h1>
+    //     )}
+    //   </div>
+    //   <div className="title-div">
+    //     <h2 className={koulen.className}>
+    //       Fantasy {leagueType.charAt(0).toUpperCase() + leagueType.slice(1)}{" "}
+    //       League Legacy
+    //     </h2>
+    //   </div>
+    <>
       {loading ? (
-        <div className="loading-div">
-          <LoadingIndicator>
-            <span className="visually-hidden">Loading...</span>
-          </LoadingIndicator>
-        </div>
+        <>
+          <div
+            style={{
+              backgroundImage: background ? `url(${background.src})` : none,
+              backgroundSize: "cover",
+              backgroundPosition: "center",
+              minHeight: "100vh",
+            }}
+          >
+            <div className="league-type-div">
+              {imageSource ? (
+                <Image
+                  src={imageSource}
+                  height={60}
+                  placeholder="blur"
+                  //style={logoStyle}
+                  alt={`Picture for fantasy ${params.sportSlug} league`}
+                />
+              ) : (
+                <h1>Not a valid fantasy leauge</h1>
+              )}
+            </div>
+            <div className="title-div">
+              <h2 className={koulen.className}>
+                Fantasy{" "}
+                {leagueType.charAt(0).toUpperCase() + leagueType.slice(1)}{" "}
+                League Legacy
+              </h2>
+            </div>
+            <div className="loading-div">
+              <LoadingIndicator>
+                <span className="visually-hidden">Loading...</span>
+              </LoadingIndicator>
+            </div>
+          </div>
+        </>
       ) : leagues.length ? (
-        <div>
-          <LeaguesGrid leagues={leagues} leagueType={leagueType} />
-        </div>
+        <>
+          <div
+            style={{
+              backgroundImage: background ? `url(${background.src})` : none,
+              backgroundSize: "cover",
+              backgroundPosition: "center",
+              minHeight: "100vh",
+            }}
+          >
+            <div className="league-type-div">
+              {imageSource ? (
+                <Image
+                  src={imageSource}
+                  height={60}
+                  placeholder="blur"
+                  //style={logoStyle}
+                  alt={`Picture for fantasy ${params.sportSlug} league`}
+                />
+              ) : (
+                <h1>Not a valid fantasy leauge</h1>
+              )}
+            </div>
+            <div className="title-div">
+              <h2 className={koulen.className}>
+                Fantasy{" "}
+                {leagueType.charAt(0).toUpperCase() + leagueType.slice(1)}{" "}
+                League Legacy
+              </h2>
+            </div>
+            <div>
+              <LeaguesGrid leagues={leagues} leagueType={leagueType} />
+            </div>
+          </div>
+        </>
       ) : (
         <div
           style={{
@@ -162,6 +224,6 @@ export default function SportPage({ params }) {
           <button>Go Back</button>
         </div>
       )}
-    </div>
+    </>
   );
 }

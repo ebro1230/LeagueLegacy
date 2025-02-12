@@ -763,7 +763,7 @@ thead tr th{
 }
 
 .tableContainer {
-  max-height: 15rem; /* Set max height for scroll */
+  max-height: 19rem; /* Set max height for scroll */
   overflow: auto;
   position: relative;
   width:100%;
@@ -778,8 +778,8 @@ thead tr th{
 .tableHeader th {
   position: sticky;
   top: 0;
-  background: linear-gradient(106.73deg,#2a3440 5.49%,#3a4b5f);
-  z-index: 102;
+  background: #3a4b5f;
+  z-index: 100;
 }
 
 /* Sticky First Three Columns */
