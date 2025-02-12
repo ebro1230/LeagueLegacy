@@ -4,6 +4,10 @@ import football from "@/assets/Fantasy-Football.png";
 import hockey from "@/assets/Fantasy-Hockey.png";
 import basketball from "@/assets/Fantasy-Basketball.png";
 import baseball from "@/assets/Fantasy-Baseball.png";
+import eagles from "@/assets/Eagles.png";
+import oilers from "@/assets/Oilers.jpg";
+import sixers from "@/assets/Sixers.jpg";
+import yankees from "@/assets/Yankees.jpg";
 import background from "@/assets/Homepage-Background.jpg";
 import Image from "next/image";
 import LeaguesGrid from "@/components/leagues-grid";
@@ -32,7 +36,7 @@ export default function SportPage({ params }) {
     noLeagueDataBackgroundImage = oilers;
   } else if (leagueType === "basketball") {
     imageSource = basketball;
-    noLeagueDataBackgroundImage = Saira_Extra_Condensed;
+    noLeagueDataBackgroundImage = sixers;
   } else if (leagueType === "baseball") {
     imageSource = baseball;
     noLeagueDataBackgroundImage = yankees;
