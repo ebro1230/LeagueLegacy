@@ -125,7 +125,7 @@ export default function SportPage({ params }) {
   return (
     // <div
     //   style={{
-    //     backgroundImage: background ? `url(${background.src})` : none,
+    //     backgroundImage: background ? `url(${background.src})` : null,
     //     backgroundSize: "cover",
     //     backgroundPosition: "center",
     //     minHeight: "100vh",
@@ -155,7 +155,7 @@ export default function SportPage({ params }) {
         <>
           <div
             style={{
-              backgroundImage: background ? `url(${background.src})` : none,
+              backgroundImage: background ? `url(${background.src})` : null,
               backgroundSize: "cover",
               backgroundPosition: "center",
               minHeight: "100vh",
@@ -192,7 +192,7 @@ export default function SportPage({ params }) {
         <>
           <div
             style={{
-              backgroundImage: background ? `url(${background.src})` : none,
+              backgroundImage: background ? `url(${background.src})` : null,
               backgroundSize: "cover",
               backgroundPosition: "center",
               minHeight: "100vh",
@@ -228,7 +228,7 @@ export default function SportPage({ params }) {
           style={{
             backgroundImage: noLeagueDataBackgroundImage
               ? `url(${noLeagueDataBackgroundImage.src})`
-              : none,
+              : null,
             width: "100%",
             height: "100vh",
             gap: "48px",
