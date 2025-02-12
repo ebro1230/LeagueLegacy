@@ -643,7 +643,7 @@ td p {
   font-size: clamp(0.7rem, 2vw, 14px) !important;
 }
 .table-striped tbody tr:nth-child(even) td{
-  background: linear-gradient(106.73deg,#2a3440 5.49%,#3a4b5f) !important;
+  background: #3a4b5f !important;
   color: white;
   border-bottom: 1px solid #858585 !important;
   border-top: none !important;
@@ -763,7 +763,7 @@ thead tr th{
 }
 
 .tableContainer {
-  max-height: 9rem; /* Set max height for scroll */
+  max-height: 15rem; /* Set max height for scroll */
   overflow: auto;
   position: relative;
   width:100%;
@@ -775,17 +775,17 @@ thead tr th{
 }
 
 /* Sticky Header */
-.tableHeader {
+.tableHeader th {
   position: sticky;
   top: 0;
   background: linear-gradient(106.73deg,#2a3440 5.49%,#3a4b5f);
-  z-index: 100;
+  z-index: 102;
 }
 
 /* Sticky First Three Columns */
 .stickyCol1, .stickyCol2, .stickyCol3 {
   position: sticky;
-  /* background: white; */
+  background: #3a4b5f !important;
   z-index: 101;
   /* border-right: 1px solid #ccc; */
 }

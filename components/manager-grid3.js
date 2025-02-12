@@ -11,6 +11,7 @@ const inter = Inter({
   subsets: ["latin"], // Specify subsets like 'latin', 'cyrillic', etc.
   weight: ["400"], // Include specific font weights
 });
+import "bootstrap/dist/css/bootstrap.min.css";
 
 export default function ManagerGrid({
   managers,
