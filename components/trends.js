@@ -57,7 +57,7 @@ export default function Trends({ chartData }) {
         <Line
           data={chartData || defaultData}
           options={{
-            responsive: false, // Disable automatic resizing
+            responsive: true, // Disable automatic resizing
             maintainAspectRatio: false, // Allows setting a custom height/width
             plugins: {
               legend: {
