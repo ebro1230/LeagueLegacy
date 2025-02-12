@@ -109,18 +109,18 @@ export default function SportPage({ params }) {
     };
     if (
       status === "unauthenticated" ||
-      session.expires < Date.now() ||
-      !session.accessToken ||
-      !session
+      !session ||
+      (session && session.expires < Date.now()) ||
+      (session && !session.accessToken)
     ) {
-      setLoading(false);
+      //setLoading(false);
       router.push("/");
-    } else if (status === "authenticated") {
+    } else if (status === "authenticated" && session.accessToken) {
       handleGetLeagues(leagueType, session.accessToken);
     } else {
       setLoading(true);
     }
-  }, [status, router.pathname]);
+  }, [status, router]);
 
   return (
     // <div
