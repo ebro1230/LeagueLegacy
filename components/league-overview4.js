@@ -3615,6 +3615,7 @@ export default function LeagueOverview({ leagueType, leagueKeysString }) {
                     currentYear={currentYear}
                     onColumnSort={handleColumnSort}
                     columnSortedBy={columnSortedBy}
+                    isMobile={isMobile}
                   />
                 </Tab>
                 <Tab eventKey="Matchups" title="Matchups">
