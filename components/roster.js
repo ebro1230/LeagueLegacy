@@ -414,6 +414,109 @@ export default function Roster({
         </div>
       ) : (
         <>
+          {chosenTeam2.managerName === "Overall" ? (
+            <Row style={{ marginTop: "0.5rem", marginBottom: "0.5rem" }}>
+              <Col>
+                <Row style={{ marginBottom: "0.5rem" }}>
+                  <Col className="d-flex justify-content-center">
+                    <Image
+                      src={week.logo}
+                      width={50}
+                      height={50}
+                      style={{
+                        borderRadius: "50%",
+                        border: "1px solid #fff",
+                        objectFit: "contain",
+                      }}
+                      alt={`${week.name}'s Logo`}
+                    />
+                  </Col>
+
+                  <Col className="d-flex justify-content-center">
+                    <Image
+                      src={week.opponentLogo}
+                      width={50}
+                      height={50}
+                      style={{
+                        borderRadius: "50%",
+                        border: "1px solid #fff",
+                        objectFit: "contain",
+                      }}
+                      alt={`${week.opponentName}'s Logo`}
+                    />
+                  </Col>
+                </Row>
+                <Row>
+                  <Col>
+                    <Row>
+                      <Col className="d-flex justify-content-center">
+                        <p
+                          className={`${koulen.className}`}
+                          style={{
+                            fontSize: "18px",
+                            color: "white",
+                            marginBottom: "0rem",
+                            textAlign: "center",
+                          }}
+                        >
+                          {week.name}
+                        </p>
+                      </Col>
+                    </Row>
+                    <Row>
+                      <Col className="d-flex justify-content-center">
+                        <p
+                          className={`${inter.className}`}
+                          style={{
+                            fontSize: "14px",
+                            color: "#83A6CF",
+                            marginBottom: "0.5rem",
+                            textAlign: "center",
+                          }}
+                        >
+                          {week.managerName}
+                        </p>
+                      </Col>
+                    </Row>
+                  </Col>
+
+                  <Col>
+                    <Row>
+                      <Col className="d-flex justify-content-center">
+                        <p
+                          className={`${koulen.className}`}
+                          style={{
+                            fontSize: "18px",
+                            color: "white",
+                            marginBottom: "0rem",
+                            textAlign: "center",
+                          }}
+                        >
+                          {week.opponentName}
+                        </p>
+                      </Col>
+                    </Row>
+                    <Row>
+                      <Col className="d-flex justify-content-center">
+                        <p
+                          className={`${inter.className}`}
+                          style={{
+                            fontSize: "14px",
+                            color: "#83A6CF",
+
+                            textAlign: "center",
+                            marginBottom: "0.5rem",
+                          }}
+                        >
+                          {week.opponentManagerName}
+                        </p>
+                      </Col>
+                    </Row>
+                  </Col>
+                </Row>
+              </Col>
+            </Row>
+          ) : null}
           <Row>
             <Col md={12} lg={6}>
               <Row className="week-results-div">
