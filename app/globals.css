@@ -775,7 +775,7 @@ thead tr th{
 }
 
 /* Sticky Header */
-.tableHeader th {
+.tableHeader {
   position: sticky !important;
   top: 0 !important;
   background: #3a4b5f !important;
@@ -787,6 +787,13 @@ thead tr th{
   position: sticky;
   background: #3a4b5f !important;
   z-index: 101 !important;
+  /* border-right: 1px solid #ccc; */
+}
+
+.stickyCol1, .stickyCol2, .stickyCol3 th {
+  position: sticky;
+  background: #3a4b5f !important;
+  z-index: 103 !important;
   /* border-right: 1px solid #ccc; */
 }
 

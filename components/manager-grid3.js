@@ -25,7 +25,6 @@ export default function ManagerGrid({
   return (
     <div className={!isMobile ? "tableContainer" : "standings-div"}>
       <Table
-        responsive
         striped
         bordered
         size="sm"
