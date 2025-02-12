@@ -35,7 +35,12 @@ export default function RecordItemSeason({ record, logoStyle, recordName }) {
                   <Col className="d-flex justify-content-center">
                     <h5
                       className={koulen.className}
-                      style={{ fontSize: "24px", color: "white" }}
+                      style={{
+                        fontSize: "24px",
+                        color: "white",
+                        margin: "1rem",
+                        textAlign: "center",
+                      }}
                     >
                       {recordName}
                     </h5>
@@ -51,6 +56,7 @@ export default function RecordItemSeason({ record, logoStyle, recordName }) {
                         borderRadius: "50%",
                         border: "1px solid #fff",
                         objectFit: "contain",
+                        marginLeft: "0.5rem",
                       }}
                       alt={`${record.name}'s Logo`}
                     />
@@ -64,6 +70,8 @@ export default function RecordItemSeason({ record, logoStyle, recordName }) {
                             fontSize: "18px",
                             color: "white",
                             marginBottom: "0rem",
+                            marginRight: "0.5rem",
+                            textAlign: "center",
                           }}
                         >
                           {record.name}
@@ -78,6 +86,7 @@ export default function RecordItemSeason({ record, logoStyle, recordName }) {
                             fontSize: "14px",
                             color: "#83A6CF",
                             marginBottom: "0rem",
+                            marginRight: "0.5rem",
                           }}
                         >
                           {record.managerName}
