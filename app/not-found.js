@@ -8,6 +8,7 @@ import { Col } from "react-bootstrap";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { useEffect, useState } from "react";
 import LoadingIndicator from "@/components/loading-indicator";
+import { Koulen } from "@next/font/google";
 const koulen = Koulen({
   subsets: ["latin"], // Specify subsets like 'latin', 'cyrillic', etc.
   weight: ["400"], // Include specific font weights
