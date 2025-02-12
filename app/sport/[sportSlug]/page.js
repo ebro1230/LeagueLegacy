@@ -16,7 +16,6 @@ import { useState, useEffect } from "react";
 import { useRouter } from "next/navigation";
 import "bootstrap/dist/css/bootstrap.min.css";
 import LoadingIndicator from "@/components/loading-indicator";
-import { useRouter } from "next/navigation";
 import { Koulen } from "@next/font/google";
 import { Col } from "react-bootstrap";
 const koulen = Koulen({
