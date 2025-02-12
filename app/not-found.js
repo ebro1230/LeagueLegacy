@@ -1,3 +1,4 @@
+"use client";
 import eagles from "@/assets/Eagles.png";
 import oilers from "@/assets/Oilers.jpg";
 import sixers from "@/assets/Sixers.jpg";
