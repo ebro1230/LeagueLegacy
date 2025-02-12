@@ -29,6 +29,10 @@ export default function SportPage({ params }) {
   const leagueType = params.sportSlug;
   console.log("sportsSlug PARAMS");
   console.log(params);
+  console.log("SESSION");
+  console.log(session);
+  console.log("STATUS");
+  console.log(status);
   let imageSource = "";
   let noLeagueDataBackgroundImage = "";
   if (leagueType === "football") {
