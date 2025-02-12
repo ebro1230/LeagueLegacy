@@ -45,7 +45,7 @@ export default function Trends({ chartData }) {
     return (
       <div
         style={{
-          maxWidth: "100%",
+          width: "100%",
           height: "100vh",
           display: "flex",
           justifyContent: "center",
@@ -54,7 +54,8 @@ export default function Trends({ chartData }) {
         <Line
           data={chartData || defaultData}
           options={{
-            // responsive: true,
+            responsive: false, // Disable automatic resizing
+            maintainAspectRatio: false, // Allows setting a custom height/width
             plugins: {
               legend: {
                 position: "top", // Position of the legend
