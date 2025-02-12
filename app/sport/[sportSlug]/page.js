@@ -60,6 +60,8 @@ export default function SportPage({ params }) {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
+    console.log("ROUTER PATHNAME");
+    console.log(router.pathname);
     const handleGetLeagues = (leagueType, accessToken) => {
       fetch(
         `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/yahooAuth/user-leagues`,
@@ -118,7 +120,7 @@ export default function SportPage({ params }) {
     } else {
       setLoading(true);
     }
-  }, [status]);
+  }, [status, router.pathname]);
 
   return (
     // <div
