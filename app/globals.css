@@ -1,10 +1,10 @@
 .league-logo-div{
     display: flex;
     padding: 2rem;
-    height: 200px;
     justify-content: space-evenly;
     position: relative;
     flex-wrap: wrap;
+    height: fit-content;
   }
   .specific-league-logo-div{
     display: flex;

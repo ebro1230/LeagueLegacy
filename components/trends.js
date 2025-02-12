@@ -45,8 +45,7 @@ export default function Trends({ chartData }) {
     return (
       <div
         style={{
-          minWidth: "800px",
-          minHeight: "400px",
+          minHeight: "500px",
           width: "100%",
           height: "100%",
           display: "flex",
