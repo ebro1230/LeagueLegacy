@@ -495,7 +495,6 @@ export default function LeagueOverview({ leagueType, leagueKeysString }) {
       !leagueType ||
       !leagueKeysString
     ) {
-      setLoading(false);
       router.push("/");
     } else if (status === "authenticated") {
       setLoading(true);
