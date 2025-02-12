@@ -13,6 +13,7 @@ import Image from "next/image";
 import LeaguesGrid from "@/components/leagues-grid";
 import { useSession } from "next-auth/react";
 import { useState, useEffect } from "react";
+import { useRouter } from "next/navigation";
 import "bootstrap/dist/css/bootstrap.min.css";
 import LoadingIndicator from "@/components/loading-indicator";
 import { useRouter } from "next/navigation";
@@ -230,7 +231,8 @@ export default function SportPage({ params }) {
           }}
         >
           <Col
-            xs={4}
+            xs={6}
+            md={4}
             style={{
               display: "flex",
               flexDirection: "column",
@@ -242,7 +244,7 @@ export default function SportPage({ params }) {
               style={{
                 paddingTop: "20rem",
                 width: "100%",
-                fontSize: "36px",
+                fontSize: "clamp(24px, 2vw, 36px)",
                 color: "white",
                 textShadow:
                   "-2px -2px 0 black, 2px -2px 0 black, -2px 2px 0 black, 2px 2px 0 black",
@@ -251,7 +253,14 @@ export default function SportPage({ params }) {
             >
               Sorry, you are not part of any fantasy {leagueType} leagues
             </p>
-            <button style={{ width: "50%" }}>Go Back</button>
+            <button
+              style={{ width: "50%" }}
+              onClick={() => {
+                router.push("/");
+              }}
+            >
+              Go Back
+            </button>
           </Col>
         </div>
       )}

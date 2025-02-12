@@ -88,6 +88,7 @@ export default function Home() {
               height={150}
               placeholder="blur"
               //style={logoStyle}
+              style={{ marginBottom: "3rem" }}
               alt="Picture for Fantasy Football Leagues"
             />
           </Link>
@@ -97,6 +98,7 @@ export default function Home() {
               placeholder="blur"
               height={150}
               //style={logoStyle}
+              style={{ marginBottom: "3rem" }}
               alt="Picture for Fantasy Hockey Leagues"
             />
           </Link>
@@ -106,6 +108,7 @@ export default function Home() {
               height={150}
               placeholder="blur"
               //style={logoStyle}
+              style={{ marginBottom: "3rem" }}
               alt="Picture for Fantasy Basketball Leagues"
             />
           </Link>
@@ -115,6 +118,7 @@ export default function Home() {
               height={150}
               placeholder="blur"
               //style={logoStyle}
+              style={{ marginBottom: "3rem" }}
               alt="Picture for Fantasy Baseball Leagues"
             />
           </Link>
