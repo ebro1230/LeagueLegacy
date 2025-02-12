@@ -12,6 +12,7 @@ export default function ManagerItem({
   currentYear,
   logoStyle,
   chosenSeason,
+  isMobile,
 }) {
   return (
     <>

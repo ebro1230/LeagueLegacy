@@ -273,6 +273,7 @@ export default function ManagerGrid({
                       logoStyle={logoStyle}
                       chosenSeason={chosenSeason}
                       key={manager.key}
+                      isMobile={isMobile}
                     />
                   </tr>
                 );
