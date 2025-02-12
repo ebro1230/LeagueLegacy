@@ -42,7 +42,12 @@ export default function Home() {
         </div>
       </div>
     );
-  } else if (status === "unauthenticated" || session.expires < Date.now()) {
+  } else if (
+    status === "unauthenticated" ||
+    session.expires < Date.now() ||
+    !session.accessToken ||
+    !session
+  ) {
     return (
       <div
         style={{

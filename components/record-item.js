@@ -46,7 +46,11 @@ export default function RecordItem({
                   <Col className="d-flex justify-content-center">
                     <h5
                       className={koulen.className}
-                      style={{ fontSize: "24px", color: "white" }}
+                      style={{
+                        fontSize: "24px",
+                        color: "white",
+                        textAlign: "center",
+                      }}
                     >
                       {recordName}
                     </h5>
@@ -54,7 +58,7 @@ export default function RecordItem({
                 </Row>
                 <Row style={{ marginTop: "0.5rem", marginBottom: "0.5rem" }}>
                   <Col>
-                    <Row>
+                    <Row style={{ marginBottom: "0.5rem" }}>
                       <Col
                         xs={5}
                         sm={4}
@@ -206,6 +210,7 @@ export default function RecordItem({
                                 fontSize: "14px",
                                 color: "#83A6CF",
                                 marginBottom: "0rem",
+                                textAlign: "center",
                               }}
                             >
                               Act.{" "}
@@ -251,6 +256,7 @@ export default function RecordItem({
                                 fontSize: "14px",
                                 color: "#83A6CF",
                                 marginBottom: "0rem",
+                                textAlign: "center",
                               }}
                             >
                               Act.{" "}

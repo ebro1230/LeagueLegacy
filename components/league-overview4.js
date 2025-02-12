@@ -1,12 +1,12 @@
 "use client";
 import "bootstrap/dist/css/bootstrap.min.css";
-import Spinner from "react-bootstrap/Spinner";
 import Tab from "react-bootstrap/Tab";
 import Tabs from "react-bootstrap/Tabs";
 
 import Image from "next/image";
 import { useEffect, useState } from "react";
 import { Row, Col } from "react-bootstrap";
+import { useRouter } from "next/navigation";
 
 import football from "@/assets/Fantasy-Football.png";
 import hockey from "@/assets/Fantasy-Hockey.png";
@@ -66,6 +66,7 @@ export default function LeagueOverview({ leagueType, leagueKeysString }) {
     "springgreen",
     "aquamarine",
   ];
+  const router = useRouter();
 
   const [leagueLogo, setLeagueLogo] = useState();
   const [leagueName, setLeagueName] = useState();
@@ -167,9 +168,13 @@ export default function LeagueOverview({ leagueType, leagueKeysString }) {
       })
         .then((response) => {
           if (!response.ok) {
-            throw new Error(
-              `HTTP error when requesting league info! status: ${response.status}`
-            );
+            return response.json().then((errorData) => {
+              const error = new Error(
+                errorData.message || "Failed to fetch data"
+              );
+              error.status = errorData.status;
+              throw error;
+            });
           }
           return response.json();
         })
@@ -466,13 +471,30 @@ export default function LeagueOverview({ leagueType, leagueKeysString }) {
             }
           }
         })
+        .catch((error) => {
+          // console.log("ERROR");
+          // console.log(
+          //   `ERROR MESSAGE: ${error.message} & ERROR STATUS: ${error.status}`
+          // );
+          // console.log(error);
+          router.push(
+            `/error?message=${encodeURIComponent(
+              error.message
+            )}&status=${encodeURIComponent(error.status)}`
+          );
+        })
         .finally(() => {
           setLoading(false);
         });
     };
-    if (status === "unauthenticated" || session.expires < Date.now()) {
+    if (
+      status === "unauthenticated" ||
+      session.expires < Date.now() ||
+      !session.accessToken ||
+      !session
+    ) {
       setLoading(false);
-      return <h1>Please Sign In</h1>;
+      router.push("/");
     } else if (status === "authenticated") {
       setLoading(true);
       getLeagueInfo(leagueKeys, session.accessToken);

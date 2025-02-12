@@ -99,9 +99,14 @@ export default function SportPage({ params }) {
           setLoading(false);
         });
     };
-    if (status === "unauthenticated" || session.expires < Date.now()) {
+    if (
+      status === "unauthenticated" ||
+      session.expires < Date.now() ||
+      !session.accessToken ||
+      !session
+    ) {
       setLoading(false);
-      return <h1>Please Sign In</h1>;
+      router.push("/");
     } else if (status === "authenticated") {
       handleGetLeagues(leagueType, session.accessToken);
     } else {
