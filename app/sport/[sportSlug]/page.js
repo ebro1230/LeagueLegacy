@@ -154,7 +154,7 @@ export default function SportPage({ params }) {
             minHeight: "100vh",
           }}
         >
-          <h1>Sorry, you're not part of any fantasy {leagueType} leagues</h1>
+          <h1>Sorry, you are not part of any fantasy {leagueType} leagues</h1>
           <button>Go Back</button>
         </div>
       )}
