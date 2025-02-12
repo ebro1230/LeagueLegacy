@@ -26,6 +26,7 @@ export default function Roster({
   leagueType,
   accessToken,
   onIsOpen,
+  chosenTeam2,
 }) {
   const [loading, setLoading] = useState(true);
   const [rosters, setRosters] = useState([]);
@@ -33,6 +34,8 @@ export default function Roster({
   const [team2Roster, setTeam2Roster] = useState([]);
   const [weekDays, setWeekDays] = useState(["Week"]);
   const [chosenDate, setChosenDate] = useState("Week");
+  console.log("Week");
+  console.log(week);
   const router = useRouter();
   const formatDate = (date) => {
     let d = new Date(date);
@@ -153,6 +156,109 @@ export default function Roster({
         <div>
           {rosters.length ? (
             <>
+              {chosenTeam2.managerName === "Overall" ? (
+                <Row style={{ marginTop: "0.5rem", marginBottom: "0.5rem" }}>
+                  <Col>
+                    <Row style={{ marginBottom: "0.5rem" }}>
+                      <Col className="d-flex justify-content-center">
+                        <Image
+                          src={week.logo}
+                          width={50}
+                          height={50}
+                          style={{
+                            borderRadius: "50%",
+                            border: "1px solid #fff",
+                            objectFit: "contain",
+                          }}
+                          alt={`${week.name}'s Logo`}
+                        />
+                      </Col>
+
+                      <Col className="d-flex justify-content-center">
+                        <Image
+                          src={week.opponentLogo}
+                          width={50}
+                          height={50}
+                          style={{
+                            borderRadius: "50%",
+                            border: "1px solid #fff",
+                            objectFit: "contain",
+                          }}
+                          alt={`${week.opponentName}'s Logo`}
+                        />
+                      </Col>
+                    </Row>
+                    <Row>
+                      <Col>
+                        <Row>
+                          <Col className="d-flex justify-content-center">
+                            <p
+                              className={`${koulen.className}`}
+                              style={{
+                                fontSize: "18px",
+                                color: "white",
+                                marginBottom: "0rem",
+                                textAlign: "center",
+                              }}
+                            >
+                              {week.name}
+                            </p>
+                          </Col>
+                        </Row>
+                        <Row>
+                          <Col className="d-flex justify-content-center">
+                            <p
+                              className={`${inter.className}`}
+                              style={{
+                                fontSize: "14px",
+                                color: "#83A6CF",
+                                marginBottom: "0.5rem",
+                                textAlign: "center",
+                              }}
+                            >
+                              {week.managerName}
+                            </p>
+                          </Col>
+                        </Row>
+                      </Col>
+
+                      <Col>
+                        <Row>
+                          <Col className="d-flex justify-content-center">
+                            <p
+                              className={`${koulen.className}`}
+                              style={{
+                                fontSize: "18px",
+                                color: "white",
+                                marginBottom: "0rem",
+                                textAlign: "center",
+                              }}
+                            >
+                              {week.opponentName}
+                            </p>
+                          </Col>
+                        </Row>
+                        <Row>
+                          <Col className="d-flex justify-content-center">
+                            <p
+                              className={`${inter.className}`}
+                              style={{
+                                fontSize: "14px",
+                                color: "#83A6CF",
+
+                                textAlign: "center",
+                                marginBottom: "0.5rem",
+                              }}
+                            >
+                              {week.opponentManagerName}
+                            </p>
+                          </Col>
+                        </Row>
+                      </Col>
+                    </Row>
+                  </Col>
+                </Row>
+              ) : null}
               <Row>
                 <Col md={12} lg={6}>
                   <Row className="week-results-div">
@@ -347,19 +453,6 @@ export default function Roster({
                 </Col>
               </Row>
             </Col>
-          </Row>
-          <Row>
-            <Col>
-              <div className="weekday-dropdown-div">
-                <WeekDayDropdown
-                  weekDays={weekDays}
-                  onDateChange={handleDateChange}
-                  chosenDate={chosenDate}
-                />
-              </div>
-            </Col>
-          </Row>
-          <Row>
             <Col md={12} lg={6}>
               <Row className="week-results-div">
                 <Col className="inside-week-results">
@@ -397,6 +490,17 @@ export default function Roster({
                   </p>
                 </Col>
               </Row>
+            </Col>
+          </Row>
+          <Row>
+            <Col>
+              <div className="weekday-dropdown-div">
+                <WeekDayDropdown
+                  weekDays={weekDays}
+                  onDateChange={handleDateChange}
+                  chosenDate={chosenDate}
+                />
+              </div>
             </Col>
           </Row>
           <Row>

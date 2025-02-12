@@ -141,6 +141,7 @@ export default function SeasonItem({
               leagueType={leagueType}
               accessToken={accessToken}
               onIsOpen={onIsOpen}
+              chosenTeam2={chosenTeam2}
             />
           </Accordion.Item>
         );

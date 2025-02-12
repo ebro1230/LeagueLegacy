@@ -236,18 +236,35 @@ export default function RecordRoster({
         </div>
       ) : (
         <>
-          <div className="weekday-dropdown-div">
-            <WeekDayDropdown
-              weekDays={weekDays}
-              onDateChange={handleDateChange}
-              chosenDate={chosenDate}
-            />
-          </div>
-          <div className="roster-div">
-            {team1Roster.length ? (
-              <div className="roster-div">
-                <Table responsive striped bordered className="player-table">
-                  <tbody>
+          <Row>
+            <Col>
+              <div className="weekday-dropdown-div">
+                <WeekDayDropdown
+                  weekDays={weekDays}
+                  onDateChange={handleDateChange}
+                  chosenDate={chosenDate}
+                />
+              </div>
+            </Col>
+          </Row>
+          <Row>
+            <Col md={12} lg={6}>
+              {team1Roster.length ? (
+                <Table
+                  key={team1Roster}
+                  responsive
+                  striped
+                  bordered
+                  className="player-table"
+                >
+                  <thead className={`${koulen.className} player-table-head`}>
+                    <tr>
+                      <th>POS.</th>
+                      <th>Player</th>
+                      <th>Points</th>
+                    </tr>
+                  </thead>
+                  <tbody className="player-table-body">
                     {team1Roster.map((player) => {
                       return (
                         <tr key={player}>
@@ -259,9 +276,9 @@ export default function RecordRoster({
                               height={25}
                               style={logoStyle}
                               alt={unknownPlayer}
-                            />
+                            />{" "}
+                            {player.playerName}
                           </td>
-                          <td>{player.playerName}</td>
                           {chosenDate === "Week" ? (
                             <td>
                               {player.playerActivePoints
@@ -285,14 +302,27 @@ export default function RecordRoster({
                     })}
                   </tbody>
                 </Table>
-              </div>
-            ) : (
-              <p>No Data Available</p>
-            )}
-            {team2Roster.length ? (
-              <div className="roster-div">
-                <Table responsive striped bordered className="player-table">
-                  <tbody>
+              ) : (
+                <p>No Data Available</p>
+              )}
+            </Col>
+            <Col md={12} lg={6}>
+              {team2Roster.length ? (
+                <Table
+                  key={team2Roster}
+                  responsive
+                  striped
+                  bordered
+                  className="player-table"
+                >
+                  <thead className={`${koulen.className} player-table-head`}>
+                    <tr>
+                      <th>POS.</th>
+                      <th>Player</th>
+                      <th>Points</th>
+                    </tr>
+                  </thead>
+                  <tbody className="player-table-body">
                     {team2Roster.map((player) => {
                       return (
                         <tr key={player}>
@@ -304,9 +334,9 @@ export default function RecordRoster({
                               height={25}
                               style={logoStyle}
                               alt={unknownPlayer}
-                            />
+                            />{" "}
+                            {player.playerName}
                           </td>
-                          <td>{player.playerName}</td>
                           {chosenDate === "Week" ? (
                             <td>
                               {player.playerActivePoints
@@ -330,11 +360,11 @@ export default function RecordRoster({
                     })}
                   </tbody>
                 </Table>
-              </div>
-            ) : (
-              <p>No Data Available</p>
-            )}
-          </div>
+              ) : (
+                <p>No Data Available</p>
+              )}
+            </Col>
+          </Row>
         </>
       )}
     </Accordion.Body>
