@@ -790,12 +790,12 @@ thead tr th{
   /* border-right: 1px solid #ccc; */
 }
 
-.stickyCol1, .stickyCol2, .stickyCol3 th {
+/* .stickyCol1, .stickyCol2, .stickyCol3 th {
   position: sticky;
   background: #3a4b5f !important;
   z-index: 103 !important;
-  /* border-right: 1px solid #ccc; */
-}
+  border-right: 1px solid #ccc;
+} */
 
 /* Set left positions */
 .stickyCol1 {
