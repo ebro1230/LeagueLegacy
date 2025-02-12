@@ -56,7 +56,7 @@ export default function RecordItem({
                   <Col>
                     <Row>
                       <Col
-                        xs={6}
+                        xs={5}
                         sm={4}
                         className="d-flex justify-content-center"
                       >
@@ -72,9 +72,9 @@ export default function RecordItem({
                           alt={`${record.name}'s Logo`}
                         />
                       </Col>
-                      <Col xs={0} sm={4}></Col>
+                      <Col xs={2} sm={4}></Col>
                       <Col
-                        xs={6}
+                        xs={5}
                         sm={4}
                         className="d-flex justify-content-center"
                       >
@@ -142,7 +142,7 @@ export default function RecordItem({
                           style={{
                             fontSize: "24px",
                             color: "white",
-                            marginBottom: "0rem",
+                            marginBottom: "0.5rem",
                             textAlign: "center",
                           }}
                         >
@@ -198,6 +198,7 @@ export default function RecordItem({
                             xs={12}
                             sm={4}
                             className="d-flex justify-content-center"
+                            style={{ width: "fit-content" }}
                           >
                             <p
                               className={`${inter.className}`}
@@ -216,9 +217,10 @@ export default function RecordItem({
                         </Row>
                         <Row>
                           <Col
-                            xs={12}
+                            xs={5}
                             sm={4}
                             className="d-flex justify-content-center"
+                            style={{ width: "fit-content" }}
                           >
                             <p
                               className={`${inter.className}`}
@@ -234,13 +236,14 @@ export default function RecordItem({
                           </Col>
                         </Row>
                       </Col>
-                      <Col></Col>
+                      <Col xs={2} sm={4}></Col>
                       <Col>
                         <Row>
                           <Col
-                            xs={12}
+                            xs={5}
                             sm={4}
                             className="d-flex justify-content-center"
+                            style={{ width: "fit-content" }}
                           >
                             <p
                               className={`${inter.className}`}
@@ -262,6 +265,7 @@ export default function RecordItem({
                             xs={12}
                             sm={4}
                             className="d-flex justify-content-center"
+                            style={{ width: "fit-content" }}
                           >
                             <p
                               className={`${inter.className}`}
