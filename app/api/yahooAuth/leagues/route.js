@@ -941,7 +941,8 @@ handler.post(async (req) => {
                     if (
                       week.pointsFor <
                         gameRecords.leastPointsGame[0].pointsFor &&
-                      week.status === "postevent"
+                      week.status === "postevent" &&
+                      week.pointsFor != 0
                     ) {
                       gameRecords.leastPointsGame = [
                         {
@@ -953,7 +954,8 @@ handler.post(async (req) => {
                     } else if (
                       week.pointsFor ===
                         gameRecords.leastPointsGame[0].pointsFor &&
-                      week.status === "postevent"
+                      week.status === "postevent" &&
+                      week.pointsFor != 0
                     ) {
                       gameRecords.leastPointsGame.push({
                         ...week,
@@ -1351,7 +1353,8 @@ handler.post(async (req) => {
                 if (
                   team.pointsAgainst <
                     seasonRecords.leastPointsAgainstSeason[0].pointsAgainst &&
-                  Number(leagueSeason.season) != currentYear
+                  Number(leagueSeason.season) != currentYear &&
+                  team.pointsAgainst != 0
                 ) {
                   seasonRecords.leastPointsAgainstSeason = [
                     {
@@ -1365,7 +1368,8 @@ handler.post(async (req) => {
                 } else if (
                   team.pointsAgainst ===
                     seasonRecords.leastPointsAgainstSeason[0].pointsAgainst &&
-                  Number(leagueSeason.season) != currentYear
+                  Number(leagueSeason.season) != currentYear &&
+                  team.pointsAgainst != 0
                 ) {
                   seasonRecords.leastPointsAgainstSeason.push({
                     pointsAgainst: team.pointsAgainst,
@@ -2847,7 +2851,8 @@ handler.post(async (req) => {
                 }
                 if (
                   week.pointsFor < gameRecords.leastPointsGame[0].pointsFor &&
-                  week.status === "postevent"
+                  week.status === "postevent" &&
+                  week.pointsFor != 0
                 ) {
                   gameRecords.leastPointsGame = [
                     {
@@ -2858,7 +2863,8 @@ handler.post(async (req) => {
                   ];
                 } else if (
                   week.pointsFor === gameRecords.leastPointsGame[0].pointsFor &&
-                  week.status === "postevent"
+                  week.status === "postevent" &&
+                  week.pointsFor != 0
                 ) {
                   gameRecords.leastPointsGame.push({
                     ...week,

@@ -27,12 +27,6 @@ export default function SportPage({ params }) {
   const { data: session, status } = useSession();
   const router = useRouter();
   const leagueType = params.sportSlug;
-  console.log("sportsSlug PARAMS");
-  console.log(params);
-  console.log("SESSION");
-  console.log(session);
-  console.log("STATUS");
-  console.log(status);
   let imageSource = "";
   let noLeagueDataBackgroundImage = "";
   if (leagueType === "football") {
@@ -51,6 +45,8 @@ export default function SportPage({ params }) {
     imageSource = "";
   }
 
+  console.log("SPORTS PAGE IMAGE SOURCE");
+  console.log(imageSource);
   const [leagues, setLeagues] = useState([]);
   const [loading, setLoading] = useState(true);
 
