@@ -54,7 +54,7 @@ export default function LeaguesGrid({ leagues, leagueType, imageSource }) {
                         objectFit: "cover",
                         margin: "auto",
                       }}
-                      alt={imageSource.src}
+                      alt="ALT IMAGE"
                     />
                   ) : (
                     <Card.Img
@@ -69,7 +69,7 @@ export default function LeaguesGrid({ leagues, leagueType, imageSource }) {
                         color: "white",
                         alignContent: "center",
                       }}
-                      alt={imageSource.src}
+                      alt="ALT IMAGE"
                     />
                   )}
                   <Card.Body>

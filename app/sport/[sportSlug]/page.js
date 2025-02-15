@@ -44,9 +44,6 @@ export default function SportPage({ params }) {
   } else {
     imageSource = "";
   }
-
-  console.log("SPORTS PAGE IMAGE SOURCE");
-  console.log(imageSource);
   const [leagues, setLeagues] = useState([]);
   const [loading, setLoading] = useState(true);
 
