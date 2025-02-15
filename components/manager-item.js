@@ -631,7 +631,7 @@ export default function ManagerItem({
       )}
       {chosenSeason.year === "Overall" ? (
         <td className={`${inter.className} small-table-data`}>
-          {manager.memberSince.seasonYear} -
+          {manager.memberSince.seasonYear}-
           {manager.memberUntil === currentYear
             ? "Present"
             : manager.memberUntil.seasonYear}

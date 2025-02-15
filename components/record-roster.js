@@ -153,8 +153,8 @@ export default function RecordRoster({
         <div>
           {rosters.length ? (
             <>
-              <Row>
-                <Col md={12} lg={6}>
+              <Row style={{ overflowX: "auto" }}>
+                <Col xs={6}>
                   <Table
                     key={rosters[0]}
                     responsive
@@ -191,7 +191,7 @@ export default function RecordRoster({
                     </tbody>
                   </Table>
                 </Col>
-                <Col md={12} lg={6}>
+                <Col xs={6}>
                   <Table
                     key={rosters[1]}
                     responsive

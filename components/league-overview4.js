@@ -3667,36 +3667,6 @@ export default function LeagueOverview({ leagueType, leagueKeysString }) {
                       seasonDropdownActive={seasonDropdownActive}
                     />
                   )}
-                  <div className="teams-dropdown-div">
-                    {/* <TeamDropdown
-                      onTeamSelect={handleTeamSelect1}
-                      managers={chosenSeasonTeams}
-                      chosenSeason={chosenSeason}
-                      chosenTeam1={chosenTeam1}
-                      chosenTeam2={chosenTeam2}
-                      isActive={team1Active}
-                      isTeam2={false}
-                      isRecordTeamDropdown={false}
-                      logoStyle={logoStyle}
-                    /> */}
-                    {/* <SeasonDropdown
-                      onSeasonSelect={handleSeasonSelect}
-                      leagueSeasons={leagueSeasons}
-                      chosenSeason={chosenSeason}
-                      seasonDropdownActive={seasonDropdownActive}
-                    /> */}
-                    {/* <TeamDropdown
-                      onTeamSelect={handleTeamSelect2}
-                      managers={chosenSeasonTeams}
-                      chosenSeason={chosenSeason}
-                      chosenTeam1={chosenTeam1}
-                      chosenTeam2={chosenTeam2}
-                      isActive={team2Active}
-                      isTeam2={true}
-                      isRecordTeamDropdown={false}
-                      logoStyle={logoStyle}
-                    /> */}
-                  </div>
                   <div className="team-comparison-div">
                     <ManagerComparison
                       chosenSeason={chosenSeason}

@@ -12,7 +12,6 @@ export default function ManagerComparison({
   onCompareManager,
   filteredMatchups,
   filteredSummary,
-  matchupsLoading,
   leagueType,
   accessToken,
   onTeamSelect1,
