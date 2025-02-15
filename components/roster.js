@@ -260,9 +260,9 @@ export default function Roster({
                 </Row>
               ) : null}
               <Row>
-                <Col md={12} lg={6}>
+                <Col xs={6}>
                   <Row className="week-results-div">
-                    <Col className="inside-week-results">
+                    <Col xs={12} md={4} className="inside-week-results">
                       <p className={`${inter.className} card-titles`}>Result</p>{" "}
                       <p
                         className={`${koulen.className} card-info ${
@@ -280,7 +280,7 @@ export default function Roster({
                           : "Tie"}
                       </p>
                     </Col>
-                    <Col className="inside-week-results">
+                    <Col xs={12} md={4} className="inside-week-results">
                       <p className={`${inter.className} card-titles`}>
                         Projected Points
                       </p>{" "}
@@ -288,7 +288,7 @@ export default function Roster({
                         {week.projectedPointsFor}
                       </p>
                     </Col>
-                    <Col className="inside-week-results">
+                    <Col xs={12} md={4} className="inside-week-results">
                       <p className={`${inter.className} card-titles`}>
                         Actual Points
                       </p>{" "}
@@ -297,9 +297,50 @@ export default function Roster({
                       </p>
                     </Col>
                   </Row>
+                </Col>
+                <Col xs={6}>
+                  <Row className="week-results-div">
+                    <Col xs={12} md={4} className="inside-week-results">
+                      <p className={`${inter.className} card-titles`}>Result</p>{" "}
+                      <p
+                        className={`${koulen.className} card-info ${
+                          week.pointsFor < week.pointsAgainst
+                            ? "positive-differential"
+                            : week.pointsFor > week.pointsAgainst
+                            ? "negative-differential"
+                            : ""
+                        }`}
+                      >
+                        {week.pointsFor < week.pointsAgainst
+                          ? "Winner"
+                          : week.pointsFor > week.pointsAgainst
+                          ? "Loser"
+                          : "Tie"}
+                      </p>
+                    </Col>
+                    <Col xs={12} md={4} className="inside-week-results">
+                      <p className={`${inter.className} card-titles`}>
+                        Projected Points
+                      </p>{" "}
+                      <p className={`${koulen.className} card-info`}>
+                        {week.projectedPointsAgainst}
+                      </p>
+                    </Col>
+                    <Col xs={12} md={4} className="inside-week-results">
+                      <p className={`${inter.className} card-titles`}>
+                        Actual Points
+                      </p>{" "}
+                      <p className={`${koulen.className} card-info`}>
+                        {week.pointsAgainst}
+                      </p>
+                    </Col>
+                  </Row>
+                </Col>
+              </Row>
+              <Row style={{ minWidth: "360px" }}>
+                <Col xs={6}>
                   <Table
                     key={rosters[0]}
-                    responsive
                     striped
                     bordered
                     className="player-table"
@@ -333,43 +374,7 @@ export default function Roster({
                     </tbody>
                   </Table>
                 </Col>
-                <Col md={12} lg={6}>
-                  <Row className="week-results-div">
-                    <Col className="inside-week-results">
-                      <p className={`${inter.className} card-titles`}>Result</p>{" "}
-                      <p
-                        className={`${koulen.className} card-info ${
-                          week.pointsFor < week.pointsAgainst
-                            ? "positive-differential"
-                            : week.pointsFor > week.pointsAgainst
-                            ? "negative-differential"
-                            : ""
-                        }`}
-                      >
-                        {week.pointsFor < week.pointsAgainst
-                          ? "Winner"
-                          : week.pointsFor > week.pointsAgainst
-                          ? "Loser"
-                          : "Tie"}
-                      </p>
-                    </Col>
-                    <Col className="inside-week-results">
-                      <p className={`${inter.className} card-titles`}>
-                        Projected Points
-                      </p>{" "}
-                      <p className={`${koulen.className} card-info`}>
-                        {week.projectedPointsAgainst}
-                      </p>
-                    </Col>
-                    <Col className="inside-week-results">
-                      <p className={`${inter.className} card-titles`}>
-                        Actual Points
-                      </p>{" "}
-                      <p className={`${koulen.className} card-info`}>
-                        {week.pointsAgainst}
-                      </p>
-                    </Col>
-                  </Row>
+                <Col xs={6}>
                   <Table
                     key={rosters[1]}
                     responsive

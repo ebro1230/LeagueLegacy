@@ -720,6 +720,7 @@ thead tr th{
   align-items: center;
   display: flex;
   flex-direction: column;
+  text-align: center;
 }
 
 .player-table-body{
@@ -847,7 +848,6 @@ thead tr th{
 }
 
 .no-league-div{
-  padding-top: 20rem;
   width: 100%;
   font-size: clamp(24px, 2vw, 36px);
   color: white;
