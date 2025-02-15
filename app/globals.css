@@ -860,3 +860,9 @@ thead tr th{
 .accordion-collapse {
   overflow-x:scroll;
 }
+@media (max-width:575px){
+.spacing-col{
+  width:0px !important;
+  height: 0px !important;
+}
+}
