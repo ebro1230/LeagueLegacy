@@ -147,7 +147,7 @@ export default function RecordRoster({
       onExiting={() => onIsOpen(week)}
     >
       {loading ? (
-        <div className="loading-div">
+        <div className="roster-loading-div">
           <LoadingIndicator />
         </div>
       ) : leagueType === "football" ? (

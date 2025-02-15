@@ -514,6 +514,13 @@ td p {
     align-items: center;
   }
 
+  .roster-loading-div{
+    height:100%;
+    width:100%;
+    display:flex;
+   
+  }
+
   .league-grid-row{
     margin-bottom:2rem;
   }
