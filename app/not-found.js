@@ -35,9 +35,7 @@ export default function NotFoundPage() {
     <div
       className="no-leagues-background"
       style={{
-        backgroundImage: noLeagueDataBackgroundImage
-          ? `url(${noLeagueDataBackgroundImage.src})`
-          : null,
+        backgroundImage: backgroundImage ? `url(${backgroundImage.src})` : null,
       }}
     >
       <Col xs={10} sm={4} className="no-league-col">
