@@ -196,7 +196,7 @@ export default function RecordItem({
                       </Col>
                     </Row>
                     <Row>
-                      <Col>
+                      <Col xs={5} sm={4}>
                         <Row>
                           <Col
                             xs={5}
@@ -242,7 +242,7 @@ export default function RecordItem({
                         </Row>
                       </Col>
                       <Col xs={2} sm={4} className="spacing-col"></Col>
-                      <Col>
+                      <Col xs={5} sm={4}>
                         <Row>
                           <Col
                             xs={5}
@@ -291,7 +291,7 @@ export default function RecordItem({
                   </Col>
                 </Row>
                 <Row style={{ marginTop: "0.5rem", marginBottom: "0.5rem" }}>
-                  <Col>
+                  <Col xs={5} sm={4}>
                     <Row>
                       <Col
                         xs={5}
@@ -330,7 +330,7 @@ export default function RecordItem({
                     </Row>
                   </Col>
                   <Col xs={2} sm={4} className="spacing-col"></Col>
-                  <Col>
+                  <Col xs={5} sm={4}>
                     <Row>
                       <Col
                         xs={5}

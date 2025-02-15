@@ -138,7 +138,7 @@ export default function RecordRoster({
 
   return (
     <Accordion.Body
-      className="roster-body"
+      className={!loading ? "roster-body" : null}
       onEntering={() => {
         getRoster(week);
         onIsOpen(week);
