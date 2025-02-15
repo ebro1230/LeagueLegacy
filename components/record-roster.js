@@ -247,11 +247,10 @@ export default function RecordRoster({
             </Col>
           </Row>
           <Row>
-            <Col md={12} lg={6}>
+            <Col xs={6}>
               {team1Roster.length ? (
                 <Table
                   key={team1Roster}
-                  responsive
                   striped
                   bordered
                   className="player-table"
@@ -305,11 +304,10 @@ export default function RecordRoster({
                 <p>No Data Available</p>
               )}
             </Col>
-            <Col md={12} lg={6}>
+            <Col xs={6}>
               {team2Roster.length ? (
                 <Table
                   key={team2Roster}
-                  responsive
                   striped
                   bordered
                   className="player-table"
