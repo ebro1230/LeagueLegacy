@@ -833,6 +833,8 @@ thead tr th{
   flex-direction: column;
   align-items: center;
   margin-right: 40vw;
+  height:100vh;
+  justify-content: center;
 }
 
 @media (max-width: 575px) {
