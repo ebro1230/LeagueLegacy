@@ -154,11 +154,10 @@ export default function RecordRoster({
         <div>
           {rosters.length ? (
             <>
-              <Row style={{ overflowX: "auto" }}>
+              <Row>
                 <Col xs={6}>
                   <Table
                     key={rosters[0]}
-                    responsive
                     striped
                     bordered
                     className="player-table"

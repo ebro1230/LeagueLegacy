@@ -726,6 +726,10 @@ thead tr th{
   text-align: left !important;
 }
 
+.player-table-head tr{
+  background: none;
+}
+
 .accordion-item:first-of-type{
   border-top-left-radius: 0px !important;
   border-top-right-radius: 0px !important;
