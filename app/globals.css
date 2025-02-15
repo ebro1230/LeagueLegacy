@@ -819,20 +819,22 @@ thead tr th{
   align-items: center;
   height: 100vh;
 }
-@media (max-width: 575px) {
-  .no-league-col{
-    display: flex;
-  flex-direction: column;
-  align-items: center;
-  margin-right: 40vw;
-  }
-}
 .no-league-col{
   display: flex;
   flex-direction: column;
   align-items: center;
   margin-right: 40vw;
 }
+
+@media (max-width: 575px) {
+  .no-league-col{
+    display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-right: 0px;
+  }
+}
+
 .no-league-div{
   padding-top: 20rem;
   width: 100%;
