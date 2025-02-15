@@ -27,16 +27,12 @@ export default function LeaguesGrid({ leagues, leagueType }) {
   let imageSource = "";
   if (leagueType === "football") {
     imageSource = football;
-    noLeagueDataBackgroundImage = eagles;
   } else if (leagueType === "hockey") {
     imageSource = hockey;
-    noLeagueDataBackgroundImage = oilers;
   } else if (leagueType === "basketball") {
     imageSource = basketball;
-    noLeagueDataBackgroundImage = sixers;
   } else if (leagueType === "baseball") {
     imageSource = baseball;
-    noLeagueDataBackgroundImage = yankees;
   } else {
     imageSource = "";
   }
