@@ -796,17 +796,16 @@ thead tr th{
 /* Set left positions */
 .stickyCol1 {
   left: 0;
-  min-width: 60px;
+  min-width: 40px;
 }
 
 .stickyCol2 {
-  left: 60px;
-  min-width: 150px;
+  left: 40px;
+  min-width: 45px;
 }
 
 .stickyCol3 {
-  left: 210px;
-  min-width: 100px;
+  left: 85px;
 }
 
 .no-leagues-background{
