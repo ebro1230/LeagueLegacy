@@ -24,7 +24,7 @@ const koulen = Koulen({
 export default function LeaguesGrid({ leagues, leagueType }) {
   const date = new Date();
   const currentYear = date.getFullYear();
-
+  let imageSource = "";
   if (leagueType === "football") {
     imageSource = football;
     noLeagueDataBackgroundImage = eagles;
