@@ -20,28 +20,13 @@ export default function ManagerGrid({
   logoStyle,
   onColumnSort,
   columnSortedBy,
-  isMobile,
 }) {
   return (
-    <div className={!isMobile ? "tableContainer" : "standings-div"}>
-      <Table
-        striped
-        bordered
-        size="sm"
-        className={!isMobile ? "stickyTable" : "fixed-table"}
-      >
-        <thead
-          className={
-            !isMobile
-              ? `${koulen.className} tableHeader`
-              : `${koulen.className}`
-          }
-        >
+    <div className={"tableContainer"}>
+      <Table striped bordered size="sm" className={"stickyTable"}>
+        <thead className={`${koulen.className} tableHeader`}>
           <tr>
-            <th
-              onClick={() => onColumnSort("Rank")}
-              className={!isMobile ? "stickyCol1" : null}
-            >
+            <th onClick={() => onColumnSort("Rank")} className={"stickyCol1"}>
               Rank{" "}
               {columnSortedBy === "Rank"
                 ? "▲"
@@ -49,10 +34,10 @@ export default function ManagerGrid({
                 ? "▼"
                 : null}
             </th>
-            <th className={!isMobile ? "stickyCol2" : null}>Logo</th>
+            <th className={"stickyCol2"}>Logo</th>
             <th
               onClick={() => onColumnSort("Manager")}
-              className={!isMobile ? "stickyCol3" : null}
+              className={"stickyCol3"}
             >
               Manager{" "}
               {columnSortedBy === "Manager"
@@ -273,7 +258,6 @@ export default function ManagerGrid({
                       logoStyle={logoStyle}
                       chosenSeason={chosenSeason}
                       key={manager.key}
-                      isMobile={isMobile}
                     />
                   </tr>
                 );

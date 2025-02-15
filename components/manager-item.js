@@ -12,26 +12,13 @@ export default function ManagerItem({
   currentYear,
   logoStyle,
   chosenSeason,
-  isMobile,
 }) {
   return (
     <>
-      <td
-        className={
-          !isMobile
-            ? `${inter.className} small-table-data stickyCol1`
-            : `${inter.className} small-table-data`
-        }
-      >
+      <td className={`${inter.className} small-table-data stickyCol1`}>
         {manager.rank.rank}
       </td>
-      <td
-        className={
-          !isMobile
-            ? `${inter.className} small-table-data stickyCol2`
-            : `${inter.className} small-table-data`
-        }
-      >
+      <td className={`${inter.className} small-table-data stickyCol2`}>
         {manager.logo ? (
           <Image
             src={manager.logo}
@@ -44,13 +31,7 @@ export default function ManagerItem({
           <h1>No valid team logo</h1>
         )}
       </td>
-      <td
-        className={
-          !isMobile
-            ? `${inter.className} small-table-data stickyCol3`
-            : `${inter.className} small-table-data`
-        }
-      >
+      <td className={`${inter.className} small-table-data stickyCol3`}>
         {manager.managerName}
       </td>
       <td className={`${inter.className} small-table-data`}>{manager.name}</td>

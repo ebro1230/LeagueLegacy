@@ -17,15 +17,9 @@ const koulen = Koulen({
   weight: ["400"], // Include specific font weights
 });
 
-export default function LeaguesGrid({ leagues, leagueType }) {
+export default function LeaguesGrid({ leagues, leagueType, imageSource }) {
   const date = new Date();
   const currentYear = date.getFullYear();
-  const logoStyle = {
-    borderRadius: "50%",
-    border: "1px solid #fff",
-    margin: "1.5rem",
-    objectFit: "contain",
-  };
 
   return (
     <>
@@ -60,7 +54,7 @@ export default function LeaguesGrid({ leagues, leagueType }) {
                         objectFit: "cover",
                         margin: "auto",
                       }}
-                      alt={`${league.leagueName}'s Logo`}
+                      alt={imageSource}
                     />
                   ) : (
                     <Card.Img
@@ -75,7 +69,7 @@ export default function LeaguesGrid({ leagues, leagueType }) {
                         color: "white",
                         alignContent: "center",
                       }}
-                      alt={`${league.leagueName}'s Logo`}
+                      alt={imageSource}
                     />
                   )}
                   <Card.Body>
