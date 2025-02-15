@@ -33,44 +33,15 @@ export default function NotFoundPage() {
   }, []);
   return !isLoading ? (
     <div
+      className="no-leagues-background"
       style={{
-        backgroundImage: backgroundImage ? `url(${backgroundImage.src})` : null,
-        width: "100%",
-        height: "100vh",
-        gap: "48px",
-        paddingTop: "80px",
-        paddingRight: "160px",
-        paddingBottom: "80px",
-        paddingLeft: "160px",
-        display: "flex",
-        flexDirection: "column",
-        justifyContent: "center",
-        backgroundRepeat: "no-repeat",
+        backgroundImage: noLeagueDataBackgroundImage
+          ? `url(${noLeagueDataBackgroundImage.src})`
+          : null,
       }}
     >
-      <Col
-        xs={12}
-        sm={8}
-        md={6}
-        lg={4}
-        style={{
-          display: "flex",
-          flexDirection: "column",
-          alignItems: "center",
-        }}
-      >
-        <p
-          className={`no-league-div ${koulen.className}`}
-          style={{
-            paddingTop: "20rem",
-            width: "100%",
-            fontSize: "clamp(24px, 2vw, 36px)",
-            color: "white",
-            textShadow:
-              "-2px -2px 0 black, 2px -2px 0 black, -2px 2px 0 black, 2px 2px 0 black",
-            textAlign: "center",
-          }}
-        >
+      <Col xs={10} sm={4} className="no-league-col">
+        <p className={`no-league-div ${koulen.className}`}>
           Sorry, the page you are looking for does not exist
         </p>
         <button
