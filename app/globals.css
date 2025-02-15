@@ -842,3 +842,10 @@ thead tr th{
   text-shadow: -2px -2px 0 black, 2px -2px 0 black, -2px 2px 0 black, 2px 2px 0 black;
   text-align: center;
 }
+
+.roster-body{
+  min-width: 360px;
+}
+.accordion-collapse {
+  overflow-x:scroll;
+}
