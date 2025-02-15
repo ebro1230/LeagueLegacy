@@ -808,3 +808,33 @@ thead tr th{
   left: 210px;
   min-width: 100px;
 }
+
+.no-leagues-background{
+  background-size: cover;
+  background-position: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  background-repeat: no-repeat;
+  align-items: center;
+  height: 100vh;
+}
+@media (max-width: 600px) {
+  .no-leagues-background{
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+  }
+}
+
+.no-league-div{
+  padding-top: 20rem;
+  width: 100%;
+  font-size: clamp(24px, 2vw, 36px);
+  color: white;
+  text-shadow: -2px -2px 0 black, 2px -2px 0 black, -2px 2px 0 black, 2px 2px 0 black;
+  text-align: center;
+}

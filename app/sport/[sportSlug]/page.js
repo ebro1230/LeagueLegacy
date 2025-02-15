@@ -50,18 +50,11 @@ export default function SportPage({ params }) {
   } else {
     imageSource = "";
   }
-  const logoStyle = {
-    borderRadius: "50%",
-    border: "1px solid #fff",
-    margin: "1.5rem",
-  };
 
   const [leagues, setLeagues] = useState([]);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    console.log("ROUTER PATHNAME");
-    console.log(router.pathname);
     const handleGetLeagues = (leagueType, accessToken) => {
       fetch(
         `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/yahooAuth/user-leagues`,
@@ -113,43 +106,15 @@ export default function SportPage({ params }) {
       (session && session.expires < Date.now()) ||
       (session && !session.accessToken)
     ) {
-      //setLoading(false);
       router.push("/");
     } else if (status === "authenticated" && session.accessToken) {
       handleGetLeagues(leagueType, session.accessToken);
     } else {
       setLoading(true);
     }
-  }, [status, router]);
+  }, [status]);
 
   return (
-    // <div
-    //   style={{
-    //     backgroundImage: background ? `url(${background.src})` : null,
-    //     backgroundSize: "cover",
-    //     backgroundPosition: "center",
-    //     minHeight: "100vh",
-    //   }}
-    // >
-    //   <div className="league-type-div">
-    //     {imageSource ? (
-    //       <Image
-    //         src={imageSource}
-    //         height={60}
-    //         placeholder="blur"
-    //         //style={logoStyle}
-    //         alt={`Picture for fantasy ${params.sportSlug} league`}
-    //       />
-    //     ) : (
-    //       <h1>Not a valid fantasy leauge</h1>
-    //     )}
-    //   </div>
-    //   <div className="title-div">
-    //     <h2 className={koulen.className}>
-    //       Fantasy {leagueType.charAt(0).toUpperCase() + leagueType.slice(1)}{" "}
-    //       League Legacy
-    //     </h2>
-    //   </div>
     <>
       {loading ? (
         <>
@@ -225,46 +190,15 @@ export default function SportPage({ params }) {
         </>
       ) : (
         <div
+          className="no-leagues-background"
           style={{
             backgroundImage: noLeagueDataBackgroundImage
               ? `url(${noLeagueDataBackgroundImage.src})`
               : null,
-            width: "100%",
-            height: "100vh",
-            gap: "48px",
-            paddingTop: "80px",
-            paddingRight: "160px",
-            paddingBottom: "80px",
-            paddingLeft: "160px",
-            display: "flex",
-            flexDirection: "column",
-            justifyContent: "center",
-            backgroundRepeat: "no-repeat",
           }}
         >
-          <Col
-            xs={12}
-            sm={8}
-            md={6}
-            lg={4}
-            style={{
-              display: "flex",
-              flexDirection: "column",
-              alignItems: "center",
-            }}
-          >
-            <p
-              className={`no-league-div ${koulen.className}`}
-              style={{
-                paddingTop: "20rem",
-                width: "100%",
-                fontSize: "clamp(24px, 2vw, 36px)",
-                color: "white",
-                textShadow:
-                  "-2px -2px 0 black, 2px -2px 0 black, -2px 2px 0 black, 2px 2px 0 black",
-                textAlign: "center",
-              }}
-            >
+          <Col xs={10} sm={4} className="no-league-col">
+            <p className={`no-league-div ${koulen.className}`}>
               Sorry, you are not part of any fantasy {leagueType} leagues
             </p>
             <button
