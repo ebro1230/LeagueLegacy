@@ -65,7 +65,7 @@ export default function LeaguesGrid({ leagues, leagueType }) {
                   {league.leagueLogo ? (
                     <Card.Img
                       variant="top"
-                      src={league.leagueLogo || imageSource}
+                      src={league.leagueLogo || `url(${imageSource.src})`}
                       className="rounded-circle"
                       style={{
                         width: "150px",
@@ -78,7 +78,7 @@ export default function LeaguesGrid({ leagues, leagueType }) {
                   ) : (
                     <Card.Img
                       variant="top"
-                      src={imageSource}
+                      src={`url(${imageSource.src})`}
                       className="rounded-circle"
                       style={{
                         width: "150px",
