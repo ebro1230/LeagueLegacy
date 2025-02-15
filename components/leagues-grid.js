@@ -79,11 +79,10 @@ export default function LeaguesGrid({ leagues, leagueType }) {
                     <Card.Img
                       variant="top"
                       src={imageSource.src}
-                      className="rounded-circle"
                       style={{
                         width: "150px",
-                        height: "150px",
-                        objectFit: "cover",
+                        height: "100%",
+                        objectFit: "contain",
                         margin: "auto",
                         color: "white",
                         alignContent: "center",
