@@ -76,7 +76,7 @@ export default function RecordItem({
                           alt={`${record.name}'s Logo`}
                         />
                       </Col>
-                      <Col xs={2} sm={4}></Col>
+
                       <Col
                         xs={5}
                         sm={4}
@@ -241,7 +241,7 @@ export default function RecordItem({
                           </Col>
                         </Row>
                       </Col>
-                      <Col xs={2} sm={4}></Col>
+
                       <Col>
                         <Row>
                           <Col

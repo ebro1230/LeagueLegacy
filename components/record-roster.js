@@ -194,7 +194,6 @@ export default function RecordRoster({
                 <Col xs={6}>
                   <Table
                     key={rosters[1]}
-                    responsive
                     striped
                     bordered
                     className="player-table"
