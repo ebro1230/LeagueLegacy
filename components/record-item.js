@@ -199,7 +199,7 @@ export default function RecordItem({
                       <Col>
                         <Row>
                           <Col
-                            xs={12}
+                            xs={5}
                             sm={4}
                             className="d-flex justify-content-center"
                             style={{ width: "fit-content" }}
@@ -268,7 +268,7 @@ export default function RecordItem({
                         </Row>
                         <Row>
                           <Col
-                            xs={12}
+                            xs={5}
                             sm={4}
                             className="d-flex justify-content-center"
                             style={{ width: "fit-content" }}
@@ -294,7 +294,7 @@ export default function RecordItem({
                   <Col>
                     <Row>
                       <Col
-                        xs={6}
+                        xs={5}
                         sm={4}
                         className="d-flex justify-content-center"
                       >
@@ -312,7 +312,7 @@ export default function RecordItem({
                     </Row>
                     <Row>
                       <Col
-                        xs={6}
+                        xs={5}
                         sm={4}
                         className="d-flex justify-content-center"
                       >
@@ -333,7 +333,7 @@ export default function RecordItem({
                   <Col>
                     <Row>
                       <Col
-                        xs={6}
+                        xs={5}
                         sm={4}
                         className="d-flex justify-content-center"
                       >

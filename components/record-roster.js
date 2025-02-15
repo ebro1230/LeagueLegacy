@@ -98,7 +98,7 @@ export default function RecordRoster({
               fetchResponse.team2Roster[fetchResponse.team2Roster.length - 1]
             );
           }
-          setLoading(false);
+          //setLoading(false);
         })
         .catch((error) => {
           // console.log("ERROR");
