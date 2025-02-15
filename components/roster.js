@@ -149,7 +149,7 @@ export default function Roster({
       onExiting={() => onIsOpen(week)}
     >
       {loading ? (
-        <div className="loading-div">
+        <div className="roster-loading-div">
           <LoadingIndicator />
         </div>
       ) : leagueType === "football" ? (
@@ -337,7 +337,7 @@ export default function Roster({
                   </Row>
                 </Col>
               </Row>
-              <Row style={{ minWidth: "360px" }}>
+              <Row className={!loading ? "roster-body" : null}>
                 <Col xs={6}>
                   <Table
                     key={rosters[0]}
