@@ -177,11 +177,7 @@ export default function SportPage({ params }) {
               </h2>
             </div>
             <div>
-              <LeaguesGrid
-                leagues={leagues}
-                leagueType={leagueType}
-                imageSource={imageSource}
-              />
+              <LeaguesGrid leagues={leagues} leagueType={leagueType} />
             </div>
           </div>
         </>

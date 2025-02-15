@@ -1,6 +1,10 @@
 //import MealItem from "./meal-item";
 
 import Link from "next/link";
+import football from "@/assets/Fantasy-Football.png";
+import hockey from "@/assets/Fantasy-Hockey.png";
+import basketball from "@/assets/Fantasy-Basketball.png";
+import baseball from "@/assets/Fantasy-Baseball.png";
 import Image from "next/image";
 import Card from "react-bootstrap/Card";
 import Container from "react-bootstrap/Container";
@@ -17,9 +21,28 @@ const koulen = Koulen({
   weight: ["400"], // Include specific font weights
 });
 
-export default function LeaguesGrid({ leagues, leagueType, imageSource }) {
+export default function LeaguesGrid({ leagues, leagueType }) {
   const date = new Date();
   const currentYear = date.getFullYear();
+
+  if (leagueType === "football") {
+    imageSource = football;
+    noLeagueDataBackgroundImage = eagles;
+  } else if (leagueType === "hockey") {
+    imageSource = hockey;
+    noLeagueDataBackgroundImage = oilers;
+  } else if (leagueType === "basketball") {
+    imageSource = basketball;
+    noLeagueDataBackgroundImage = sixers;
+  } else if (leagueType === "baseball") {
+    imageSource = baseball;
+    noLeagueDataBackgroundImage = yankees;
+  } else {
+    imageSource = "";
+  }
+
+  console.log("LEAGUES GRID IMAGE SOURCE");
+  console.log(imageSource);
 
   return (
     <>
@@ -46,7 +69,7 @@ export default function LeaguesGrid({ leagues, leagueType, imageSource }) {
                   {league.leagueLogo ? (
                     <Card.Img
                       variant="top"
-                      src={league.leagueLogo || imageSource.src}
+                      src={league.leagueLogo || imageSource}
                       className="rounded-circle"
                       style={{
                         width: "150px",
@@ -54,12 +77,12 @@ export default function LeaguesGrid({ leagues, leagueType, imageSource }) {
                         objectFit: "cover",
                         margin: "auto",
                       }}
-                      alt="ALT IMAGE"
+                      alt="ALT FIRST IMAGE"
                     />
                   ) : (
                     <Card.Img
                       variant="top"
-                      src="N/A"
+                      src={imageSource}
                       className="rounded-circle"
                       style={{
                         width: "150px",
@@ -69,7 +92,7 @@ export default function LeaguesGrid({ leagues, leagueType, imageSource }) {
                         color: "white",
                         alignContent: "center",
                       }}
-                      alt="ALT IMAGE"
+                      alt="ALT SECOND IMAGE"
                     />
                   )}
                   <Card.Body>
