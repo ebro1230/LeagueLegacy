@@ -20,8 +20,6 @@ const koulen = Koulen({
 export default function LeaguesGrid({ leagues, leagueType, imageSource }) {
   const date = new Date();
   const currentYear = date.getFullYear();
-  console.log("LEAGUES GRID IMAGE SOURCE");
-  console.log(imageSource);
 
   return (
     <>
@@ -56,7 +54,7 @@ export default function LeaguesGrid({ leagues, leagueType, imageSource }) {
                         objectFit: "cover",
                         margin: "auto",
                       }}
-                      alt={imageSource}
+                      alt={imageSource.src}
                     />
                   ) : (
                     <Card.Img
@@ -71,7 +69,7 @@ export default function LeaguesGrid({ leagues, leagueType, imageSource }) {
                         color: "white",
                         alignContent: "center",
                       }}
-                      alt={imageSource}
+                      alt={imageSource.src}
                     />
                   )}
                   <Card.Body>
