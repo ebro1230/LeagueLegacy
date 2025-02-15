@@ -1111,11 +1111,12 @@ handler.post(async (req) => {
                     }
                     if (
                       Math.abs(week.pointsFor - week.projectedPointsFor) <
-                      Math.abs(
-                        gameRecords.mostAccurateProjection[0].pointsFor -
-                          gameRecords.mostAccurateProjection[0]
-                            .projectedPointsFor
-                      )
+                        Math.abs(
+                          gameRecords.mostAccurateProjection[0].pointsFor -
+                            gameRecords.mostAccurateProjection[0]
+                              .projectedPointsFor
+                        ) &&
+                      (week.pointsFor != 0 || week.projectedPointsFor != 0)
                     ) {
                       gameRecords.mostAccurateProjection = [
                         {
@@ -1126,11 +1127,12 @@ handler.post(async (req) => {
                       ];
                     } else if (
                       Math.abs(week.pointsFor - week.projectedPointsFor) ===
-                      Math.abs(
-                        gameRecords.mostAccurateProjection[0].pointsFor -
-                          gameRecords.mostAccurateProjection[0]
-                            .projectedPointsFor
-                      )
+                        Math.abs(
+                          gameRecords.mostAccurateProjection[0].pointsFor -
+                            gameRecords.mostAccurateProjection[0]
+                              .projectedPointsFor
+                        ) &&
+                      (week.pointsFor != 0 || week.projectedPointsFor != 0)
                     ) {
                       gameRecords.mostAccurateProjection.push({
                         ...week,
@@ -3010,10 +3012,11 @@ handler.post(async (req) => {
                 }
                 if (
                   Math.abs(week.pointsFor - week.projectedPointsFor) <
-                  Math.abs(
-                    gameRecords.mostAccurateProjection[0].pointsFor -
-                      gameRecords.mostAccurateProjection[0].projectedPointsFor
-                  )
+                    Math.abs(
+                      gameRecords.mostAccurateProjection[0].pointsFor -
+                        gameRecords.mostAccurateProjection[0].projectedPointsFor
+                    ) &&
+                  (week.pointsFor != 0 || week.projectedPointsFor != 0)
                 ) {
                   gameRecords.mostAccurateProjection = [
                     {
@@ -3024,10 +3027,11 @@ handler.post(async (req) => {
                   ];
                 } else if (
                   Math.abs(week.pointsFor - week.projectedPointsFor) ===
-                  Math.abs(
-                    gameRecords.mostAccurateProjection[0].pointsFor -
-                      gameRecords.mostAccurateProjection[0].projectedPointsFor
-                  )
+                    Math.abs(
+                      gameRecords.mostAccurateProjection[0].pointsFor -
+                        gameRecords.mostAccurateProjection[0].projectedPointsFor
+                    ) &&
+                  (week.pointsFor != 0 || week.projectedPointsFor != 0)
                 ) {
                   gameRecords.mostAccurateProjection.push({
                     ...week,
