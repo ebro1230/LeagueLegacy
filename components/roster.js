@@ -100,19 +100,29 @@ export default function Roster({
             setTeam2Roster(
               fetchResponse.team2Roster[fetchResponse.team2Roster.length - 1]
             );
+            console.log("TEAM 1 ROSTER");
+            console.log(
+              fetchResponse.team1Roster[fetchResponse.team1Roster.length - 1]
+            );
+            console.log("TEAM 2 ROSTER");
+            console.log(
+              fetchResponse.team2Roster[fetchResponse.team2Roster.length - 1]
+            );
           }
-          setLoading(false);
         })
         .catch((error) => {
-          // console.log("ERROR");
-          // console.log(
-          //   `ERROR MESSAGE: ${error.message} & ERROR STATUS: ${error.status}`
-          // );
+          console.log("ERROR");
+          console.log(
+            `ERROR MESSAGE: ${error.message} & ERROR STATUS: ${error.status}`
+          );
           router.push(
             `/error?message=${encodeURIComponent(
               error.message
             )}&status=${encodeURIComponent(error.status)}`
           );
+        })
+        .finally(() => {
+          setLoading(false);
         });
     }
   };
