@@ -600,7 +600,7 @@ export default function Roster({
               </Row>
             </Col>
           </Row>
-          <Row>
+          <Row className={!loading ? "roster-body" : null}>
             <Col>
               <div className="weekday-dropdown-div">
                 <WeekDayDropdown
