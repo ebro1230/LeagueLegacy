@@ -251,37 +251,38 @@ handler.post(async (req) => {
           team1Roster: [],
           team2Roster: [],
         };
-        const fetchPromises = teamKeys.map(async (teamKey) => {
-          console.log("TEAM KEYS");
-          console.log(teamKey);
-          await Promise.all(
-            weekDays.map(async (weekDay) => {
-              const response = await fetch(
-                `https://fantasysports.yahooapis.com/fantasy/v2/team/${teamKey}/roster;date=${weekDay}`,
-                {
-                  method: "GET",
-                  headers: {
-                    Authorization: `Bearer ${accessToken}`,
-                  },
+        const fetchPromises = teamKeys.map(
+          async (teamKey) =>
+            await Promise.all(
+              weekDays.map(async (weekDay) => {
+                const response = await fetch(
+                  `https://fantasysports.yahooapis.com/fantasy/v2/team/${teamKey}/roster;date=${weekDay}`,
+                  {
+                    method: "GET",
+                    headers: {
+                      Authorization: `Bearer ${accessToken}`,
+                    },
+                  }
+                );
+                if (!response.ok) {
+                  let error = new Error(
+                    `Request failed when requesting Team 1 Player with status ${response.status}`
+                  );
+                  error.status = response.status; // Add status property
+                  console.error(
+                    `Request failed when requesting Team 1 Player with status ${response.status}`
+                  );
+                  throw error;
+                } else {
+                  const data = await response.text();
+                  console.log(
+                    "Successfully Requested rosters for each weekday"
+                  );
+                  return data;
                 }
-              );
-              if (!response.ok) {
-                let error = new Error(
-                  `Request failed when requesting Team 1 Player with status ${response.status}`
-                );
-                error.status = response.status; // Add status property
-                console.error(
-                  `Request failed when requesting Team 1 Player with status ${response.status}`
-                );
-                throw error;
-              } else {
-                const data = await response.text();
-                console.log("Successfully Requested rosters for each weekday");
-                return data;
-              }
-            })
-          );
-        });
+              })
+            )
+        );
         try {
           const responses = await Promise.all(fetchPromises);
           console.log("RESPONSES");
