@@ -515,6 +515,7 @@ export default function LeagueOverview({ leagueType, leagueKeysString }) {
     setChosenRecordTeam({ managerName: "Overall" });
     setChosenTeamId1("---");
     setChosenTeamId2("---");
+    setIsOpen([]);
     setMatchups([]);
     setFilteredMatchups([]);
     setSummary([]);
@@ -539,6 +540,7 @@ export default function LeagueOverview({ leagueType, leagueKeysString }) {
     let team2 = chosenTeam2;
     setTeam2Active(true);
     setChosenTeam1(manager);
+    setIsOpen([]);
     if (chosenTeam2.managerName === "---") {
       setChosenTeam2({ managerName: "Overall" });
     }
@@ -704,7 +706,7 @@ export default function LeagueOverview({ leagueType, leagueKeysString }) {
 
   const handleTeamSelect2 = (e) => {
     const manager = JSON.parse(e);
-
+    setIsOpen([]);
     setChosenTeam2(manager);
     if (manager.managerName != "Overall") {
       let mutatedMatchups = chosenTeam1.weeklyRecord.map((season) => {
@@ -1058,8 +1060,6 @@ export default function LeagueOverview({ leagueType, leagueKeysString }) {
   };
 
   const handleIsOpen = (e) => {
-    console.log("WEEK OPENED");
-    console.log(e);
     if (!isOpen.some((week) => week === JSON.stringify(e))) {
       setIsOpen([...isOpen, JSON.stringify(e)]);
     } else {

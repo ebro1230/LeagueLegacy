@@ -68,7 +68,6 @@ export default function Home() {
       </div>
     );
   } else {
-    console.log(session);
     return (
       <div
         style={{

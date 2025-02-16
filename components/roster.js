@@ -34,8 +34,6 @@ export default function Roster({
   const [team2Roster, setTeam2Roster] = useState([]);
   const [weekDays, setWeekDays] = useState(["Week"]);
   const [chosenDate, setChosenDate] = useState("Week");
-  console.log("Week");
-  console.log(week);
   const router = useRouter();
   const formatDate = (date) => {
     let d = new Date(date);

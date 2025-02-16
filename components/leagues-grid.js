@@ -37,9 +37,6 @@ export default function LeaguesGrid({ leagues, leagueType }) {
     imageSource = "";
   }
 
-  console.log("LEAGUES GRID IMAGE SOURCE");
-  console.log(imageSource);
-
   return (
     <>
       <Container fluid>
