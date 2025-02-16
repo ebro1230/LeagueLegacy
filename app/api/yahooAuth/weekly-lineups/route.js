@@ -275,9 +275,10 @@ handler.post(async (req) => {
                   throw error;
                 } else {
                   const data = await response.text();
-                  console.log(
-                    "Successfully Requested rosters for each weekday"
-                  );
+                  console.log("RESPONSE OK?");
+                  console.log(response.ok);
+                  console.log("RESPONSE STATUS");
+                  console.log(response.status);
                   return data;
                 }
               })
