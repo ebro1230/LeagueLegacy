@@ -49,8 +49,8 @@ export default function RecordRoster({
   const getRoster = async (week) => {
     if (!rosters.length) {
       let weekDay = [];
-      let currentDate = new Date([week.weekStart, "00:00"]);
-      let lastDate = new Date([week.weekEnd, "00:00"]);
+      let currentDate = new Date(`${week.weekStart}T00:00:00Z`);
+      let lastDate = new Date(`${week.weekEnd}T00:00:00Z`);
       while (currentDate <= lastDate) {
         weekDay.push(formatDate(currentDate));
         currentDate.setDate(currentDate.getDate() + 1); // Move to next day
