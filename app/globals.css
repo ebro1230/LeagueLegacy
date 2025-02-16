@@ -778,7 +778,7 @@ thead tr th{
 }
 
 .tableContainer {
-  max-height: 23rem !important; /* Set max height for scroll */
+  max-height: 25rem !important; /* Set max height for scroll */
   overflow: auto !important;
   position: relative;
   width:100%;
