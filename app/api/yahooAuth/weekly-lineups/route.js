@@ -253,6 +253,10 @@ handler.post(async (req) => {
         async function delay(ms) {
           return new Promise((resolve) => setTimeout(resolve, ms));
         }
+        console.log("TEAM KEYS");
+        console.log(teamKeys);
+        console.log("WEEK DAYS");
+        console.log(weekDays);
         const fetchPromises = teamKeys.map(
           async (teamKey) =>
             await Promise.all(
