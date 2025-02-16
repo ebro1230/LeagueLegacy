@@ -523,9 +523,9 @@ export default function Roster({
             </Row>
           ) : null}
           <Row>
-            <Col md={12} lg={6}>
+            <Col xs={6}>
               <Row className="week-results-div">
-                <Col className="inside-week-results">
+                <Col xs={12} md={4} className="inside-week-results">
                   <p className={`${inter.className} card-titles`}>Result</p>{" "}
                   <p
                     className={`${koulen.className} card-info ${
@@ -543,7 +543,7 @@ export default function Roster({
                       : "Tie"}
                   </p>
                 </Col>
-                <Col className="inside-week-results">
+                <Col xs={12} md={4} className="inside-week-results">
                   <p className={`${inter.className} card-titles`}>
                     Projected Points
                   </p>{" "}
@@ -551,7 +551,7 @@ export default function Roster({
                     {week.projectedPointsFor}
                   </p>
                 </Col>
-                <Col className="inside-week-results">
+                <Col xs={12} md={4} className="inside-week-results">
                   <p className={`${inter.className} card-titles`}>
                     Actual Points
                   </p>{" "}
@@ -561,9 +561,9 @@ export default function Roster({
                 </Col>
               </Row>
             </Col>
-            <Col md={12} lg={6}>
+            <Col xs={6}>
               <Row className="week-results-div">
-                <Col className="inside-week-results">
+                <Col xs={12} md={4} className="inside-week-results">
                   <p className={`${inter.className} card-titles`}>Result</p>{" "}
                   <p
                     className={`${koulen.className} card-info ${
@@ -581,7 +581,7 @@ export default function Roster({
                       : "Tie"}
                   </p>
                 </Col>
-                <Col className="inside-week-results">
+                <Col xs={12} md={4} className="inside-week-results">
                   <p className={`${inter.className} card-titles`}>
                     Projected Points
                   </p>{" "}
@@ -589,7 +589,7 @@ export default function Roster({
                     {week.projectedPointsAgainst}
                   </p>
                 </Col>
-                <Col className="inside-week-results">
+                <Col xs={12} md={4} className="inside-week-results">
                   <p className={`${inter.className} card-titles`}>
                     Actual Points
                   </p>{" "}
@@ -611,12 +611,11 @@ export default function Roster({
               </div>
             </Col>
           </Row>
-          <Row>
-            <Col md={12} lg={6}>
+          <Row className={!loading ? "roster-body" : null}>
+            <Col xs={6}>
               {team1Roster.length ? (
                 <Table
                   key={team1Roster}
-                  responsive
                   striped
                   bordered
                   className="player-table"
@@ -670,11 +669,10 @@ export default function Roster({
                 <p>No Data Available</p>
               )}
             </Col>
-            <Col md={12} lg={6}>
+            <Col xs={6}>
               {team2Roster.length ? (
                 <Table
                   key={team2Roster}
-                  responsive
                   striped
                   bordered
                   className="player-table"
