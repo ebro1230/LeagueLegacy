@@ -254,6 +254,7 @@ handler.post(async (req) => {
           async (teamKey) =>
             await Promise.all(
               weekDays.map(async (weekDay) => {
+                await delay(1000); // 1-second delay to prevent rate-limiting
                 console.log(`Fetching roster for ${teamKey} on ${weekDay}`);
                 const response = await fetch(
                   `https://fantasysports.yahooapis.com/fantasy/v2/team/${teamKey}/roster;date=${weekDay}`,
@@ -261,6 +262,8 @@ handler.post(async (req) => {
                     method: "GET",
                     headers: {
                       Authorization: `Bearer ${accessToken}`,
+                      "User-Agent":
+                        "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/110.0.0.0 Safari/537.36",
                     },
                   }
                 );
