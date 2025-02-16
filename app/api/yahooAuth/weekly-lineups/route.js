@@ -246,7 +246,6 @@ handler.post(async (req) => {
           return NextResponse.json(rosters, { status: 200 });
         }
       } else {
-        console.log("Fetching HOCKEY TEAM2");
         rosters = {
           team1Roster: [],
           team2Roster: [],
@@ -275,10 +274,6 @@ handler.post(async (req) => {
                   throw error;
                 } else {
                   const data = await response.text();
-                  console.log("RESPONSE OK?");
-                  console.log(response.ok);
-                  console.log("RESPONSE STATUS");
-                  console.log(response.status);
                   return data;
                 }
               })
@@ -286,8 +281,6 @@ handler.post(async (req) => {
         );
         try {
           const responses = await Promise.all(fetchPromises);
-          console.log("RESPONSES");
-          console.log(responses);
           responses[0].map((xml) => {
             parseString(xml, (err, result) => {
               if (err) {
