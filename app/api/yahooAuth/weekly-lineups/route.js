@@ -250,6 +250,9 @@ handler.post(async (req) => {
           team1Roster: [],
           team2Roster: [],
         };
+        async function delay(ms) {
+          return new Promise((resolve) => setTimeout(resolve, ms));
+        }
         const fetchPromises = teamKeys.map(
           async (teamKey) =>
             await Promise.all(
