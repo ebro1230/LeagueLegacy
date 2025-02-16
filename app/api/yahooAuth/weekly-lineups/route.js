@@ -246,6 +246,7 @@ handler.post(async (req) => {
           return NextResponse.json(rosters, { status: 200 });
         }
       } else {
+        console.log("Fetching HOCKEY TEAM");
         rosters = {
           team1Roster: [],
           team2Roster: [],
@@ -274,6 +275,9 @@ handler.post(async (req) => {
                   throw error;
                 } else {
                   const data = await response.text();
+                  console.log(
+                    "Successfully Requested rosters for each weekday"
+                  );
                   return data;
                 }
               })
