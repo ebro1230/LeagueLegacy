@@ -246,7 +246,7 @@ handler.post(async (req) => {
           return NextResponse.json(rosters, { status: 200 });
         }
       } else {
-        console.log("Fetching HOCKEY TEAM");
+        console.log("Fetching HOCKEY TEAM2");
         rosters = {
           team1Roster: [],
           team2Roster: [],
@@ -264,6 +264,8 @@ handler.post(async (req) => {
                     },
                   }
                 );
+                console.log("RESPONSE");
+                console.log(response);
                 if (!response.ok) {
                   let error = new Error(
                     `Request failed when requesting Team 1 Player with status ${response.status}`
@@ -272,7 +274,6 @@ handler.post(async (req) => {
                   console.error(
                     `Request failed when requesting Team 1 Player with status ${response.status}`
                   );
-                  console.log(response.status);
                   throw error;
                 } else {
                   const data = await response.text();
