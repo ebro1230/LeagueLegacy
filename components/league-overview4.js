@@ -3582,7 +3582,7 @@ export default function LeagueOverview({ leagueType, leagueKeysString }) {
   };
   return (
     <>
-      <div className="normal-background">
+      <div className="normal-background" style={{ height: "100vh" }}>
         {loading ? (
           <div className="spacing-div">
             <div className="loading-div">
