@@ -28,8 +28,6 @@ export default function ManagerMatchup({
   team1Active,
   team2Active,
 }) {
-  //console.log("SUMMARY");
-  //console.log(summary);
   return summary.wins || summary.losses ? (
     <Container fluid>
       <Row>

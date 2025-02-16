@@ -421,7 +421,6 @@ handler.post(async (req) => {
           responses.map((xml) => {
             parseString(xml, (err, result) => {
               if (err) {
-                console.log("ERROR PARSING XML");
                 console.error("Error parsing XML:", err);
                 throw new Error(`Error parsing XML: ${err}`);
               } else {

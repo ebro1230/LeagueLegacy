@@ -253,16 +253,11 @@ handler.post(async (req) => {
         async function delay(ms) {
           return new Promise((resolve) => setTimeout(resolve, ms));
         }
-        console.log("TEAM KEYS");
-        console.log(teamKeys);
-        console.log("WEEK DAYS");
-        console.log(weekDays);
         const fetchPromises = teamKeys.map(
           async (teamKey) =>
             await Promise.all(
               weekDays.map(async (weekDay) => {
                 await delay(1000); // 1-second delay to prevent rate-limiting
-                console.log(`Fetching roster for ${teamKey} on ${weekDay}`);
                 const response = await fetch(
                   `https://fantasysports.yahooapis.com/fantasy/v2/team/${teamKey}/roster;date=${weekDay}`,
                   {

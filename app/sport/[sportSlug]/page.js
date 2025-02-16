@@ -78,11 +78,6 @@ export default function SportPage({ params }) {
           setLeagues(leagueData);
         })
         .catch((error) => {
-          // console.log("ERROR");
-          // console.log(
-          //   `ERROR MESSAGE: ${error.message} & ERROR STATUS: ${error.status}`
-          // );
-          // console.log(error);
           router.push(
             `/error?message=${encodeURIComponent(
               error.message

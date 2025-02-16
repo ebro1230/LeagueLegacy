@@ -76,8 +76,6 @@ export default function RecordRoster({
         .then(async (response) => {
           if (!response.ok) {
             return response.json().then((errorData) => {
-              // console.log("ERROR DATA");
-              // console.log(errorData);
               const error = new Error(
                 errorData.message || "Failed to fetch data"
               );
@@ -101,10 +99,6 @@ export default function RecordRoster({
           setLoading(false);
         })
         .catch((error) => {
-          // console.log("ERROR");
-          // console.log(
-          //   `ERROR MESSAGE: ${error.message} & ERROR STATUS: ${error.status}`
-          // );
           router.push(
             `/error?message=${encodeURIComponent(
               error.message

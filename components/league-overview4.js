@@ -472,11 +472,6 @@ export default function LeagueOverview({ leagueType, leagueKeysString }) {
           }
         })
         .catch((error) => {
-          // console.log("ERROR");
-          // console.log(
-          //   `ERROR MESSAGE: ${error.message} & ERROR STATUS: ${error.status}`
-          // );
-          // console.log(error);
           router.push(
             `/error?message=${encodeURIComponent(
               error.message
@@ -1068,7 +1063,6 @@ export default function LeagueOverview({ leagueType, leagueKeysString }) {
   };
 
   const handleColumnSort = (e) => {
-    console.log(columnSortedBy);
     if (e === "Rank" && columnSortedBy != "Rank") {
       setChosenSeasonTeams(
         chosenSeasonTeams.sort((a, b) => a.rank.rank - b.rank.rank)

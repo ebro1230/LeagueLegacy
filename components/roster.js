@@ -77,8 +77,6 @@ export default function Roster({
         .then(async (response) => {
           if (!response.ok) {
             return response.json().then((errorData) => {
-              // console.log("ERROR DATA");
-              // console.log(errorData);
               const error = new Error(
                 errorData.message || "Failed to fetch data"
               );
@@ -98,21 +96,9 @@ export default function Roster({
             setTeam2Roster(
               fetchResponse.team2Roster[fetchResponse.team2Roster.length - 1]
             );
-            console.log("TEAM 1 ROSTER");
-            console.log(
-              fetchResponse.team1Roster[fetchResponse.team1Roster.length - 1]
-            );
-            console.log("TEAM 2 ROSTER");
-            console.log(
-              fetchResponse.team2Roster[fetchResponse.team2Roster.length - 1]
-            );
           }
         })
         .catch((error) => {
-          console.log("ERROR");
-          console.log(
-            `ERROR MESSAGE: ${error.message} & ERROR STATUS: ${error.status}`
-          );
           router.push(
             `/error?message=${encodeURIComponent(
               error.message
