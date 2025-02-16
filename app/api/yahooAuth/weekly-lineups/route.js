@@ -250,44 +250,36 @@ handler.post(async (req) => {
           team1Roster: [],
           team2Roster: [],
         };
-        try {
-          const fetchPromises = teamKeys.map(
-            async (teamKey) =>
-              await Promise.all(
-                weekDays.map(async (weekDay) => {
-                  console.log(`Fetching roster for ${teamKey} on ${weekDay}`);
-                  const response = await fetch(
-                    `https://fantasysports.yahooapis.com/fantasy/v2/team/${teamKey}/roster;date=${weekDay}`,
-                    {
-                      method: "GET",
-                      headers: {
-                        Authorization: `Bearer ${accessToken}`,
-                      },
-                    }
-                  );
-                  if (!response.ok) {
-                    // let error = new Error(
-                    //   `Request failed when requesting Team 1 Player with status ${response.status}`
-                    // );
-                    // error.status = response.status; // Add status property
-                    // console.error(
-                    //   `Request failed when requesting Team 1 Player with status ${response.status}`
-                    // );
-                    // throw error;
-                    console.error(
-                      `Error ${response.status}: ${response.statusText}`
-                    );
-                    throw new Error(`Failed with status ${response.status}`);
-                  } else {
-                    const data = await response.text();
-                    return data;
+        const fetchPromises = teamKeys.map(
+          async (teamKey) =>
+            await Promise.all(
+              weekDays.map(async (weekDay) => {
+                console.log(`Fetching roster for ${teamKey} on ${weekDay}`);
+                const response = await fetch(
+                  `https://fantasysports.yahooapis.com/fantasy/v2/team/${teamKey}/roster;date=${weekDay}`,
+                  {
+                    method: "GET",
+                    headers: {
+                      Authorization: `Bearer ${accessToken}`,
+                    },
                   }
-                })
-              )
-          );
-        } catch (error) {
-          console.error("Fetch failed:", error);
-        }
+                );
+                if (!response.ok) {
+                  let error = new Error(
+                    `Request failed when requesting Team 1 Player with status ${response.status}`
+                  );
+                  error.status = response.status; // Add status property
+                  console.error(
+                    `Request failed when requesting Team 1 Player with status ${response.status}`
+                  );
+                  throw error;
+                } else {
+                  const data = await response.text();
+                  return data;
+                }
+              })
+            )
+        );
         try {
           const responses = await Promise.all(fetchPromises);
           responses[0].map((xml) => {
