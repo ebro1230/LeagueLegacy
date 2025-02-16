@@ -272,6 +272,7 @@ handler.post(async (req) => {
                   console.error(
                     `Request failed when requesting Team 1 Player with status ${response.status}`
                   );
+                  console.log(response.status);
                   throw error;
                 } else {
                   const data = await response.text();
