@@ -48,7 +48,9 @@ export default function SeasonGrid({
                 <Accordion.Header className={koulen.className}>
                   {season.season}
                 </Accordion.Header>
-                <Accordion.Body>
+                <Accordion.Body
+                  style={{ paddingLeft: "0px", paddingRight: "0px" }}
+                >
                   <SeasonItem
                     season={season}
                     logoStyle={logoStyle}
