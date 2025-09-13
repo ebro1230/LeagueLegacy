@@ -25,7 +25,11 @@ export default function Home() {
     margin: "1.5rem",
   };
   const { data: session, status } = useSession(); // Access session data
-  console.log(session);
+
+  //FOR UPDATING NEXT YEAR'S LEAGUE
+
+  //console.log(session); Undo to get auth token so you can update leagues for current year
+
   if (status === "loading") {
     return (
       <div

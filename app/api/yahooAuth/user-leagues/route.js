@@ -30,7 +30,7 @@ handler.post((req) => {
 
       if (leagueType === "football") {
         const response = await fetch(
-          `https://fantasysports.yahooapis.com/fantasy/v2/users;use_login=1/games;game_keys=57,49,79,101,124,153,175,199,222,242,257,273,314,331,348,359,371,380,390,399,406,414,423,449/leagues/teams/standings`,
+          `https://fantasysports.yahooapis.com/fantasy/v2/users;use_login=1/games;game_keys=57,49,79,101,124,153,175,199,222,242,257,273,314,331,348,359,371,380,390,399,406,414,423,449,461/leagues/teams/standings`,
           {
             method: "GET",
             headers: {
@@ -196,7 +196,7 @@ handler.post((req) => {
         }
       } else if (leagueType === "hockey") {
         const response = await fetch(
-          `https://fantasysports.yahooapis.com/fantasy/v2/users;use_login=1/games;game_keys=15,64,94,111,130,164,186,210,233,248,263,303,321,341,352,363,376,386,396,403,411,419,427,453/leagues/teams/standings`,
+          `https://fantasysports.yahooapis.com/fantasy/v2/users;use_login=1/games;game_keys=15,64,94,111,130,164,186,210,233,248,263,303,321,341,352,363,376,386,396,403,411,419,427,453,465/leagues/teams/standings`,
           {
             method: "GET",
             headers: {
@@ -358,7 +358,7 @@ handler.post((req) => {
         }
       } else if (leagueType === "basketball") {
         const response = await fetch(
-          `https://fantasysports.yahooapis.com/fantasy/v2/users;use_login=1/games;game_keys=16,67,95,112,131,165,187,211,234,249,265,304,322,342,353,364,375,385,395,402,410,418,428,454/leagues/teams/standings`,
+          `https://fantasysports.yahooapis.com/fantasy/v2/users;use_login=1/games;game_keys=16,67,95,112,131,165,187,211,234,249,265,304,322,342,353,364,375,385,395,402,410,418,428,454,466/leagues/teams/standings`,
           {
             method: "GET",
             headers: {
@@ -518,7 +518,7 @@ handler.post((req) => {
         }
       } else if (leagueType === "baseball") {
         const response = await fetch(
-          `https://fantasysports.yahooapis.com/fantasy/v2/users;use_login=1/games;game_keys=12,39,74,98,113,147,171,195,215,238,253,268,308,328,346,357,370,378,388,398,404,412,422,431/leagues/teams/standings`,
+          `https://fantasysports.yahooapis.com/fantasy/v2/users;use_login=1/games;game_keys=12,39,74,98,113,147,171,195,215,238,253,268,308,328,346,357,370,378,388,398,404,412,422,431,458/leagues/teams/standings`,
           {
             method: "GET",
             headers: {
