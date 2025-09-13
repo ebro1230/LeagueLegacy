@@ -25,6 +25,7 @@ export default function Home() {
     margin: "1.5rem",
   };
   const { data: session, status } = useSession(); // Access session data
+  console.log(session);
   if (status === "loading") {
     return (
       <div
