@@ -78,8 +78,8 @@ export default function TeamDropdown({
               eventKey={JSON.stringify(manager)}
               key={manager.key}
               disabled={
-                manager.managerId === chosenTeam1.managerId ||
-                (isTeam2 && manager.managerId === chosenTeam2.managerId)
+                manager.managerName === chosenTeam1.managerName ||
+                (isTeam2 && manager.managerName === chosenTeam2.managerName)
               }
               style={{ display: "flex", width: "100%" }}
             >
