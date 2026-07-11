@@ -13,7 +13,7 @@ export default function LoadingIndicator({ longLoading }) {
       }}
     >
       {longLoading ? (
-        <h2>Wow, you've been in this league a long time!</h2>
+        <h2>{`Wow, you've been in this league a long time!`}</h2>
       ) : null}
       <RotatingLines
         strokeColor="ivory"
