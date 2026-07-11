@@ -28,7 +28,7 @@ export default function Home() {
 
   //FOR UPDATING NEXT YEAR'S LEAGUE
 
-  //console.log(session); Undo to get auth token so you can update leagues for current year
+  console.log(session); //Undo to get auth token so you can update leagues for current year
 
   if (status === "loading") {
     return (
