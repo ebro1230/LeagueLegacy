@@ -106,7 +106,7 @@ export default function LeagueOverview({ leagueType, leagueKeysString }) {
   const [chosenTeamId2, setChosenTeamId2] = useState("---");
   const [chosenTeamKey1, setChosenTeamKey1] = useState([]);
   const [leagueKeys, setLeagueKeys] = useState(
-    decodeURIComponent(leagueKeysString).split(",")
+    decodeURIComponent(leagueKeysString).split(","),
   );
   const [columnSortedBy, setColumnSortedBy] = useState("Rank");
 
@@ -170,7 +170,7 @@ export default function LeagueOverview({ leagueType, leagueKeysString }) {
           if (!response.ok) {
             return response.json().then((errorData) => {
               const error = new Error(
-                errorData.message || "Failed to fetch data"
+                errorData.message || "Failed to fetch data",
               );
               error.status = errorData.status;
               throw error;
@@ -179,6 +179,8 @@ export default function LeagueOverview({ leagueType, leagueKeysString }) {
           return response.json();
         })
         .then((leagueData) => {
+          console.log("LEAGUE DATA:");
+          console.log(leagueData);
           const fetchResponse = leagueData;
           let n = 1;
           setLeagueInfo(fetchResponse);
@@ -196,7 +198,7 @@ export default function LeagueOverview({ leagueType, leagueKeysString }) {
           });
           const reversedLeagueSeasonsNoOverall = reversedLeagueSeasons.slice(
             0,
-            -1
+            -1,
           );
           setLeagueSeasons(reversedLeagueSeasons);
           setTrendSeasonArray(reversedLeagueSeasonsNoOverall);
@@ -402,7 +404,7 @@ export default function LeagueOverview({ leagueType, leagueKeysString }) {
                       // Find if the current season exists in array2
 
                       const matchingSeason = team.overallCumulativeRecord.find(
-                        (seasonRecord) => seasonRecord.season === season
+                        (seasonRecord) => seasonRecord.season === season,
                       );
                       if (matchingSeason) {
                         previous = matchingSeason;
@@ -448,11 +450,11 @@ export default function LeagueOverview({ leagueType, leagueKeysString }) {
                     },
                   },
                 };
-              }
+              },
             ),
           });
           let logoUrl = fetchResponse[fetchResponse.length - 1].logo.filter(
-            (logo) => logo
+            (logo) => logo,
           );
           logoUrl = logoUrl[logoUrl.length - 1];
           if (logoUrl) {
@@ -474,8 +476,8 @@ export default function LeagueOverview({ leagueType, leagueKeysString }) {
         .catch((error) => {
           router.push(
             `/error?message=${encodeURIComponent(
-              error.message
-            )}&status=${encodeURIComponent(error.status)}`
+              error.message,
+            )}&status=${encodeURIComponent(error.status)}`,
           );
         })
         .finally(() => {
@@ -617,12 +619,12 @@ export default function LeagueOverview({ leagueType, leagueKeysString }) {
           season: season.season ? season.season : chosenSeason.year,
           seasonKey: season.seasonKey ? season.seasonKey : chosenSeason.key,
           matchups: season.matchups.filter(
-            (week) => week.opponentManagerId === team2.managerId
+            (week) => week.opponentManagerId === team2.managerId,
           ),
         };
       });
       let onlyActiveSeasons = mutatedMatchups.filter(
-        (season) => season.matchups.length
+        (season) => season.matchups.length,
       );
       let mutatedMatchupsSummary = {
         wins: 0,
@@ -709,12 +711,12 @@ export default function LeagueOverview({ leagueType, leagueKeysString }) {
           season: season.season ? season.season : chosenSeason.year,
           seasonKey: season.seasonKey ? season.seasonKey : chosenSeason.key,
           matchups: season.matchups.filter(
-            (week) => week.opponentManagerId === manager.managerId
+            (week) => week.opponentManagerId === manager.managerId,
           ),
         };
       });
       let onlyActiveSeasons = mutatedMatchups.filter(
-        (season) => season.matchups.length
+        (season) => season.matchups.length,
       );
       let mutatedMatchupsSummary = {
         wins: 0,
@@ -809,12 +811,12 @@ export default function LeagueOverview({ leagueType, leagueKeysString }) {
         .filter(
           (season) =>
             Number(season.year) >= Number(season1.year) &&
-            Number(season.year) <= Number(season2.year)
+            Number(season.year) <= Number(season2.year),
         );
       teamsArray = leagueInfo[leagueInfo.length - 1].teams.filter((team) =>
         team.memberSeasons.some((memberSeason) =>
-          seasonArray.some((season) => memberSeason.seasonYear === season.year)
-        )
+          seasonArray.some((season) => memberSeason.seasonYear === season.year),
+        ),
       );
       recordType = "overallCumulativeRecord";
     } else if (season1.year != "Overall" && season2.year === "---") {
@@ -824,8 +826,8 @@ export default function LeagueOverview({ leagueType, leagueKeysString }) {
 
       teamsArray = leagueInfo[leagueInfo.length - 1].teams.filter((team) =>
         team.memberSeasons.some((memberSeason) =>
-          seasonArray.some((season) => memberSeason.seasonYear === season.year)
-        )
+          seasonArray.some((season) => memberSeason.seasonYear === season.year),
+        ),
       );
       recordType = "cumulativeRecord";
     } else {
@@ -891,7 +893,7 @@ export default function LeagueOverview({ leagueType, leagueKeysString }) {
                     ) {
                       // Find if the current season exists in array2
                       const matchingSeason = team.overallCumulativeRecord.find(
-                        (seasonRecord) => seasonRecord.season === season
+                        (seasonRecord) => seasonRecord.season === season,
                       );
 
                       if (matchingSeason) {
@@ -904,7 +906,7 @@ export default function LeagueOverview({ leagueType, leagueKeysString }) {
                         : previous[seasonType][objectKey];
                     } else if (objectKey === "championships") {
                       const matchingSeason = team.championships.find(
-                        (seasonRecord) => seasonRecord.seasonYear === season
+                        (seasonRecord) => seasonRecord.seasonYear === season,
                       );
                       if (matchingSeason) {
                         previous.championships = previous.championships + 1;
@@ -915,7 +917,7 @@ export default function LeagueOverview({ leagueType, leagueKeysString }) {
                         : previous.championships;
                     } else {
                       const matchingSeason = team[recordType].find(
-                        (seasonRecord) => seasonRecord.season === season
+                        (seasonRecord) => seasonRecord.season === season,
                       );
                       //.find((appearance) => appearance === season);
                       if (matchingSeason) {
@@ -931,14 +933,16 @@ export default function LeagueOverview({ leagueType, leagueKeysString }) {
                     }
                   })
               : team[recordType].filter(
-                  (season) => season.season === seasonArray[0].year
-                )[0][seasonType][objectKey]
-              ? team[recordType]
-                  .filter((season) => season.season === seasonArray[0].year)[0]
-                  [seasonType][objectKey].map((week) => {
-                    return week;
-                  })
-              : 0,
+                    (season) => season.season === seasonArray[0].year,
+                  )[0][seasonType][objectKey]
+                ? team[recordType]
+                    .filter(
+                      (season) => season.season === seasonArray[0].year,
+                    )[0]
+                    [seasonType][objectKey].map((week) => {
+                      return week;
+                    })
+                : 0,
           borderColor: getColor(index), // Line color
           backgroundColor: getColor(index).replace("1)", "0.2)"), // Fill color (translucent)
           pointBackgroundColor: getColor(index), // Color of the points
@@ -1017,7 +1021,7 @@ export default function LeagueOverview({ leagueType, leagueKeysString }) {
             trend: "wins",
           },
           chosenSeason,
-          chosenSeason2
+          chosenSeason2,
         );
       } else {
         updateTrendChart(chosenTrend, chosenSeason, chosenSeason2);
@@ -1065,31 +1069,31 @@ export default function LeagueOverview({ leagueType, leagueKeysString }) {
   const handleColumnSort = (e) => {
     if (e === "Rank" && columnSortedBy != "Rank") {
       setChosenSeasonTeams(
-        chosenSeasonTeams.sort((a, b) => a.rank.rank - b.rank.rank)
+        chosenSeasonTeams.sort((a, b) => a.rank.rank - b.rank.rank),
       );
     } else if (e === "Rank" && columnSortedBy === "Rank") {
       setChosenSeasonTeams(
-        chosenSeasonTeams.sort((a, b) => b.rank.rank - a.rank.rank)
+        chosenSeasonTeams.sort((a, b) => b.rank.rank - a.rank.rank),
       );
     } else if (e === "Manager" && columnSortedBy != "Manager") {
       setChosenSeasonTeams(
         chosenSeasonTeams.sort((a, b) =>
-          a.managerName.localeCompare(b.managerName)
-        )
+          a.managerName.localeCompare(b.managerName),
+        ),
       );
     } else if (e === "Manager" && columnSortedBy === "Manager") {
       setChosenSeasonTeams(
         chosenSeasonTeams.sort((a, b) =>
-          b.managerName.localeCompare(a.managerName)
-        )
+          b.managerName.localeCompare(a.managerName),
+        ),
       );
     } else if (e === "Team Name" && columnSortedBy != "Team Name") {
       setChosenSeasonTeams(
-        chosenSeasonTeams.sort((a, b) => a.name.localeCompare(b.name))
+        chosenSeasonTeams.sort((a, b) => a.name.localeCompare(b.name)),
       );
     } else if (e === "Team Name" && columnSortedBy === "Team Name") {
       setChosenSeasonTeams(
-        chosenSeasonTeams.sort((a, b) => b.name.localeCompare(a.name))
+        chosenSeasonTeams.sort((a, b) => b.name.localeCompare(a.name)),
       );
     } else if (e === "Championships" && columnSortedBy != "Championships") {
       setChosenSeasonTeams(
@@ -1107,7 +1111,7 @@ export default function LeagueOverview({ leagueType, leagueKeysString }) {
           if (a.memberSeasons.length !== b.memberSeasons.length) {
             return b.memberSeasons.length - a.memberSeasons.length;
           }
-        })
+        }),
       );
     } else if (e === "Championships" && columnSortedBy === "Championships") {
       setChosenSeasonTeams(
@@ -1125,7 +1129,7 @@ export default function LeagueOverview({ leagueType, leagueKeysString }) {
           if (a.memberSeasons.length !== b.memberSeasons.length) {
             return b.memberSeasons.length - a.memberSeasons.length;
           }
-        })
+        }),
       );
     } else if (e === "Best Finish" && columnSortedBy != "Best Finish") {
       setChosenSeasonTeams(
@@ -1142,7 +1146,7 @@ export default function LeagueOverview({ leagueType, leagueKeysString }) {
           if (a.memberSeasons.length !== b.memberSeasons.length) {
             return b.memberSeasons.length - a.memberSeasons.length;
           }
-        })
+        }),
       );
     } else if (e === "Best Finish" && columnSortedBy === "Best Finish") {
       setChosenSeasonTeams(
@@ -1159,7 +1163,7 @@ export default function LeagueOverview({ leagueType, leagueKeysString }) {
           if (a.memberSeasons.length !== b.memberSeasons.length) {
             return b.memberSeasons.length - a.memberSeasons.length;
           }
-        })
+        }),
       );
     } else if (e === "Worst Finish" && columnSortedBy != "Worst Finish") {
       setChosenSeasonTeams(
@@ -1178,7 +1182,7 @@ export default function LeagueOverview({ leagueType, leagueKeysString }) {
           if (a.memberSeasons.length !== b.memberSeasons.length) {
             return b.memberSeasons.length - a.memberSeasons.length;
           }
-        })
+        }),
       );
     } else if (e === "Worst Finish" && columnSortedBy === "Worst Finish") {
       setChosenSeasonTeams(
@@ -1197,7 +1201,7 @@ export default function LeagueOverview({ leagueType, leagueKeysString }) {
           if (a.memberSeasons.length !== b.memberSeasons.length) {
             return b.memberSeasons.length - a.memberSeasons.length;
           }
-        })
+        }),
       );
     } else if (
       e === "Playoff Appearances" &&
@@ -1208,21 +1212,21 @@ export default function LeagueOverview({ leagueType, leagueKeysString }) {
           if (
             Number(
               a.overallCumulativeRecord[a.overallCumulativeRecord.length - 1]
-                .playoffSeasonRecord.playoffAppearances.length
+                .playoffSeasonRecord.playoffAppearances.length,
             ) !==
             Number(
               b.overallCumulativeRecord[b.overallCumulativeRecord.length - 1]
-                .playoffSeasonRecord.playoffAppearances.length
+                .playoffSeasonRecord.playoffAppearances.length,
             )
           ) {
             return (
               Number(
                 b.overallCumulativeRecord[b.overallCumulativeRecord.length - 1]
-                  .playoffSeasonRecord.playoffAppearances.length
+                  .playoffSeasonRecord.playoffAppearances.length,
               ) -
               Number(
                 a.overallCumulativeRecord[a.overallCumulativeRecord.length - 1]
-                  .playoffSeasonRecord.playoffAppearances.length
+                  .playoffSeasonRecord.playoffAppearances.length,
               )
             );
           }
@@ -1239,7 +1243,7 @@ export default function LeagueOverview({ leagueType, leagueKeysString }) {
           if (a.memberSeasons.length !== b.memberSeasons.length) {
             return b.memberSeasons.length - a.memberSeasons.length;
           }
-        })
+        }),
       );
     } else if (
       e === "Playoff Appearances" &&
@@ -1250,21 +1254,21 @@ export default function LeagueOverview({ leagueType, leagueKeysString }) {
           if (
             Number(
               a.overallCumulativeRecord[a.overallCumulativeRecord.length - 1]
-                .playoffSeasonRecord.playoffAppearances.length
+                .playoffSeasonRecord.playoffAppearances.length,
             ) !==
             Number(
               b.overallCumulativeRecord[b.overallCumulativeRecord.length - 1]
-                .playoffSeasonRecord.playoffAppearances.length
+                .playoffSeasonRecord.playoffAppearances.length,
             )
           ) {
             return (
               Number(
                 a.overallCumulativeRecord[a.overallCumulativeRecord.length - 1]
-                  .playoffSeasonRecord.playoffAppearances.length
+                  .playoffSeasonRecord.playoffAppearances.length,
               ) -
               Number(
                 b.overallCumulativeRecord[b.overallCumulativeRecord.length - 1]
-                  .playoffSeasonRecord.playoffAppearances.length
+                  .playoffSeasonRecord.playoffAppearances.length,
               )
             );
           }
@@ -1281,7 +1285,7 @@ export default function LeagueOverview({ leagueType, leagueKeysString }) {
           if (a.memberSeasons.length !== b.memberSeasons.length) {
             return b.memberSeasons.length - a.memberSeasons.length;
           }
-        })
+        }),
       );
     } else if (
       e === "Consolation Appearances" &&
@@ -1292,21 +1296,21 @@ export default function LeagueOverview({ leagueType, leagueKeysString }) {
           if (
             Number(
               a.overallCumulativeRecord[a.overallCumulativeRecord.length - 1]
-                .consolationSeasonRecord.consolationAppearances.length
+                .consolationSeasonRecord.consolationAppearances.length,
             ) !==
             Number(
               b.overallCumulativeRecord[b.overallCumulativeRecord.length - 1]
-                .consolationSeasonRecord.consolationAppearances.length
+                .consolationSeasonRecord.consolationAppearances.length,
             )
           ) {
             return (
               Number(
                 b.overallCumulativeRecord[b.overallCumulativeRecord.length - 1]
-                  .consolationSeasonRecord.consolationAppearances.length
+                  .consolationSeasonRecord.consolationAppearances.length,
               ) -
               Number(
                 a.overallCumulativeRecord[a.overallCumulativeRecord.length - 1]
-                  .consolationSeasonRecord.consolationAppearances.length
+                  .consolationSeasonRecord.consolationAppearances.length,
               )
             );
           }
@@ -1323,7 +1327,7 @@ export default function LeagueOverview({ leagueType, leagueKeysString }) {
           if (a.memberSeasons.length !== b.memberSeasons.length) {
             return b.memberSeasons.length - a.memberSeasons.length;
           }
-        })
+        }),
       );
     } else if (
       e === "Consolation Appearances" &&
@@ -1334,21 +1338,21 @@ export default function LeagueOverview({ leagueType, leagueKeysString }) {
           if (
             Number(
               a.overallCumulativeRecord[a.overallCumulativeRecord.length - 1]
-                .consolationSeasonRecord.consolationAppearances.length
+                .consolationSeasonRecord.consolationAppearances.length,
             ) !==
             Number(
               b.overallCumulativeRecord[b.overallCumulativeRecord.length - 1]
-                .consolationSeasonRecord.consolationAppearances.length
+                .consolationSeasonRecord.consolationAppearances.length,
             )
           ) {
             return (
               Number(
                 a.overallCumulativeRecord[a.overallCumulativeRecord.length - 1]
-                  .consolationSeasonRecord.consolationAppearances.length
+                  .consolationSeasonRecord.consolationAppearances.length,
               ) -
               Number(
                 b.overallCumulativeRecord[b.overallCumulativeRecord.length - 1]
-                  .consolationSeasonRecord.consolationAppearances.length
+                  .consolationSeasonRecord.consolationAppearances.length,
               )
             );
           }
@@ -1365,7 +1369,7 @@ export default function LeagueOverview({ leagueType, leagueKeysString }) {
           if (a.memberSeasons.length !== b.memberSeasons.length) {
             return b.memberSeasons.length - a.memberSeasons.length;
           }
-        })
+        }),
       );
     } else if (
       e === "Regular Season Record" &&
@@ -1376,63 +1380,63 @@ export default function LeagueOverview({ leagueType, leagueKeysString }) {
           if (
             Number(
               a.overallCumulativeRecord[a.overallCumulativeRecord.length - 1]
-                .regularSeasonRecord.wins
+                .regularSeasonRecord.wins,
             ) !==
             Number(
               b.overallCumulativeRecord[b.overallCumulativeRecord.length - 1]
-                .regularSeasonRecord.wins
+                .regularSeasonRecord.wins,
             )
           ) {
             return (
               Number(
                 b.overallCumulativeRecord[b.overallCumulativeRecord.length - 1]
-                  .regularSeasonRecord.wins
+                  .regularSeasonRecord.wins,
               ) -
               Number(
                 a.overallCumulativeRecord[a.overallCumulativeRecord.length - 1]
-                  .regularSeasonRecord.wins
+                  .regularSeasonRecord.wins,
               )
             );
           }
           if (
             Number(
               a.overallCumulativeRecord[a.overallCumulativeRecord.length - 1]
-                .regularSeasonRecord.losses
+                .regularSeasonRecord.losses,
             ) !==
             Number(
               b.overallCumulativeRecord[b.overallCumulativeRecord.length - 1]
-                .regularSeasonRecord.losses
+                .regularSeasonRecord.losses,
             )
           ) {
             return (
               Number(
                 a.overallCumulativeRecord[a.overallCumulativeRecord.length - 1]
-                  .regularSeasonRecord.losses
+                  .regularSeasonRecord.losses,
               ) -
               Number(
                 b.overallCumulativeRecord[b.overallCumulativeRecord.length - 1]
-                  .regularSeasonRecord.losses
+                  .regularSeasonRecord.losses,
               )
             );
           }
           if (
             Number(
               a.overallCumulativeRecord[a.overallCumulativeRecord.length - 1]
-                .regularSeasonRecord.ties
+                .regularSeasonRecord.ties,
             ) !==
             Number(
               b.overallCumulativeRecord[b.overallCumulativeRecord.length - 1]
-                .regularSeasonRecord.ties
+                .regularSeasonRecord.ties,
             )
           ) {
             return (
               Number(
                 b.overallCumulativeRecord[b.overallCumulativeRecord.length - 1]
-                  .regularSeasonRecord.ties
+                  .regularSeasonRecord.ties,
               ) -
               Number(
                 a.overallCumulativeRecord[a.overallCumulativeRecord.length - 1]
-                  .regularSeasonRecord.ties
+                  .regularSeasonRecord.ties,
               )
             );
           }
@@ -1446,7 +1450,7 @@ export default function LeagueOverview({ leagueType, leagueKeysString }) {
           if (a.memberSeasons.length !== b.memberSeasons.length) {
             return b.memberSeasons.length - a.memberSeasons.length;
           }
-        })
+        }),
       );
     } else if (
       e === "Regular Season Record" &&
@@ -1457,63 +1461,63 @@ export default function LeagueOverview({ leagueType, leagueKeysString }) {
           if (
             Number(
               a.overallCumulativeRecord[a.overallCumulativeRecord.length - 1]
-                .regularSeasonRecord.wins
+                .regularSeasonRecord.wins,
             ) !==
             Number(
               b.overallCumulativeRecord[b.overallCumulativeRecord.length - 1]
-                .regularSeasonRecord.wins
+                .regularSeasonRecord.wins,
             )
           ) {
             return (
               Number(
                 a.overallCumulativeRecord[a.overallCumulativeRecord.length - 1]
-                  .regularSeasonRecord.wins
+                  .regularSeasonRecord.wins,
               ) -
               Number(
                 b.overallCumulativeRecord[b.overallCumulativeRecord.length - 1]
-                  .regularSeasonRecord.wins
+                  .regularSeasonRecord.wins,
               )
             );
           }
           if (
             Number(
               a.overallCumulativeRecord[a.overallCumulativeRecord.length - 1]
-                .regularSeasonRecord.losses
+                .regularSeasonRecord.losses,
             ) !==
             Number(
               b.overallCumulativeRecord[b.overallCumulativeRecord.length - 1]
-                .regularSeasonRecord.losses
+                .regularSeasonRecord.losses,
             )
           ) {
             return (
               Number(
                 b.overallCumulativeRecord[b.overallCumulativeRecord.length - 1]
-                  .regularSeasonRecord.losses
+                  .regularSeasonRecord.losses,
               ) -
               Number(
                 a.overallCumulativeRecord[a.overallCumulativeRecord.length - 1]
-                  .regularSeasonRecord.losses
+                  .regularSeasonRecord.losses,
               )
             );
           }
           if (
             Number(
               a.overallCumulativeRecord[a.overallCumulativeRecord.length - 1]
-                .regularSeasonRecord.ties
+                .regularSeasonRecord.ties,
             ) !==
             Number(
               b.overallCumulativeRecord[b.overallCumulativeRecord.length - 1]
-                .regularSeasonRecord.ties
+                .regularSeasonRecord.ties,
             )
           ) {
             return (
               Number(
                 a.overallCumulativeRecord[a.overallCumulativeRecord.length - 1]
-                  .regularSeasonRecord.ties
+                  .regularSeasonRecord.ties,
               ) -
               Number(
                 b.overallCumulativeRecord[b.overallCumulativeRecord.length - 1]
-                  .regularSeasonRecord.ties
+                  .regularSeasonRecord.ties,
               )
             );
           }
@@ -1527,7 +1531,7 @@ export default function LeagueOverview({ leagueType, leagueKeysString }) {
           if (a.memberSeasons.length !== b.memberSeasons.length) {
             return b.memberSeasons.length - a.memberSeasons.length;
           }
-        })
+        }),
       );
     } else if (e === "Win Percentage" && columnSortedBy != "Win Percentage") {
       setChosenSeasonTeams(
@@ -1580,21 +1584,21 @@ export default function LeagueOverview({ leagueType, leagueKeysString }) {
           if (
             Number(
               a.overallCumulativeRecord[a.overallCumulativeRecord.length - 1]
-                .regularSeasonRecord.wins
+                .regularSeasonRecord.wins,
             ) !==
             Number(
               b.overallCumulativeRecord[b.overallCumulativeRecord.length - 1]
-                .regularSeasonRecord.wins
+                .regularSeasonRecord.wins,
             )
           ) {
             return (
               Number(
                 b.overallCumulativeRecord[b.overallCumulativeRecord.length - 1]
-                  .regularSeasonRecord.wins
+                  .regularSeasonRecord.wins,
               ) -
               Number(
                 a.overallCumulativeRecord[a.overallCumulativeRecord.length - 1]
-                  .regularSeasonRecord.wins
+                  .regularSeasonRecord.wins,
               )
             );
           }
@@ -1609,7 +1613,7 @@ export default function LeagueOverview({ leagueType, leagueKeysString }) {
           if (a.memberSeasons.length !== b.memberSeasons.length) {
             return b.memberSeasons.length - a.memberSeasons.length;
           }
-        })
+        }),
       );
     } else if (e === "Win Percentage" && columnSortedBy === "Win Percentage") {
       setChosenSeasonTeams(
@@ -1662,21 +1666,21 @@ export default function LeagueOverview({ leagueType, leagueKeysString }) {
           if (
             Number(
               a.overallCumulativeRecord[a.overallCumulativeRecord.length - 1]
-                .regularSeasonRecord.wins
+                .regularSeasonRecord.wins,
             ) !==
             Number(
               b.overallCumulativeRecord[b.overallCumulativeRecord.length - 1]
-                .regularSeasonRecord.wins
+                .regularSeasonRecord.wins,
             )
           ) {
             return (
               Number(
                 a.overallCumulativeRecord[a.overallCumulativeRecord.length - 1]
-                  .regularSeasonRecord.wins
+                  .regularSeasonRecord.wins,
               ) -
               Number(
                 b.overallCumulativeRecord[b.overallCumulativeRecord.length - 1]
-                  .regularSeasonRecord.wins
+                  .regularSeasonRecord.wins,
               )
             );
           }
@@ -1691,7 +1695,7 @@ export default function LeagueOverview({ leagueType, leagueKeysString }) {
           if (a.memberSeasons.length !== b.memberSeasons.length) {
             return b.memberSeasons.length - a.memberSeasons.length;
           }
-        })
+        }),
       );
     } else if (e === "Points For" && columnSortedBy != "Points For") {
       setChosenSeasonTeams(
@@ -1700,45 +1704,45 @@ export default function LeagueOverview({ leagueType, leagueKeysString }) {
             Number(
               a.overallCumulativeRecord[
                 a.overallCumulativeRecord.length - 1
-              ].regularSeasonRecord.pointsFor.toFixed(2)
+              ].regularSeasonRecord.pointsFor.toFixed(2),
             ) !==
             Number(
               b.overallCumulativeRecord[
                 b.overallCumulativeRecord.length - 1
-              ].regularSeasonRecord.pointsFor.toFixed(2)
+              ].regularSeasonRecord.pointsFor.toFixed(2),
             )
           ) {
             return (
               Number(
                 b.overallCumulativeRecord[
                   b.overallCumulativeRecord.length - 1
-                ].regularSeasonRecord.pointsFor.toFixed(2)
+                ].regularSeasonRecord.pointsFor.toFixed(2),
               ) -
               Number(
                 a.overallCumulativeRecord[
                   a.overallCumulativeRecord.length - 1
-                ].regularSeasonRecord.pointsFor.toFixed(2)
+                ].regularSeasonRecord.pointsFor.toFixed(2),
               )
             );
           }
           if (
             Number(
               a.overallCumulativeRecord[a.overallCumulativeRecord.length - 1]
-                .regularSeasonRecord.wins
+                .regularSeasonRecord.wins,
             ) !==
             Number(
               b.overallCumulativeRecord[b.overallCumulativeRecord.length - 1]
-                .regularSeasonRecord.wins
+                .regularSeasonRecord.wins,
             )
           ) {
             return (
               Number(
                 b.overallCumulativeRecord[b.overallCumulativeRecord.length - 1]
-                  .regularSeasonRecord.wins
+                  .regularSeasonRecord.wins,
               ) -
               Number(
                 a.overallCumulativeRecord[a.overallCumulativeRecord.length - 1]
-                  .regularSeasonRecord.wins
+                  .regularSeasonRecord.wins,
               )
             );
           }
@@ -1753,7 +1757,7 @@ export default function LeagueOverview({ leagueType, leagueKeysString }) {
           if (a.memberSeasons.length !== b.memberSeasons.length) {
             return b.memberSeasons.length - a.memberSeasons.length;
           }
-        })
+        }),
       );
     } else if (e === "Points For" && columnSortedBy === "Points For") {
       setChosenSeasonTeams(
@@ -1762,45 +1766,45 @@ export default function LeagueOverview({ leagueType, leagueKeysString }) {
             Number(
               a.overallCumulativeRecord[
                 a.overallCumulativeRecord.length - 1
-              ].regularSeasonRecord.pointsFor.toFixed(2)
+              ].regularSeasonRecord.pointsFor.toFixed(2),
             ) !==
             Number(
               b.overallCumulativeRecord[
                 b.overallCumulativeRecord.length - 1
-              ].regularSeasonRecord.pointsFor.toFixed(2)
+              ].regularSeasonRecord.pointsFor.toFixed(2),
             )
           ) {
             return (
               Number(
                 a.overallCumulativeRecord[
                   a.overallCumulativeRecord.length - 1
-                ].regularSeasonRecord.pointsFor.toFixed(2)
+                ].regularSeasonRecord.pointsFor.toFixed(2),
               ) -
               Number(
                 b.overallCumulativeRecord[
                   b.overallCumulativeRecord.length - 1
-                ].regularSeasonRecord.pointsFor.toFixed(2)
+                ].regularSeasonRecord.pointsFor.toFixed(2),
               )
             );
           }
           if (
             Number(
               a.overallCumulativeRecord[a.overallCumulativeRecord.length - 1]
-                .regularSeasonRecord.wins
+                .regularSeasonRecord.wins,
             ) !==
             Number(
               b.overallCumulativeRecord[b.overallCumulativeRecord.length - 1]
-                .regularSeasonRecord.wins
+                .regularSeasonRecord.wins,
             )
           ) {
             return (
               Number(
                 a.overallCumulativeRecord[a.overallCumulativeRecord.length - 1]
-                  .regularSeasonRecord.wins
+                  .regularSeasonRecord.wins,
               ) -
               Number(
                 b.overallCumulativeRecord[b.overallCumulativeRecord.length - 1]
-                  .regularSeasonRecord.wins
+                  .regularSeasonRecord.wins,
               )
             );
           }
@@ -1815,7 +1819,7 @@ export default function LeagueOverview({ leagueType, leagueKeysString }) {
           if (a.memberSeasons.length !== b.memberSeasons.length) {
             return b.memberSeasons.length - a.memberSeasons.length;
           }
-        })
+        }),
       );
     } else if (e === "Points Against" && columnSortedBy != "Points Against") {
       setChosenSeasonTeams(
@@ -1824,45 +1828,45 @@ export default function LeagueOverview({ leagueType, leagueKeysString }) {
             Number(
               a.overallCumulativeRecord[
                 a.overallCumulativeRecord.length - 1
-              ].regularSeasonRecord.pointsAgainst.toFixed(2)
+              ].regularSeasonRecord.pointsAgainst.toFixed(2),
             ) !==
             Number(
               b.overallCumulativeRecord[
                 b.overallCumulativeRecord.length - 1
-              ].regularSeasonRecord.pointsAgainst.toFixed(2)
+              ].regularSeasonRecord.pointsAgainst.toFixed(2),
             )
           ) {
             return (
               Number(
                 b.overallCumulativeRecord[
                   b.overallCumulativeRecord.length - 1
-                ].regularSeasonRecord.pointsAgainst.toFixed(2)
+                ].regularSeasonRecord.pointsAgainst.toFixed(2),
               ) -
               Number(
                 a.overallCumulativeRecord[
                   a.overallCumulativeRecord.length - 1
-                ].regularSeasonRecord.pointsAgainst.toFixed(2)
+                ].regularSeasonRecord.pointsAgainst.toFixed(2),
               )
             );
           }
           if (
             Number(
               a.overallCumulativeRecord[a.overallCumulativeRecord.length - 1]
-                .regularSeasonRecord.wins
+                .regularSeasonRecord.wins,
             ) !==
             Number(
               b.overallCumulativeRecord[b.overallCumulativeRecord.length - 1]
-                .regularSeasonRecord.wins
+                .regularSeasonRecord.wins,
             )
           ) {
             return (
               Number(
                 b.overallCumulativeRecord[b.overallCumulativeRecord.length - 1]
-                  .regularSeasonRecord.wins
+                  .regularSeasonRecord.wins,
               ) -
               Number(
                 a.overallCumulativeRecord[a.overallCumulativeRecord.length - 1]
-                  .regularSeasonRecord.wins
+                  .regularSeasonRecord.wins,
               )
             );
           }
@@ -1877,7 +1881,7 @@ export default function LeagueOverview({ leagueType, leagueKeysString }) {
           if (a.memberSeasons.length !== b.memberSeasons.length) {
             return b.memberSeasons.length - a.memberSeasons.length;
           }
-        })
+        }),
       );
     } else if (e === "Points Against" && columnSortedBy === "Points Against") {
       setChosenSeasonTeams(
@@ -1886,45 +1890,45 @@ export default function LeagueOverview({ leagueType, leagueKeysString }) {
             Number(
               a.overallCumulativeRecord[
                 a.overallCumulativeRecord.length - 1
-              ].regularSeasonRecord.pointsAgainst.toFixed(2)
+              ].regularSeasonRecord.pointsAgainst.toFixed(2),
             ) !==
             Number(
               b.overallCumulativeRecord[
                 b.overallCumulativeRecord.length - 1
-              ].regularSeasonRecord.pointsAgainst.toFixed(2)
+              ].regularSeasonRecord.pointsAgainst.toFixed(2),
             )
           ) {
             return (
               Number(
                 a.overallCumulativeRecord[
                   a.overallCumulativeRecord.length - 1
-                ].regularSeasonRecord.pointsAgainst.toFixed(2)
+                ].regularSeasonRecord.pointsAgainst.toFixed(2),
               ) -
               Number(
                 b.overallCumulativeRecord[
                   b.overallCumulativeRecord.length - 1
-                ].regularSeasonRecord.pointsAgainst.toFixed(2)
+                ].regularSeasonRecord.pointsAgainst.toFixed(2),
               )
             );
           }
           if (
             Number(
               a.overallCumulativeRecord[a.overallCumulativeRecord.length - 1]
-                .regularSeasonRecord.wins
+                .regularSeasonRecord.wins,
             ) !==
             Number(
               b.overallCumulativeRecord[b.overallCumulativeRecord.length - 1]
-                .regularSeasonRecord.wins
+                .regularSeasonRecord.wins,
             )
           ) {
             return (
               Number(
                 a.overallCumulativeRecord[a.overallCumulativeRecord.length - 1]
-                  .regularSeasonRecord.wins
+                  .regularSeasonRecord.wins,
               ) -
               Number(
                 b.overallCumulativeRecord[b.overallCumulativeRecord.length - 1]
-                  .regularSeasonRecord.wins
+                  .regularSeasonRecord.wins,
               )
             );
           }
@@ -1939,7 +1943,7 @@ export default function LeagueOverview({ leagueType, leagueKeysString }) {
           if (a.memberSeasons.length !== b.memberSeasons.length) {
             return b.memberSeasons.length - a.memberSeasons.length;
           }
-        })
+        }),
       );
     } else if (
       e === "Point Differential" &&
@@ -1952,13 +1956,13 @@ export default function LeagueOverview({ leagueType, leagueKeysString }) {
               a.overallCumulativeRecord[a.overallCumulativeRecord.length - 1]
                 .regularSeasonRecord.pointsFor -
                 a.overallCumulativeRecord[a.overallCumulativeRecord.length - 1]
-                  .regularSeasonRecord.pointsAgainst
+                  .regularSeasonRecord.pointsAgainst,
             ) !==
             Number(
               b.overallCumulativeRecord[b.overallCumulativeRecord.length - 1]
                 .regularSeasonRecord.pointsFor -
                 b.overallCumulativeRecord[b.overallCumulativeRecord.length - 1]
-                  .regularSeasonRecord.pointsAgainst
+                  .regularSeasonRecord.pointsAgainst,
             )
           ) {
             return (
@@ -1967,35 +1971,35 @@ export default function LeagueOverview({ leagueType, leagueKeysString }) {
                   .regularSeasonRecord.pointsFor -
                   b.overallCumulativeRecord[
                     b.overallCumulativeRecord.length - 1
-                  ].regularSeasonRecord.pointsAgainst
+                  ].regularSeasonRecord.pointsAgainst,
               ) -
               Number(
                 a.overallCumulativeRecord[a.overallCumulativeRecord.length - 1]
                   .regularSeasonRecord.pointsFor -
                   a.overallCumulativeRecord[
                     a.overallCumulativeRecord.length - 1
-                  ].regularSeasonRecord.pointsAgainst
+                  ].regularSeasonRecord.pointsAgainst,
               )
             );
           }
           if (
             Number(
               a.overallCumulativeRecord[a.overallCumulativeRecord.length - 1]
-                .regularSeasonRecord.wins
+                .regularSeasonRecord.wins,
             ) !==
             Number(
               b.overallCumulativeRecord[b.overallCumulativeRecord.length - 1]
-                .regularSeasonRecord.wins
+                .regularSeasonRecord.wins,
             )
           ) {
             return (
               Number(
                 b.overallCumulativeRecord[b.overallCumulativeRecord.length - 1]
-                  .regularSeasonRecord.wins
+                  .regularSeasonRecord.wins,
               ) -
               Number(
                 a.overallCumulativeRecord[a.overallCumulativeRecord.length - 1]
-                  .regularSeasonRecord.wins
+                  .regularSeasonRecord.wins,
               )
             );
           }
@@ -2010,7 +2014,7 @@ export default function LeagueOverview({ leagueType, leagueKeysString }) {
           if (a.memberSeasons.length !== b.memberSeasons.length) {
             return b.memberSeasons.length - a.memberSeasons.length;
           }
-        })
+        }),
       );
     } else if (
       e === "Point Differential" &&
@@ -2023,13 +2027,13 @@ export default function LeagueOverview({ leagueType, leagueKeysString }) {
               a.overallCumulativeRecord[a.overallCumulativeRecord.length - 1]
                 .regularSeasonRecord.pointsFor -
                 a.overallCumulativeRecord[a.overallCumulativeRecord.length - 1]
-                  .regularSeasonRecord.pointsAgainst
+                  .regularSeasonRecord.pointsAgainst,
             ) !==
             Number(
               b.overallCumulativeRecord[b.overallCumulativeRecord.length - 1]
                 .regularSeasonRecord.pointsFor -
                 b.overallCumulativeRecord[b.overallCumulativeRecord.length - 1]
-                  .regularSeasonRecord.pointsAgainst
+                  .regularSeasonRecord.pointsAgainst,
             )
           ) {
             return (
@@ -2038,35 +2042,35 @@ export default function LeagueOverview({ leagueType, leagueKeysString }) {
                   .regularSeasonRecord.pointsFor -
                   a.overallCumulativeRecord[
                     a.overallCumulativeRecord.length - 1
-                  ].regularSeasonRecord.pointsAgainst
+                  ].regularSeasonRecord.pointsAgainst,
               ) -
               Number(
                 b.overallCumulativeRecord[b.overallCumulativeRecord.length - 1]
                   .regularSeasonRecord.pointsFor -
                   b.overallCumulativeRecord[
                     b.overallCumulativeRecord.length - 1
-                  ].regularSeasonRecord.pointsAgainst
+                  ].regularSeasonRecord.pointsAgainst,
               )
             );
           }
           if (
             Number(
               a.overallCumulativeRecord[a.overallCumulativeRecord.length - 1]
-                .regularSeasonRecord.wins
+                .regularSeasonRecord.wins,
             ) !==
             Number(
               b.overallCumulativeRecord[b.overallCumulativeRecord.length - 1]
-                .regularSeasonRecord.wins
+                .regularSeasonRecord.wins,
             )
           ) {
             return (
               Number(
                 a.overallCumulativeRecord[a.overallCumulativeRecord.length - 1]
-                  .regularSeasonRecord.wins
+                  .regularSeasonRecord.wins,
               ) -
               Number(
                 b.overallCumulativeRecord[b.overallCumulativeRecord.length - 1]
-                  .regularSeasonRecord.wins
+                  .regularSeasonRecord.wins,
               )
             );
           }
@@ -2081,7 +2085,7 @@ export default function LeagueOverview({ leagueType, leagueKeysString }) {
           if (a.memberSeasons.length !== b.memberSeasons.length) {
             return b.memberSeasons.length - a.memberSeasons.length;
           }
-        })
+        }),
       );
     } else if (e === "Playoff Record" && columnSortedBy != "Playoff Record") {
       setChosenSeasonTeams(
@@ -2089,63 +2093,63 @@ export default function LeagueOverview({ leagueType, leagueKeysString }) {
           if (
             Number(
               a.overallCumulativeRecord[a.overallCumulativeRecord.length - 1]
-                .playoffSeasonRecord.wins
+                .playoffSeasonRecord.wins,
             ) !==
             Number(
               b.overallCumulativeRecord[b.overallCumulativeRecord.length - 1]
-                .playoffSeasonRecord.wins
+                .playoffSeasonRecord.wins,
             )
           ) {
             return (
               Number(
                 b.overallCumulativeRecord[b.overallCumulativeRecord.length - 1]
-                  .playoffSeasonRecord.wins
+                  .playoffSeasonRecord.wins,
               ) -
               Number(
                 a.overallCumulativeRecord[a.overallCumulativeRecord.length - 1]
-                  .playoffSeasonRecord.wins
+                  .playoffSeasonRecord.wins,
               )
             );
           }
           if (
             Number(
               a.overallCumulativeRecord[a.overallCumulativeRecord.length - 1]
-                .playoffSeasonRecord.losses
+                .playoffSeasonRecord.losses,
             ) !==
             Number(
               b.overallCumulativeRecord[b.overallCumulativeRecord.length - 1]
-                .playoffSeasonRecord.losses
+                .playoffSeasonRecord.losses,
             )
           ) {
             return (
               Number(
                 a.overallCumulativeRecord[a.overallCumulativeRecord.length - 1]
-                  .playoffSeasonRecord.losses
+                  .playoffSeasonRecord.losses,
               ) -
               Number(
                 b.overallCumulativeRecord[b.overallCumulativeRecord.length - 1]
-                  .playoffSeasonRecord.losses
+                  .playoffSeasonRecord.losses,
               )
             );
           }
           if (
             Number(
               a.overallCumulativeRecord[a.overallCumulativeRecord.length - 1]
-                .playoffSeasonRecord.ties
+                .playoffSeasonRecord.ties,
             ) !==
             Number(
               b.overallCumulativeRecord[b.overallCumulativeRecord.length - 1]
-                .playoffSeasonRecord.ties
+                .playoffSeasonRecord.ties,
             )
           ) {
             return (
               Number(
                 b.overallCumulativeRecord[b.overallCumulativeRecord.length - 1]
-                  .playoffSeasonRecord.ties
+                  .playoffSeasonRecord.ties,
               ) -
               Number(
                 a.overallCumulativeRecord[a.overallCumulativeRecord.length - 1]
-                  .playoffSeasonRecord.ties
+                  .playoffSeasonRecord.ties,
               )
             );
           }
@@ -2159,7 +2163,7 @@ export default function LeagueOverview({ leagueType, leagueKeysString }) {
           if (a.memberSeasons.length !== b.memberSeasons.length) {
             return b.memberSeasons.length - a.memberSeasons.length;
           }
-        })
+        }),
       );
     } else if (e === "Playoff Record" && columnSortedBy === "Playoff Record") {
       setChosenSeasonTeams(
@@ -2167,63 +2171,63 @@ export default function LeagueOverview({ leagueType, leagueKeysString }) {
           if (
             Number(
               a.overallCumulativeRecord[a.overallCumulativeRecord.length - 1]
-                .playoffSeasonRecord.wins
+                .playoffSeasonRecord.wins,
             ) !==
             Number(
               b.overallCumulativeRecord[b.overallCumulativeRecord.length - 1]
-                .playoffSeasonRecord.wins
+                .playoffSeasonRecord.wins,
             )
           ) {
             return (
               Number(
                 a.overallCumulativeRecord[a.overallCumulativeRecord.length - 1]
-                  .playoffSeasonRecord.wins
+                  .playoffSeasonRecord.wins,
               ) -
               Number(
                 b.overallCumulativeRecord[b.overallCumulativeRecord.length - 1]
-                  .playoffSeasonRecord.wins
+                  .playoffSeasonRecord.wins,
               )
             );
           }
           if (
             Number(
               a.overallCumulativeRecord[a.overallCumulativeRecord.length - 1]
-                .playoffSeasonRecord.losses
+                .playoffSeasonRecord.losses,
             ) !==
             Number(
               b.overallCumulativeRecord[b.overallCumulativeRecord.length - 1]
-                .playoffSeasonRecord.losses
+                .playoffSeasonRecord.losses,
             )
           ) {
             return (
               Number(
                 b.overallCumulativeRecord[b.overallCumulativeRecord.length - 1]
-                  .playoffSeasonRecord.losses
+                  .playoffSeasonRecord.losses,
               ) -
               Number(
                 a.overallCumulativeRecord[a.overallCumulativeRecord.length - 1]
-                  .playoffSeasonRecord.losses
+                  .playoffSeasonRecord.losses,
               )
             );
           }
           if (
             Number(
               a.overallCumulativeRecord[a.overallCumulativeRecord.length - 1]
-                .playoffSeasonRecord.ties
+                .playoffSeasonRecord.ties,
             ) !==
             Number(
               b.overallCumulativeRecord[b.overallCumulativeRecord.length - 1]
-                .playoffSeasonRecord.ties
+                .playoffSeasonRecord.ties,
             )
           ) {
             return (
               Number(
                 a.overallCumulativeRecord[a.overallCumulativeRecord.length - 1]
-                  .playoffSeasonRecord.ties
+                  .playoffSeasonRecord.ties,
               ) -
               Number(
                 b.overallCumulativeRecord[b.overallCumulativeRecord.length - 1]
-                  .playoffSeasonRecord.ties
+                  .playoffSeasonRecord.ties,
               )
             );
           }
@@ -2237,7 +2241,7 @@ export default function LeagueOverview({ leagueType, leagueKeysString }) {
           if (a.memberSeasons.length !== b.memberSeasons.length) {
             return b.memberSeasons.length - a.memberSeasons.length;
           }
-        })
+        }),
       );
     } else if (
       e === "Playoff Win Percentage" &&
@@ -2293,21 +2297,21 @@ export default function LeagueOverview({ leagueType, leagueKeysString }) {
           if (
             Number(
               a.overallCumulativeRecord[a.overallCumulativeRecord.length - 1]
-                .playoffSeasonRecord.wins
+                .playoffSeasonRecord.wins,
             ) !==
             Number(
               b.overallCumulativeRecord[b.overallCumulativeRecord.length - 1]
-                .playoffSeasonRecord.wins
+                .playoffSeasonRecord.wins,
             )
           ) {
             return (
               Number(
                 b.overallCumulativeRecord[b.overallCumulativeRecord.length - 1]
-                  .playoffSeasonRecord.wins
+                  .playoffSeasonRecord.wins,
               ) -
               Number(
                 a.overallCumulativeRecord[a.overallCumulativeRecord.length - 1]
-                  .playoffSeasonRecord.wins
+                  .playoffSeasonRecord.wins,
               )
             );
           }
@@ -2322,7 +2326,7 @@ export default function LeagueOverview({ leagueType, leagueKeysString }) {
           if (a.memberSeasons.length !== b.memberSeasons.length) {
             return b.memberSeasons.length - a.memberSeasons.length;
           }
-        })
+        }),
       );
     } else if (
       e === "Playoff Win Percentage" &&
@@ -2378,21 +2382,21 @@ export default function LeagueOverview({ leagueType, leagueKeysString }) {
           if (
             Number(
               a.overallCumulativeRecord[a.overallCumulativeRecord.length - 1]
-                .playoffSeasonRecord.wins
+                .playoffSeasonRecord.wins,
             ) !==
             Number(
               b.overallCumulativeRecord[b.overallCumulativeRecord.length - 1]
-                .playoffSeasonRecord.wins
+                .playoffSeasonRecord.wins,
             )
           ) {
             return (
               Number(
                 a.overallCumulativeRecord[a.overallCumulativeRecord.length - 1]
-                  .playoffSeasonRecord.wins
+                  .playoffSeasonRecord.wins,
               ) -
               Number(
                 b.overallCumulativeRecord[b.overallCumulativeRecord.length - 1]
-                  .playoffSeasonRecord.wins
+                  .playoffSeasonRecord.wins,
               )
             );
           }
@@ -2407,7 +2411,7 @@ export default function LeagueOverview({ leagueType, leagueKeysString }) {
           if (a.memberSeasons.length !== b.memberSeasons.length) {
             return b.memberSeasons.length - a.memberSeasons.length;
           }
-        })
+        }),
       );
     } else if (
       e === "Playoff Points For" &&
@@ -2419,45 +2423,45 @@ export default function LeagueOverview({ leagueType, leagueKeysString }) {
             Number(
               a.overallCumulativeRecord[
                 a.overallCumulativeRecord.length - 1
-              ].playoffSeasonRecord.pointsFor.toFixed(2)
+              ].playoffSeasonRecord.pointsFor.toFixed(2),
             ) !==
             Number(
               b.overallCumulativeRecord[
                 b.overallCumulativeRecord.length - 1
-              ].playoffSeasonRecord.pointsFor.toFixed(2)
+              ].playoffSeasonRecord.pointsFor.toFixed(2),
             )
           ) {
             return (
               Number(
                 b.overallCumulativeRecord[
                   b.overallCumulativeRecord.length - 1
-                ].playoffSeasonRecord.pointsFor.toFixed(2)
+                ].playoffSeasonRecord.pointsFor.toFixed(2),
               ) -
               Number(
                 a.overallCumulativeRecord[
                   a.overallCumulativeRecord.length - 1
-                ].playoffSeasonRecord.pointsFor.toFixed(2)
+                ].playoffSeasonRecord.pointsFor.toFixed(2),
               )
             );
           }
           if (
             Number(
               a.overallCumulativeRecord[a.overallCumulativeRecord.length - 1]
-                .playoffSeasonRecord.wins
+                .playoffSeasonRecord.wins,
             ) !==
             Number(
               b.overallCumulativeRecord[b.overallCumulativeRecord.length - 1]
-                .playoffSeasonRecord.wins
+                .playoffSeasonRecord.wins,
             )
           ) {
             return (
               Number(
                 b.overallCumulativeRecord[b.overallCumulativeRecord.length - 1]
-                  .playoffSeasonRecord.wins
+                  .playoffSeasonRecord.wins,
               ) -
               Number(
                 a.overallCumulativeRecord[a.overallCumulativeRecord.length - 1]
-                  .playoffSeasonRecord.wins
+                  .playoffSeasonRecord.wins,
               )
             );
           }
@@ -2472,7 +2476,7 @@ export default function LeagueOverview({ leagueType, leagueKeysString }) {
           if (a.memberSeasons.length !== b.memberSeasons.length) {
             return b.memberSeasons.length - a.memberSeasons.length;
           }
-        })
+        }),
       );
     } else if (
       e === "Playoff Points For" &&
@@ -2484,45 +2488,45 @@ export default function LeagueOverview({ leagueType, leagueKeysString }) {
             Number(
               a.overallCumulativeRecord[
                 a.overallCumulativeRecord.length - 1
-              ].playoffSeasonRecord.pointsFor.toFixed(2)
+              ].playoffSeasonRecord.pointsFor.toFixed(2),
             ) !==
             Number(
               b.overallCumulativeRecord[
                 b.overallCumulativeRecord.length - 1
-              ].playoffSeasonRecord.pointsFor.toFixed(2)
+              ].playoffSeasonRecord.pointsFor.toFixed(2),
             )
           ) {
             return (
               Number(
                 a.overallCumulativeRecord[
                   a.overallCumulativeRecord.length - 1
-                ].playoffSeasonRecord.pointsFor.toFixed(2)
+                ].playoffSeasonRecord.pointsFor.toFixed(2),
               ) -
               Number(
                 b.overallCumulativeRecord[
                   b.overallCumulativeRecord.length - 1
-                ].playoffSeasonRecord.pointsFor.toFixed(2)
+                ].playoffSeasonRecord.pointsFor.toFixed(2),
               )
             );
           }
           if (
             Number(
               a.overallCumulativeRecord[a.overallCumulativeRecord.length - 1]
-                .playoffSeasonRecord.wins
+                .playoffSeasonRecord.wins,
             ) !==
             Number(
               b.overallCumulativeRecord[b.overallCumulativeRecord.length - 1]
-                .playoffSeasonRecord.wins
+                .playoffSeasonRecord.wins,
             )
           ) {
             return (
               Number(
                 a.overallCumulativeRecord[a.overallCumulativeRecord.length - 1]
-                  .playoffSeasonRecord.wins
+                  .playoffSeasonRecord.wins,
               ) -
               Number(
                 b.overallCumulativeRecord[b.overallCumulativeRecord.length - 1]
-                  .playoffSeasonRecord.wins
+                  .playoffSeasonRecord.wins,
               )
             );
           }
@@ -2537,7 +2541,7 @@ export default function LeagueOverview({ leagueType, leagueKeysString }) {
           if (a.memberSeasons.length !== b.memberSeasons.length) {
             return b.memberSeasons.length - a.memberSeasons.length;
           }
-        })
+        }),
       );
     } else if (
       e === "Playoff Points Against" &&
@@ -2549,45 +2553,45 @@ export default function LeagueOverview({ leagueType, leagueKeysString }) {
             Number(
               a.overallCumulativeRecord[
                 a.overallCumulativeRecord.length - 1
-              ].playoffSeasonRecord.pointsAgainst.toFixed(2)
+              ].playoffSeasonRecord.pointsAgainst.toFixed(2),
             ) !==
             Number(
               b.overallCumulativeRecord[
                 b.overallCumulativeRecord.length - 1
-              ].playoffSeasonRecord.pointsAgainst.toFixed(2)
+              ].playoffSeasonRecord.pointsAgainst.toFixed(2),
             )
           ) {
             return (
               Number(
                 b.overallCumulativeRecord[
                   b.overallCumulativeRecord.length - 1
-                ].playoffSeasonRecord.pointsAgainst.toFixed(2)
+                ].playoffSeasonRecord.pointsAgainst.toFixed(2),
               ) -
               Number(
                 a.overallCumulativeRecord[
                   a.overallCumulativeRecord.length - 1
-                ].playoffSeasonRecord.pointsAgainst.toFixed(2)
+                ].playoffSeasonRecord.pointsAgainst.toFixed(2),
               )
             );
           }
           if (
             Number(
               a.overallCumulativeRecord[a.overallCumulativeRecord.length - 1]
-                .playoffSeasonRecord.wins
+                .playoffSeasonRecord.wins,
             ) !==
             Number(
               b.overallCumulativeRecord[b.overallCumulativeRecord.length - 1]
-                .playoffSeasonRecord.wins
+                .playoffSeasonRecord.wins,
             )
           ) {
             return (
               Number(
                 b.overallCumulativeRecord[b.overallCumulativeRecord.length - 1]
-                  .playoffSeasonRecord.wins
+                  .playoffSeasonRecord.wins,
               ) -
               Number(
                 a.overallCumulativeRecord[a.overallCumulativeRecord.length - 1]
-                  .playoffSeasonRecord.wins
+                  .playoffSeasonRecord.wins,
               )
             );
           }
@@ -2602,7 +2606,7 @@ export default function LeagueOverview({ leagueType, leagueKeysString }) {
           if (a.memberSeasons.length !== b.memberSeasons.length) {
             return b.memberSeasons.length - a.memberSeasons.length;
           }
-        })
+        }),
       );
     } else if (
       e === "Playoff Points Against" &&
@@ -2614,45 +2618,45 @@ export default function LeagueOverview({ leagueType, leagueKeysString }) {
             Number(
               a.overallCumulativeRecord[
                 a.overallCumulativeRecord.length - 1
-              ].playoffSeasonRecord.pointsAgainst.toFixed(2)
+              ].playoffSeasonRecord.pointsAgainst.toFixed(2),
             ) !==
             Number(
               b.overallCumulativeRecord[
                 b.overallCumulativeRecord.length - 1
-              ].playoffSeasonRecord.pointsAgainst.toFixed(2)
+              ].playoffSeasonRecord.pointsAgainst.toFixed(2),
             )
           ) {
             return (
               Number(
                 a.overallCumulativeRecord[
                   a.overallCumulativeRecord.length - 1
-                ].playoffSeasonRecord.pointsAgainst.toFixed(2)
+                ].playoffSeasonRecord.pointsAgainst.toFixed(2),
               ) -
               Number(
                 b.overallCumulativeRecord[
                   b.overallCumulativeRecord.length - 1
-                ].playoffSeasonRecord.pointsAgainst.toFixed(2)
+                ].playoffSeasonRecord.pointsAgainst.toFixed(2),
               )
             );
           }
           if (
             Number(
               a.overallCumulativeRecord[a.overallCumulativeRecord.length - 1]
-                .playoffSeasonRecord.wins
+                .playoffSeasonRecord.wins,
             ) !==
             Number(
               b.overallCumulativeRecord[b.overallCumulativeRecord.length - 1]
-                .playoffSeasonRecord.wins
+                .playoffSeasonRecord.wins,
             )
           ) {
             return (
               Number(
                 a.overallCumulativeRecord[a.overallCumulativeRecord.length - 1]
-                  .playoffSeasonRecord.wins
+                  .playoffSeasonRecord.wins,
               ) -
               Number(
                 b.overallCumulativeRecord[b.overallCumulativeRecord.length - 1]
-                  .playoffSeasonRecord.wins
+                  .playoffSeasonRecord.wins,
               )
             );
           }
@@ -2667,7 +2671,7 @@ export default function LeagueOverview({ leagueType, leagueKeysString }) {
           if (a.memberSeasons.length !== b.memberSeasons.length) {
             return b.memberSeasons.length - a.memberSeasons.length;
           }
-        })
+        }),
       );
     } else if (
       e === "Playoff Point Differential" &&
@@ -2680,13 +2684,13 @@ export default function LeagueOverview({ leagueType, leagueKeysString }) {
               a.overallCumulativeRecord[a.overallCumulativeRecord.length - 1]
                 .playoffSeasonRecord.pointsFor -
                 a.overallCumulativeRecord[a.overallCumulativeRecord.length - 1]
-                  .playoffSeasonRecord.pointsAgainst
+                  .playoffSeasonRecord.pointsAgainst,
             ) !==
             Number(
               b.overallCumulativeRecord[b.overallCumulativeRecord.length - 1]
                 .playoffSeasonRecord.pointsFor -
                 b.overallCumulativeRecord[b.overallCumulativeRecord.length - 1]
-                  .playoffSeasonRecord.pointsAgainst
+                  .playoffSeasonRecord.pointsAgainst,
             )
           ) {
             return (
@@ -2695,35 +2699,35 @@ export default function LeagueOverview({ leagueType, leagueKeysString }) {
                   .playoffSeasonRecord.pointsFor -
                   b.overallCumulativeRecord[
                     b.overallCumulativeRecord.length - 1
-                  ].playoffSeasonRecord.pointsAgainst
+                  ].playoffSeasonRecord.pointsAgainst,
               ) -
               Number(
                 a.overallCumulativeRecord[a.overallCumulativeRecord.length - 1]
                   .playoffSeasonRecord.pointsFor -
                   a.overallCumulativeRecord[
                     a.overallCumulativeRecord.length - 1
-                  ].playoffSeasonRecord.pointsAgainst
+                  ].playoffSeasonRecord.pointsAgainst,
               )
             );
           }
           if (
             Number(
               a.overallCumulativeRecord[a.overallCumulativeRecord.length - 1]
-                .playoffSeasonRecord.wins
+                .playoffSeasonRecord.wins,
             ) !==
             Number(
               b.overallCumulativeRecord[b.overallCumulativeRecord.length - 1]
-                .playoffSeasonRecord.wins
+                .playoffSeasonRecord.wins,
             )
           ) {
             return (
               Number(
                 b.overallCumulativeRecord[b.overallCumulativeRecord.length - 1]
-                  .playoffSeasonRecord.wins
+                  .playoffSeasonRecord.wins,
               ) -
               Number(
                 a.overallCumulativeRecord[a.overallCumulativeRecord.length - 1]
-                  .playoffSeasonRecord.wins
+                  .playoffSeasonRecord.wins,
               )
             );
           }
@@ -2738,7 +2742,7 @@ export default function LeagueOverview({ leagueType, leagueKeysString }) {
           if (a.memberSeasons.length !== b.memberSeasons.length) {
             return b.memberSeasons.length - a.memberSeasons.length;
           }
-        })
+        }),
       );
     } else if (
       e === "Playoff Point Differential" &&
@@ -2751,13 +2755,13 @@ export default function LeagueOverview({ leagueType, leagueKeysString }) {
               a.overallCumulativeRecord[a.overallCumulativeRecord.length - 1]
                 .playoffSeasonRecord.pointsFor -
                 a.overallCumulativeRecord[a.overallCumulativeRecord.length - 1]
-                  .playoffSeasonRecord.pointsAgainst
+                  .playoffSeasonRecord.pointsAgainst,
             ) !==
             Number(
               b.overallCumulativeRecord[b.overallCumulativeRecord.length - 1]
                 .playoffSeasonRecord.pointsFor -
                 b.overallCumulativeRecord[b.overallCumulativeRecord.length - 1]
-                  .playoffSeasonRecord.pointsAgainst
+                  .playoffSeasonRecord.pointsAgainst,
             )
           ) {
             return (
@@ -2766,35 +2770,35 @@ export default function LeagueOverview({ leagueType, leagueKeysString }) {
                   .playoffSeasonRecord.pointsFor -
                   a.overallCumulativeRecord[
                     a.overallCumulativeRecord.length - 1
-                  ].playoffSeasonRecord.pointsAgainst
+                  ].playoffSeasonRecord.pointsAgainst,
               ) -
               Number(
                 b.overallCumulativeRecord[b.overallCumulativeRecord.length - 1]
                   .playoffSeasonRecord.pointsFor -
                   b.overallCumulativeRecord[
                     b.overallCumulativeRecord.length - 1
-                  ].playoffSeasonRecord.pointsAgainst
+                  ].playoffSeasonRecord.pointsAgainst,
               )
             );
           }
           if (
             Number(
               a.overallCumulativeRecord[a.overallCumulativeRecord.length - 1]
-                .playoffSeasonRecord.wins
+                .playoffSeasonRecord.wins,
             ) !==
             Number(
               b.overallCumulativeRecord[b.overallCumulativeRecord.length - 1]
-                .playoffSeasonRecord.wins
+                .playoffSeasonRecord.wins,
             )
           ) {
             return (
               Number(
                 a.overallCumulativeRecord[a.overallCumulativeRecord.length - 1]
-                  .playoffSeasonRecord.wins
+                  .playoffSeasonRecord.wins,
               ) -
               Number(
                 b.overallCumulativeRecord[b.overallCumulativeRecord.length - 1]
-                  .playoffSeasonRecord.wins
+                  .playoffSeasonRecord.wins,
               )
             );
           }
@@ -2809,7 +2813,7 @@ export default function LeagueOverview({ leagueType, leagueKeysString }) {
           if (a.memberSeasons.length !== b.memberSeasons.length) {
             return b.memberSeasons.length - a.memberSeasons.length;
           }
-        })
+        }),
       );
     } else if (
       e === "Consolation Record" &&
@@ -2820,63 +2824,63 @@ export default function LeagueOverview({ leagueType, leagueKeysString }) {
           if (
             Number(
               a.overallCumulativeRecord[a.overallCumulativeRecord.length - 1]
-                .consolationSeasonRecord.wins
+                .consolationSeasonRecord.wins,
             ) !==
             Number(
               b.overallCumulativeRecord[b.overallCumulativeRecord.length - 1]
-                .consolationSeasonRecord.wins
+                .consolationSeasonRecord.wins,
             )
           ) {
             return (
               Number(
                 b.overallCumulativeRecord[b.overallCumulativeRecord.length - 1]
-                  .consolationSeasonRecord.wins
+                  .consolationSeasonRecord.wins,
               ) -
               Number(
                 a.overallCumulativeRecord[a.overallCumulativeRecord.length - 1]
-                  .consolationSeasonRecord.wins
+                  .consolationSeasonRecord.wins,
               )
             );
           }
           if (
             Number(
               a.overallCumulativeRecord[a.overallCumulativeRecord.length - 1]
-                .consolationSeasonRecord.losses
+                .consolationSeasonRecord.losses,
             ) !==
             Number(
               b.overallCumulativeRecord[b.overallCumulativeRecord.length - 1]
-                .consolationSeasonRecord.losses
+                .consolationSeasonRecord.losses,
             )
           ) {
             return (
               Number(
                 a.overallCumulativeRecord[a.overallCumulativeRecord.length - 1]
-                  .consolationSeasonRecord.losses
+                  .consolationSeasonRecord.losses,
               ) -
               Number(
                 b.overallCumulativeRecord[b.overallCumulativeRecord.length - 1]
-                  .consolationSeasonRecord.losses
+                  .consolationSeasonRecord.losses,
               )
             );
           }
           if (
             Number(
               a.overallCumulativeRecord[a.overallCumulativeRecord.length - 1]
-                .consolationSeasonRecord.ties
+                .consolationSeasonRecord.ties,
             ) !==
             Number(
               b.overallCumulativeRecord[b.overallCumulativeRecord.length - 1]
-                .consolationSeasonRecord.ties
+                .consolationSeasonRecord.ties,
             )
           ) {
             return (
               Number(
                 b.overallCumulativeRecord[b.overallCumulativeRecord.length - 1]
-                  .consolationSeasonRecord.ties
+                  .consolationSeasonRecord.ties,
               ) -
               Number(
                 a.overallCumulativeRecord[a.overallCumulativeRecord.length - 1]
-                  .consolationSeasonRecord.ties
+                  .consolationSeasonRecord.ties,
               )
             );
           }
@@ -2890,7 +2894,7 @@ export default function LeagueOverview({ leagueType, leagueKeysString }) {
           if (a.memberSeasons.length !== b.memberSeasons.length) {
             return b.memberSeasons.length - a.memberSeasons.length;
           }
-        })
+        }),
       );
     } else if (
       e === "Consolation Record" &&
@@ -2901,63 +2905,63 @@ export default function LeagueOverview({ leagueType, leagueKeysString }) {
           if (
             Number(
               a.overallCumulativeRecord[a.overallCumulativeRecord.length - 1]
-                .consolationSeasonRecord.wins
+                .consolationSeasonRecord.wins,
             ) !==
             Number(
               b.overallCumulativeRecord[b.overallCumulativeRecord.length - 1]
-                .consolationSeasonRecord.wins
+                .consolationSeasonRecord.wins,
             )
           ) {
             return (
               Number(
                 a.overallCumulativeRecord[a.overallCumulativeRecord.length - 1]
-                  .consolationSeasonRecord.wins
+                  .consolationSeasonRecord.wins,
               ) -
               Number(
                 b.overallCumulativeRecord[b.overallCumulativeRecord.length - 1]
-                  .consolationSeasonRecord.wins
+                  .consolationSeasonRecord.wins,
               )
             );
           }
           if (
             Number(
               a.overallCumulativeRecord[a.overallCumulativeRecord.length - 1]
-                .consolationSeasonRecord.losses
+                .consolationSeasonRecord.losses,
             ) !==
             Number(
               b.overallCumulativeRecord[b.overallCumulativeRecord.length - 1]
-                .consolationSeasonRecord.losses
+                .consolationSeasonRecord.losses,
             )
           ) {
             return (
               Number(
                 b.overallCumulativeRecord[b.overallCumulativeRecord.length - 1]
-                  .consolationSeasonRecord.losses
+                  .consolationSeasonRecord.losses,
               ) -
               Number(
                 a.overallCumulativeRecord[a.overallCumulativeRecord.length - 1]
-                  .consolationSeasonRecord.losses
+                  .consolationSeasonRecord.losses,
               )
             );
           }
           if (
             Number(
               a.overallCumulativeRecord[a.overallCumulativeRecord.length - 1]
-                .consolationSeasonRecord.ties
+                .consolationSeasonRecord.ties,
             ) !==
             Number(
               b.overallCumulativeRecord[b.overallCumulativeRecord.length - 1]
-                .consolationSeasonRecord.ties
+                .consolationSeasonRecord.ties,
             )
           ) {
             return (
               Number(
                 a.overallCumulativeRecord[a.overallCumulativeRecord.length - 1]
-                  .consolationSeasonRecord.ties
+                  .consolationSeasonRecord.ties,
               ) -
               Number(
                 b.overallCumulativeRecord[b.overallCumulativeRecord.length - 1]
-                  .consolationSeasonRecord.ties
+                  .consolationSeasonRecord.ties,
               )
             );
           }
@@ -2971,7 +2975,7 @@ export default function LeagueOverview({ leagueType, leagueKeysString }) {
           if (a.memberSeasons.length !== b.memberSeasons.length) {
             return b.memberSeasons.length - a.memberSeasons.length;
           }
-        })
+        }),
       );
     } else if (
       e === "Consolation Win Percentage" &&
@@ -3027,21 +3031,21 @@ export default function LeagueOverview({ leagueType, leagueKeysString }) {
           if (
             Number(
               a.overallCumulativeRecord[a.overallCumulativeRecord.length - 1]
-                .consolationSeasonRecord.wins
+                .consolationSeasonRecord.wins,
             ) !==
             Number(
               b.overallCumulativeRecord[b.overallCumulativeRecord.length - 1]
-                .consolationSeasonRecord.wins
+                .consolationSeasonRecord.wins,
             )
           ) {
             return (
               Number(
                 b.overallCumulativeRecord[b.overallCumulativeRecord.length - 1]
-                  .consolationSeasonRecord.wins
+                  .consolationSeasonRecord.wins,
               ) -
               Number(
                 a.overallCumulativeRecord[a.overallCumulativeRecord.length - 1]
-                  .consolationSeasonRecord.wins
+                  .consolationSeasonRecord.wins,
               )
             );
           }
@@ -3056,7 +3060,7 @@ export default function LeagueOverview({ leagueType, leagueKeysString }) {
           if (a.memberSeasons.length !== b.memberSeasons.length) {
             return b.memberSeasons.length - a.memberSeasons.length;
           }
-        })
+        }),
       );
     } else if (
       e === "Consolation Win Percentage" &&
@@ -3112,21 +3116,21 @@ export default function LeagueOverview({ leagueType, leagueKeysString }) {
           if (
             Number(
               a.overallCumulativeRecord[a.overallCumulativeRecord.length - 1]
-                .consolationSeasonRecord.wins
+                .consolationSeasonRecord.wins,
             ) !==
             Number(
               b.overallCumulativeRecord[b.overallCumulativeRecord.length - 1]
-                .consolationSeasonRecord.wins
+                .consolationSeasonRecord.wins,
             )
           ) {
             return (
               Number(
                 a.overallCumulativeRecord[a.overallCumulativeRecord.length - 1]
-                  .consolationSeasonRecord.wins
+                  .consolationSeasonRecord.wins,
               ) -
               Number(
                 b.overallCumulativeRecord[b.overallCumulativeRecord.length - 1]
-                  .consolationSeasonRecord.wins
+                  .consolationSeasonRecord.wins,
               )
             );
           }
@@ -3141,7 +3145,7 @@ export default function LeagueOverview({ leagueType, leagueKeysString }) {
           if (a.memberSeasons.length !== b.memberSeasons.length) {
             return b.memberSeasons.length - a.memberSeasons.length;
           }
-        })
+        }),
       );
     } else if (
       e === "Consolation Points For" &&
@@ -3153,45 +3157,45 @@ export default function LeagueOverview({ leagueType, leagueKeysString }) {
             Number(
               a.overallCumulativeRecord[
                 a.overallCumulativeRecord.length - 1
-              ].consolationSeasonRecord.pointsFor.toFixed(2)
+              ].consolationSeasonRecord.pointsFor.toFixed(2),
             ) !==
             Number(
               b.overallCumulativeRecord[
                 b.overallCumulativeRecord.length - 1
-              ].consolationSeasonRecord.pointsFor.toFixed(2)
+              ].consolationSeasonRecord.pointsFor.toFixed(2),
             )
           ) {
             return (
               Number(
                 b.overallCumulativeRecord[
                   b.overallCumulativeRecord.length - 1
-                ].consolationSeasonRecord.pointsFor.toFixed(2)
+                ].consolationSeasonRecord.pointsFor.toFixed(2),
               ) -
               Number(
                 a.overallCumulativeRecord[
                   a.overallCumulativeRecord.length - 1
-                ].consolationSeasonRecord.pointsFor.toFixed(2)
+                ].consolationSeasonRecord.pointsFor.toFixed(2),
               )
             );
           }
           if (
             Number(
               a.overallCumulativeRecord[a.overallCumulativeRecord.length - 1]
-                .consolationSeasonRecord.wins
+                .consolationSeasonRecord.wins,
             ) !==
             Number(
               b.overallCumulativeRecord[b.overallCumulativeRecord.length - 1]
-                .consolationSeasonRecord.wins
+                .consolationSeasonRecord.wins,
             )
           ) {
             return (
               Number(
                 b.overallCumulativeRecord[b.overallCumulativeRecord.length - 1]
-                  .consolationSeasonRecord.wins
+                  .consolationSeasonRecord.wins,
               ) -
               Number(
                 a.overallCumulativeRecord[a.overallCumulativeRecord.length - 1]
-                  .consolationSeasonRecord.wins
+                  .consolationSeasonRecord.wins,
               )
             );
           }
@@ -3206,7 +3210,7 @@ export default function LeagueOverview({ leagueType, leagueKeysString }) {
           if (a.memberSeasons.length !== b.memberSeasons.length) {
             return b.memberSeasons.length - a.memberSeasons.length;
           }
-        })
+        }),
       );
     } else if (
       e === "Consolation Points For" &&
@@ -3218,45 +3222,45 @@ export default function LeagueOverview({ leagueType, leagueKeysString }) {
             Number(
               a.overallCumulativeRecord[
                 a.overallCumulativeRecord.length - 1
-              ].consolationSeasonRecord.pointsFor.toFixed(2)
+              ].consolationSeasonRecord.pointsFor.toFixed(2),
             ) !==
             Number(
               b.overallCumulativeRecord[
                 b.overallCumulativeRecord.length - 1
-              ].consolationSeasonRecord.pointsFor.toFixed(2)
+              ].consolationSeasonRecord.pointsFor.toFixed(2),
             )
           ) {
             return (
               Number(
                 a.overallCumulativeRecord[
                   a.overallCumulativeRecord.length - 1
-                ].consolationSeasonRecord.pointsFor.toFixed(2)
+                ].consolationSeasonRecord.pointsFor.toFixed(2),
               ) -
               Number(
                 b.overallCumulativeRecord[
                   b.overallCumulativeRecord.length - 1
-                ].consolationSeasonRecord.pointsFor.toFixed(2)
+                ].consolationSeasonRecord.pointsFor.toFixed(2),
               )
             );
           }
           if (
             Number(
               a.overallCumulativeRecord[a.overallCumulativeRecord.length - 1]
-                .consolationSeasonRecord.wins
+                .consolationSeasonRecord.wins,
             ) !==
             Number(
               b.overallCumulativeRecord[b.overallCumulativeRecord.length - 1]
-                .consolationSeasonRecord.wins
+                .consolationSeasonRecord.wins,
             )
           ) {
             return (
               Number(
                 a.overallCumulativeRecord[a.overallCumulativeRecord.length - 1]
-                  .consolationSeasonRecord.wins
+                  .consolationSeasonRecord.wins,
               ) -
               Number(
                 b.overallCumulativeRecord[b.overallCumulativeRecord.length - 1]
-                  .consolationSeasonRecord.wins
+                  .consolationSeasonRecord.wins,
               )
             );
           }
@@ -3271,7 +3275,7 @@ export default function LeagueOverview({ leagueType, leagueKeysString }) {
           if (a.memberSeasons.length !== b.memberSeasons.length) {
             return b.memberSeasons.length - a.memberSeasons.length;
           }
-        })
+        }),
       );
     } else if (
       e === "Consolation Points Against" &&
@@ -3283,45 +3287,45 @@ export default function LeagueOverview({ leagueType, leagueKeysString }) {
             Number(
               a.overallCumulativeRecord[
                 a.overallCumulativeRecord.length - 1
-              ].consolationSeasonRecord.pointsAgainst.toFixed(2)
+              ].consolationSeasonRecord.pointsAgainst.toFixed(2),
             ) !==
             Number(
               b.overallCumulativeRecord[
                 b.overallCumulativeRecord.length - 1
-              ].consolationSeasonRecord.pointsAgainst.toFixed(2)
+              ].consolationSeasonRecord.pointsAgainst.toFixed(2),
             )
           ) {
             return (
               Number(
                 b.overallCumulativeRecord[
                   b.overallCumulativeRecord.length - 1
-                ].consolationSeasonRecord.pointsAgainst.toFixed(2)
+                ].consolationSeasonRecord.pointsAgainst.toFixed(2),
               ) -
               Number(
                 a.overallCumulativeRecord[
                   a.overallCumulativeRecord.length - 1
-                ].consolationSeasonRecord.pointsAgainst.toFixed(2)
+                ].consolationSeasonRecord.pointsAgainst.toFixed(2),
               )
             );
           }
           if (
             Number(
               a.overallCumulativeRecord[a.overallCumulativeRecord.length - 1]
-                .consolationSeasonRecord.wins
+                .consolationSeasonRecord.wins,
             ) !==
             Number(
               b.overallCumulativeRecord[b.overallCumulativeRecord.length - 1]
-                .consolationSeasonRecord.wins
+                .consolationSeasonRecord.wins,
             )
           ) {
             return (
               Number(
                 b.overallCumulativeRecord[b.overallCumulativeRecord.length - 1]
-                  .consolationSeasonRecord.wins
+                  .consolationSeasonRecord.wins,
               ) -
               Number(
                 a.overallCumulativeRecord[a.overallCumulativeRecord.length - 1]
-                  .consolationSeasonRecord.wins
+                  .consolationSeasonRecord.wins,
               )
             );
           }
@@ -3336,7 +3340,7 @@ export default function LeagueOverview({ leagueType, leagueKeysString }) {
           if (a.memberSeasons.length !== b.memberSeasons.length) {
             return b.memberSeasons.length - a.memberSeasons.length;
           }
-        })
+        }),
       );
     } else if (
       e === "Consolation Points Against" &&
@@ -3348,45 +3352,45 @@ export default function LeagueOverview({ leagueType, leagueKeysString }) {
             Number(
               a.overallCumulativeRecord[
                 a.overallCumulativeRecord.length - 1
-              ].consolationSeasonRecord.pointsAgainst.toFixed(2)
+              ].consolationSeasonRecord.pointsAgainst.toFixed(2),
             ) !==
             Number(
               b.overallCumulativeRecord[
                 b.overallCumulativeRecord.length - 1
-              ].consolationSeasonRecord.pointsAgainst.toFixed(2)
+              ].consolationSeasonRecord.pointsAgainst.toFixed(2),
             )
           ) {
             return (
               Number(
                 a.overallCumulativeRecord[
                   a.overallCumulativeRecord.length - 1
-                ].consolationSeasonRecord.pointsAgainst.toFixed(2)
+                ].consolationSeasonRecord.pointsAgainst.toFixed(2),
               ) -
               Number(
                 b.overallCumulativeRecord[
                   b.overallCumulativeRecord.length - 1
-                ].consolationSeasonRecord.pointsAgainst.toFixed(2)
+                ].consolationSeasonRecord.pointsAgainst.toFixed(2),
               )
             );
           }
           if (
             Number(
               a.overallCumulativeRecord[a.overallCumulativeRecord.length - 1]
-                .consolationSeasonRecord.wins
+                .consolationSeasonRecord.wins,
             ) !==
             Number(
               b.overallCumulativeRecord[b.overallCumulativeRecord.length - 1]
-                .consolationSeasonRecord.wins
+                .consolationSeasonRecord.wins,
             )
           ) {
             return (
               Number(
                 a.overallCumulativeRecord[a.overallCumulativeRecord.length - 1]
-                  .consolationSeasonRecord.wins
+                  .consolationSeasonRecord.wins,
               ) -
               Number(
                 b.overallCumulativeRecord[b.overallCumulativeRecord.length - 1]
-                  .consolationSeasonRecord.wins
+                  .consolationSeasonRecord.wins,
               )
             );
           }
@@ -3401,7 +3405,7 @@ export default function LeagueOverview({ leagueType, leagueKeysString }) {
           if (a.memberSeasons.length !== b.memberSeasons.length) {
             return b.memberSeasons.length - a.memberSeasons.length;
           }
-        })
+        }),
       );
     } else if (
       e === "Consolation Point Differential" &&
@@ -3414,13 +3418,13 @@ export default function LeagueOverview({ leagueType, leagueKeysString }) {
               a.overallCumulativeRecord[a.overallCumulativeRecord.length - 1]
                 .consolationSeasonRecord.pointsFor -
                 a.overallCumulativeRecord[a.overallCumulativeRecord.length - 1]
-                  .consolationSeasonRecord.pointsAgainst
+                  .consolationSeasonRecord.pointsAgainst,
             ) !==
             Number(
               b.overallCumulativeRecord[b.overallCumulativeRecord.length - 1]
                 .consolationSeasonRecord.pointsFor -
                 b.overallCumulativeRecord[b.overallCumulativeRecord.length - 1]
-                  .consolationSeasonRecord.pointsAgainst
+                  .consolationSeasonRecord.pointsAgainst,
             )
           ) {
             return (
@@ -3429,35 +3433,35 @@ export default function LeagueOverview({ leagueType, leagueKeysString }) {
                   .consolationSeasonRecord.pointsFor -
                   b.overallCumulativeRecord[
                     b.overallCumulativeRecord.length - 1
-                  ].consolationSeasonRecord.pointsAgainst
+                  ].consolationSeasonRecord.pointsAgainst,
               ) -
               Number(
                 a.overallCumulativeRecord[a.overallCumulativeRecord.length - 1]
                   .consolationSeasonRecord.pointsFor -
                   a.overallCumulativeRecord[
                     a.overallCumulativeRecord.length - 1
-                  ].consolationSeasonRecord.pointsAgainst
+                  ].consolationSeasonRecord.pointsAgainst,
               )
             );
           }
           if (
             Number(
               a.overallCumulativeRecord[a.overallCumulativeRecord.length - 1]
-                .consolationSeasonRecord.wins
+                .consolationSeasonRecord.wins,
             ) !==
             Number(
               b.overallCumulativeRecord[b.overallCumulativeRecord.length - 1]
-                .consolationSeasonRecord.wins
+                .consolationSeasonRecord.wins,
             )
           ) {
             return (
               Number(
                 b.overallCumulativeRecord[b.overallCumulativeRecord.length - 1]
-                  .consolationSeasonRecord.wins
+                  .consolationSeasonRecord.wins,
               ) -
               Number(
                 a.overallCumulativeRecord[a.overallCumulativeRecord.length - 1]
-                  .consolationSeasonRecord.wins
+                  .consolationSeasonRecord.wins,
               )
             );
           }
@@ -3472,7 +3476,7 @@ export default function LeagueOverview({ leagueType, leagueKeysString }) {
           if (a.memberSeasons.length !== b.memberSeasons.length) {
             return b.memberSeasons.length - a.memberSeasons.length;
           }
-        })
+        }),
       );
     } else if (
       e === "Consolation Point Differential" &&
@@ -3485,13 +3489,13 @@ export default function LeagueOverview({ leagueType, leagueKeysString }) {
               a.overallCumulativeRecord[a.overallCumulativeRecord.length - 1]
                 .consolationSeasonRecord.pointsFor -
                 a.overallCumulativeRecord[a.overallCumulativeRecord.length - 1]
-                  .consolationSeasonRecord.pointsAgainst
+                  .consolationSeasonRecord.pointsAgainst,
             ) !==
             Number(
               b.overallCumulativeRecord[b.overallCumulativeRecord.length - 1]
                 .consolationSeasonRecord.pointsFor -
                 b.overallCumulativeRecord[b.overallCumulativeRecord.length - 1]
-                  .consolationSeasonRecord.pointsAgainst
+                  .consolationSeasonRecord.pointsAgainst,
             )
           ) {
             return (
@@ -3500,35 +3504,35 @@ export default function LeagueOverview({ leagueType, leagueKeysString }) {
                   .consolationSeasonRecord.pointsFor -
                   a.overallCumulativeRecord[
                     a.overallCumulativeRecord.length - 1
-                  ].consolationSeasonRecord.pointsAgainst
+                  ].consolationSeasonRecord.pointsAgainst,
               ) -
               Number(
                 b.overallCumulativeRecord[b.overallCumulativeRecord.length - 1]
                   .consolationSeasonRecord.pointsFor -
                   b.overallCumulativeRecord[
                     b.overallCumulativeRecord.length - 1
-                  ].consolationSeasonRecord.pointsAgainst
+                  ].consolationSeasonRecord.pointsAgainst,
               )
             );
           }
           if (
             Number(
               a.overallCumulativeRecord[a.overallCumulativeRecord.length - 1]
-                .consolationSeasonRecord.wins
+                .consolationSeasonRecord.wins,
             ) !==
             Number(
               b.overallCumulativeRecord[b.overallCumulativeRecord.length - 1]
-                .consolationSeasonRecord.wins
+                .consolationSeasonRecord.wins,
             )
           ) {
             return (
               Number(
                 a.overallCumulativeRecord[a.overallCumulativeRecord.length - 1]
-                  .consolationSeasonRecord.wins
+                  .consolationSeasonRecord.wins,
               ) -
               Number(
                 b.overallCumulativeRecord[b.overallCumulativeRecord.length - 1]
-                  .consolationSeasonRecord.wins
+                  .consolationSeasonRecord.wins,
               )
             );
           }
@@ -3543,7 +3547,7 @@ export default function LeagueOverview({ leagueType, leagueKeysString }) {
           if (a.memberSeasons.length !== b.memberSeasons.length) {
             return b.memberSeasons.length - a.memberSeasons.length;
           }
-        })
+        }),
       );
     } else if (e === "Member Seasons" && columnSortedBy != "Member Seasons") {
       setChosenSeasonTeams(
@@ -3554,7 +3558,7 @@ export default function LeagueOverview({ leagueType, leagueKeysString }) {
           if (Number(a.rank.rank) !== Number(b.rank.rank)) {
             return Number(b.rank.rank) - Number(a.rank.rank);
           }
-        })
+        }),
       );
     } else if (e === "Member Seasons" && columnSortedBy === "Member Seasons") {
       setChosenSeasonTeams(
@@ -3565,7 +3569,7 @@ export default function LeagueOverview({ leagueType, leagueKeysString }) {
           if (Number(a.rank.rank) !== Number(b.rank.rank)) {
             return Number(b.rank.rank) - Number(a.rank.rank);
           }
-        })
+        }),
       );
     }
     if (e === columnSortedBy) {
