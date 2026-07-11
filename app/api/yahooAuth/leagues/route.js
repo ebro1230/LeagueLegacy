@@ -449,7 +449,7 @@ handler.post(async (req) => {
                           : "",
                         team1ManagerName:
                           matchup.teams[0].team[0].managers[0].manager[0]
-                            .nickname[0] != "--hidden"
+                            .nickname[0] != "--hidden--"
                             ? matchup.teams[0].team[0].managers[0].manager[0]
                                 .nickname[0]
                             : "Unknown",
@@ -477,7 +477,7 @@ handler.post(async (req) => {
                         ),
                         team2ManagerName:
                           matchup.teams[0].team[1].managers[0].manager[0]
-                            .nickname[0] != "--hidden"
+                            .nickname[0] != "--hidden--"
                             ? matchup.teams[0].team[1].managers[0].manager[0]
                                 .nickname[0]
                             : "Unknown",
