@@ -449,7 +449,8 @@ handler.post(async (req) => {
                           : "",
                         team1ManagerName:
                           matchup.teams[0].team[0].managers[0].manager[0]
-                            .nickname[0],
+                            .nickname[0] != "--hidden" ? matchup.teams[0].team[0].managers[0].manager[0]
+                            .nickname[0] : "Unknown",
                         team1ManagerId:
                           matchup.teams[0].team[0].managers[0].manager[0]
                             .guid[0],
@@ -473,8 +474,9 @@ handler.post(async (req) => {
                             .total[0],
                         ),
                         team2ManagerName:
-                          matchup.teams[0].team[1].managers[0].manager[0]
-                            .nickname[0],
+                          matchup.teams[0].team[0].managers[0].manager[0]
+                            .nickname[0] != "--hidden" ? matchup.teams[0].team[0].managers[0].manager[0]
+                            .nickname[0] : "Unknown",
                         team2ManagerId:
                           matchup.teams[0].team[1].managers[0].manager[0]
                             .guid[0],
@@ -582,10 +584,10 @@ handler.post(async (req) => {
                   if (leagueSeason.key === season.seasonKey) {
                     season.matchups.forEach((matchup) => {
                       if (
-                        team.managerId === matchup.team1ManagerId ||
-                        team.managerId === matchup.team2ManagerId
+                        team.managerName === matchup.team1ManagerName ||
+                        team.managerName === matchup.team2ManagerName
                       ) {
-                        if (team.managerId === matchup.team1ManagerId) {
+                        if (team.managerName === matchup.team1ManagerName) {
                           matchups.push({
                             status: matchup.status,
                             season: matchup.season,
@@ -1507,10 +1509,10 @@ handler.post(async (req) => {
               ) {
                 season.matchups.forEach((matchup) => {
                   if (
-                    manager.managerId === matchup.team1ManagerId ||
-                    manager.managerId === matchup.team2ManagerId
+                    manager.managerName === matchup.team1ManagerName ||
+                    manager.managerName === matchup.team2ManagerName
                   ) {
-                    if (manager.managerId === matchup.team1ManagerId) {
+                    if (manager.managerName === matchup.team1ManagerName) {
                       matchups.push({
                         status: matchup.status,
                         season: season.season,
