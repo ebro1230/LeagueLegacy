@@ -14,7 +14,9 @@ export default function LoadingIndicator({ longLoading }) {
       }}
     >
       {longLoading ? (
-        <h4>{`Wow, you've been in this league a long time!`}</h4>
+        <h3
+          style={{ color: "ivory" }}
+        >{`Wow, you've been in this league a long time!`}</h3>
       ) : null}
       <RotatingLines
         strokeColor="ivory"
