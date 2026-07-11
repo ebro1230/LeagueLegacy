@@ -12,7 +12,7 @@ bodyParserXml(bodyParser);
 handler.use(
   cors({
     origin: "*", // Allow all origins
-  })
+  }),
 );
 handler.use(bodyParser.urlencoded({ extended: false }));
 handler.use(bodyParser.json());
@@ -42,15 +42,15 @@ handler.post(async (req) => {
           headers: {
             Authorization: `Bearer ${accessToken}`,
           },
-        }
+        },
       );
       if (!response.ok) {
         let error = new Error(
-          `Request failed when requesting league data with status ${response.status}`
+          `Request failed when requesting league data with status ${response.status}`,
         );
         error.status = response.status; // Add status property
         console.error(
-          `Request failed when requesting league data with status ${response.status}`
+          `Request failed when requesting league data with status ${response.status}`,
         );
         throw error;
       } else {
@@ -115,12 +115,12 @@ handler.post(async (req) => {
                         : "Unknown",
                     managerId: team.managers[0].manager[0].guid[0],
                     pointsFor: Number(
-                      Number(team.team_standings[0].points_for[0]).toFixed(2)
+                      Number(team.team_standings[0].points_for[0]).toFixed(2),
                     ),
                     pointsAgainst: Number(
                       Number(team.team_standings[0].points_against[0]).toFixed(
-                        2
-                      )
+                        2,
+                      ),
                     ),
                     rank: {
                       seasonKey: season.league_key[0],
@@ -128,19 +128,20 @@ handler.post(async (req) => {
                       rank: Number(team.team_standings[0].rank[0]),
                     },
                     wins: Number(
-                      team.team_standings[0].outcome_totals[0].wins[0]
+                      team.team_standings[0].outcome_totals[0].wins[0],
                     ),
                     losses: Number(
-                      team.team_standings[0].outcome_totals[0].losses[0]
+                      team.team_standings[0].outcome_totals[0].losses[0],
                     ),
                     ties: Number(
-                      team.team_standings[0].outcome_totals[0].ties[0]
+                      team.team_standings[0].outcome_totals[0].ties[0],
                     ),
                     winPercentage:
                       Number(
                         Number(
-                          team.team_standings[0].outcome_totals[0].percentage[0]
-                        ).toFixed(2)
+                          team.team_standings[0].outcome_totals[0]
+                            .percentage[0],
+                        ).toFixed(2),
                       ) * 100,
                     playoffSeed: team.team_standings[0].playoff_seed
                       ? Number(team.team_standings[0].playoff_seed[0])
@@ -156,19 +157,19 @@ handler.post(async (req) => {
                 }),
               };
             });
-            const allManagerIds = singleLeagueAllSeasons2.map((season) => {
+            const allManagerNames = singleLeagueAllSeasons2.map((season) => {
               return season.teams.map((team) => {
-                return team.managerId;
+                return team.managerName;
               });
             });
             // Flatten the array of arrays into a single array
-            const allManagerIdsFlattened = allManagerIds.flat();
+            const allManagerNamesFlattened = allManagerNames.flat();
 
             // Create a Set to remove duplicates and convert it back to an array
-            const uniqueManagerIds = [...new Set(allManagerIdsFlattened)];
+            const uniqueManagerNames = [...new Set(allManagerNamesFlattened)];
 
             let overallManagerSummaries = [];
-            uniqueManagerIds.forEach((id) => {
+            uniqueManagerNames.forEach((name) => {
               let overall = {
                 id: [],
                 key: [],
@@ -196,7 +197,7 @@ handler.post(async (req) => {
               };
               singleLeagueAllSeasons2.forEach((season) => {
                 season.teams.forEach((team) => {
-                  if (id === team.managerId) {
+                  if (name === team.managerName) {
                     overall.id = [...overall.id, team.id];
                     overall.key = [...overall.key, team.key];
                     overall.managerName = team.managerName;
@@ -254,7 +255,7 @@ handler.post(async (req) => {
               if (overall.rank.length) {
                 overall.rank.sort((a, b) => b.rank - a.rank);
                 overall.bestFinish = overall.rank.filter(
-                  (season) => Number(season.seasonYear) != currentYear
+                  (season) => Number(season.seasonYear) != currentYear,
                 );
                 if (!overall.bestFinish.length) {
                   overall.bestFinish = [
@@ -268,11 +269,11 @@ handler.post(async (req) => {
                   overall.bestFinish = overall.bestFinish.filter(
                     (season) =>
                       season.rank ===
-                      overall.bestFinish[overall.bestFinish.length - 1].rank
+                      overall.bestFinish[overall.bestFinish.length - 1].rank,
                   );
                 }
                 overall.worstFinish = overall.rank.filter(
-                  (season) => Number(season.seasonYear) != currentYear
+                  (season) => Number(season.seasonYear) != currentYear,
                 );
                 if (!overall.worstFinish.length) {
                   overall.worstFinish = [
@@ -284,14 +285,14 @@ handler.post(async (req) => {
                   ];
                 } else {
                   overall.worstFinish = overall.worstFinish.filter(
-                    (season) => season.rank === overall.worstFinish[0].rank
+                    (season) => season.rank === overall.worstFinish[0].rank,
                   );
                 }
                 overall.championships = overall.rank.filter(
-                  (season) => Number(season.seasonYear) != currentYear
+                  (season) => Number(season.seasonYear) != currentYear,
                 );
                 overall.championships = overall.championships.filter(
-                  (season) => season.rank === 1
+                  (season) => season.rank === 1,
                 );
               } else {
                 overall.bestFinish = "TBD";
@@ -304,7 +305,7 @@ handler.post(async (req) => {
                     (overall.wins /
                       (overall.wins + overall.losses + overall.ties)) *
                     100
-                  ).toFixed(2)
+                  ).toFixed(2),
                 );
               } else {
                 overall.winPercentage = 0;
@@ -375,7 +376,7 @@ handler.post(async (req) => {
                   } else return "";
                 }),
                 mostRecentLogo: singleLeagueAllSeasons2.filter(
-                  (season) => season.logo
+                  (season) => season.logo,
                 ).length
                   ? singleLeagueAllSeasons2.filter((season) => season.logo)[
                       singleLeagueAllSeasons2.filter((season) => season.logo)
@@ -397,15 +398,15 @@ handler.post(async (req) => {
                 Authorization: `Bearer ${accessToken}`,
                 timeout: 5000,
               },
-            }
+            },
           );
           if (!response.ok) {
             let error = new Error(
-              `Request failed when fetching promises with status ${response.status}`
+              `Request failed when fetching promises with status ${response.status}`,
             );
             error.status = response.status; // Add status property
             console.error(
-              `Request failed when fetching promises data with status ${response.status}`
+              `Request failed when fetching promises data with status ${response.status}`,
             );
             throw error;
           } else {
@@ -458,18 +459,18 @@ handler.post(async (req) => {
                           matchup.teams[0].team[0].team_logos[0].team_logo[0]
                             .url[0],
                         team1PointsFor: Number(
-                          matchup.teams[0].team[0].team_points[0].total[0]
+                          matchup.teams[0].team[0].team_points[0].total[0],
                         ),
                         team1ProjectedPointsFor: Number(
                           matchup.teams[0].team[0].team_projected_points[0]
-                            .total[0]
+                            .total[0],
                         ),
                         team1PointsAgainst: Number(
-                          matchup.teams[0].team[1].team_points[0].total[0]
+                          matchup.teams[0].team[1].team_points[0].total[0],
                         ),
                         team1ProjectedPointsAgainst: Number(
                           matchup.teams[0].team[1].team_projected_points[0]
-                            .total[0]
+                            .total[0],
                         ),
                         team2ManagerName:
                           matchup.teams[0].team[1].managers[0].manager[0]
@@ -483,21 +484,21 @@ handler.post(async (req) => {
                           matchup.teams[0].team[1].team_logos[0].team_logo[0]
                             .url[0],
                         team2PointsFor: Number(
-                          matchup.teams[0].team[1].team_points[0].total[0]
+                          matchup.teams[0].team[1].team_points[0].total[0],
                         ),
                         team2ProjectedPointsFor: Number(
                           matchup.teams[0].team[1].team_projected_points[0]
-                            .total[0]
+                            .total[0],
                         ),
                         team2PointsAgainst: Number(
-                          matchup.teams[0].team[0].team_points[0].total[0]
+                          matchup.teams[0].team[0].team_points[0].total[0],
                         ),
                         team2ProjectedPointsAgainst: Number(
                           matchup.teams[0].team[0].team_projected_points[0]
-                            .total[0]
+                            .total[0],
                         ),
                       };
-                    }
+                    },
                   );
                 let leagueWeeksArray = [];
                 for (
@@ -511,10 +512,10 @@ handler.post(async (req) => {
                   season: result.fantasy_content.league[0].season[0],
                   seasonKey: result.fantasy_content.league[0].league_key[0],
                   seasonStartWeek: Number(
-                    result.fantasy_content.league[0].start_week[0]
+                    result.fantasy_content.league[0].start_week[0],
                   ),
                   seasonEndWeek: Number(
-                    result.fantasy_content.league[0].end_week[0]
+                    result.fantasy_content.league[0].end_week[0],
                   ),
                   seasonWeeks: leagueWeeksArray,
                   matchups: matchup,
@@ -848,7 +849,7 @@ handler.post(async (req) => {
                           Number(week.projectedPointsFor),
                         projectedPointsAgainst:
                           Number(
-                            previousConsolationObject.projectedPointsAgainst
+                            previousConsolationObject.projectedPointsAgainst,
                           ) + Number(week.projectedPointsAgainst),
                       };
                       previousConsolationObject = newConsolationObject;
@@ -861,13 +862,13 @@ handler.post(async (req) => {
                     seasonEndWeek: season.seasonEndWeek,
                     seasonWeeks: season.seasonWeeks,
                     regularSeasonRecord: cumulativeWeeks.filter(
-                      (week) => !week.isPlayoff && !week.isConsolation
+                      (week) => !week.isPlayoff && !week.isConsolation,
                     )
                       ? cumulativeWeeks.filter(
-                          (week) => !week.isPlayoff && !week.isConsolation
+                          (week) => !week.isPlayoff && !week.isConsolation,
                         )[
                           cumulativeWeeks.filter(
-                            (week) => !week.isPlayoff && !week.isConsolation
+                            (week) => !week.isPlayoff && !week.isConsolation,
                           ).length - 1
                         ]
                       : "N/A",
@@ -1058,7 +1059,7 @@ handler.post(async (req) => {
                       Math.abs(week.pointsFor - week.pointsAgainst) <
                         Math.abs(
                           gameRecords.closestMatch[0].pointsFor -
-                            gameRecords.closestMatch[0].pointsAgainst
+                            gameRecords.closestMatch[0].pointsAgainst,
                         ) &&
                       week.ties != 1 &&
                       week.status === "postevent"
@@ -1074,7 +1075,7 @@ handler.post(async (req) => {
                       Math.abs(week.pointsFor - week.pointsAgainst) ===
                         Math.abs(
                           gameRecords.closestMatch[0].pointsFor -
-                            gameRecords.closestMatch[0].pointsAgainst
+                            gameRecords.closestMatch[0].pointsAgainst,
                         ) &&
                       week.ties != 1 &&
                       week.status === "postevent"
@@ -1115,7 +1116,7 @@ handler.post(async (req) => {
                         Math.abs(
                           gameRecords.mostAccurateProjection[0].pointsFor -
                             gameRecords.mostAccurateProjection[0]
-                              .projectedPointsFor
+                              .projectedPointsFor,
                         ) &&
                       (week.pointsFor != 0 || week.projectedPointsFor != 0)
                     ) {
@@ -1131,7 +1132,7 @@ handler.post(async (req) => {
                         Math.abs(
                           gameRecords.mostAccurateProjection[0].pointsFor -
                             gameRecords.mostAccurateProjection[0]
-                              .projectedPointsFor
+                              .projectedPointsFor,
                         ) &&
                       (week.pointsFor != 0 || week.projectedPointsFor != 0)
                     ) {
@@ -1382,22 +1383,22 @@ handler.post(async (req) => {
                 if (
                   Math.abs(
                     team.gameRecords.closestMatch[0].pointsFor -
-                      team.gameRecords.closestMatch[0].pointsAgainst
+                      team.gameRecords.closestMatch[0].pointsAgainst,
                   ) <
                   Math.abs(
                     seasonRecords.closestMatch[0].pointsFor -
-                      seasonRecords.closestMatch[0].pointsAgainst
+                      seasonRecords.closestMatch[0].pointsAgainst,
                   )
                 ) {
                   seasonRecords.closestMatch = team.gameRecords.closestMatch;
                 } else if (
                   Math.abs(
                     team.gameRecords.closestMatch[0].pointsFor -
-                      team.gameRecords.closestMatch[0].pointsAgainst
+                      team.gameRecords.closestMatch[0].pointsAgainst,
                   ) ===
                     Math.abs(
                       seasonRecords.closestMatch[0].pointsFor -
-                        seasonRecords.closestMatch[0].pointsAgainst
+                        seasonRecords.closestMatch[0].pointsAgainst,
                     ) &&
                   seasonRecords.closestMatch[0].name !=
                     team.gameRecords.closestMatch[0].opponentName
@@ -1430,11 +1431,12 @@ handler.post(async (req) => {
                   Math.abs(
                     team.gameRecords.mostAccurateProjection[0].pointsFor -
                       team.gameRecords.mostAccurateProjection[0]
-                        .projectedPointsFor
+                        .projectedPointsFor,
                   ) <
                   Math.abs(
                     seasonRecords.mostAccurateProjection[0].pointsFor -
-                      seasonRecords.mostAccurateProjection[0].projectedPointsFor
+                      seasonRecords.mostAccurateProjection[0]
+                        .projectedPointsFor,
                   )
                 ) {
                   seasonRecords.mostAccurateProjection =
@@ -1443,11 +1445,12 @@ handler.post(async (req) => {
                   Math.abs(
                     team.gameRecords.mostAccurateProjection[0].pointsFor -
                       team.gameRecords.mostAccurateProjection[0]
-                        .projectedPointsFor
+                        .projectedPointsFor,
                   ) ===
                   Math.abs(
                     seasonRecords.mostAccurateProjection[0].pointsFor -
-                      seasonRecords.mostAccurateProjection[0].projectedPointsFor
+                      seasonRecords.mostAccurateProjection[0]
+                        .projectedPointsFor,
                   )
                 ) {
                   team.gameRecords.mostAccurateProjection.forEach((game) => {
@@ -1499,7 +1502,7 @@ handler.post(async (req) => {
 
               if (
                 manager.memberSeasons.some(
-                  (memberSeason) => memberSeason.seasonKey === season.seasonKey
+                  (memberSeason) => memberSeason.seasonKey === season.seasonKey,
                 )
               ) {
                 season.matchups.forEach((matchup) => {
@@ -1652,19 +1655,19 @@ handler.post(async (req) => {
                   wins: [
                     ...previousObject.wins,
                     Number(
-                      previousObject.wins[previousObject.wins.length - 1]
+                      previousObject.wins[previousObject.wins.length - 1],
                     ) + Number(week.wins),
                   ],
                   losses: [
                     ...previousObject.losses,
                     Number(
-                      previousObject.losses[previousObject.losses.length - 1]
+                      previousObject.losses[previousObject.losses.length - 1],
                     ) + Number(week.losses),
                   ],
                   ties: [
                     ...previousObject.ties,
                     Number(
-                      previousObject.ties[previousObject.ties.length - 1]
+                      previousObject.ties[previousObject.ties.length - 1],
                     ) + Number(week.ties),
                   ],
                   pointsFor: [
@@ -1672,7 +1675,7 @@ handler.post(async (req) => {
                     Number(
                       previousObject.pointsFor[
                         previousObject.pointsFor.length - 1
-                      ]
+                      ],
                     ) + Number(week.pointsFor),
                   ],
                   pointsAgainst: [
@@ -1680,17 +1683,17 @@ handler.post(async (req) => {
                     Number(
                       previousObject.pointsAgainst[
                         previousObject.pointsAgainst.length - 1
-                      ]
+                      ],
                     ) + Number(week.pointsAgainst),
                   ],
                   winDifferential: [
                     ...previousObject.winDifferential,
                     Number(
-                      previousObject.wins[previousObject.wins.length - 1]
+                      previousObject.wins[previousObject.wins.length - 1],
                     ) +
                       Number(week.wins) -
                       (Number(
-                        previousObject.losses[previousObject.losses.length - 1]
+                        previousObject.losses[previousObject.losses.length - 1],
                       ) +
                         Number(week.losses)),
                   ],
@@ -1699,13 +1702,13 @@ handler.post(async (req) => {
                     Number(
                       previousObject.pointsFor[
                         previousObject.pointsFor.length - 1
-                      ]
+                      ],
                     ) +
                       Number(week.pointsFor) -
                       (Number(
                         previousObject.pointsAgainst[
                           previousObject.pointsAgainst.length - 1
-                        ]
+                        ],
                       ) +
                         Number(week.pointsAgainst)),
                   ],
@@ -1714,7 +1717,7 @@ handler.post(async (req) => {
                     Number(
                       previousObject.projectedPointsFor[
                         previousObject.projectedPointsFor.length - 1
-                      ]
+                      ],
                     ) + Number(week.projectedPointsFor),
                   ],
                   projectedPointsAgainst: [
@@ -1722,7 +1725,7 @@ handler.post(async (req) => {
                     Number(
                       previousObject.projectedPointsAgainst[
                         previousObject.projectedPointsAgainst.length - 1
-                      ]
+                      ],
                     ) + Number(week.projectedPointsAgainst),
                   ],
                   isPlayoff: week.isPlayoff,
@@ -1769,7 +1772,7 @@ handler.post(async (req) => {
                       Number(
                         previousPlayoffObject.wins[
                           previousPlayoffObject.wins.length - 1
-                        ]
+                        ],
                       ) + Number(week.wins),
                     ],
                     losses: [
@@ -1777,7 +1780,7 @@ handler.post(async (req) => {
                       Number(
                         previousPlayoffObject.losses[
                           previousPlayoffObject.losses.length - 1
-                        ]
+                        ],
                       ) + Number(week.losses),
                     ],
                     ties: [
@@ -1785,7 +1788,7 @@ handler.post(async (req) => {
                       Number(
                         previousPlayoffObject.ties[
                           previousPlayoffObject.ties.length - 1
-                        ]
+                        ],
                       ) + Number(week.ties),
                     ],
                     pointsFor: [
@@ -1793,7 +1796,7 @@ handler.post(async (req) => {
                       Number(
                         previousPlayoffObject.pointsFor[
                           previousPlayoffObject.pointsFor.length - 1
-                        ]
+                        ],
                       ) + Number(week.pointsFor),
                     ],
                     pointsAgainst: [
@@ -1801,7 +1804,7 @@ handler.post(async (req) => {
                       Number(
                         previousPlayoffObject.pointsAgainst[
                           previousPlayoffObject.pointsAgainst.length - 1
-                        ]
+                        ],
                       ) + Number(week.pointsAgainst),
                     ],
                     winDifferential: [
@@ -1809,13 +1812,13 @@ handler.post(async (req) => {
                       Number(
                         previousPlayoffObject.wins[
                           previousPlayoffObject.wins.length - 1
-                        ]
+                        ],
                       ) +
                         Number(week.wins) -
                         (Number(
                           previousPlayoffObject.losses[
                             previousPlayoffObject.losses.length - 1
-                          ]
+                          ],
                         ) +
                           Number(week.losses)),
                     ],
@@ -1824,13 +1827,13 @@ handler.post(async (req) => {
                       Number(
                         previousPlayoffObject.pointsFor[
                           previousPlayoffObject.pointsFor.length - 1
-                        ]
+                        ],
                       ) +
                         Number(week.pointsFor) -
                         (Number(
                           previousPlayoffObject.pointsAgainst[
                             previousPlayoffObject.pointsAgainst.length - 1
-                          ]
+                          ],
                         ) +
                           Number(week.pointsAgainst)),
                     ],
@@ -1839,7 +1842,7 @@ handler.post(async (req) => {
                       Number(
                         previousPlayoffObject.projectedPointsFor[
                           previousPlayoffObject.projectedPointsFor.length - 1
-                        ]
+                        ],
                       ) + Number(week.projectedPointsFor),
                     ],
                     projectedPointsAgainst: [
@@ -1848,7 +1851,7 @@ handler.post(async (req) => {
                         previousPlayoffObject.projectedPointsAgainst[
                           previousPlayoffObject.projectedPointsAgainst.length -
                             1
-                        ]
+                        ],
                       ) + Number(week.projectedPointsAgainst),
                     ],
                   };
@@ -1862,7 +1865,7 @@ handler.post(async (req) => {
                       Number(
                         previousConsolationObject.wins[
                           previousConsolationObject.wins.length - 1
-                        ]
+                        ],
                       ) + Number(week.wins),
                     ],
                     losses: [
@@ -1870,7 +1873,7 @@ handler.post(async (req) => {
                       Number(
                         previousConsolationObject.losses[
                           previousConsolationObject.losses.length - 1
-                        ]
+                        ],
                       ) + Number(week.losses),
                     ],
                     ties: [
@@ -1878,7 +1881,7 @@ handler.post(async (req) => {
                       Number(
                         previousConsolationObject.ties[
                           previousConsolationObject.ties.length - 1
-                        ]
+                        ],
                       ) + Number(week.ties),
                     ],
                     pointsFor: [
@@ -1886,7 +1889,7 @@ handler.post(async (req) => {
                       Number(
                         previousConsolationObject.pointsFor[
                           previousConsolationObject.pointsFor.length - 1
-                        ]
+                        ],
                       ) + Number(week.pointsFor),
                     ],
                     pointsAgainst: [
@@ -1894,7 +1897,7 @@ handler.post(async (req) => {
                       Number(
                         previousConsolationObject.pointsAgainst[
                           previousConsolationObject.pointsAgainst.length - 1
-                        ]
+                        ],
                       ) + Number(week.pointsAgainst),
                     ],
                     winDifferential: [
@@ -1902,13 +1905,13 @@ handler.post(async (req) => {
                       Number(
                         previousConsolationObject.wins[
                           previousConsolationObject.wins.length - 1
-                        ]
+                        ],
                       ) +
                         Number(week.wins) -
                         (Number(
                           previousConsolationObject.losses[
                             previousConsolationObject.losses.length - 1
-                          ]
+                          ],
                         ) +
                           Number(week.losses)),
                     ],
@@ -1917,13 +1920,13 @@ handler.post(async (req) => {
                       Number(
                         previousConsolationObject.pointsFor[
                           previousConsolationObject.pointsFor.length - 1
-                        ]
+                        ],
                       ) +
                         Number(week.pointsFor) -
                         (Number(
                           previousConsolationObject.pointsAgainst[
                             previousConsolationObject.pointsAgainst.length - 1
-                          ]
+                          ],
                         ) +
                           Number(week.pointsAgainst)),
                     ],
@@ -1933,7 +1936,7 @@ handler.post(async (req) => {
                         previousConsolationObject.projectedPointsFor[
                           previousConsolationObject.projectedPointsFor.length -
                             1
-                        ]
+                        ],
                       ) + Number(week.projectedPointsFor),
                     ],
                     projectedPointsAgainst: [
@@ -1942,7 +1945,7 @@ handler.post(async (req) => {
                         previousConsolationObject.projectedPointsAgainst[
                           previousConsolationObject.projectedPointsAgainst
                             .length - 1
-                        ]
+                        ],
                       ) + Number(week.projectedPointsAgainst),
                     ],
                   };
@@ -1991,13 +1994,13 @@ handler.post(async (req) => {
                 seasonEndWeek: season.seasonEndWeek,
                 seasonWeeks: season.seasonWeeks,
                 regularSeasonRecord: cumulativeWeeks.filter(
-                  (week) => !week.isPlayoff && !week.isConsolation
+                  (week) => !week.isPlayoff && !week.isConsolation,
                 )
                   ? cumulativeWeeks.filter(
-                      (week) => !week.isPlayoff && !week.isConsolation
+                      (week) => !week.isPlayoff && !week.isConsolation,
                     )[
                       cumulativeWeeks.filter(
-                        (week) => !week.isPlayoff && !week.isConsolation
+                        (week) => !week.isPlayoff && !week.isConsolation,
                       ).length - 1
                     ]
                   : "N/A",
@@ -2088,433 +2091,439 @@ handler.post(async (req) => {
                   wins: Number(
                     season.regularSeasonRecord.wins[
                       season.regularSeasonRecord.wins.length - 1
-                    ]
+                    ],
                   )
                     ? Number(
-                        previousCumulativeRecord.regularSeasonRecord.wins
+                        previousCumulativeRecord.regularSeasonRecord.wins,
                       ) +
                       Number(
                         season.regularSeasonRecord.wins[
                           season.regularSeasonRecord.wins.length - 1
-                        ]
+                        ],
                       )
                     : Number(previousCumulativeRecord.regularSeasonRecord.wins),
                   losses: Number(
                     season.regularSeasonRecord.losses[
                       season.regularSeasonRecord.losses.length - 1
-                    ]
+                    ],
                   )
                     ? Number(
-                        previousCumulativeRecord.regularSeasonRecord.losses
+                        previousCumulativeRecord.regularSeasonRecord.losses,
                       ) +
                       Number(
                         season.regularSeasonRecord.losses[
                           season.regularSeasonRecord.losses.length - 1
-                        ]
+                        ],
                       )
                     : Number(
-                        previousCumulativeRecord.regularSeasonRecord.losses
+                        previousCumulativeRecord.regularSeasonRecord.losses,
                       ),
                   ties: Number(
                     season.regularSeasonRecord.ties[
                       season.regularSeasonRecord.ties.length - 1
-                    ]
+                    ],
                   )
                     ? Number(
-                        previousCumulativeRecord.regularSeasonRecord.ties
+                        previousCumulativeRecord.regularSeasonRecord.ties,
                       ) +
                       Number(
                         season.regularSeasonRecord.ties[
                           season.regularSeasonRecord.ties.length - 1
-                        ]
+                        ],
                       )
                     : Number(previousCumulativeRecord.regularSeasonRecord.ties),
                   pointsFor: Number(
                     season.regularSeasonRecord.pointsFor[
                       season.regularSeasonRecord.pointsFor.length - 1
-                    ]
+                    ],
                   )
                     ? Number(
-                        previousCumulativeRecord.regularSeasonRecord.pointsFor
+                        previousCumulativeRecord.regularSeasonRecord.pointsFor,
                       ) +
                       Number(
                         season.regularSeasonRecord.pointsFor[
                           season.regularSeasonRecord.pointsFor.length - 1
-                        ]
+                        ],
                       )
                     : Number(
-                        previousCumulativeRecord.regularSeasonRecord.pointsFor
+                        previousCumulativeRecord.regularSeasonRecord.pointsFor,
                       ),
                   pointsAgainst: Number(
                     season.regularSeasonRecord.pointsAgainst[
                       season.regularSeasonRecord.pointsAgainst.length - 1
-                    ]
+                    ],
                   )
                     ? Number(
                         previousCumulativeRecord.regularSeasonRecord
-                          .pointsAgainst
+                          .pointsAgainst,
                       ) +
                       Number(
                         season.regularSeasonRecord.pointsAgainst[
                           season.regularSeasonRecord.pointsAgainst.length - 1
-                        ]
+                        ],
                       )
                     : Number(
                         previousCumulativeRecord.regularSeasonRecord
-                          .pointsAgainst
+                          .pointsAgainst,
                       ),
                   winDifferential:
                     Number(
                       season.regularSeasonRecord.wins[
                         season.regularSeasonRecord.wins.length - 1
-                      ]
+                      ],
                     ) &&
                     Number(
                       season.regularSeasonRecord.losses[
                         season.regularSeasonRecord.losses.length - 1
-                      ]
+                      ],
                     )
                       ? Number(
-                          previousCumulativeRecord.regularSeasonRecord.wins
+                          previousCumulativeRecord.regularSeasonRecord.wins,
                         ) +
                         Number(
                           season.regularSeasonRecord.wins[
                             season.regularSeasonRecord.wins.length - 1
-                          ]
+                          ],
                         ) -
                         (Number(
-                          previousCumulativeRecord.regularSeasonRecord.losses
+                          previousCumulativeRecord.regularSeasonRecord.losses,
                         ) +
                           Number(
                             season.regularSeasonRecord.losses[
                               season.regularSeasonRecord.losses.length - 1
-                            ]
+                            ],
                           ))
                       : Number(
-                          season.regularSeasonRecord.wins[
-                            season.regularSeasonRecord.wins.length - 1
-                          ]
-                        )
-                      ? Number(
-                          previousCumulativeRecord.regularSeasonRecord.wins
-                        ) +
-                        Number(
-                          season.regularSeasonRecord.wins[
-                            season.regularSeasonRecord.wins.length - 1
-                          ]
-                        ) -
-                        Number(
-                          previousCumulativeRecord.regularSeasonRecord.losses
-                        )
-                      : Number(
-                          previousCumulativeRecord.regularSeasonRecord.wins
-                        ) +
-                        -Number(
-                          previousCumulativeRecord.regularSeasonRecord.losses
-                        ),
+                            season.regularSeasonRecord.wins[
+                              season.regularSeasonRecord.wins.length - 1
+                            ],
+                          )
+                        ? Number(
+                            previousCumulativeRecord.regularSeasonRecord.wins,
+                          ) +
+                          Number(
+                            season.regularSeasonRecord.wins[
+                              season.regularSeasonRecord.wins.length - 1
+                            ],
+                          ) -
+                          Number(
+                            previousCumulativeRecord.regularSeasonRecord.losses,
+                          )
+                        : Number(
+                            previousCumulativeRecord.regularSeasonRecord.wins,
+                          ) +
+                          -Number(
+                            previousCumulativeRecord.regularSeasonRecord.losses,
+                          ),
                   pointsDifferential:
                     Number(
                       season.regularSeasonRecord.pointsFor[
                         season.regularSeasonRecord.pointsFor.length - 1
-                      ]
+                      ],
                     ) &&
                     Number(
                       season.regularSeasonRecord.pointsAgainst[
                         season.regularSeasonRecord.pointsAgainst.length - 1
-                      ]
+                      ],
                     )
                       ? Number(
-                          previousCumulativeRecord.regularSeasonRecord.pointsFor
+                          previousCumulativeRecord.regularSeasonRecord
+                            .pointsFor,
                         ) +
                         Number(
                           season.regularSeasonRecord.pointsFor[
                             season.regularSeasonRecord.pointsFor.length - 1
-                          ]
+                          ],
                         ) -
                         (Number(
                           previousCumulativeRecord.regularSeasonRecord
-                            .pointsAgainst
+                            .pointsAgainst,
                         ) +
                           Number(
                             season.regularSeasonRecord.pointsAgainst[
                               season.regularSeasonRecord.pointsAgainst.length -
                                 1
-                            ]
+                            ],
                           ))
                       : Number(
-                          season.regularSeasonRecord.pointsFor[
-                            season.regularSeasonRecord.pointsFor.length - 1
-                          ]
-                        )
-                      ? Number(
-                          previousCumulativeRecord.regularSeasonRecord.pointsFor
-                        ) +
-                        Number(
-                          season.regularSeasonRecord.pointsFor[
-                            season.regularSeasonRecord.pointsFor.length - 1
-                          ]
-                        ) -
-                        Number(
-                          previousCumulativeRecord.regularSeasonRecord
-                            .pointsAgainst
-                        )
-                      : Number(
-                          previousCumulativeRecord.regularSeasonRecord.pointsFor
-                        ) -
-                        Number(
-                          previousCumulativeRecord.regularSeasonRecord
-                            .pointsAgainst
-                        ),
+                            season.regularSeasonRecord.pointsFor[
+                              season.regularSeasonRecord.pointsFor.length - 1
+                            ],
+                          )
+                        ? Number(
+                            previousCumulativeRecord.regularSeasonRecord
+                              .pointsFor,
+                          ) +
+                          Number(
+                            season.regularSeasonRecord.pointsFor[
+                              season.regularSeasonRecord.pointsFor.length - 1
+                            ],
+                          ) -
+                          Number(
+                            previousCumulativeRecord.regularSeasonRecord
+                              .pointsAgainst,
+                          )
+                        : Number(
+                            previousCumulativeRecord.regularSeasonRecord
+                              .pointsFor,
+                          ) -
+                          Number(
+                            previousCumulativeRecord.regularSeasonRecord
+                              .pointsAgainst,
+                          ),
                   projectedPointsFor:
                     Number(
                       previousCumulativeRecord.regularSeasonRecord
-                        .projectedPointsFor
+                        .projectedPointsFor,
                     ) +
                     Number(
                       season.regularSeasonRecord.projectedPointsFor[
                         season.regularSeasonRecord.projectedPointsFor.length - 1
-                      ]
+                      ],
                     ),
                   projectedPointsAgainst: Number(
                     season.regularSeasonRecord.projectedPointsAgainst[
                       season.regularSeasonRecord.projectedPointsAgainst.length -
                         1
-                    ]
+                    ],
                   )
                     ? Number(
                         previousCumulativeRecord.regularSeasonRecord
-                          .projectedPointsAgainst
+                          .projectedPointsAgainst,
                       ) +
                       Number(
                         season.regularSeasonRecord.projectedPointsAgainst[
                           season.regularSeasonRecord.projectedPointsAgainst
                             .length - 1
-                        ]
+                        ],
                       )
                     : Number(
                         previousCumulativeRecord.regularSeasonRecord
-                          .projectedPointsAgainst
+                          .projectedPointsAgainst,
                       ),
                 },
                 playoffSeasonRecord: {
                   wins: Number(
                     season.playoffSeasonRecord.wins[
                       season.playoffSeasonRecord.wins.length - 1
-                    ]
+                    ],
                   )
                     ? Number(
-                        previousCumulativeRecord.playoffSeasonRecord.wins
+                        previousCumulativeRecord.playoffSeasonRecord.wins,
                       ) +
                       Number(
                         season.playoffSeasonRecord.wins[
                           season.playoffSeasonRecord.wins.length - 1
-                        ]
+                        ],
                       )
                     : Number(previousCumulativeRecord.playoffSeasonRecord.wins),
                   losses: Number(
                     season.playoffSeasonRecord.losses[
                       season.playoffSeasonRecord.losses.length - 1
-                    ]
+                    ],
                   )
                     ? Number(
-                        previousCumulativeRecord.playoffSeasonRecord.losses
+                        previousCumulativeRecord.playoffSeasonRecord.losses,
                       ) +
                       Number(
                         season.playoffSeasonRecord.losses[
                           season.playoffSeasonRecord.losses.length - 1
-                        ]
+                        ],
                       )
                     : Number(
-                        previousCumulativeRecord.playoffSeasonRecord.losses
+                        previousCumulativeRecord.playoffSeasonRecord.losses,
                       ),
                   ties: Number(
                     season.playoffSeasonRecord.ties[
                       season.playoffSeasonRecord.ties.length - 1
-                    ]
+                    ],
                   )
                     ? Number(
-                        previousCumulativeRecord.playoffSeasonRecord.ties
+                        previousCumulativeRecord.playoffSeasonRecord.ties,
                       ) +
                       Number(
                         season.playoffSeasonRecord.ties[
                           season.playoffSeasonRecord.ties.length - 1
-                        ]
+                        ],
                       )
                     : Number(previousCumulativeRecord.playoffSeasonRecord.ties),
                   pointsFor: Number(
                     season.playoffSeasonRecord.pointsFor[
                       season.playoffSeasonRecord.pointsFor.length - 1
-                    ]
+                    ],
                   )
                     ? Number(
-                        previousCumulativeRecord.playoffSeasonRecord.pointsFor
+                        previousCumulativeRecord.playoffSeasonRecord.pointsFor,
                       ) +
                       Number(
                         season.playoffSeasonRecord.pointsFor[
                           season.playoffSeasonRecord.pointsFor.length - 1
-                        ]
+                        ],
                       )
                     : Number(
-                        previousCumulativeRecord.playoffSeasonRecord.pointsFor
+                        previousCumulativeRecord.playoffSeasonRecord.pointsFor,
                       ),
                   pointsAgainst: Number(
                     season.playoffSeasonRecord.pointsAgainst[
                       season.playoffSeasonRecord.pointsAgainst.length - 1
-                    ]
+                    ],
                   )
                     ? Number(
                         previousCumulativeRecord.playoffSeasonRecord
-                          .pointsAgainst
+                          .pointsAgainst,
                       ) +
                       Number(
                         season.playoffSeasonRecord.pointsAgainst[
                           season.playoffSeasonRecord.pointsAgainst.length - 1
-                        ]
+                        ],
                       )
                     : Number(
                         previousCumulativeRecord.playoffSeasonRecord
-                          .pointsAgainst
+                          .pointsAgainst,
                       ),
                   winDifferential:
                     Number(
                       season.playoffSeasonRecord.wins[
                         season.playoffSeasonRecord.wins.length - 1
-                      ]
+                      ],
                     ) &&
                     Number(
                       season.playoffSeasonRecord.losses[
                         season.playoffSeasonRecord.losses.length - 1
-                      ]
+                      ],
                     )
                       ? Number(
-                          previousCumulativeRecord.playoffSeasonRecord.wins
+                          previousCumulativeRecord.playoffSeasonRecord.wins,
                         ) +
                         Number(
                           season.playoffSeasonRecord.wins[
                             season.playoffSeasonRecord.wins.length - 1
-                          ]
+                          ],
                         ) -
                         (Number(
-                          previousCumulativeRecord.playoffSeasonRecord.losses
+                          previousCumulativeRecord.playoffSeasonRecord.losses,
                         ) +
                           Number(
                             season.playoffSeasonRecord.losses[
                               season.playoffSeasonRecord.losses.length - 1
-                            ]
+                            ],
                           ))
                       : Number(
-                          season.playoffSeasonRecord.wins[
-                            season.playoffSeasonRecord.wins.length - 1
-                          ]
-                        )
-                      ? Number(
-                          previousCumulativeRecord.playoffSeasonRecord.wins
-                        ) +
-                        Number(
-                          season.playoffSeasonRecord.wins[
-                            season.playoffSeasonRecord.wins.length - 1
-                          ]
-                        ) -
-                        Number(
-                          previousCumulativeRecord.playoffSeasonRecord.losses
-                        )
-                      : Number(
-                          previousCumulativeRecord.playoffSeasonRecord.wins
-                        ) -
-                        Number(
-                          previousCumulativeRecord.playoffSeasonRecord.losses
-                        ),
+                            season.playoffSeasonRecord.wins[
+                              season.playoffSeasonRecord.wins.length - 1
+                            ],
+                          )
+                        ? Number(
+                            previousCumulativeRecord.playoffSeasonRecord.wins,
+                          ) +
+                          Number(
+                            season.playoffSeasonRecord.wins[
+                              season.playoffSeasonRecord.wins.length - 1
+                            ],
+                          ) -
+                          Number(
+                            previousCumulativeRecord.playoffSeasonRecord.losses,
+                          )
+                        : Number(
+                            previousCumulativeRecord.playoffSeasonRecord.wins,
+                          ) -
+                          Number(
+                            previousCumulativeRecord.playoffSeasonRecord.losses,
+                          ),
                   pointsDifferential:
                     Number(
                       season.playoffSeasonRecord.pointsFor[
                         season.playoffSeasonRecord.pointsFor.length - 1
-                      ]
+                      ],
                     ) &&
                     Number(
                       season.playoffSeasonRecord.pointsAgainst[
                         season.playoffSeasonRecord.pointsAgainst.length - 1
-                      ]
+                      ],
                     )
                       ? Number(
-                          previousCumulativeRecord.playoffSeasonRecord.pointsFor
+                          previousCumulativeRecord.playoffSeasonRecord
+                            .pointsFor,
                         ) +
                         Number(
                           season.playoffSeasonRecord.pointsFor[
                             season.playoffSeasonRecord.pointsFor.length - 1
-                          ]
+                          ],
                         ) -
                         (Number(
                           previousCumulativeRecord.playoffSeasonRecord
-                            .pointsAgainst
+                            .pointsAgainst,
                         ) +
                           Number(
                             season.playoffSeasonRecord.pointsAgainst[
                               season.playoffSeasonRecord.pointsAgainst.length -
                                 1
-                            ]
+                            ],
                           ))
                       : Number(
-                          season.playoffSeasonRecord.pointsFor[
-                            season.playoffSeasonRecord.pointsFor.length - 1
-                          ]
-                        )
-                      ? Number(
-                          previousCumulativeRecord.playoffSeasonRecord.pointsFor
-                        ) +
-                        Number(
-                          season.playoffSeasonRecord.pointsFor[
-                            season.playoffSeasonRecord.pointsFor.length - 1
-                          ]
-                        ) -
-                        Number(
-                          previousCumulativeRecord.playoffSeasonRecord
-                            .pointsAgainst
-                        )
-                      : Number(
-                          previousCumulativeRecord.playoffSeasonRecord.pointsFor
-                        ) -
-                        Number(
-                          previousCumulativeRecord.playoffSeasonRecord
-                            .pointsAgainst
-                        ),
+                            season.playoffSeasonRecord.pointsFor[
+                              season.playoffSeasonRecord.pointsFor.length - 1
+                            ],
+                          )
+                        ? Number(
+                            previousCumulativeRecord.playoffSeasonRecord
+                              .pointsFor,
+                          ) +
+                          Number(
+                            season.playoffSeasonRecord.pointsFor[
+                              season.playoffSeasonRecord.pointsFor.length - 1
+                            ],
+                          ) -
+                          Number(
+                            previousCumulativeRecord.playoffSeasonRecord
+                              .pointsAgainst,
+                          )
+                        : Number(
+                            previousCumulativeRecord.playoffSeasonRecord
+                              .pointsFor,
+                          ) -
+                          Number(
+                            previousCumulativeRecord.playoffSeasonRecord
+                              .pointsAgainst,
+                          ),
                   projectedPointsFor: Number(
                     season.playoffSeasonRecord.projectedPointsFor[
                       season.playoffSeasonRecord.projectedPointsFor.length - 1
-                    ]
+                    ],
                   )
                     ? Number(
                         previousCumulativeRecord.playoffSeasonRecord
-                          .projectedPointsFor
+                          .projectedPointsFor,
                       ) +
                       Number(
                         season.playoffSeasonRecord.projectedPointsFor[
                           season.playoffSeasonRecord.projectedPointsFor.length -
                             1
-                        ]
+                        ],
                       )
                     : Number(
                         previousCumulativeRecord.playoffSeasonRecord
-                          .projectedPointsFor
+                          .projectedPointsFor,
                       ),
                   projectedPointsAgainst: Number(
                     season.playoffSeasonRecord.projectedPointsAgainst[
                       season.playoffSeasonRecord.projectedPointsAgainst.length -
                         1
-                    ]
+                    ],
                   )
                     ? Number(
                         previousCumulativeRecord.playoffSeasonRecord
-                          .projectedPointsAgainst
+                          .projectedPointsAgainst,
                       ) +
                       Number(
                         season.playoffSeasonRecord.projectedPointsAgainst[
                           season.playoffSeasonRecord.projectedPointsAgainst
                             .length - 1
-                        ]
+                        ],
                       )
                     : Number(
                         previousCumulativeRecord.playoffSeasonRecord
-                          .projectedPointsAgainst
+                          .projectedPointsAgainst,
                       ),
                   playoffAppearances: season.playoffSeasonRecord.week.length
                     ? [
@@ -2587,15 +2596,19 @@ handler.post(async (req) => {
                             season.consolationSeasonRecord.losses.length - 1
                           ])
                       : season.consolationSeasonRecord.wins[
-                          season.consolationSeasonRecord.wins.length - 1
-                        ]
-                      ? previousCumulativeRecord.consolationSeasonRecord.wins +
-                        season.consolationSeasonRecord.wins[
-                          season.consolationSeasonRecord.wins.length - 1
-                        ] -
-                        previousCumulativeRecord.consolationSeasonRecord.losses
-                      : previousCumulativeRecord.consolationSeasonRecord.wins -
-                        previousCumulativeRecord.consolationSeasonRecord.losses,
+                            season.consolationSeasonRecord.wins.length - 1
+                          ]
+                        ? previousCumulativeRecord.consolationSeasonRecord
+                            .wins +
+                          season.consolationSeasonRecord.wins[
+                            season.consolationSeasonRecord.wins.length - 1
+                          ] -
+                          previousCumulativeRecord.consolationSeasonRecord
+                            .losses
+                        : previousCumulativeRecord.consolationSeasonRecord
+                            .wins -
+                          previousCumulativeRecord.consolationSeasonRecord
+                            .losses,
                   pointsDifferential:
                     season.consolationSeasonRecord.pointsFor[
                       season.consolationSeasonRecord.pointsFor.length - 1
@@ -2615,19 +2628,19 @@ handler.post(async (req) => {
                               .length - 1
                           ])
                       : season.consolationSeasonRecord.pointsFor[
-                          season.consolationSeasonRecord.pointsFor.length - 1
-                        ]
-                      ? previousCumulativeRecord.consolationSeasonRecord
-                          .pointsFor +
-                        season.consolationSeasonRecord.pointsFor[
-                          season.consolationSeasonRecord.pointsFor.length - 1
-                        ] -
-                        previousCumulativeRecord.consolationSeasonRecord
-                          .pointsAgainst
-                      : previousCumulativeRecord.consolationSeasonRecord
-                          .pointsFor -
-                        previousCumulativeRecord.consolationSeasonRecord
-                          .pointsAgainst,
+                            season.consolationSeasonRecord.pointsFor.length - 1
+                          ]
+                        ? previousCumulativeRecord.consolationSeasonRecord
+                            .pointsFor +
+                          season.consolationSeasonRecord.pointsFor[
+                            season.consolationSeasonRecord.pointsFor.length - 1
+                          ] -
+                          previousCumulativeRecord.consolationSeasonRecord
+                            .pointsAgainst
+                        : previousCumulativeRecord.consolationSeasonRecord
+                            .pointsFor -
+                          previousCumulativeRecord.consolationSeasonRecord
+                            .pointsAgainst,
                   projectedPointsFor: season.consolationSeasonRecord
                     .projectedPointsFor[
                     season.consolationSeasonRecord.projectedPointsFor.length - 1
@@ -2965,7 +2978,7 @@ handler.post(async (req) => {
                   Math.abs(week.pointsFor - week.pointsAgainst) <
                     Math.abs(
                       gameRecords.closestMatch[0].pointsFor -
-                        gameRecords.closestMatch[0].pointsAgainst
+                        gameRecords.closestMatch[0].pointsAgainst,
                     ) &&
                   week.ties != 1 &&
                   week.status === "postevent"
@@ -2981,7 +2994,7 @@ handler.post(async (req) => {
                   Math.abs(week.pointsFor - week.pointsAgainst) ===
                     Math.abs(
                       gameRecords.closestMatch[0].pointsFor -
-                        gameRecords.closestMatch[0].pointsAgainst
+                        gameRecords.closestMatch[0].pointsAgainst,
                     ) &&
                   week.ties != 1 &&
                   week.status === "postevent"
@@ -3019,7 +3032,8 @@ handler.post(async (req) => {
                   Math.abs(week.pointsFor - week.projectedPointsFor) <
                     Math.abs(
                       gameRecords.mostAccurateProjection[0].pointsFor -
-                        gameRecords.mostAccurateProjection[0].projectedPointsFor
+                        gameRecords.mostAccurateProjection[0]
+                          .projectedPointsFor,
                     ) &&
                   (week.pointsFor != 0 || week.projectedPointsFor != 0)
                 ) {
@@ -3034,7 +3048,8 @@ handler.post(async (req) => {
                   Math.abs(week.pointsFor - week.projectedPointsFor) ===
                     Math.abs(
                       gameRecords.mostAccurateProjection[0].pointsFor -
-                        gameRecords.mostAccurateProjection[0].projectedPointsFor
+                        gameRecords.mostAccurateProjection[0]
+                          .projectedPointsFor,
                     ) &&
                   (week.pointsFor != 0 || week.projectedPointsFor != 0)
                 ) {
@@ -3263,14 +3278,14 @@ handler.post(async (req) => {
                 season.seasonRecords.mostPointsAgainstSeason.forEach(
                   (person) => {
                     overallRecords.mostPointsAgainstSeason.push(person);
-                  }
+                  },
                 );
               }
               if (
                 season.seasonRecords.leastPointsAgainstSeason[0].pointsAgainst <
                   overallRecords.leastPointsAgainstSeason[0].pointsAgainst &&
                 Number(
-                  season.seasonRecords.leastPointsAgainstSeason[0].season
+                  season.seasonRecords.leastPointsAgainstSeason[0].season,
                 ) != currentYear
               ) {
                 overallRecords.leastPointsAgainstSeason =
@@ -3285,29 +3300,29 @@ handler.post(async (req) => {
                 season.seasonRecords.leastPointsAgainstSeason.forEach(
                   (person) => {
                     overallRecords.leastPointsAgainstSeason.push(person);
-                  }
+                  },
                 );
               }
 
               if (
                 Math.abs(
                   season.seasonRecords.closestMatch[0].pointsFor -
-                    season.seasonRecords.closestMatch[0].pointsAgainst
+                    season.seasonRecords.closestMatch[0].pointsAgainst,
                 ) <
                 Math.abs(
                   overallRecords.closestMatch[0].pointsFor -
-                    overallRecords.closestMatch[0].pointsAgainst
+                    overallRecords.closestMatch[0].pointsAgainst,
                 )
               ) {
                 overallRecords.closestMatch = season.seasonRecords.closestMatch;
               } else if (
                 Math.abs(
                   season.seasonRecords.closestMatch[0].pointsFor -
-                    season.seasonRecords.closestMatch[0].pointsAgainst
+                    season.seasonRecords.closestMatch[0].pointsAgainst,
                 ) ===
                   Math.abs(
                     overallRecords.closestMatch[0].pointsFor -
-                      overallRecords.closestMatch[0].pointsAgainst
+                      overallRecords.closestMatch[0].pointsAgainst,
                   ) &&
                 overallRecords.closestMatch[0].name !=
                   season.seasonRecords.closestMatch[0].opponentName
@@ -3335,18 +3350,18 @@ handler.post(async (req) => {
                 season.seasonRecords.highestScoreVSProjection.forEach(
                   (game) => {
                     overallRecords.highestScoreVSProjection.push(game);
-                  }
+                  },
                 );
               }
               if (
                 Math.abs(
                   season.seasonRecords.mostAccurateProjection[0].pointsFor -
                     season.seasonRecords.mostAccurateProjection[0]
-                      .projectedPointsFor
+                      .projectedPointsFor,
                 ) <
                 Math.abs(
                   overallRecords.mostAccurateProjection[0].pointsFor -
-                    overallRecords.mostAccurateProjection[0].projectedPointsFor
+                    overallRecords.mostAccurateProjection[0].projectedPointsFor,
                 )
               ) {
                 overallRecords.mostAccurateProjection =
@@ -3355,11 +3370,11 @@ handler.post(async (req) => {
                 Math.abs(
                   season.seasonRecords.mostAccurateProjection[0].pointsFor -
                     season.seasonRecords.mostAccurateProjection[0]
-                      .projectedPointsFor
+                      .projectedPointsFor,
                 ) ===
                 Math.abs(
                   overallRecords.mostAccurateProjection[0].pointsFor -
-                    overallRecords.mostAccurateProjection[0].projectedPointsFor
+                    overallRecords.mostAccurateProjection[0].projectedPointsFor,
                 )
               ) {
                 season.seasonRecords.mostAccurateProjection.forEach((game) => {
@@ -3402,7 +3417,7 @@ handler.post(async (req) => {
         } catch (error) {
           console.error(
             "Error when requesting all the league promises:",
-            error
+            error,
           );
           return NextResponse.json(
             {
@@ -3411,7 +3426,7 @@ handler.post(async (req) => {
               },
               status: error.status,
             },
-            { status: error.status }
+            { status: error.status },
           );
         } finally {
         }
@@ -3424,7 +3439,7 @@ handler.post(async (req) => {
           error: { message: `Request body parsing error: ${error.message}` },
           status: error.status,
         },
-        { status: error.status }
+        { status: error.status },
       );
     });
 });
