@@ -17,7 +17,7 @@ export default function LoadingIndicator({ longLoading }) {
         <>
           <h3
             style={{ color: "ivory" }}
-          >{`Sorry this is taking longer than expected`}</h3>
+          >{`Sorry this is taking longer than expected...`}</h3>
           <h3
             style={{ color: "ivory" }}
           >{`You must have been in this league for a long time!`}</h3>
