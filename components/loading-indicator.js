@@ -20,7 +20,7 @@ export default function LoadingIndicator({ longLoading }) {
           >{`Sorry this is taking longer than expected`}</h3>
           <h3
             style={{ color: "ivory" }}
-          >{`You must have been in this league a long time!`}</h3>
+          >{`You must have been in this league for a long time!`}</h3>
         </>
       ) : null}
       <RotatingLines
