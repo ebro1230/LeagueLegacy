@@ -1,6 +1,6 @@
 import { RotatingLines } from "react-loader-spinner";
 
-export default function LoadingIndicator() {
+export default function LoadingIndicator({ longLoading }) {
   return (
     //displays three dots loader
     <div
@@ -12,6 +12,9 @@ export default function LoadingIndicator() {
         alignItems: "center",
       }}
     >
+      {longLoading ? (
+        <h2>Wow, you've been in this league a long time!</h2>
+      ) : null}
       <RotatingLines
         strokeColor="ivory"
         strokeWidth="5"

@@ -99,6 +99,7 @@ export default function LeagueOverview({ leagueType, leagueKeysString }) {
   const [managers, setManagers] = useState([]);
 
   const [loading, setLoading] = useState(true);
+  const [isLoadingLong, setisLoadingLong] = useState(false);
 
   const [chosenTeam1, setChosenTeam1] = useState({ managerName: "---" });
   const [chosenTeam2, setChosenTeam2] = useState({ managerName: "---" });
@@ -179,8 +180,8 @@ export default function LeagueOverview({ leagueType, leagueKeysString }) {
           return response.json();
         })
         .then((leagueData) => {
-          console.log("LEAGUE DATA:");
-          console.log(leagueData);
+          //console.log("LEAGUE DATA:");
+          //console.log(leagueData);
           const fetchResponse = leagueData;
           let n = 1;
           setLeagueInfo(fetchResponse);
@@ -482,6 +483,7 @@ export default function LeagueOverview({ leagueType, leagueKeysString }) {
         })
         .finally(() => {
           setLoading(false);
+          setisLoadingLong(false);
         });
     };
     if (
@@ -495,6 +497,9 @@ export default function LeagueOverview({ leagueType, leagueKeysString }) {
       router.push("/");
     } else if (status === "authenticated") {
       setLoading(true);
+      setTimeout(() => {
+        setisLoadingLong(true);
+      }, 5000);
       getLeagueInfo(leagueKeys, session.accessToken);
     } else if (status === "loading") {
       setLoading(true);
@@ -3584,7 +3589,7 @@ export default function LeagueOverview({ leagueType, leagueKeysString }) {
         {loading ? (
           <div className="spacing-div">
             <div className="loading-div">
-              <LoadingIndicator>
+              <LoadingIndicator longLoading={isLoadingLong}>
                 <span className="visually-hidden">Loading...</span>
               </LoadingIndicator>
             </div>
