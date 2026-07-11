@@ -619,7 +619,7 @@ export default function LeagueOverview({ leagueType, leagueKeysString }) {
           season: season.season ? season.season : chosenSeason.year,
           seasonKey: season.seasonKey ? season.seasonKey : chosenSeason.key,
           matchups: season.matchups.filter(
-            (week) => week.opponentManagerId === team2.managerId,
+            (week) => week.opponentManagerName === team2.managerName,
           ),
         };
       });
@@ -711,7 +711,7 @@ export default function LeagueOverview({ leagueType, leagueKeysString }) {
           season: season.season ? season.season : chosenSeason.year,
           seasonKey: season.seasonKey ? season.seasonKey : chosenSeason.key,
           matchups: season.matchups.filter(
-            (week) => week.opponentManagerId === manager.managerId,
+            (week) => week.opponentManagerName === manager.managerName,
           ),
         };
       });
@@ -792,7 +792,7 @@ export default function LeagueOverview({ leagueType, leagueKeysString }) {
   const handleCompareManager = (e) => {
     let compareManager;
     chosenSeasonTeams.forEach((team) => {
-      if (team.managerId === e.target.id) {
+      if (team.managerNameId === e.target.id) {
         compareManager = JSON.stringify(team);
       }
     });

@@ -449,8 +449,10 @@ handler.post(async (req) => {
                           : "",
                         team1ManagerName:
                           matchup.teams[0].team[0].managers[0].manager[0]
-                            .nickname[0] != "--hidden" ? matchup.teams[0].team[0].managers[0].manager[0]
-                            .nickname[0] : "Unknown",
+                            .nickname[0] != "--hidden"
+                            ? matchup.teams[0].team[0].managers[0].manager[0]
+                                .nickname[0]
+                            : "Unknown",
                         team1ManagerId:
                           matchup.teams[0].team[0].managers[0].manager[0]
                             .guid[0],
@@ -474,9 +476,11 @@ handler.post(async (req) => {
                             .total[0],
                         ),
                         team2ManagerName:
-                          matchup.teams[0].team[0].managers[0].manager[0]
-                            .nickname[0] != "--hidden" ? matchup.teams[0].team[0].managers[0].manager[0]
-                            .nickname[0] : "Unknown",
+                          matchup.teams[0].team[1].managers[0].manager[0]
+                            .nickname[0] != "--hidden"
+                            ? matchup.teams[0].team[1].managers[0].manager[0]
+                                .nickname[0]
+                            : "Unknown",
                         team2ManagerId:
                           matchup.teams[0].team[1].managers[0].manager[0]
                             .guid[0],
