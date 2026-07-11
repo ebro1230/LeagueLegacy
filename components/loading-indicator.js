@@ -8,12 +8,13 @@ export default function LoadingIndicator({ longLoading }) {
         width: "100%",
         height: "100",
         display: "flex",
+        flexDirection: "column",
         justifyContent: "center",
         alignItems: "center",
       }}
     >
       {longLoading ? (
-        <h2>{`Wow, you've been in this league a long time!`}</h2>
+        <h4>{`Wow, you've been in this league a long time!`}</h4>
       ) : null}
       <RotatingLines
         strokeColor="ivory"
