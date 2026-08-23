@@ -20,7 +20,7 @@ function Footer() {
     >
       <Container style={{ justifyContent: "flex-end" }}>
         <Navbar.Brand
-          style={{ fontSize: "1rem", color: "white", textAlign: "end" }}
+          style={{ fontSize: "0.5rem", color: "white", textAlign: "end" }}
         >
           Fantasy data provided by Yahoo Fantasy
         </Navbar.Brand>
