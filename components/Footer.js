@@ -20,18 +20,23 @@ function Footer() {
     >
       <Container style={{ justifyContent: "flex-end" }}>
         <Navbar.Brand
-          style={{ fontSize: "0.5rem", color: "white", textAlign: "end" }}
+          style={{
+            fontSize: "0.5rem",
+            color: "white",
+            textAlign: "end",
+            marginRight: "50px",
+          }}
         >
           Fantasy data provided by Yahoo Fantasy
         </Navbar.Brand>
         <Image
           src={`https://763445962456-brand-assets.s3.us-west-2.amazonaws.com/brandwebsite/s3fs-public/Yahoo_Fantasy.svg`}
-          width={100}
-          height={100}
+          width={200}
+          height={200}
           placeholder="blur"
           objectFit="contain"
           alt={`Yahoo! Fantasy Logo`}
-          style={{ position: "absolute", right: "30px" }}
+          style={{ position: "absolute", right: "0" }}
         />
       </Container>
     </Navbar>
