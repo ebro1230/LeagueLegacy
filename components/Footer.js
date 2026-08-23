@@ -31,6 +31,7 @@ function Footer() {
           placeholder="blur"
           objectFit="contain"
           alt={`Yahoo! Fantasy Logo`}
+          style={{ position: "absolute", right: "30px" }}
         />
       </Container>
     </Navbar>
