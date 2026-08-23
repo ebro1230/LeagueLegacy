@@ -17,6 +17,7 @@ function Footer() {
       className="bg-body-tertiary"
       bg="custom"
       variant="dark"
+      style={{ overflow: "hidden" }}
     >
       <Container style={{ justifyContent: "flex-end" }}>
         <Navbar.Brand
