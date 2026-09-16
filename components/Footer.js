@@ -2,6 +2,7 @@
 import Container from "react-bootstrap/Container";
 import Navbar from "react-bootstrap/Navbar";
 import Image from "next/image";
+import Link from "next/link";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { Koulen } from "@next/font/google";
 const koulen = Koulen({
@@ -30,15 +31,17 @@ function Footer() {
         >
           Fantasy data provided by Yahoo Fantasy
         </Navbar.Brand>
-        <Image
-          src={`https://763445962456-brand-assets.s3.us-west-2.amazonaws.com/brandwebsite/s3fs-public/Yahoo_Fantasy.svg`}
-          width={200}
-          height={200}
-          placeholder="blur"
-          objectFit="contain"
-          alt={`Yahoo! Fantasy Logo`}
-          style={{ position: "absolute", right: "0" }}
-        />
+        <Link href={`https://sports.yahoo.com/fantasy/`}>
+          <Image
+            src={`https://763445962456-brand-assets.s3.us-west-2.amazonaws.com/brandwebsite/s3fs-public/Yahoo_Fantasy.svg`}
+            width={200}
+            height={200}
+            placeholder="blur"
+            objectFit="contain"
+            alt={`Yahoo! Fantasy Logo`}
+            style={{ position: "absolute", right: "0" }}
+          />
+        </Link>
       </Container>
     </Navbar>
   );

@@ -12,7 +12,7 @@ bodyParserXml(bodyParser);
 handler.use(
   cors({
     origin: "*", // Allow all origins
-  })
+  }),
 );
 handler.use(bodyParser.urlencoded({ extended: false }));
 handler.use(bodyParser.json());
@@ -30,21 +30,21 @@ handler.post((req) => {
 
       if (leagueType === "football") {
         const response = await fetch(
-          `https://fantasysports.yahooapis.com/fantasy/v2/users;use_login=1/games;game_keys=57,49,79,101,124,153,175,199,222,242,257,273,314,331,348,359,371,380,390,399,406,414,423,449,461/leagues/teams/standings`,
+          `https://fantasysports.yahooapis.com/fantasy/v2/users;use_login=1/games;game_keys=57,49,79,101,124,153,175,199,222,242,257,273,314,331,348,359,371,380,390,399,406,414,423,449,461,470/leagues/teams/standings`,
           {
             method: "GET",
             headers: {
               Authorization: `Bearer ${accessToken}`,
             },
-          }
+          },
         );
         if (!response.ok) {
           let error = new Error(
-            `Request failed when requesting all user football leagues with status ${response.status}`
+            `Request failed when requesting all user football leagues with status ${response.status}`,
           );
           error.status = response.status; // Add status property
           console.error(
-            `Request failed when requesting all user football leagues with status ${response.status}`
+            `Request failed when requesting all user football leagues with status ${response.status}`,
           );
           throw error;
         } else {
@@ -56,7 +56,7 @@ handler.post((req) => {
             } else {
               const leagues =
                 result.fantasy_content.users[0].user[0].games[0].game.filter(
-                  (league) => league.leagues[0]
+                  (league) => league.leagues[0],
                 );
               const allSeasons = leagues.map((seasons) => {
                 return seasons.leagues[0].league;
@@ -106,7 +106,7 @@ handler.post((req) => {
                   leagueData.memberUntil = currentYear;
                 } else {
                   leagueData.memberUntil = Number(
-                    league[league.length - 1].season[0]
+                    league[league.length - 1].season[0],
                   );
                 }
 
@@ -126,19 +126,19 @@ handler.post((req) => {
                       leagueData.wins +
                       Number(
                         season.teams[0].team[0].team_standings[0]
-                          .outcome_totals[0].wins[0]
+                          .outcome_totals[0].wins[0],
                       );
                     leagueData.losses =
                       leagueData.losses +
                       Number(
                         season.teams[0].team[0].team_standings[0]
-                          .outcome_totals[0].losses[0]
+                          .outcome_totals[0].losses[0],
                       );
                     leagueData.ties =
                       leagueData.ties +
                       Number(
                         season.teams[0].team[0].team_standings[0]
-                          .outcome_totals[0].ties[0]
+                          .outcome_totals[0].ties[0],
                       );
                   } else {
                     leagueData.wins = leagueData.wins + 0;
@@ -153,7 +153,7 @@ handler.post((req) => {
                   }
                 });
                 leagueData.leagueLogo = leagueData.leagueLogo.filter(
-                  (logo) => logo != ""
+                  (logo) => logo != "",
                 );
                 leagueData.leagueLogo =
                   leagueData.leagueLogo[leagueData.leagueLogo.length - 1];
@@ -163,11 +163,11 @@ handler.post((req) => {
                 if (finishes.length) {
                   leagueData.worstFinish = finishes.reduce(
                     (max, current) => (current > max ? current : max),
-                    -Infinity
+                    -Infinity,
                   );
                   leagueData.bestFinish = finishes.reduce(
                     (min, current) => (current < min ? current : min),
-                    Infinity
+                    Infinity,
                   );
                 }
                 if (leagueData.wins + leagueData.losses + leagueData.ties > 0)
@@ -196,21 +196,21 @@ handler.post((req) => {
         }
       } else if (leagueType === "hockey") {
         const response = await fetch(
-          `https://fantasysports.yahooapis.com/fantasy/v2/users;use_login=1/games;game_keys=15,64,94,111,130,164,186,210,233,248,263,303,321,341,352,363,376,386,396,403,411,419,427,453,465/leagues/teams/standings`,
+          `https://fantasysports.yahooapis.com/fantasy/v2/users;use_login=1/games;game_keys=15,64,94,111,130,164,186,210,233,248,263,303,321,341,352,363,376,386,396,403,411,419,427,453,477/leagues/teams/standings`,
           {
             method: "GET",
             headers: {
               Authorization: `Bearer ${accessToken}`,
             },
-          }
+          },
         );
         if (!response.ok) {
           let error = new Error(
-            `Request failed when requesting all user hockey leagues with status ${response.status}`
+            `Request failed when requesting all user hockey leagues with status ${response.status}`,
           );
           error.status = response.status; // Add status property
           console.error(
-            `Request failed when requesting all user hockey leagues with status ${response.status}`
+            `Request failed when requesting all user hockey leagues with status ${response.status}`,
           );
           throw error;
         } else {
@@ -222,7 +222,7 @@ handler.post((req) => {
             } else {
               const leagues =
                 result.fantasy_content.users[0].user[0].games[0].game.filter(
-                  (league) => league.leagues[0]
+                  (league) => league.leagues[0],
                 );
               const allSeasons = leagues.map((seasons) => {
                 return seasons.leagues[0].league;
@@ -273,7 +273,7 @@ handler.post((req) => {
                   leagueData.memberUntil = currentYear;
                 } else {
                   leagueData.memberUntil = Number(
-                    league[league.length - 1].season[0]
+                    league[league.length - 1].season[0],
                   );
                 }
 
@@ -290,19 +290,19 @@ handler.post((req) => {
                     leagueData.wins +
                     Number(
                       season.teams[0].team[0].team_standings[0]
-                        .outcome_totals[0].wins[0]
+                        .outcome_totals[0].wins[0],
                     );
                   leagueData.losses =
                     leagueData.losses +
                     Number(
                       season.teams[0].team[0].team_standings[0]
-                        .outcome_totals[0].losses[0]
+                        .outcome_totals[0].losses[0],
                     );
                   leagueData.ties =
                     leagueData.ties +
                     Number(
                       season.teams[0].team[0].team_standings[0]
-                        .outcome_totals[0].ties[0]
+                        .outcome_totals[0].ties[0],
                     );
                   if (season.draft_status[0] === "postdraft") {
                     finishes = [
@@ -312,7 +312,7 @@ handler.post((req) => {
                   }
                 });
                 leagueData.leagueLogo = leagueData.leagueLogo.filter(
-                  (logo) => logo != ""
+                  (logo) => logo != "",
                 );
                 leagueData.leagueLogo =
                   leagueData.leagueLogo[leagueData.leagueLogo.length - 1];
@@ -323,11 +323,11 @@ handler.post((req) => {
                 if (finishes.length) {
                   leagueData.worstFinish = finishes.reduce(
                     (max, current) => (current > max ? current : max),
-                    -Infinity
+                    -Infinity,
                   );
                   leagueData.bestFinish = finishes.reduce(
                     (min, current) => (current < min ? current : min),
-                    Infinity
+                    Infinity,
                   );
                 }
                 if (leagueData.wins + leagueData.losses + leagueData.ties > 0)
@@ -358,22 +358,22 @@ handler.post((req) => {
         }
       } else if (leagueType === "basketball") {
         const response = await fetch(
-          `https://fantasysports.yahooapis.com/fantasy/v2/users;use_login=1/games;game_keys=16,67,95,112,131,165,187,211,234,249,265,304,322,342,353,364,375,385,395,402,410,418,428,454,466/leagues/teams/standings`,
+          `https://fantasysports.yahooapis.com/fantasy/v2/users;use_login=1/games;game_keys=16,67,95,112,131,165,187,211,234,249,265,304,322,342,353,364,375,385,395,402,410,418,428,454,466,478/leagues/teams/standings`,
           {
             method: "GET",
             headers: {
               Authorization: `Bearer ${accessToken}`,
             },
-          }
+          },
         );
 
         if (!response.ok) {
           let error = new Error(
-            `Request failed when requesting all user football leagues with status ${response.status}`
+            `Request failed when requesting all user football leagues with status ${response.status}`,
           );
           error.status = response.status; // Add status property
           console.error(
-            `Request failed when requesting all user football leagues with status ${response.status}`
+            `Request failed when requesting all user football leagues with status ${response.status}`,
           );
           throw error;
         } else {
@@ -385,7 +385,7 @@ handler.post((req) => {
             } else {
               const leagues =
                 result.fantasy_content.users[0].user[0].games[0].game.filter(
-                  (league) => league.leagues[0]
+                  (league) => league.leagues[0],
                 );
               const allSeasons = leagues.map((seasons) => {
                 return seasons.leagues[0].league;
@@ -435,7 +435,7 @@ handler.post((req) => {
                   leagueData.memberUntil = currentYear;
                 } else {
                   leagueData.memberUntil = Number(
-                    league[league.length - 1].season[0]
+                    league[league.length - 1].season[0],
                   );
                 }
 
@@ -452,19 +452,19 @@ handler.post((req) => {
                     leagueData.wins +
                     Number(
                       season.teams[0].team[0].team_standings[0]
-                        .outcome_totals[0].wins[0]
+                        .outcome_totals[0].wins[0],
                     );
                   leagueData.losses =
                     leagueData.losses +
                     Number(
                       season.teams[0].team[0].team_standings[0]
-                        .outcome_totals[0].losses[0]
+                        .outcome_totals[0].losses[0],
                     );
                   leagueData.ties =
                     leagueData.ties +
                     Number(
                       season.teams[0].team[0].team_standings[0]
-                        .outcome_totals[0].ties[0]
+                        .outcome_totals[0].ties[0],
                     );
                   if (season.draft_status[0] === "postdraft") {
                     finishes = [
@@ -474,7 +474,7 @@ handler.post((req) => {
                   }
                 });
                 leagueData.leagueLogo = leagueData.leagueLogo.filter(
-                  (logo) => logo != ""
+                  (logo) => logo != "",
                 );
                 leagueData.leagueLogo =
                   leagueData.leagueLogo[leagueData.leagueLogo.length - 1];
@@ -484,11 +484,11 @@ handler.post((req) => {
                 if (finishes.length) {
                   leagueData.worstFinish = finishes.reduce(
                     (max, current) => (current > max ? current : max),
-                    -Infinity
+                    -Infinity,
                   );
                   leagueData.bestFinish = finishes.reduce(
                     (min, current) => (current < min ? current : min),
-                    Infinity
+                    Infinity,
                   );
                 }
                 if (leagueData.wins + leagueData.losses + leagueData.ties > 0)
@@ -518,21 +518,21 @@ handler.post((req) => {
         }
       } else if (leagueType === "baseball") {
         const response = await fetch(
-          `https://fantasysports.yahooapis.com/fantasy/v2/users;use_login=1/games;game_keys=12,39,74,98,113,147,171,195,215,238,253,268,308,328,346,357,370,378,388,398,404,412,422,431,458/leagues/teams/standings`,
+          `https://fantasysports.yahooapis.com/fantasy/v2/users;use_login=1/games;game_keys=12,39,74,98,113,147,171,195,215,238,253,268,308,328,346,357,370,378,388,398,404,412,422,431,469/leagues/teams/standings`,
           {
             method: "GET",
             headers: {
               Authorization: `Bearer ${accessToken}`,
             },
-          }
+          },
         );
         if (!response.ok) {
           let error = new Error(
-            `Request failed when requesting all user football leagues with status ${response.status}`
+            `Request failed when requesting all user football leagues with status ${response.status}`,
           );
           error.status = response.status; // Add status property
           console.error(
-            `Request failed when requesting all user football leagues with status ${response.status}`
+            `Request failed when requesting all user football leagues with status ${response.status}`,
           );
           throw error;
         } else {
@@ -544,7 +544,7 @@ handler.post((req) => {
             } else {
               const leagues =
                 result.fantasy_content.users[0].user[0].games[0].game.filter(
-                  (league) => league.leagues[0]
+                  (league) => league.leagues[0],
                 );
               const allSeasons = leagues.map((seasons) => {
                 return seasons.leagues[0].league;
@@ -594,7 +594,7 @@ handler.post((req) => {
                   leagueData.memberUntil = currentYear;
                 } else {
                   leagueData.memberUntil = Number(
-                    league[league.length - 1].season[0]
+                    league[league.length - 1].season[0],
                   );
                 }
 
@@ -611,19 +611,19 @@ handler.post((req) => {
                     leagueData.wins +
                     Number(
                       season.teams[0].team[0].team_standings[0]
-                        .outcome_totals[0].wins[0]
+                        .outcome_totals[0].wins[0],
                     );
                   leagueData.losses =
                     leagueData.losses +
                     Number(
                       season.teams[0].team[0].team_standings[0]
-                        .outcome_totals[0].losses[0]
+                        .outcome_totals[0].losses[0],
                     );
                   leagueData.ties =
                     leagueData.ties +
                     Number(
                       season.teams[0].team[0].team_standings[0]
-                        .outcome_totals[0].ties[0]
+                        .outcome_totals[0].ties[0],
                     );
                   if (season.draft_status[0] === "postdraft") {
                     finishes = [
@@ -633,7 +633,7 @@ handler.post((req) => {
                   }
                 });
                 leagueData.leagueLogo = leagueData.leagueLogo.filter(
-                  (logo) => logo != ""
+                  (logo) => logo != "",
                 );
                 leagueData.leagueLogo =
                   leagueData.leagueLogo[leagueData.leagueLogo.length - 1];
@@ -643,11 +643,11 @@ handler.post((req) => {
                 if (finishes.length) {
                   leagueData.worstFinish = finishes.reduce(
                     (max, current) => (current > max ? current : max),
-                    -Infinity
+                    -Infinity,
                   );
                   leagueData.bestFinish = finishes.reduce(
                     (min, current) => (current < min ? current : min),
-                    Infinity
+                    Infinity,
                   );
                 }
                 if (leagueData.wins + leagueData.losses + leagueData.ties > 0)
@@ -684,7 +684,7 @@ handler.post((req) => {
           {
             parsedData: parsedData,
           },
-          { status: 400 }
+          { status: 400 },
         );
       }
     })
@@ -695,7 +695,7 @@ handler.post((req) => {
           error: { message: `Request body parsing error: ${error.message}` },
           status: error.status,
         },
-        { status: error.status }
+        { status: error.status },
       );
     });
 });
