@@ -20,18 +20,22 @@ function Footer() {
       variant="dark"
       style={{ overflow: "hidden" }}
     >
-      <Container style={{ justifyContent: "flex-end" }}>
-        <Navbar.Brand
-          style={{
-            fontSize: "0.5rem",
-            color: "white",
-            textAlign: "end",
-            marginRight: "50px",
-          }}
-        >
-          Fantasy data provided by Yahoo Fantasy
-        </Navbar.Brand>
-        <Link href={`https://sports.yahoo.com/fantasy/`}>
+      <Link
+        href={`https://sports.yahoo.com/fantasy/`}
+        style={{ justifyContent: "flex-end" }}
+      >
+        <Container style={{ justifyContent: "flex-end" }}>
+          <Navbar.Brand
+            style={{
+              fontSize: "0.5rem",
+              color: "white",
+              textAlign: "end",
+              marginRight: "50px",
+            }}
+          >
+            Fantasy data provided by Yahoo Fantasy
+          </Navbar.Brand>
+
           <Image
             src={`https://763445962456-brand-assets.s3.us-west-2.amazonaws.com/brandwebsite/s3fs-public/Yahoo_Fantasy.svg`}
             width={200}
@@ -41,8 +45,8 @@ function Footer() {
             alt={`Yahoo! Fantasy Logo`}
             style={{ position: "absolute", right: "0" }}
           />
-        </Link>
-      </Container>
+        </Container>
+      </Link>
     </Navbar>
   );
 }
