@@ -40,6 +40,7 @@ function Footer() {
           objectFit="contain"
           alt={`Yahoo! Fantasy Logo`}
           style={{ position: "absolute", right: "0" }}
+          href={`https://sports.yahoo.com/fantasy/`}
         />
       </Container>
     </Navbar>
